@@ -1,12 +1,12 @@
 {
   "target": "LCX",
-  "model_family": "RandomForest",
+  "model_family": "XGBoost",
   "vhd_encoding": "onehot",
   "scaler_type": "none",
   "drop_rwma": false,
   "drop_bmi": false,
   "calibration_method": "uncalibrated",
-  "decision_threshold": 0.45,
+  "decision_threshold": 0.5,
   "random_state": 42,
   "training_samples": 303,
   "training_positives": 119,
@@ -69,40 +69,40 @@
   ],
   "cross_validation_metrics": {
     "roc_auc": {
-      "mean": 0.7243,
-      "std": 0.0653
+      "mean": 0.7379,
+      "std": 0.0613
     },
     "pr_auc": {
-      "mean": 0.6079,
-      "std": 0.0858
+      "mean": 0.6223,
+      "std": 0.0873
     },
     "accuracy": {
-      "mean": 0.6811,
-      "std": 0.0571
+      "mean": 0.6898,
+      "std": 0.062
     },
     "precision": {
-      "mean": 0.6002,
-      "std": 0.0782
+      "mean": 0.6081,
+      "std": 0.0875
     },
     "recall": {
-      "mean": 0.5763,
-      "std": 0.0976
+      "mean": 0.6114,
+      "std": 0.1062
     },
     "f1": {
-      "mean": 0.5848,
-      "std": 0.0789
+      "mean": 0.6057,
+      "std": 0.0834
     },
     "balanced_accuracy": {
-      "mean": 0.6625,
-      "std": 0.0602
+      "mean": 0.6758,
+      "std": 0.0649
     },
     "brier_score": {
-      "mean": 0.2099,
-      "std": 0.015
+      "mean": 0.2041,
+      "std": 0.0244
     },
     "ece": {
-      "mean": 0.1172,
-      "std": 0.0321
+      "mean": 0.1324,
+      "std": 0.029
     }
   }
 }

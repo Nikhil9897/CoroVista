@@ -5,8 +5,8 @@
   "scaler_type": "standard",
   "drop_rwma": false,
   "drop_bmi": false,
-  "calibration_method": "uncalibrated",
-  "decision_threshold": 0.5,
+  "calibration_method": "sigmoid",
+  "decision_threshold": 0.38,
   "random_state": 42,
   "training_samples": 303,
   "training_positives": 114,
@@ -69,40 +69,40 @@
   ],
   "cross_validation_metrics": {
     "roc_auc": {
-      "mean": 0.716,
-      "std": 0.0602
+      "mean": 0.7158,
+      "std": 0.0569
     },
     "pr_auc": {
-      "mean": 0.6125,
-      "std": 0.0749
+      "mean": 0.6091,
+      "std": 0.0729
     },
     "accuracy": {
-      "mean": 0.6707,
-      "std": 0.043
+      "mean": 0.6608,
+      "std": 0.0377
     },
     "precision": {
-      "mean": 0.5552,
-      "std": 0.0516
+      "mean": 0.5934,
+      "std": 0.0953
     },
     "recall": {
-      "mean": 0.6455,
-      "std": 0.0985
+      "mean": 0.3406,
+      "std": 0.1017
     },
     "f1": {
-      "mean": 0.5937,
-      "std": 0.06
+      "mean": 0.4231,
+      "std": 0.0904
     },
     "balanced_accuracy": {
-      "mean": 0.6657,
-      "std": 0.0476
+      "mean": 0.5974,
+      "std": 0.0434
     },
     "brier_score": {
-      "mean": 0.2245,
-      "std": 0.0272
+      "mean": 0.2053,
+      "std": 0.0139
     },
     "ece": {
-      "mean": 0.1673,
-      "std": 0.0365
+      "mean": 0.1121,
+      "std": 0.0298
     }
   }
 }

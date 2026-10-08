@@ -69,40 +69,40 @@
   ],
   "cross_validation_metrics": {
     "roc_auc": {
-      "mean": 0.836,
-      "std": 0.0485
+      "mean": 0.8415,
+      "std": 0.0478
     },
     "pr_auc": {
-      "mean": 0.8782,
-      "std": 0.0408
+      "mean": 0.88,
+      "std": 0.0415
     },
     "accuracy": {
-      "mean": 0.769,
-      "std": 0.0527
+      "mean": 0.7815,
+      "std": 0.0358
     },
     "precision": {
-      "mean": 0.8081,
-      "std": 0.0564
+      "mean": 0.7953,
+      "std": 0.0441
     },
     "recall": {
-      "mean": 0.7991,
-      "std": 0.0679
+      "mean": 0.85,
+      "std": 0.0623
     },
     "f1": {
-      "mean": 0.8013,
-      "std": 0.0455
+      "mean": 0.8194,
+      "std": 0.03
     },
     "balanced_accuracy": {
-      "mean": 0.7632,
-      "std": 0.056
+      "mean": 0.7679,
+      "std": 0.0404
     },
     "brier_score": {
-      "mean": 0.1645,
-      "std": 0.0252
+      "mean": 0.16,
+      "std": 0.0212
     },
     "ece": {
-      "mean": 0.1321,
-      "std": 0.0281
+      "mean": 0.117,
+      "std": 0.0226
     }
   }
 }
