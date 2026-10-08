@@ -1,14 +1,18 @@
-import React, { useState } from "react"
+import React, { useState, Suspense, lazy } from "react"
 import { usePatientAnalysis } from "@/hooks/usePatientAnalysis"
 import type { TargetName } from "@/types/prediction"
 import { PatientSummaryHeader } from "@/components/dashboard/PatientSummaryHeader"
 import { CadRiskCard } from "@/components/predictions/CadRiskCard"
 import { VesselRiskOverview } from "@/components/predictions/VesselRiskOverview"
-import { AnatomyPlaceholder } from "@/components/predictions/AnatomyPlaceholder"
+import { ViewerLoadingFallback } from "@/components/viewer/ViewerLoadingFallback"
 import { ExplanationPanel } from "@/components/explanations/ExplanationPanel"
 import { EmptyState } from "@/components/common/EmptyState"
 import { LoadingSkeleton } from "@/components/common/LoadingSkeleton"
 import { ErrorAlert } from "@/components/common/ErrorAlert"
+
+const CoronaryViewer = lazy(() =>
+  import("@/components/viewer/CoronaryViewer").then((m) => ({ default: m.CoronaryViewer }))
+)
 
 export const Dashboard: React.FC = () => {
   const {
@@ -54,7 +58,14 @@ export const Dashboard: React.FC = () => {
               <CadRiskCard prediction={analysis.predictions.cath} className="h-full" />
             </div>
             <div className="lg:col-span-2">
-              <AnatomyPlaceholder className="h-full" />
+              <Suspense fallback={<ViewerLoadingFallback className="h-full min-h-[440px]" />}>
+                <CoronaryViewer
+                  predictions={analysis.predictions}
+                  selectedTarget={selectedTarget}
+                  onSelectTarget={(target) => setSelectedTarget(target)}
+                  className="h-full min-h-[440px]"
+                />
+              </Suspense>
             </div>
           </div>
 
