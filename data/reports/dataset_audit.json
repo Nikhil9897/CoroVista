@@ -1,0 +1,1470 @@
+{
+  "workbook_metadata": {
+    "file_name": "extention of Z-Alizadeh sani dataset.xlsx",
+    "sheet_names": [
+      "Sheet 1 - Table 1",
+      "Sheet1"
+    ],
+    "sheets_info": {
+      "Sheet 1 - Table 1": {
+        "total_rows": 304,
+        "data_rows": 303,
+        "max_columns": 59,
+        "is_empty_of_data": false
+      },
+      "Sheet1": {
+        "total_rows": 1,
+        "data_rows": 0,
+        "max_columns": 100,
+        "is_empty_of_data": true
+      }
+    },
+    "primary_sheet": "Sheet 1 - Table 1"
+  },
+  "quality_audit": {
+    "n_rows": 303,
+    "n_columns": 59,
+    "total_missing": 0,
+    "missing_by_column": {},
+    "duplicate_rows": 0,
+    "constant_features": [
+      {
+        "feature": "Exertional CP",
+        "value": "N"
+      }
+    ],
+    "near_constant_features": [
+      {
+        "feature": "EX-Smoker",
+        "dominant_value": "0",
+        "dominant_count": 293,
+        "dominant_percentage": 96.7,
+        "unique_count": 2
+      },
+      {
+        "feature": "CRF",
+        "dominant_value": "N",
+        "dominant_count": 297,
+        "dominant_percentage": 98.02,
+        "unique_count": 2
+      },
+      {
+        "feature": "CVA",
+        "dominant_value": "N",
+        "dominant_count": 298,
+        "dominant_percentage": 98.35,
+        "unique_count": 2
+      },
+      {
+        "feature": "Airway disease",
+        "dominant_value": "N",
+        "dominant_count": 292,
+        "dominant_percentage": 96.37,
+        "unique_count": 2
+      },
+      {
+        "feature": "Thyroid Disease",
+        "dominant_value": "N",
+        "dominant_count": 296,
+        "dominant_percentage": 97.69,
+        "unique_count": 2
+      },
+      {
+        "feature": "CHF",
+        "dominant_value": "N",
+        "dominant_count": 302,
+        "dominant_percentage": 99.67,
+        "unique_count": 2
+      },
+      {
+        "feature": "Edema",
+        "dominant_value": "0",
+        "dominant_count": 291,
+        "dominant_percentage": 96.04,
+        "unique_count": 2
+      },
+      {
+        "feature": "Weak Peripheral Pulse",
+        "dominant_value": "N",
+        "dominant_count": 298,
+        "dominant_percentage": 98.35,
+        "unique_count": 2
+      },
+      {
+        "feature": "Lung rales",
+        "dominant_value": "N",
+        "dominant_count": 292,
+        "dominant_percentage": 96.37,
+        "unique_count": 2
+      },
+      {
+        "feature": "Diastolic Murmur",
+        "dominant_value": "N",
+        "dominant_count": 294,
+        "dominant_percentage": 97.03,
+        "unique_count": 2
+      },
+      {
+        "feature": "Nonanginal",
+        "dominant_value": "N",
+        "dominant_count": 287,
+        "dominant_percentage": 94.72,
+        "unique_count": 2
+      },
+      {
+        "feature": "LowTH Ang",
+        "dominant_value": "N",
+        "dominant_count": 301,
+        "dominant_percentage": 99.34,
+        "unique_count": 2
+      },
+      {
+        "feature": "Q Wave",
+        "dominant_value": "0",
+        "dominant_count": 287,
+        "dominant_percentage": 94.72,
+        "unique_count": 2
+      },
+      {
+        "feature": "St Elevation",
+        "dominant_value": "0",
+        "dominant_count": 289,
+        "dominant_percentage": 95.38,
+        "unique_count": 2
+      },
+      {
+        "feature": "LVH",
+        "dominant_value": "N",
+        "dominant_count": 283,
+        "dominant_percentage": 93.4,
+        "unique_count": 2
+      },
+      {
+        "feature": "Poor R Progression",
+        "dominant_value": "N",
+        "dominant_count": 294,
+        "dominant_percentage": 97.03,
+        "unique_count": 2
+      },
+      {
+        "feature": "BBB",
+        "dominant_value": "N",
+        "dominant_count": 282,
+        "dominant_percentage": 93.07,
+        "unique_count": 3
+      }
+    ],
+    "categorical_issues": [
+      {
+        "feature": "Sex",
+        "original_value": "Fmale",
+        "potential_intended_meaning": "Female",
+        "evidence": "Dataset documentation and binary biological sex categorization. 127 records have 'Fmale', 176 have 'Male'.",
+        "proposed_transformation": "Map 'Fmale' -> 'Female' (or 0) reproducibly during preprocessing."
+      },
+      {
+        "feature": "VHD",
+        "original_value": "['N', 'mild', 'Severe', 'Moderate']",
+        "potential_intended_meaning": "Valvular Heart Disease severity ordinal scale: None ('N'), Mild, Moderate, Severe",
+        "evidence": "Mixed casing found: 'mild' (lowercase) vs 'Severe' and 'Moderate' (capitalized).",
+        "proposed_transformation": "Standardize casing ('N', 'Mild', 'Moderate', 'Severe') and map to ordinal levels 0, 1, 2, 3."
+      }
+    ],
+    "numerical_outliers": {
+      "Weight": {
+        "outlier_count": 3,
+        "outlier_percentage": 0.99,
+        "q1": 65.0,
+        "median": 74.0,
+        "q3": 81.0,
+        "iqr": 16.0,
+        "min": 48.0,
+        "max": 120.0,
+        "lower_bound": 41.0,
+        "upper_bound": 105.0,
+        "extreme_values": [
+          120.0,
+          108.0,
+          108.0
+        ]
+      },
+      "BMI": {
+        "outlier_count": 6,
+        "outlier_percentage": 1.98,
+        "q1": 24.51,
+        "median": 26.78,
+        "q3": 29.41,
+        "iqr": 4.9,
+        "min": 18.12,
+        "max": 40.9,
+        "lower_bound": 17.17,
+        "upper_bound": 36.76,
+        "extreme_values": [
+          37.17,
+          39.03,
+          38.28,
+          37.37,
+          40.9
+        ]
+      },
+      "BP": {
+        "outlier_count": 9,
+        "outlier_percentage": 2.97,
+        "q1": 120.0,
+        "median": 130.0,
+        "q3": 140.0,
+        "iqr": 20.0,
+        "min": 90.0,
+        "max": 190.0,
+        "lower_bound": 90.0,
+        "upper_bound": 170.0,
+        "extreme_values": [
+          180.0,
+          180.0,
+          180.0,
+          190.0,
+          180.0
+        ]
+      },
+      "PR": {
+        "outlier_count": 13,
+        "outlier_percentage": 4.29,
+        "q1": 70.0,
+        "median": 70.0,
+        "q3": 80.0,
+        "iqr": 10.0,
+        "min": 50.0,
+        "max": 110.0,
+        "lower_bound": 55.0,
+        "upper_bound": 95.0,
+        "extreme_values": [
+          100.0,
+          50.0,
+          100.0,
+          100.0,
+          100.0
+        ]
+      },
+      "FBS": {
+        "outlier_count": 30,
+        "outlier_percentage": 9.9,
+        "q1": 88.5,
+        "median": 98.0,
+        "q3": 130.0,
+        "iqr": 41.5,
+        "min": 62.0,
+        "max": 400.0,
+        "lower_bound": 26.25,
+        "upper_bound": 192.25,
+        "extreme_values": [
+          209.0,
+          213.0,
+          218.0,
+          240.0,
+          227.0
+        ]
+      },
+      "CR": {
+        "outlier_count": 8,
+        "outlier_percentage": 2.64,
+        "q1": 0.9,
+        "median": 1.0,
+        "q3": 1.2,
+        "iqr": 0.3,
+        "min": 0.5,
+        "max": 2.2,
+        "lower_bound": 0.45,
+        "upper_bound": 1.65,
+        "extreme_values": [
+          1.9,
+          1.9,
+          2.2,
+          1.8,
+          2.0
+        ]
+      },
+      "TG": {
+        "outlier_count": 16,
+        "outlier_percentage": 5.28,
+        "q1": 90.0,
+        "median": 122.0,
+        "q3": 177.0,
+        "iqr": 87.0,
+        "min": 37.0,
+        "max": 1050.0,
+        "lower_bound": -40.5,
+        "upper_bound": 307.5,
+        "extreme_values": [
+          309.0,
+          358.0,
+          340.0,
+          310.0,
+          310.0
+        ]
+      },
+      "LDL": {
+        "outlier_count": 6,
+        "outlier_percentage": 1.98,
+        "q1": 80.0,
+        "median": 100.0,
+        "q3": 122.0,
+        "iqr": 42.0,
+        "min": 18.0,
+        "max": 232.0,
+        "lower_bound": 17.0,
+        "upper_bound": 185.0,
+        "extreme_values": [
+          199.0,
+          203.0,
+          232.0,
+          213.0,
+          213.0
+        ]
+      },
+      "HDL": {
+        "outlier_count": 6,
+        "outlier_percentage": 1.98,
+        "q1": 33.5,
+        "median": 39.0,
+        "q3": 45.5,
+        "iqr": 12.0,
+        "min": 15.9,
+        "max": 111.0,
+        "lower_bound": 15.5,
+        "upper_bound": 63.5,
+        "extreme_values": [
+          66.0,
+          82.0,
+          64.0,
+          67.0,
+          111.0
+        ]
+      },
+      "BUN": {
+        "outlier_count": 17,
+        "outlier_percentage": 5.61,
+        "q1": 13.0,
+        "median": 16.0,
+        "q3": 20.0,
+        "iqr": 7.0,
+        "min": 6.0,
+        "max": 52.0,
+        "lower_bound": 2.5,
+        "upper_bound": 30.5,
+        "extreme_values": [
+          36.0,
+          33.0,
+          39.0,
+          43.0,
+          52.0
+        ]
+      },
+      "ESR": {
+        "outlier_count": 13,
+        "outlier_percentage": 4.29,
+        "q1": 9.0,
+        "median": 15.0,
+        "q3": 26.0,
+        "iqr": 17.0,
+        "min": 1.0,
+        "max": 90.0,
+        "lower_bound": -16.5,
+        "upper_bound": 51.5,
+        "extreme_values": [
+          76.0,
+          80.0,
+          58.0,
+          90.0,
+          66.0
+        ]
+      },
+      "HB": {
+        "outlier_count": 7,
+        "outlier_percentage": 2.31,
+        "q1": 12.2,
+        "median": 13.2,
+        "q3": 14.2,
+        "iqr": 2.0,
+        "min": 8.9,
+        "max": 17.6,
+        "lower_bound": 9.2,
+        "upper_bound": 17.2,
+        "extreme_values": [
+          8.9,
+          17.6,
+          9.0,
+          9.0,
+          17.5
+        ]
+      },
+      "K": {
+        "outlier_count": 2,
+        "outlier_percentage": 0.66,
+        "q1": 3.9,
+        "median": 4.2,
+        "q3": 4.5,
+        "iqr": 0.6,
+        "min": 3.0,
+        "max": 6.6,
+        "lower_bound": 3.0,
+        "upper_bound": 5.4,
+        "extreme_values": [
+          6.6,
+          5.6
+        ]
+      },
+      "Na": {
+        "outlier_count": 15,
+        "outlier_percentage": 4.95,
+        "q1": 139.0,
+        "median": 141.0,
+        "q3": 143.0,
+        "iqr": 4.0,
+        "min": 128.0,
+        "max": 156.0,
+        "lower_bound": 133.0,
+        "upper_bound": 149.0,
+        "extreme_values": [
+          156.0,
+          128.0,
+          150.0,
+          130.0,
+          130.0
+        ]
+      },
+      "WBC": {
+        "outlier_count": 9,
+        "outlier_percentage": 2.97,
+        "q1": 5800.0,
+        "median": 7100.0,
+        "q3": 8800.0,
+        "iqr": 3000.0,
+        "min": 3700.0,
+        "max": 18000.0,
+        "lower_bound": 1300.0,
+        "upper_bound": 13300.0,
+        "extreme_values": [
+          18000.0,
+          14000.0,
+          14500.0,
+          17000.0,
+          15400.0
+        ]
+      },
+      "Lymph": {
+        "outlier_count": 3,
+        "outlier_percentage": 0.99,
+        "q1": 26.0,
+        "median": 32.0,
+        "q3": 39.0,
+        "iqr": 13.0,
+        "min": 7.0,
+        "max": 60.0,
+        "lower_bound": 6.5,
+        "upper_bound": 58.5,
+        "extreme_values": [
+          60.0,
+          59.0,
+          60.0
+        ]
+      },
+      "Neut": {
+        "outlier_count": 1,
+        "outlier_percentage": 0.33,
+        "q1": 52.5,
+        "median": 60.0,
+        "q3": 67.0,
+        "iqr": 14.5,
+        "min": 32.0,
+        "max": 89.0,
+        "lower_bound": 30.75,
+        "upper_bound": 88.75,
+        "extreme_values": [
+          89.0
+        ]
+      },
+      "PLT": {
+        "outlier_count": 11,
+        "outlier_percentage": 3.63,
+        "q1": 183.5,
+        "median": 210.0,
+        "q3": 250.0,
+        "iqr": 66.5,
+        "min": 25.0,
+        "max": 742.0,
+        "lower_bound": 83.75,
+        "upper_bound": 349.75,
+        "extreme_values": [
+          742.0,
+          410.0,
+          370.0,
+          380.0,
+          380.0
+        ]
+      },
+      "EF-TTE": {
+        "outlier_count": 15,
+        "outlier_percentage": 4.95,
+        "q1": 45.0,
+        "median": 50.0,
+        "q3": 55.0,
+        "iqr": 10.0,
+        "min": 15.0,
+        "max": 60.0,
+        "lower_bound": 30.0,
+        "upper_bound": 70.0,
+        "extreme_values": [
+          25.0,
+          20.0,
+          20.0,
+          20.0,
+          25.0
+        ]
+      }
+    },
+    "cath_vessel_mismatches": [
+      {
+        "row_index": 93,
+        "LAD": "Stenotic",
+        "LCX": "Normal",
+        "RCA": "Normal",
+        "Cath": "Normal",
+        "explanation": "Patient index 93 has LAD=Stenotic, LCX=Normal, RCA=Normal, but Cath=Normal. In 302/303 cases (99.67%), Cath=CAD is identical to (LAD|LCX|RCA == Stenotic)."
+      }
+    ]
+  },
+  "targets_audit": {
+    "Cath": {
+      "clinical_name": "Overall Coronary Artery Disease (CAD)",
+      "unique_values": [
+        "CAD",
+        "Normal"
+      ],
+      "positive_label": "CAD",
+      "negative_label": "Normal",
+      "positive_count": 216,
+      "negative_count": 87,
+      "positive_percentage": 71.29,
+      "negative_percentage": 28.71,
+      "imbalance_ratio": 2.48,
+      "dominant_class": "CAD",
+      "imbalance_assessment": "2.48:1 imbalance with dominant class 'CAD'. Accuracy alone will be misleading; precision, recall, F1, and ROC-AUC are required."
+    },
+    "LAD": {
+      "clinical_name": "Left Anterior Descending Stenosis",
+      "unique_values": [
+        "Stenotic",
+        "Normal"
+      ],
+      "positive_label": "Stenotic",
+      "negative_label": "Normal",
+      "positive_count": 177,
+      "negative_count": 126,
+      "positive_percentage": 58.42,
+      "negative_percentage": 41.58,
+      "imbalance_ratio": 1.4,
+      "dominant_class": "Stenotic",
+      "imbalance_assessment": "1.4:1 imbalance with dominant class 'Stenotic'. Accuracy alone will be misleading; precision, recall, F1, and ROC-AUC are required."
+    },
+    "LCX": {
+      "clinical_name": "Left Circumflex Stenosis",
+      "unique_values": [
+        "Normal",
+        "Stenotic"
+      ],
+      "positive_label": "Stenotic",
+      "negative_label": "Normal",
+      "positive_count": 119,
+      "negative_count": 184,
+      "positive_percentage": 39.27,
+      "negative_percentage": 60.73,
+      "imbalance_ratio": 1.55,
+      "dominant_class": "Normal",
+      "imbalance_assessment": "1.55:1 imbalance with dominant class 'Normal'. Accuracy alone will be misleading; precision, recall, F1, and ROC-AUC are required."
+    },
+    "RCA": {
+      "clinical_name": "Right Coronary Artery Stenosis",
+      "unique_values": [
+        "Normal",
+        "Stenotic"
+      ],
+      "positive_label": "Stenotic",
+      "negative_label": "Normal",
+      "positive_count": 114,
+      "negative_count": 189,
+      "positive_percentage": 37.62,
+      "negative_percentage": 62.38,
+      "imbalance_ratio": 1.66,
+      "dominant_class": "Normal",
+      "imbalance_assessment": "1.66:1 imbalance with dominant class 'Normal'. Accuracy alone will be misleading; precision, recall, F1, and ROC-AUC are required."
+    }
+  },
+  "leakage_audit": {
+    "mandatory_excluded_targets": [
+      "Cath",
+      "LAD",
+      "LCX",
+      "RCA"
+    ],
+    "leakage_rule": "Columns ['LAD', 'LCX', 'RCA', 'Cath'] MUST NEVER enter feature matrix X.",
+    "suspicious_features_audit": [
+      {
+        "feature": "Region RWMA",
+        "why_suspicious": "Echocardiographic Regional Wall Motion Abnormality score/count. RWMA is clinically linked to coronary artery distribution territories and has high correlation with LAD (r=0.36) and Cath (r=0.32).",
+        "evidence": "Wall motion abnormalities manifest when myocardial perfusion is compromised. However, RWMA is obtained via transthoracic echocardiography (TTE) prior to catheterization, not from angiographic dye or catheter intervention. Track A problem statement explicitly lists echocardiographic features as allowable inputs.",
+        "recommended_action": "Retain in feature pool per Track A specification ('Use available: Echocardiographic features'), but strictly enforce the prompt rule: RWMA must NOT be interpreted as 3D lesion coordinates. Include sensitivity ablation in model evaluation (performance with vs without RWMA)."
+      },
+      {
+        "feature": "Exertional CP",
+        "why_suspicious": "Zero-variance feature (constant across 100% of samples).",
+        "evidence": "All 303 rows contain 'N'. Provides zero discriminatory information.",
+        "recommended_action": "Exclude from model training feature matrix X during preprocessing pipeline."
+      },
+      {
+        "feature": "BMI vs (Weight, Length)",
+        "why_suspicious": "Mathematical collinearity (deterministic formula: BMI = Weight / (Length / 100)^2).",
+        "evidence": "High collinearity between BMI, Weight, and Length in linear modeling.",
+        "recommended_action": "Not target leakage, but feature collinearity. Retain for tree-based models (XGBoost/RandomForest) which naturally handle collinearity, or evaluate dropping redundant terms for linear baselines."
+      },
+      {
+        "feature": "CHF",
+        "why_suspicious": "Severe category sparsity (only 1 positive case out of 303 rows).",
+        "evidence": "302 'N' vs 1 'Y' (99.67% constant). High risk of spurious feature importance or split instability.",
+        "recommended_action": "Retain in feature schema for patient simulator input compatibility, but apply tree regularizers or evaluate low-variance feature filter to prevent split overfitting on a single record."
+      }
+    ]
+  },
+  "statistical_exploration": {
+    "numerical_statistics": {
+      "Age": {
+        "mean": 58.898,
+        "median": 58.0,
+        "std": 10.392,
+        "min": 30.0,
+        "max": 86.0,
+        "q25": 51.0,
+        "q75": 66.0,
+        "skewness": 0.135,
+        "iqr_outliers": 0
+      },
+      "Weight": {
+        "mean": 73.832,
+        "median": 74.0,
+        "std": 11.987,
+        "min": 48.0,
+        "max": 120.0,
+        "q25": 65.0,
+        "q75": 81.0,
+        "skewness": 0.419,
+        "iqr_outliers": 3
+      },
+      "Length": {
+        "mean": 164.716,
+        "median": 165.0,
+        "std": 9.328,
+        "min": 140.0,
+        "max": 188.0,
+        "q25": 158.0,
+        "q75": 171.0,
+        "skewness": -0.032,
+        "iqr_outliers": 0
+      },
+      "BMI": {
+        "mean": 27.248,
+        "median": 26.776,
+        "std": 4.099,
+        "min": 18.115,
+        "max": 40.901,
+        "q25": 24.514,
+        "q75": 29.412,
+        "skewness": 0.434,
+        "iqr_outliers": 6
+      },
+      "DM": {
+        "mean": 0.297,
+        "median": 0.0,
+        "std": 0.458,
+        "min": 0.0,
+        "max": 1.0,
+        "q25": 0.0,
+        "q75": 1.0,
+        "skewness": 0.893,
+        "iqr_outliers": 0
+      },
+      "HTN": {
+        "mean": 0.591,
+        "median": 1.0,
+        "std": 0.493,
+        "min": 0.0,
+        "max": 1.0,
+        "q25": 0.0,
+        "q75": 1.0,
+        "skewness": -0.371,
+        "iqr_outliers": 0
+      },
+      "Current Smoker": {
+        "mean": 0.208,
+        "median": 0.0,
+        "std": 0.406,
+        "min": 0.0,
+        "max": 1.0,
+        "q25": 0.0,
+        "q75": 0.0,
+        "skewness": 1.447,
+        "iqr_outliers": 63
+      },
+      "EX-Smoker": {
+        "mean": 0.033,
+        "median": 0.0,
+        "std": 0.179,
+        "min": 0.0,
+        "max": 1.0,
+        "q25": 0.0,
+        "q75": 0.0,
+        "skewness": 5.254,
+        "iqr_outliers": 10
+      },
+      "FH": {
+        "mean": 0.158,
+        "median": 0.0,
+        "std": 0.366,
+        "min": 0.0,
+        "max": 1.0,
+        "q25": 0.0,
+        "q75": 0.0,
+        "skewness": 1.88,
+        "iqr_outliers": 48
+      },
+      "BP": {
+        "mean": 129.554,
+        "median": 130.0,
+        "std": 18.938,
+        "min": 90.0,
+        "max": 190.0,
+        "q25": 120.0,
+        "q75": 140.0,
+        "skewness": 0.573,
+        "iqr_outliers": 9
+      },
+      "PR": {
+        "mean": 75.142,
+        "median": 70.0,
+        "std": 8.912,
+        "min": 50.0,
+        "max": 110.0,
+        "q25": 70.0,
+        "q75": 80.0,
+        "skewness": 1.079,
+        "iqr_outliers": 13
+      },
+      "Edema": {
+        "mean": 0.04,
+        "median": 0.0,
+        "std": 0.195,
+        "min": 0.0,
+        "max": 1.0,
+        "q25": 0.0,
+        "q75": 0.0,
+        "skewness": 4.745,
+        "iqr_outliers": 12
+      },
+      "Typical Chest Pain": {
+        "mean": 0.541,
+        "median": 1.0,
+        "std": 0.499,
+        "min": 0.0,
+        "max": 1.0,
+        "q25": 0.0,
+        "q75": 1.0,
+        "skewness": -0.166,
+        "iqr_outliers": 0
+      },
+      "Function Class": {
+        "mean": 0.663,
+        "median": 0.0,
+        "std": 1.032,
+        "min": 0.0,
+        "max": 3.0,
+        "q25": 0.0,
+        "q75": 2.0,
+        "skewness": 1.038,
+        "iqr_outliers": 0
+      },
+      "Q Wave": {
+        "mean": 0.053,
+        "median": 0.0,
+        "std": 0.224,
+        "min": 0.0,
+        "max": 1.0,
+        "q25": 0.0,
+        "q75": 0.0,
+        "skewness": 4.019,
+        "iqr_outliers": 16
+      },
+      "St Elevation": {
+        "mean": 0.046,
+        "median": 0.0,
+        "std": 0.21,
+        "min": 0.0,
+        "max": 1.0,
+        "q25": 0.0,
+        "q75": 0.0,
+        "skewness": 4.345,
+        "iqr_outliers": 14
+      },
+      "St Depression": {
+        "mean": 0.234,
+        "median": 0.0,
+        "std": 0.424,
+        "min": 0.0,
+        "max": 1.0,
+        "q25": 0.0,
+        "q75": 0.0,
+        "skewness": 1.261,
+        "iqr_outliers": 71
+      },
+      "Tinversion": {
+        "mean": 0.297,
+        "median": 0.0,
+        "std": 0.458,
+        "min": 0.0,
+        "max": 1.0,
+        "q25": 0.0,
+        "q75": 1.0,
+        "skewness": 0.893,
+        "iqr_outliers": 0
+      },
+      "FBS": {
+        "mean": 119.185,
+        "median": 98.0,
+        "std": 52.08,
+        "min": 62.0,
+        "max": 400.0,
+        "q25": 88.5,
+        "q75": 130.0,
+        "skewness": 2.276,
+        "iqr_outliers": 30
+      },
+      "CR": {
+        "mean": 1.056,
+        "median": 1.0,
+        "std": 0.264,
+        "min": 0.5,
+        "max": 2.2,
+        "q25": 0.9,
+        "q75": 1.2,
+        "skewness": 0.95,
+        "iqr_outliers": 8
+      },
+      "TG": {
+        "mean": 150.343,
+        "median": 122.0,
+        "std": 97.959,
+        "min": 37.0,
+        "max": 1050.0,
+        "q25": 90.0,
+        "q75": 177.0,
+        "skewness": 3.782,
+        "iqr_outliers": 16
+      },
+      "LDL": {
+        "mean": 104.644,
+        "median": 100.0,
+        "std": 35.397,
+        "min": 18.0,
+        "max": 232.0,
+        "q25": 80.0,
+        "q75": 122.0,
+        "skewness": 0.571,
+        "iqr_outliers": 6
+      },
+      "HDL": {
+        "mean": 40.234,
+        "median": 39.0,
+        "std": 10.559,
+        "min": 15.9,
+        "max": 111.0,
+        "q25": 33.5,
+        "q75": 45.5,
+        "skewness": 1.461,
+        "iqr_outliers": 6
+      },
+      "BUN": {
+        "mean": 17.502,
+        "median": 16.0,
+        "std": 6.957,
+        "min": 6.0,
+        "max": 52.0,
+        "q25": 13.0,
+        "q75": 20.0,
+        "skewness": 1.818,
+        "iqr_outliers": 17
+      },
+      "ESR": {
+        "mean": 19.462,
+        "median": 15.0,
+        "std": 15.936,
+        "min": 1.0,
+        "max": 90.0,
+        "q25": 9.0,
+        "q75": 26.0,
+        "skewness": 1.63,
+        "iqr_outliers": 13
+      },
+      "HB": {
+        "mean": 13.153,
+        "median": 13.2,
+        "std": 1.61,
+        "min": 8.9,
+        "max": 17.6,
+        "q25": 12.2,
+        "q75": 14.2,
+        "skewness": -0.179,
+        "iqr_outliers": 7
+      },
+      "K": {
+        "mean": 4.231,
+        "median": 4.2,
+        "std": 0.458,
+        "min": 3.0,
+        "max": 6.6,
+        "q25": 3.9,
+        "q75": 4.5,
+        "skewness": 0.528,
+        "iqr_outliers": 2
+      },
+      "Na": {
+        "mean": 140.997,
+        "median": 141.0,
+        "std": 3.808,
+        "min": 128.0,
+        "max": 156.0,
+        "q25": 139.0,
+        "q75": 143.0,
+        "skewness": 0.265,
+        "iqr_outliers": 15
+      },
+      "WBC": {
+        "mean": 7562.046,
+        "median": 7100.0,
+        "std": 2413.739,
+        "min": 3700.0,
+        "max": 18000.0,
+        "q25": 5800.0,
+        "q75": 8800.0,
+        "skewness": 1.388,
+        "iqr_outliers": 9
+      },
+      "Lymph": {
+        "mean": 32.399,
+        "median": 32.0,
+        "std": 9.973,
+        "min": 7.0,
+        "max": 60.0,
+        "q25": 26.0,
+        "q75": 39.0,
+        "skewness": 0.067,
+        "iqr_outliers": 3
+      },
+      "Neut": {
+        "mean": 60.149,
+        "median": 60.0,
+        "std": 10.182,
+        "min": 32.0,
+        "max": 89.0,
+        "q25": 52.5,
+        "q75": 67.0,
+        "skewness": 0.092,
+        "iqr_outliers": 1
+      },
+      "PLT": {
+        "mean": 221.488,
+        "median": 210.0,
+        "std": 60.796,
+        "min": 25.0,
+        "max": 742.0,
+        "q25": 183.5,
+        "q75": 250.0,
+        "skewness": 2.589,
+        "iqr_outliers": 11
+      },
+      "EF-TTE": {
+        "mean": 47.231,
+        "median": 50.0,
+        "std": 8.927,
+        "min": 15.0,
+        "max": 60.0,
+        "q25": 45.0,
+        "q75": 55.0,
+        "skewness": -1.338,
+        "iqr_outliers": 15
+      },
+      "Region RWMA": {
+        "mean": 0.62,
+        "median": 0.0,
+        "std": 1.133,
+        "min": 0.0,
+        "max": 4.0,
+        "q25": 0.0,
+        "q75": 1.0,
+        "skewness": 1.75,
+        "iqr_outliers": 28
+      }
+    },
+    "categorical_statistics": {
+      "Sex": {
+        "unique_count": 2,
+        "frequencies": {
+          "Male": 176,
+          "Fmale": 127
+        },
+        "dominant_class": "Male",
+        "dominant_percentage": 58.09
+      },
+      "Obesity": {
+        "unique_count": 2,
+        "frequencies": {
+          "Y": 211,
+          "N": 92
+        },
+        "dominant_class": "Y",
+        "dominant_percentage": 69.64
+      },
+      "CRF": {
+        "unique_count": 2,
+        "frequencies": {
+          "N": 297,
+          "Y": 6
+        },
+        "dominant_class": "N",
+        "dominant_percentage": 98.02
+      },
+      "CVA": {
+        "unique_count": 2,
+        "frequencies": {
+          "N": 298,
+          "Y": 5
+        },
+        "dominant_class": "N",
+        "dominant_percentage": 98.35
+      },
+      "Airway disease": {
+        "unique_count": 2,
+        "frequencies": {
+          "N": 292,
+          "Y": 11
+        },
+        "dominant_class": "N",
+        "dominant_percentage": 96.37
+      },
+      "Thyroid Disease": {
+        "unique_count": 2,
+        "frequencies": {
+          "N": 296,
+          "Y": 7
+        },
+        "dominant_class": "N",
+        "dominant_percentage": 97.69
+      },
+      "CHF": {
+        "unique_count": 2,
+        "frequencies": {
+          "N": 302,
+          "Y": 1
+        },
+        "dominant_class": "N",
+        "dominant_percentage": 99.67
+      },
+      "DLP": {
+        "unique_count": 2,
+        "frequencies": {
+          "N": 191,
+          "Y": 112
+        },
+        "dominant_class": "N",
+        "dominant_percentage": 63.04
+      },
+      "Weak Peripheral Pulse": {
+        "unique_count": 2,
+        "frequencies": {
+          "N": 298,
+          "Y": 5
+        },
+        "dominant_class": "N",
+        "dominant_percentage": 98.35
+      },
+      "Lung rales": {
+        "unique_count": 2,
+        "frequencies": {
+          "N": 292,
+          "Y": 11
+        },
+        "dominant_class": "N",
+        "dominant_percentage": 96.37
+      },
+      "Systolic Murmur": {
+        "unique_count": 2,
+        "frequencies": {
+          "N": 262,
+          "Y": 41
+        },
+        "dominant_class": "N",
+        "dominant_percentage": 86.47
+      },
+      "Diastolic Murmur": {
+        "unique_count": 2,
+        "frequencies": {
+          "N": 294,
+          "Y": 9
+        },
+        "dominant_class": "N",
+        "dominant_percentage": 97.03
+      },
+      "Dyspnea": {
+        "unique_count": 2,
+        "frequencies": {
+          "N": 169,
+          "Y": 134
+        },
+        "dominant_class": "N",
+        "dominant_percentage": 55.78
+      },
+      "Atypical": {
+        "unique_count": 2,
+        "frequencies": {
+          "N": 210,
+          "Y": 93
+        },
+        "dominant_class": "N",
+        "dominant_percentage": 69.31
+      },
+      "Nonanginal": {
+        "unique_count": 2,
+        "frequencies": {
+          "N": 287,
+          "Y": 16
+        },
+        "dominant_class": "N",
+        "dominant_percentage": 94.72
+      },
+      "Exertional CP": {
+        "unique_count": 1,
+        "frequencies": {
+          "N": 303
+        },
+        "dominant_class": "N",
+        "dominant_percentage": 100.0
+      },
+      "LowTH Ang": {
+        "unique_count": 2,
+        "frequencies": {
+          "N": 301,
+          "Y": 2
+        },
+        "dominant_class": "N",
+        "dominant_percentage": 99.34
+      },
+      "LVH": {
+        "unique_count": 2,
+        "frequencies": {
+          "N": 283,
+          "Y": 20
+        },
+        "dominant_class": "N",
+        "dominant_percentage": 93.4
+      },
+      "Poor R Progression": {
+        "unique_count": 2,
+        "frequencies": {
+          "N": 294,
+          "Y": 9
+        },
+        "dominant_class": "N",
+        "dominant_percentage": 97.03
+      },
+      "BBB": {
+        "unique_count": 3,
+        "frequencies": {
+          "N": 282,
+          "LBBB": 13,
+          "RBBB": 8
+        },
+        "dominant_class": "N",
+        "dominant_percentage": 93.07
+      },
+      "VHD": {
+        "unique_count": 4,
+        "frequencies": {
+          "mild": 149,
+          "N": 116,
+          "Moderate": 27,
+          "Severe": 11
+        },
+        "dominant_class": "mild",
+        "dominant_percentage": 49.17
+      },
+      "LAD": {
+        "unique_count": 2,
+        "frequencies": {
+          "Stenotic": 177,
+          "Normal": 126
+        },
+        "dominant_class": "Stenotic",
+        "dominant_percentage": 58.42
+      },
+      "LCX": {
+        "unique_count": 2,
+        "frequencies": {
+          "Normal": 184,
+          "Stenotic": 119
+        },
+        "dominant_class": "Normal",
+        "dominant_percentage": 60.73
+      },
+      "RCA": {
+        "unique_count": 2,
+        "frequencies": {
+          "Normal": 189,
+          "Stenotic": 114
+        },
+        "dominant_class": "Normal",
+        "dominant_percentage": 62.38
+      },
+      "Cath": {
+        "unique_count": 2,
+        "frequencies": {
+          "CAD": 216,
+          "Normal": 87
+        },
+        "dominant_class": "CAD",
+        "dominant_percentage": 71.29
+      }
+    },
+    "correlations_with_targets": {
+      "Cath_CAD": {
+        "Typical Chest Pain": 0.543,
+        "Atypical": -0.4159,
+        "Age": 0.3572,
+        "Region RWMA": 0.316,
+        "HTN": 0.2878,
+        "Nonanginal": -0.2742,
+        "DM": 0.2529,
+        "BP": 0.2378,
+        "Tinversion": 0.2369,
+        "EF-TTE": -0.234,
+        "FBS": 0.2056,
+        "K": 0.1813,
+        "ESR": 0.1784,
+        "PR": 0.1684,
+        "Q Wave": 0.1498,
+        "Diastolic Murmur": -0.1468,
+        "St Depression": 0.1444,
+        "TG": 0.1406,
+        "St Elevation": 0.1397,
+        "Lymph": -0.1269,
+        "Dyspnea": -0.1252,
+        "Neut": 0.1241,
+        "Poor R Progression": 0.111,
+        "Function Class": 0.0971,
+        "PLT": -0.0949,
+        "CRF": 0.0902,
+        "BUN": 0.0889,
+        "CR": 0.0868,
+        "Na": -0.085,
+        "Airway disease": 0.0842,
+        "Weak Peripheral Pulse": 0.0822,
+        "BMI": -0.0782,
+        "Current Smoker": 0.0735,
+        "WBC": 0.0708,
+        "Sex": 0.067,
+        "Weight": -0.0668,
+        "VHD": 0.0657,
+        "Edema": 0.0541,
+        "LowTH Ang": 0.0517,
+        "LVH": 0.0512,
+        "Thyroid Disease": -0.0481,
+        "Lung rales": 0.0452,
+        "BBB": 0.0434,
+        "HDL": -0.0426,
+        "HB": -0.0424,
+        "CHF": 0.0365,
+        "EX-Smoker": 0.0356,
+        "FH": 0.0356,
+        "CVA": 0.0249,
+        "LDL": -0.0235,
+        "Obesity": -0.0225,
+        "DLP": -0.0127,
+        "Systolic Murmur": -0.0049,
+        "Length": 0.001
+      },
+      "LAD_Stenotic": {
+        "Typical Chest Pain": 0.4596,
+        "Region RWMA": 0.3623,
+        "Atypical": -0.3532,
+        "EF-TTE": -0.3147,
+        "Age": 0.3086,
+        "Nonanginal": -0.22,
+        "Tinversion": 0.2114,
+        "St Elevation": 0.1857,
+        "Lymph": -0.1854,
+        "HTN": 0.183,
+        "PR": 0.1798,
+        "Neut": 0.1737,
+        "ESR": 0.1722,
+        "Q Wave": 0.1693,
+        "St Depression": 0.1506,
+        "BP": 0.1483,
+        "FBS": 0.1413,
+        "WBC": 0.1326,
+        "Diastolic Murmur": -0.1285,
+        "DM": 0.1235,
+        "K": 0.1166,
+        "Poor R Progression": 0.1082,
+        "BMI": -0.1044,
+        "Na": -0.1029,
+        "Edema": 0.1027,
+        "BUN": 0.1014,
+        "Function Class": 0.1013,
+        "TG": 0.099,
+        "Sex": 0.0976,
+        "Thyroid Disease": -0.0931,
+        "Lung rales": 0.0922,
+        "CR": 0.0915,
+        "Current Smoker": 0.0858,
+        "Dyspnea": -0.0846,
+        "EX-Smoker": 0.0809,
+        "PLT": -0.0758,
+        "CRF": 0.0719,
+        "Weight": -0.0701,
+        "LowTH Ang": 0.0688,
+        "Obesity": -0.062,
+        "HB": -0.0561,
+        "BBB": 0.049,
+        "CHF": 0.0486,
+        "CVA": -0.0484,
+        "DLP": -0.0475,
+        "HDL": -0.0428,
+        "LDL": 0.04,
+        "VHD": 0.0379,
+        "Length": 0.0297,
+        "Airway disease": 0.0206,
+        "Systolic Murmur": 0.0205,
+        "FH": 0.0176,
+        "LVH": 0.0085,
+        "Weak Peripheral Pulse": 0.0042
+      },
+      "LCX_Stenotic": {
+        "Age": 0.3134,
+        "Typical Chest Pain": 0.2928,
+        "BP": 0.1798,
+        "CR": 0.1763,
+        "HTN": 0.1745,
+        "Atypical": -0.1689,
+        "DM": 0.1576,
+        "BUN": 0.1492,
+        "FBS": 0.1436,
+        "PLT": -0.1292,
+        "EF-TTE": -0.1255,
+        "Region RWMA": 0.1205,
+        "EX-Smoker": 0.1162,
+        "TG": 0.1143,
+        "K": 0.11,
+        "Sex": 0.1079,
+        "Na": 0.102,
+        "Nonanginal": -0.0992,
+        "Airway disease": 0.0968,
+        "Function Class": 0.0922,
+        "Neut": 0.0846,
+        "CRF": 0.0797,
+        "Thyroid Disease": -0.0787,
+        "Length": 0.0753,
+        "Lymph": -0.0696,
+        "Tinversion": 0.0688,
+        "ESR": 0.0675,
+        "BMI": -0.0658,
+        "Systolic Murmur": -0.0613,
+        "Diastolic Murmur": -0.0611,
+        "Poor R Progression": 0.0583,
+        "Current Smoker": 0.0542,
+        "LDL": 0.0521,
+        "Q Wave": 0.0519,
+        "CVA": -0.0511,
+        "WBC": 0.0502,
+        "Dyspnea": -0.0494,
+        "CHF": -0.0463,
+        "Edema": 0.0446,
+        "Obesity": -0.0422,
+        "PR": 0.0373,
+        "St Depression": 0.0338,
+        "VHD": -0.029,
+        "HDL": -0.0275,
+        "Lung rales": 0.0246,
+        "HB": 0.0191,
+        "LowTH Ang": 0.0179,
+        "St Elevation": 0.0161,
+        "DLP": -0.0138,
+        "Weight": -0.0135,
+        "LVH": 0.004,
+        "FH": 0.0027,
+        "Weak Peripheral Pulse": 0.0019,
+        "BBB": -0.0009
+      },
+      "RCA_Stenotic": {
+        "Typical Chest Pain": 0.2912,
+        "DM": 0.2704,
+        "Atypical": -0.2362,
+        "Neut": 0.2286,
+        "Age": 0.2224,
+        "Lymph": -0.2152,
+        "Poor R Progression": 0.1852,
+        "ESR": 0.1843,
+        "Nonanginal": -0.1529,
+        "HTN": 0.1476,
+        "FBS": 0.1471,
+        "TG": 0.1379,
+        "Function Class": 0.1281,
+        "WBC": 0.1267,
+        "EF-TTE": -0.1218,
+        "Sex": 0.1213,
+        "Q Wave": 0.1212,
+        "K": 0.1087,
+        "Dyspnea": -0.1017,
+        "CR": 0.0971,
+        "Diastolic Murmur": -0.0958,
+        "Length": 0.0917,
+        "BP": 0.0896,
+        "Na": -0.0889,
+        "Region RWMA": 0.0799,
+        "CHF": 0.0741,
+        "PR": 0.0665,
+        "LowTH Ang": -0.0633,
+        "Tinversion": 0.0617,
+        "CVA": 0.0598,
+        "Weak Peripheral Pulse": 0.0598,
+        "PLT": -0.0588,
+        "St Elevation": 0.0562,
+        "EX-Smoker": 0.0472,
+        "Weight": 0.0445,
+        "DLP": 0.0404,
+        "Current Smoker": 0.0386,
+        "St Depression": 0.0368,
+        "BUN": 0.0361,
+        "Airway disease": 0.0314,
+        "HDL": 0.0293,
+        "BMI": -0.0289,
+        "Thyroid Disease": -0.0287,
+        "Systolic Murmur": -0.0284,
+        "HB": 0.0191,
+        "FH": 0.0175,
+        "Edema": 0.0169,
+        "LDL": 0.0165,
+        "LVH": -0.0144,
+        "CRF": -0.0126,
+        "VHD": -0.0068,
+        "Obesity": -0.0057,
+        "Lung rales": -0.005,
+        "BBB": -0.0031
+      }
+    }
+  }
+}

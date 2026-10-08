@@ -1,0 +1,60 @@
+Feature Name,Data Type,Category,Missing Count,Unique Count,Example Values,Potential Issue,Model Eligibility
+Age,int64,Demographic,0,46,"53, 67, 54, 66",None,Eligible
+Weight,int64,Demographic,0,54,"90, 70, 54, 67",3 IQR outliers (max=120),Eligible
+Length,int64,Demographic,0,44,"175, 157, 164, 158",None,Eligible
+Sex,object,Demographic,0,2,"Male, Fmale",Typo in categorical label ('Fmale' -> 'Female'),Eligible
+BMI,float64,Demographic,0,263,"29.387755102040817, 28.398718000730252, 20.077334919690664, 26.83864765261977",6 IQR outliers (max=40.90065778377467),Eligible
+DM,int64,Clinical Examination,0,2,"0, 1",None,Eligible
+HTN,int64,Clinical Examination,0,2,"1, 0",None,Eligible
+Current Smoker,int64,Clinical Examination,0,2,"1, 0",None,Eligible
+EX-Smoker,int64,Clinical Examination,0,2,"0, 1",Near-constant (96.7% dominant class '0'),Eligible
+FH,int64,Clinical Examination,0,2,"0, 1",None,Eligible
+Obesity,object,Clinical Examination,0,2,"Y, N",None,Eligible
+CRF,object,Clinical Examination,0,2,"N, Y",Near-constant (98.0% dominant class 'N'),Eligible
+CVA,object,Clinical Examination,0,2,"N, Y",Near-constant (98.3% dominant class 'N'),Eligible
+Airway disease,object,Clinical Examination,0,2,"N, Y",Near-constant (96.4% dominant class 'N'),Eligible
+Thyroid Disease,object,Clinical Examination,0,2,"N, Y",Near-constant (97.7% dominant class 'N'),Eligible
+CHF,object,Clinical Examination,0,2,"N, Y",Near-constant (99.7% dominant class 'N'),Eligible
+DLP,object,Clinical Examination,0,2,"Y, N",None,Eligible
+BP,int64,Clinical Examination,0,17,"110, 140, 100, 118",9 IQR outliers (max=190),Eligible
+PR,int64,Clinical Examination,0,21,"80, 100, 70, 50",13 IQR outliers (max=110),Eligible
+Edema,int64,Clinical Examination,0,2,"0, 1",Near-constant (96.0% dominant class '0'),Eligible
+Weak Peripheral Pulse,object,Clinical Examination,0,2,"N, Y",Near-constant (98.3% dominant class 'N'),Eligible
+Lung rales,object,Clinical Examination,0,2,"N, Y",Near-constant (96.4% dominant class 'N'),Eligible
+Systolic Murmur,object,Clinical Examination,0,2,"N, Y",None,Eligible
+Diastolic Murmur,object,Clinical Examination,0,2,"N, Y",Near-constant (97.0% dominant class 'N'),Eligible
+Typical Chest Pain,int64,Clinical Examination,0,2,"0, 1",None,Eligible
+Dyspnea,object,Clinical Examination,0,2,"N, Y",None,Eligible
+Function Class,int64,Clinical Examination,0,4,"0, 3, 2, 1",None,Eligible
+Atypical,object,Clinical Examination,0,2,"N, Y",None,Eligible
+Nonanginal,object,Clinical Examination,0,2,"N, Y",None,Eligible
+Exertional CP,object,Clinical Examination,0,1,N,Constant feature; variance = 0,Excluded (Zero Variance)
+LowTH Ang,object,Clinical Examination,0,2,"N, Y",Near-constant (99.3% dominant class 'N'),Eligible
+Q Wave,int64,ECG,0,2,"0, 1",None,Eligible
+St Elevation,int64,ECG,0,2,"0, 1",Near-constant (95.4% dominant class '0'),Eligible
+St Depression,int64,ECG,0,2,"1, 0",None,Eligible
+Tinversion,int64,ECG,0,2,"1, 0",None,Eligible
+LVH,object,ECG,0,2,"N, Y",None,Eligible
+Poor R Progression,object,ECG,0,2,"N, Y",Near-constant (97.0% dominant class 'N'),Eligible
+BBB,object,ECG,0,3,"N, LBBB, RBBB",None,Eligible
+FBS,int64,Laboratory,0,113,"90, 80, 85, 78",30 IQR outliers (max=400),Eligible
+CR,float64,Laboratory,0,18,"0.7, 1.0, 1.2, 0.8",8 IQR outliers (max=2.2),Eligible
+TG,int64,Laboratory,0,147,"250, 309, 103, 63",16 IQR outliers (max=1050),Eligible
+LDL,int64,Laboratory,0,110,"155, 121, 70, 55",6 IQR outliers (max=232),Eligible
+HDL,float64,Laboratory,0,47,"30.0, 36.0, 45.0, 27.0",6 IQR outliers (max=111.0),Eligible
+BUN,int64,Laboratory,0,33,"8, 30, 17, 16",17 IQR outliers (max=52),Eligible
+ESR,int64,Laboratory,0,58,"7, 26, 10, 76",13 IQR outliers (max=90),Eligible
+HB,float64,Laboratory,0,66,"15.6, 13.9, 13.5, 12.1",7 IQR outliers (max=17.6),Eligible
+K,float64,Laboratory,0,27,"4.7, 4.4, 4.0, 4.2",2 IQR outliers (max=6.6),Eligible
+Na,int64,Laboratory,0,25,"141, 156, 139, 142",15 IQR outliers (max=156),Eligible
+WBC,int64,Laboratory,0,78,"5700, 7700, 7400, 13000",9 IQR outliers (max=18000),Eligible
+Lymph,int64,Laboratory,0,50,"39, 38, 18, 55",3 IQR outliers (max=60),Eligible
+Neut,int64,Laboratory,0,52,"52, 55, 60, 72",1 IQR outliers (max=89),Eligible
+PLT,int64,Laboratory,0,135,"261, 165, 230, 742",11 IQR outliers (max=742),Eligible
+EF-TTE,int64,Echocardiographic,0,11,"50, 40, 55, 45",15 IQR outliers (max=60),Eligible
+Region RWMA,int64,Echocardiographic,0,5,"0, 4, 2, 3",None,Eligible
+VHD,object,Echocardiographic,0,4,"N, mild, Severe, Moderate","Inconsistent casing ('mild' vs 'Severe', 'Moderate')",Eligible
+LAD,object,Target,0,2,"Stenotic, Normal",Ground-truth target variable; strictly excluded from X,Excluded (Target)
+LCX,object,Target,0,2,"Normal, Stenotic",Ground-truth target variable; strictly excluded from X,Excluded (Target)
+RCA,object,Target,0,2,"Stenotic, Normal",Ground-truth target variable; strictly excluded from X,Excluded (Target)
+Cath,object,Target,0,2,"CAD, Normal",Ground-truth target variable; strictly excluded from X,Excluded (Target)
