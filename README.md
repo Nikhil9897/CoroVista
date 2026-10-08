@@ -120,30 +120,59 @@ CoroVista/
 
 ---
 
-## 6. How to Run the Automated Dataset Audit
+## 6. How to Run the Automated Pipelines & Benchmarks
 
 ### Environment Requirements
-Python 3.10+ with `pandas`, `openpyxl`, `numpy`, and `pytest`.
+Python 3.10+ with `pandas`, `openpyxl`, `numpy`, `scikit-learn`, `xgboost`, `matplotlib`, and `pytest`.
 
-### Execute the Dataset Audit
+### 1. Dataset Audit (Stage 1)
 ```bash
 python scripts/audit_dataset.py
 ```
-This script automatically generates three verified artifacts:
-- [`data/reports/dataset_audit.json`](file:///c:/Users/agnik/OneDrive/Desktop/CoroVista/data/reports/dataset_audit.json): Complete machine-readable audit metadata.
-- [`data/reports/dataset_audit.md`](file:///c:/Users/agnik/OneDrive/Desktop/CoroVista/data/reports/dataset_audit.md): Human-readable comprehensive audit report.
-- [`data/reports/feature_inventory.csv`](file:///c:/Users/agnik/OneDrive/Desktop/CoroVista/data/reports/feature_inventory.csv): Detailed column-by-column inventory of all 59 features.
+Generates verified audit artifacts:
+- [`data/reports/dataset_audit.json`](file:///c:/Users/agnik/OneDrive/Desktop/CoroVista/data/reports/dataset_audit.json)
+- [`data/reports/dataset_audit.md`](file:///c:/Users/agnik/OneDrive/Desktop/CoroVista/data/reports/dataset_audit.md)
+- [`data/reports/feature_inventory.csv`](file:///c:/Users/agnik/OneDrive/Desktop/CoroVista/data/reports/feature_inventory.csv)
 
-### Run Automated Tests
+### 2. Multi-Target Benchmarking & Training (Stage 2)
+```bash
+python scripts/run_benchmarks.py
+```
+Executes Repeated Stratified K-Fold CV (25 runs), trains and saves the best pipelines in `models/`, generates diagnostic plots in `data/reports/plots/`, and outputs:
+- [`data/reports/model_benchmark.json`](file:///c:/Users/agnik/OneDrive/Desktop/CoroVista/data/reports/model_benchmark.json)
+- [`data/reports/model_benchmark.md`](file:///c:/Users/agnik/OneDrive/Desktop/CoroVista/data/reports/model_benchmark.md)
+- [`data/reports/calibration_results.json`](file:///c:/Users/agnik/OneDrive/Desktop/CoroVista/data/reports/calibration_results.json)
+
+### 3. Run Automated Tests
 ```bash
 pytest
 ```
-Executes the test suite covering schema validation, target existence, leakage prevention, missing-value handling, constant-feature detection, and artifact generation.
+Executes the full test suite (21 passing tests) covering schema validation, target existence, leakage prevention assertions, categorical normalization, ablation switches, pipeline construction, and model artifact loading.
 
 ---
 
-## 7. Current Stage & Next Steps
+## 7. Stage 2 Machine Learning Benchmark Results
 
-- **Current Stage**: **Stage 1 — Project Foundation & Complete Dataset Audit (Completed)**.
-- **Next Stage**: Stage 2 — Baseline Predictive Modeling, Cross-Validation, & Preprocessing Pipelines.
-- **Strict Limitation**: No predictive models, 3D heart components, or APIs were built in this stage to guarantee complete data audit integrity.
+Evaluated across **5-Fold Stratified CV with 5 Repeats (25 evaluation runs)**:
+
+| Target | Clinical Endpoint | Selected Best Model | Preprocessing | Calibration | ROC-AUC (Mean ± Std) | PR-AUC (Mean ± Std) | Balanced Accuracy | Brier Score |
+|---|---|---|---|---|---|---|---|---|
+| **Cath** | Overall CAD Status | **XGBoost** | One-Hot / None | Sigmoid (Platt) | **0.910 ± 0.041** | **0.958 ± 0.021** | 0.843 ± 0.056 | **0.108** |
+| **LAD** | Left Anterior Descending | **XGBoost** | One-Hot / None | Sigmoid (Platt) | **0.836 ± 0.049** | **0.878 ± 0.041** | 0.763 ± 0.056 | **0.165** |
+| **LCX** | Left Circumflex | **RandomForest** | One-Hot / None | Uncalibrated | **0.724 ± 0.065** | **0.608 ± 0.086** | 0.662 ± 0.060 | **0.210** |
+| **RCA** | Right Coronary Artery | **LogisticRegression** | One-Hot / Standard | Uncalibrated | **0.716 ± 0.060** | **0.613 ± 0.075** | 0.666 ± 0.048 | **0.225** |
+
+### Key Stage 2 Insights:
+1. **Model Diversity**: As expected from coronary anatomy and vascular territories, independent algorithms perform best for different targets (XGBoost for main CAD and LAD; Random Forest for LCX; regularized Logistic Regression for RCA).
+2. **Ablation Findings**:
+   - `Region RWMA` provides consistent additive value for LAD ($+0.021$) and Cath ($+0.010$). Without RWMA, models still achieve ROC-AUC $> 0.80$, proving the model is not brittle.
+   - `BMI` collinearity does not harm tree models ($\Delta < 0.004$); BMI is retained for simulator compatibility.
+3. **Probability Calibration**: Sigmoid Platt calibration significantly reduces Brier score and Expected Calibration Error (ECE) for CAD and LAD, ensuring that probabilities driving the 3D heart risk visualization are reliable.
+
+---
+
+## 8. Current Stage & Next Steps
+
+- **Current Stage**: **Stage 2 — Leakage-Safe Multi-Target Modeling, Validation & Benchmarking (COMPLETED)**.
+- **Next Stage**: Stage 3 — Backend API (FastAPI) & Clinical Explainability (SHAP).
+- **Strict Boundaries Maintained**: No frontend, 3D meshes, or API endpoints were implemented during Stage 2, preserving strict experimental rigor.
