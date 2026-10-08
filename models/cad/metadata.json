@@ -1,0 +1,108 @@
+{
+  "target": "Cath",
+  "model_family": "XGBoost",
+  "vhd_encoding": "onehot",
+  "scaler_type": "none",
+  "drop_rwma": false,
+  "drop_bmi": false,
+  "calibration_method": "sigmoid",
+  "decision_threshold": 0.5,
+  "random_state": 42,
+  "training_samples": 303,
+  "training_positives": 216,
+  "input_features": [
+    "Age",
+    "Weight",
+    "Length",
+    "Sex",
+    "BMI",
+    "DM",
+    "HTN",
+    "Current Smoker",
+    "EX-Smoker",
+    "FH",
+    "Obesity",
+    "CRF",
+    "CVA",
+    "Airway disease",
+    "Thyroid Disease",
+    "CHF",
+    "DLP",
+    "BP",
+    "PR",
+    "Edema",
+    "Weak Peripheral Pulse",
+    "Lung rales",
+    "Systolic Murmur",
+    "Diastolic Murmur",
+    "Typical Chest Pain",
+    "Dyspnea",
+    "Function Class",
+    "Atypical",
+    "Nonanginal",
+    "Exertional CP",
+    "LowTH Ang",
+    "Q Wave",
+    "St Elevation",
+    "St Depression",
+    "Tinversion",
+    "LVH",
+    "Poor R Progression",
+    "BBB",
+    "FBS",
+    "CR",
+    "TG",
+    "LDL",
+    "HDL",
+    "BUN",
+    "ESR",
+    "HB",
+    "K",
+    "Na",
+    "WBC",
+    "Lymph",
+    "Neut",
+    "PLT",
+    "EF-TTE",
+    "Region RWMA",
+    "VHD"
+  ],
+  "cross_validation_metrics": {
+    "roc_auc": {
+      "mean": 0.9104,
+      "std": 0.041
+    },
+    "pr_auc": {
+      "mean": 0.9584,
+      "std": 0.0208
+    },
+    "accuracy": {
+      "mean": 0.8594,
+      "std": 0.0482
+    },
+    "precision": {
+      "mean": 0.919,
+      "std": 0.0376
+    },
+    "recall": {
+      "mean": 0.8814,
+      "std": 0.0514
+    },
+    "f1": {
+      "mean": 0.8989,
+      "std": 0.0354
+    },
+    "balanced_accuracy": {
+      "mean": 0.8431,
+      "std": 0.0562
+    },
+    "brier_score": {
+      "mean": 0.1077,
+      "std": 0.0255
+    },
+    "ece": {
+      "mean": 0.1246,
+      "std": 0.0238
+    }
+  }
+}

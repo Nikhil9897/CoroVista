@@ -1,0 +1,105 @@
+# CoroVista - Clinical Feature Metadata Configuration (Stage 2)
+# Generated from verified Stage 1 audit and Track A clinical definitions.
+
+version: "1.0.0"
+dataset:
+  source_file: "data/raw/extention of Z-Alizadeh sani dataset.xlsx"
+  sheet_name: "Sheet 1 - Table 1"
+  total_records: 303
+  total_columns: 59
+  zero_variance_features:
+    - "Exertional CP"
+  targets:
+    - name: "Cath"
+      description: "Overall Coronary Artery Disease diagnosis"
+      positive_class: "CAD"
+      negative_class: "Normal"
+    - name: "LAD"
+      description: "Left Anterior Descending stenosis"
+      positive_class: "Stenotic"
+      negative_class: "Normal"
+    - name: "LCX"
+      description: "Left Circumflex stenosis"
+      positive_class: "Stenotic"
+      negative_class: "Normal"
+    - name: "RCA"
+      description: "Right Coronary Artery stenosis"
+      positive_class: "Stenotic"
+      negative_class: "Normal"
+
+known_data_quality_issues:
+  sex_typo:
+    field: "Sex"
+    raw_values: ["Male", "Fmale"]
+    intended_values: ["Male", "Female"]
+    pipeline_mapping: {"Male": 1, "Fmale": 0}
+  vhd_casing:
+    field: "VHD"
+    raw_values: ["mild", "Severe", "Moderate", "N"]
+    normalized_values: ["Mild", "Severe", "Moderate", "Normal"]
+    ordinal_mapping: {"Normal": 0, "Mild": 1, "Moderate": 2, "Severe": 3}
+  obesity_definition_flag:
+    field: "Obesity"
+    source_text: "Yes if MBI > 25, no otherwise"
+    interpretation_note: "Source text contains 'MBI' typo for BMI; threshold 25 indicates overweight/obesity threshold."
+  row_93_anomaly:
+    row_index: 93
+    values: {"LAD": "Stenotic", "LCX": "Normal", "RCA": "Normal", "Cath": "Normal"}
+    note: "Single case where vessel stenosis is positive but overall Cath is recorded as Normal. Preserved in raw dataset."
+
+feature_categories:
+  demographic: ["Age", "Weight", "Length", "Sex", "BMI"]
+  clinical_examination:
+    - "DM"
+    - "HTN"
+    - "Current Smoker"
+    - "EX-Smoker"
+    - "FH"
+    - "Obesity"
+    - "CRF"
+    - "CVA"
+    - "Airway disease"
+    - "Thyroid Disease"
+    - "CHF"
+    - "DLP"
+    - "BP"
+    - "PR"
+    - "Edema"
+    - "Weak Peripheral Pulse"
+    - "Lung rales"
+    - "Systolic Murmur"
+    - "Diastolic Murmur"
+    - "Typical Chest Pain"
+    - "Dyspnea"
+    - "Function Class"
+    - "Atypical"
+    - "Nonanginal"
+    - "Exertional CP"
+    - "LowTH Ang"
+  ecg:
+    - "Q Wave"
+    - "St Elevation"
+    - "St Depression"
+    - "Tinversion"
+    - "LVH"
+    - "Poor R Progression"
+    - "BBB"
+  laboratory:
+    - "FBS"
+    - "CR"
+    - "TG"
+    - "LDL"
+    - "HDL"
+    - "BUN"
+    - "ESR"
+    - "HB"
+    - "K"
+    - "Na"
+    - "WBC"
+    - "Lymph"
+    - "Neut"
+    - "PLT"
+  echocardiographic:
+    - "EF-TTE"
+    - "Region RWMA"
+    - "VHD"

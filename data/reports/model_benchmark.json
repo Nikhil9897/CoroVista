@@ -1,0 +1,88 @@
+{
+  "Cath": {
+    "baseline_models": {
+      "Dummy": {
+        "model_name": "Dummy",
+        "vhd_encoding": "onehot",
+        "scaler_type": "none",
+        "drop_rwma": false,
+        "drop_bmi": false,
+        "calibration": "uncalibrated",
+        "standard_threshold_metrics": {
+          "roc_auc": {
+            "mean": 0.5,
+            "std": 0.0
+          },
+          "pr_auc": {
+            "mean": 0.7129,
+            "std": 0.0067
+          },
+          "accuracy": {
+            "mean": 0.7129,
+            "std": 0.0067
+          },
+          "precision": {
+            "mean": 0.7129,
+            "std": 0.0067
+          },
+          "recall": {
+            "mean": 1.0,
+            "std": 0.0
+          },
+          "f1": {
+            "mean": 0.8324,
+            "std": 0.0046
+          },
+          "balanced_accuracy": {
+            "mean": 0.5,
+            "std": 0.0
+          },
+          "brier_score": {
+            "mean": 0.2047,
+            "std": 0.0029
+          },
+          "ece": {
+            "mean": 0.008,
+            "std": 0.0027
+          }
+        },
+        "tuned_threshold_metrics": {
+          "roc_auc": {
+            "mean": 0.5,
+            "std": 0.0
+          },
+          "pr_auc": {
+            "mean": 0.7129,
+            "std": 0.0067
+          },
+          "accuracy": {
+            "mean": 0.7129,
+            "std": 0.0067
+          },
+          "precision": {
+            "mean": 0.7129,
+            "std": 0.0067
+          },
+          "recall": {
+            "mean": 1.0,
+            "std": 0.0
+          },
+          "f1": {
+            "mean": 0.8324,
+            "std": 0.0046
+          },
+          "balanced_accuracy": {
+            "mean": 0.5,
+            "std": 0.0
+          },
+          "brier_score": {
+            "mean": 0.2047,
+            "std": 0.0029
+          },
+          "ece": {
+            "mean": 0.008,
+            "std": 0.0027
+          }
+        },
+        "oof_y_true": [
+          
