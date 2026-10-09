@@ -1,0 +1,194 @@
+import React from "react"
+import { AlertCircle, AlertTriangle } from "lucide-react"
+import type { SimulatorFeatureMeta } from "@/lib/simulatorRegistry"
+
+interface ClinicalInputProps {
+  feature: SimulatorFeatureMeta
+  value: string | number | boolean | undefined
+  onChange: (value: string | number) => void
+  error?: string
+  warning?: string
+  disabled?: boolean
+}
+
+export const ClinicalInput: React.FC<ClinicalInputProps> = ({
+  feature,
+  value,
+  onChange,
+  error,
+  warning,
+  disabled = false,
+}) => {
+  const inputId = `input-${feature.machine_name.replace(/\s+/g, "-")}`
+
+  const handleNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const raw = e.target.value
+    if (raw === "") {
+      onChange("")
+      return
+    }
+    const parsed = Number(raw)
+    onChange(isNaN(parsed) ? raw : parsed)
+  }
+
+  const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const parsed = Number(e.target.value)
+    onChange(parsed)
+  }
+
+  const numericVal = typeof value === "number" ? value : Number(value)
+  const isNumericValid = !isNaN(numericVal)
+
+  return (
+    <div className="space-y-1.5 p-3 rounded-lg bg-card/60 border border-border/60 hover:border-border transition-colors">
+      {/* Label Row */}
+      <div className="flex items-center justify-between gap-1">
+        <label
+          htmlFor={inputId}
+          className="text-xs font-medium text-foreground truncate cursor-pointer flex items-center gap-1.5"
+          title={feature.description}
+        >
+          <span>{feature.label}</span>
+          {feature.unit && (
+            <span className="text-[10px] text-muted-foreground font-mono bg-secondary px-1.5 py-0.2 rounded border border-border/50">
+              {feature.unit}
+            </span>
+          )}
+        </label>
+
+        {feature.observedRange && (
+          <span
+            className="text-[10px] text-muted-foreground/80 font-mono hidden sm:inline"
+            title={`Observed cohort range: ${feature.observedRange}`}
+          >
+            {feature.observedRange.split("(")[0].trim()}
+          </span>
+        )}
+      </div>
+
+      {/* Control Row based on Type */}
+      {feature.type === "numeric" ? (
+        <div className="space-y-2">
+          <div className="relative">
+            <input
+              id={inputId}
+              name={feature.machine_name}
+              aria-label={feature.label}
+              type="number"
+              value={typeof value === "number" || typeof value === "string" ? value : ""}
+              onChange={handleNumberChange}
+              min={feature.range?.min}
+              max={feature.range?.max}
+              step={feature.range?.step || 1}
+              disabled={disabled}
+              aria-invalid={Boolean(error)}
+              aria-describedby={error ? `${inputId}-error` : undefined}
+              className={`w-full h-8 px-2.5 py-1 text-xs font-mono rounded-md bg-secondary/70 border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary transition-colors ${
+                error
+                  ? "border-destructive focus:ring-destructive"
+                  : "border-border hover:border-border/80"
+              }`}
+            />
+          </div>
+
+          {/* Optional Range Slider if bounded range exists */}
+          {feature.range && isNumericValid && (
+            <div className="flex items-center gap-2 pt-0.5">
+              <input
+                type="range"
+                min={feature.range.min}
+                max={feature.range.max}
+                step={feature.range.step}
+                value={Math.min(Math.max(numericVal, feature.range.min), feature.range.max)}
+                onChange={handleSliderChange}
+                disabled={disabled}
+                aria-label={`${feature.label} slider`}
+                className="w-full h-1.5 bg-secondary rounded-lg appearance-none cursor-pointer accent-primary"
+              />
+            </div>
+          )}
+        </div>
+      ) : feature.options && feature.options.length > 2 ? (
+        <select
+          id={inputId}
+          name={feature.machine_name}
+          value={String(value)}
+          onChange={(e) => {
+            const selectedVal = e.target.value
+            // Try numeric parse if option was numeric
+            const isNumericOption = feature.options?.some((o) => typeof o.value === "number")
+            onChange(isNumericOption && !isNaN(Number(selectedVal)) ? Number(selectedVal) : selectedVal)
+          }}
+          disabled={disabled}
+          aria-invalid={Boolean(error)}
+          aria-describedby={error ? `${inputId}-error` : undefined}
+          className={`w-full h-8 px-2.5 py-1 text-xs rounded-md bg-secondary/70 border text-foreground focus:outline-none focus:ring-1 focus:ring-primary transition-colors cursor-pointer ${
+            error
+              ? "border-destructive focus:ring-destructive"
+              : "border-border hover:border-border/80"
+          }`}
+        >
+          {feature.options?.map((opt) => (
+            <option key={String(opt.value)} value={String(opt.value)}>
+              {opt.label}
+            </option>
+          ))}
+        </select>
+      ) : (
+        /* Binary 2-option Segmented Selector */
+        <div
+          role="radiogroup"
+          aria-label={feature.label}
+          className="grid grid-cols-2 gap-1.5 p-0.5 bg-secondary/80 rounded-md border border-border/60"
+        >
+          {feature.options?.map((opt) => {
+            const isSelected =
+              String(value).toLowerCase() === String(opt.value).toLowerCase() ||
+              (typeof opt.value === "number" && Number(value) === opt.value)
+
+            return (
+              <button
+                key={String(opt.value)}
+                type="button"
+                role="radio"
+                aria-checked={isSelected}
+                disabled={disabled}
+                onClick={() => onChange(opt.value)}
+                className={`h-7 px-2 text-xs font-medium rounded transition-all cursor-pointer ${
+                  isSelected
+                    ? "bg-card text-foreground shadow-xs border border-border font-semibold"
+                    : "text-muted-foreground hover:text-foreground hover:bg-card/40"
+                }`}
+              >
+                {opt.label}
+              </button>
+            )
+          })}
+        </div>
+      )}
+
+      {/* Field-level error */}
+      {error && (
+        <p
+          id={`${inputId}-error`}
+          role="alert"
+          className="text-[11px] text-destructive flex items-center gap-1 font-medium mt-1"
+        >
+          <AlertCircle className="w-3 h-3 shrink-0" />
+          <span>{error}</span>
+        </p>
+      )}
+
+      {/* Field-level non-blocking warning */}
+      {warning && !error && (
+        <p
+          role="note"
+          className="text-[10px] text-amber-500/90 dark:text-amber-400/90 flex items-center gap-1 mt-1 leading-tight"
+        >
+          <AlertTriangle className="w-2.5 h-2.5 shrink-0" />
+          <span>{warning}</span>
+        </p>
+      )}
+    </div>
+  )
+}

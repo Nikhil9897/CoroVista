@@ -47,7 +47,7 @@ export const About: React.FC = () => {
           <span>Clinical & Anatomical Boundary Notice</span>
         </div>
         <p className="text-xs text-muted-foreground leading-relaxed">
-          CoroVista is an educational and research prototype developed for the Multimodal AI Hackathon 2026. Model outputs indicate statistical probability of obstructive luminal stenosis ($\ge 50\%$) based on the Z-Alizadeh Sani cohort ($N=303$). They do not establish biological causality and are not physical spatial coordinates on coronary anatomy.
+          CoroVista is an educational and research prototype developed for the Multimodal AI Hackathon 2026. Model outputs indicate statistical probability of obstructive luminal stenosis (≥ 50%) based on the Z-Alizadeh Sani cohort ($N=303$). They do not establish biological causality and are not physical spatial coordinates on coronary anatomy.
         </p>
       </div>
     </div>

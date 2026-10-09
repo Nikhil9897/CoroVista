@@ -23,7 +23,7 @@ export const VesselRiskOverview: React.FC<VesselRiskOverviewProps> = ({
         <div>
           <h3 className="text-sm font-semibold text-foreground">Vessel-Specific Stenosis Risk</h3>
           <p className="text-xs text-muted-foreground">
-            Target-specific models predicting $\ge 50\%$ luminal obstruction. Click a vessel to inspect SHAP drivers.
+            Target-specific models predicting ≥ 50% luminal obstruction. Click a vessel to inspect SHAP drivers.
           </p>
         </div>
       </div>

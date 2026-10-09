@@ -25,7 +25,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
       to: "/simulator",
       label: "Patient Simulator",
       icon: Sliders,
-      badge: "Stage 5C",
+      badge: "Live",
     },
     {
       to: "/about",

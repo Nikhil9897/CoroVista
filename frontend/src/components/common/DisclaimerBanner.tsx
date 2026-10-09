@@ -35,7 +35,7 @@ export const DisclaimerBanner: React.FC<DisclaimerBannerProps> = ({ compact = fa
             <strong className="text-foreground/90 font-semibold">Educational & Decision-Support Prototype Only:</strong> Model predictions are not a formal clinical diagnosis and do not replace professional medical judgment, invasive coronary catheterization, or diagnostic imaging.
           </p>
           <p className="leading-relaxed text-muted-foreground/90">
-            <strong className="text-foreground/80 font-medium">Anatomical Note:</strong> Predicted vessel probabilities represent statistical stenosis risk ($\ge 50\%$ narrowing) and are not physical 3D lesion coordinates.
+            <strong className="text-foreground/80 font-medium">Anatomical Note:</strong> Predicted vessel probabilities represent statistical stenosis risk (≥ 50% narrowing) and are not physical 3D lesion coordinates.
           </p>
         </div>
       </div>

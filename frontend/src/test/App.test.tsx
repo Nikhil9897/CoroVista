@@ -81,16 +81,18 @@ describe("Application Shell & Navigation", () => {
     })
   })
 
-  it("navigates to Patient Simulator placeholder route", async () => {
+  it("navigates to Patient Simulator route", async () => {
     render(<App />)
 
     const simLink = screen.getByText("Patient Simulator")
     fireEvent.click(simLink)
 
     expect(
-      screen.getByText(/Modify clinical parameters and observe how model predictions change/i)
+      screen.getByText(/Explore how clinical inputs influence model-predicted cardiovascular risk/i)
     ).toBeInTheDocument()
-    expect(screen.getByText("Stage 5C Feature Roadmap")).toBeInTheDocument()
+    expect(
+      screen.getByText(/Educational \/ Decision-Support Simulation/i)
+    ).toBeInTheDocument()
     await waitFor(() => {
       expect(screen.getByText(/API Connected • Models Ready/i)).toBeInTheDocument()
     })
