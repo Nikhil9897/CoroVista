@@ -101,11 +101,11 @@ export const CoronaryViewer: React.FC<CoronaryViewerProps> = ({
       </div>
 
       {/* Main 3D Canvas Area */}
-      <div className="relative flex-1 min-h-[300px] w-full my-2 rounded-lg overflow-hidden border border-border/40 bg-radial from-slate-900/10 to-slate-950/30">
+      <div className="relative flex-1 min-h-[340px] sm:min-h-[400px] lg:min-h-[420px] w-full my-2 rounded-lg overflow-hidden border border-border/40 bg-radial from-slate-900/10 to-slate-950/30">
         <ViewerErrorBoundary>
-          <Suspense fallback={<ViewerLoadingFallback className="h-full min-h-[300px]" />}>
+          <Suspense fallback={<ViewerLoadingFallback className="h-full min-h-[340px]" />}>
             <Canvas
-              camera={{ position: [0, -10, 185], fov: 42, near: 1, far: 1000 }}
+              camera={{ position: [0, -6, 138], fov: 40, near: 1, far: 1000 }}
               dpr={[1, 2]}
               gl={{ antialias: true, alpha: true }}
               className="w-full h-full cursor-grab active:cursor-grabbing"

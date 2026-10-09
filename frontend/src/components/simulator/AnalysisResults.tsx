@@ -25,23 +25,19 @@ export const AnalysisResults: React.FC<AnalysisResultsProps> = ({
   className = "",
 }) => {
   return (
-    <div className={`space-y-6 ${className}`} role="region" aria-label="Simulated Risk Results">
-      {/* Top Section: CAD Risk Card + 3D Heart Viewer */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-1">
-          <CadRiskCard prediction={analysis.predictions.cath} className="h-full" />
-        </div>
-        <div className="lg:col-span-2">
-          <Suspense fallback={<ViewerLoadingFallback className="h-full min-h-[440px]" />}>
-            <CoronaryViewer
-              predictions={analysis.predictions}
-              selectedTarget={selectedTarget}
-              onSelectTarget={onSelectTarget}
-              className="h-full min-h-[440px]"
-            />
-          </Suspense>
-        </div>
-      </div>
+    <div className={`space-y-5 ${className}`} role="region" aria-label="Simulated Risk Results">
+      {/* 1. Compact Primary CAD Risk Summary */}
+      <CadRiskCard prediction={analysis.predictions.cath} />
+
+      {/* 2. Interactive 3D Coronary Anatomy Viewer (Enlarged) */}
+      <Suspense fallback={<ViewerLoadingFallback className="w-full min-h-[480px] lg:min-h-[520px]" />}>
+        <CoronaryViewer
+          predictions={analysis.predictions}
+          selectedTarget={selectedTarget}
+          onSelectTarget={onSelectTarget}
+          className="w-full min-h-[480px] lg:min-h-[520px]"
+        />
+      </Suspense>
 
       {/* Middle Section: Vessel-Specific Stenosis (LAD, LCX, RCA) */}
       <VesselRiskOverview

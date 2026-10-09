@@ -48,14 +48,14 @@ export const CoronaryScene: React.FC<CoronarySceneProps> = ({
     const camera = controls.object as THREE.PerspectiveCamera
 
     const presetPositions: Record<ViewPreset, [number, number, number]> = {
-      ap: [0, -10, 185],
-      rao: [-95, -10, 155],
-      lao: [125, -10, 125],
-      posterior: [0, -10, -185],
-      reset: [0, -10, 185],
+      ap: [0, -6, 138],
+      rao: [-72, -6, 118],
+      lao: [96, -6, 96],
+      posterior: [0, -6, -138],
+      reset: [0, -6, 138],
     }
 
-    const targetPos = presetPositions[presetTrigger.preset] || [0, -10, 185]
+    const targetPos = presetPositions[presetTrigger.preset] || [0, -6, 138]
     camera.position.set(...targetPos)
     controls.target.set(0, 0, 0)
     controls.update()
@@ -75,8 +75,8 @@ export const CoronaryScene: React.FC<CoronarySceneProps> = ({
         ref={controlsRef}
         enableDamping
         dampingFactor={0.08}
-        minDistance={60}
-        maxDistance={400}
+        minDistance={45}
+        maxDistance={320}
         target={[0, 0, 0]}
         rotateSpeed={0.8}
         zoomSpeed={0.9}

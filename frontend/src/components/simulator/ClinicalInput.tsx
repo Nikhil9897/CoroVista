@@ -40,17 +40,17 @@ export const ClinicalInput: React.FC<ClinicalInputProps> = ({
   const isNumericValid = !isNaN(numericVal)
 
   return (
-    <div className="space-y-1.5 p-3 rounded-lg bg-card/60 border border-border/60 hover:border-border transition-colors">
-      {/* Label Row */}
-      <div className="flex items-center justify-between gap-1">
+    <div className="space-y-2 p-3 rounded-lg bg-card/70 border border-border/70 hover:border-border transition-colors">
+      {/* Label and Unit Row */}
+      <div className="flex items-start justify-between gap-1.5 min-h-[20px]">
         <label
           htmlFor={inputId}
-          className="text-xs font-medium text-foreground truncate cursor-pointer flex items-center gap-1.5"
+          className="text-xs font-semibold text-foreground cursor-pointer flex items-center flex-wrap gap-1 leading-snug"
           title={feature.description}
         >
           <span>{feature.label}</span>
           {feature.unit && (
-            <span className="text-[10px] text-muted-foreground font-mono bg-secondary px-1.5 py-0.2 rounded border border-border/50">
+            <span className="text-[10px] text-muted-foreground font-mono bg-secondary px-1.5 py-0.5 rounded border border-border/50 shrink-0 font-normal">
               {feature.unit}
             </span>
           )}
@@ -58,7 +58,7 @@ export const ClinicalInput: React.FC<ClinicalInputProps> = ({
 
         {feature.observedRange && (
           <span
-            className="text-[10px] text-muted-foreground/80 font-mono hidden sm:inline"
+            className="text-[10px] text-muted-foreground/80 font-mono shrink-0 whitespace-nowrap pt-0.5"
             title={`Observed cohort range: ${feature.observedRange}`}
           >
             {feature.observedRange.split("(")[0].trim()}
@@ -68,32 +68,33 @@ export const ClinicalInput: React.FC<ClinicalInputProps> = ({
 
       {/* Control Row based on Type */}
       {feature.type === "numeric" ? (
-        <div className="space-y-2">
-          <div className="relative">
-            <input
-              id={inputId}
-              name={feature.machine_name}
-              aria-label={feature.label}
-              type="number"
-              value={typeof value === "number" || typeof value === "string" ? value : ""}
-              onChange={handleNumberChange}
-              min={feature.range?.min}
-              max={feature.range?.max}
-              step={feature.range?.step || 1}
-              disabled={disabled}
-              aria-invalid={Boolean(error)}
-              aria-describedby={error ? `${inputId}-error` : undefined}
-              className={`w-full h-8 px-2.5 py-1 text-xs font-mono rounded-md bg-secondary/70 border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary transition-colors ${
-                error
-                  ? "border-destructive focus:ring-destructive"
-                  : "border-border hover:border-border/80"
-              }`}
-            />
-          </div>
+        <div className="space-y-1.5">
+          <input
+            id={inputId}
+            name={feature.machine_name}
+            aria-label={feature.label}
+            type="number"
+            value={typeof value === "number" || typeof value === "string" ? value : ""}
+            onChange={handleNumberChange}
+            min={feature.range?.min}
+            max={feature.range?.max}
+            step={feature.range?.step || 1}
+            disabled={disabled}
+            aria-invalid={Boolean(error)}
+            aria-describedby={error ? `${inputId}-error` : undefined}
+            className={`w-full h-8 px-2.5 py-1 text-xs font-mono rounded-md bg-secondary/80 border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary transition-colors ${
+              error
+                ? "border-destructive focus:ring-destructive"
+                : "border-border/80 hover:border-border"
+            }`}
+          />
 
-          {/* Optional Range Slider if bounded range exists */}
+          {/* Range Slider with Min/Max Endpoints if bounded */}
           {feature.range && isNumericValid && (
-            <div className="flex items-center gap-2 pt-0.5">
+            <div className="flex items-center gap-1.5 pt-0.5">
+              <span className="text-[9px] font-mono text-muted-foreground/80 shrink-0">
+                {feature.range.min}
+              </span>
               <input
                 type="range"
                 min={feature.range.min}
@@ -105,6 +106,9 @@ export const ClinicalInput: React.FC<ClinicalInputProps> = ({
                 aria-label={`${feature.label} slider`}
                 className="w-full h-1.5 bg-secondary rounded-lg appearance-none cursor-pointer accent-primary"
               />
+              <span className="text-[9px] font-mono text-muted-foreground/80 shrink-0">
+                {feature.range.max}
+              </span>
             </div>
           )}
         </div>
@@ -115,17 +119,16 @@ export const ClinicalInput: React.FC<ClinicalInputProps> = ({
           value={String(value)}
           onChange={(e) => {
             const selectedVal = e.target.value
-            // Try numeric parse if option was numeric
             const isNumericOption = feature.options?.some((o) => typeof o.value === "number")
             onChange(isNumericOption && !isNaN(Number(selectedVal)) ? Number(selectedVal) : selectedVal)
           }}
           disabled={disabled}
           aria-invalid={Boolean(error)}
           aria-describedby={error ? `${inputId}-error` : undefined}
-          className={`w-full h-8 px-2.5 py-1 text-xs rounded-md bg-secondary/70 border text-foreground focus:outline-none focus:ring-1 focus:ring-primary transition-colors cursor-pointer ${
+          className={`w-full h-8 px-2.5 py-1 text-xs rounded-md bg-secondary/80 border text-foreground focus:outline-none focus:ring-1 focus:ring-primary transition-colors cursor-pointer ${
             error
               ? "border-destructive focus:ring-destructive"
-              : "border-border hover:border-border/80"
+              : "border-border/80 hover:border-border"
           }`}
         >
           {feature.options?.map((opt) => (
@@ -139,7 +142,7 @@ export const ClinicalInput: React.FC<ClinicalInputProps> = ({
         <div
           role="radiogroup"
           aria-label={feature.label}
-          className="grid grid-cols-2 gap-1.5 p-0.5 bg-secondary/80 rounded-md border border-border/60"
+          className="grid grid-cols-2 gap-1 p-0.5 bg-secondary/80 rounded-md border border-border/60"
         >
           {feature.options?.map((opt) => {
             const isSelected =
@@ -183,7 +186,7 @@ export const ClinicalInput: React.FC<ClinicalInputProps> = ({
       {warning && !error && (
         <p
           role="note"
-          className="text-[10px] text-amber-500/90 dark:text-amber-400/90 flex items-center gap-1 mt-1 leading-tight"
+          className="text-[10px] text-amber-500/90 dark:text-amber-400/90 flex items-center gap-1 mt-0.5 leading-tight"
         >
           <AlertTriangle className="w-2.5 h-2.5 shrink-0" />
           <span>{warning}</span>

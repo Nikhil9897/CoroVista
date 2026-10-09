@@ -137,7 +137,7 @@ export const Simulator: React.FC = () => {
   }, [])
 
   return (
-    <div className="space-y-6 max-w-7xl mx-auto" role="region" aria-label="Patient Simulator Workspace">
+    <div className="space-y-6 max-w-[1536px] w-full mx-auto px-1 sm:px-2" role="region" aria-label="Patient Simulator Workspace">
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-border/60 pb-5">
         <div>
@@ -174,7 +174,7 @@ export const Simulator: React.FC = () => {
       {/* Main Workspace: 2-Column Responsive Split */}
       <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
         {/* Left Column: Clinical Input Form (xl:col-span-5) */}
-        <div className="xl:col-span-5 space-y-4">
+        <div className="xl:col-span-5 2xl:col-span-5 space-y-4">
           {/* Action Toolbar */}
           <SimulatorActions
             onAnalyze={handleAnalyze}
@@ -206,7 +206,7 @@ export const Simulator: React.FC = () => {
         </div>
 
         {/* Right Column: Live Synchronized Results (xl:col-span-7) */}
-        <div className="xl:col-span-7 space-y-6 min-w-0">
+        <div className="xl:col-span-7 2xl:col-span-7 space-y-6 min-w-0">
           {!currentAnalysis ? (
             /* Initial Empty State */
             <div

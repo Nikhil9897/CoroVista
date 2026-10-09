@@ -20,6 +20,8 @@ interface FeatureSectionProps {
   warnings: Record<string, string>
   disabled?: boolean
   defaultOpen?: boolean
+  isOpen?: boolean
+  onToggle?: () => void
 }
 
 export const FeatureSection: React.FC<FeatureSectionProps> = ({
@@ -31,8 +33,19 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
   warnings,
   disabled = false,
   defaultOpen = true,
+  isOpen: controlledIsOpen,
+  onToggle,
 }) => {
-  const [isOpen, setIsOpen] = useState(defaultOpen)
+  const [localIsOpen, setLocalIsOpen] = useState(defaultOpen)
+  const isOpen = controlledIsOpen !== undefined ? controlledIsOpen : localIsOpen
+
+  const handleToggle = () => {
+    if (onToggle) {
+      onToggle()
+    } else {
+      setLocalIsOpen((prev) => !prev)
+    }
+  }
   const meta = CATEGORY_METADATA[category]
 
   // Section icon resolver
@@ -63,7 +76,7 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
       {/* Section Header Button */}
       <button
         type="button"
-        onClick={() => setIsOpen((prev) => !prev)}
+        onClick={handleToggle}
         aria-expanded={isOpen}
         className="w-full px-4 py-3.5 flex items-center justify-between text-left hover:bg-muted/30 transition-colors cursor-pointer border-b border-border/40"
       >
@@ -97,22 +110,20 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
         </div>
       </button>
 
-      {/* Grid of Inputs */}
-      {isOpen && (
-        <div className="p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 bg-card/40">
-          {features.map((feat) => (
-            <ClinicalInput
-              key={feat.machine_name}
-              feature={feat}
-              value={values[feat.machine_name]}
-              onChange={(val) => onChange(feat.machine_name, val)}
-              error={errors[feat.machine_name]}
-              warning={warnings[feat.machine_name]}
-              disabled={disabled}
-            />
-          ))}
-        </div>
-      )}
+      {/* Grid of Inputs (2-column layout to prevent clipping) */}
+      <div className={isOpen ? "p-3.5 grid grid-cols-1 sm:grid-cols-2 gap-2.5 bg-card/40" : "hidden"}>
+        {features.map((feat) => (
+          <ClinicalInput
+            key={feat.machine_name}
+            feature={feat}
+            value={values[feat.machine_name]}
+            onChange={(val) => onChange(feat.machine_name, val)}
+            error={errors[feat.machine_name]}
+            warning={warnings[feat.machine_name]}
+            disabled={disabled}
+          />
+        ))}
+      </div>
     </div>
   )
 }
