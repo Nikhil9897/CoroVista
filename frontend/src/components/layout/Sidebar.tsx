@@ -4,7 +4,7 @@ import {
   LayoutDashboard,
   Sliders,
   Info,
-  HeartPulse,
+  Sparkles,
   X,
 } from "lucide-react"
 
@@ -15,6 +15,11 @@ interface SidebarProps {
 
 export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   const navItems = [
+    {
+      to: "/",
+      label: "Platform Overview",
+      icon: Sparkles,
+    },
     {
       to: "/dashboard",
       label: "Clinical Dashboard",
@@ -43,74 +48,86 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         />
       )}
 
-      {/* Sidebar — slim icon rail on desktop, expanded on mobile */}
+      {/* Sidebar — quiet clinical slim rail on desktop */}
       <aside
         className={`fixed top-0 bottom-0 left-0 z-50 flex flex-col justify-between transition-all duration-300 ease-in-out
-          lg:w-[56px] lg:translate-x-0 lg:hover:w-[200px] lg:group
+          lg:w-[56px] lg:translate-x-0
           ${isOpen ? "w-[220px] translate-x-0" : "w-[220px] -translate-x-full lg:translate-x-0"}
-          surface-1 border-r border-border/40
+          bg-[#011012] border-r border-white/10
         `}
         aria-label="Sidebar Navigation"
       >
         {/* Brand Header */}
-        <div className="p-3 lg:px-2 lg:py-4 border-b border-border/30">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2.5 overflow-hidden">
-              <div className="w-8 h-8 rounded-lg bg-primary/15 flex items-center justify-center text-primary shrink-0">
-                <HeartPulse className="w-[18px] h-[18px]" />
-              </div>
-              <div className="overflow-hidden lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
-                <h1 className="font-semibold text-[13px] tracking-tight text-foreground leading-tight">
-                  CoroVista
-                </h1>
-                <p className="text-[10px] text-muted-foreground leading-tight">
-                  v1.0
-                </p>
-              </div>
+        <div className="p-3 lg:px-2.5 lg:py-3.5 border-b border-white/10 flex items-center justify-between">
+          <NavLink to="/" className="flex items-center gap-2.5 overflow-hidden group/brand" title="CoroVista Home">
+            <div className="w-8 h-8 rounded-lg bg-[#F26F69]/10 border border-[#F26F69]/20 flex items-center justify-center shrink-0 overflow-hidden transition-transform group-hover/brand:scale-105">
+              <img
+                src="/corovista-heart.png"
+                alt="CoroVista"
+                className="w-5 h-5 object-contain"
+              />
             </div>
+            <div className="lg:hidden whitespace-nowrap">
+              <h1 className="font-semibold text-xs tracking-tight text-[#E8F1EE] leading-tight">
+                CoroVista
+              </h1>
+              <p className="text-[10px] text-[#7C9692] leading-tight">
+                Clinical CAD
+              </p>
+            </div>
+          </NavLink>
 
-            <button
-              onClick={onClose}
-              className="p-1 rounded-md text-muted-foreground hover:text-foreground lg:hidden cursor-pointer"
-              aria-label="Close navigation"
-            >
-              <X className="w-5 h-5" />
-            </button>
-          </div>
+          <button
+            onClick={onClose}
+            className="p-1 rounded-md text-[#7C9692] hover:text-[#E8F1EE] lg:hidden cursor-pointer"
+            aria-label="Close navigation"
+          >
+            <X className="w-4 h-4" />
+          </button>
         </div>
 
         {/* Navigation Items */}
-        <nav className="flex-1 px-2 py-3 space-y-1 overflow-y-auto">
+        <nav className="flex-1 px-1.5 py-4 space-y-1.5 overflow-y-auto" role="navigation">
           {navItems.map((item) => {
             const Icon = item.icon
             return (
-              <NavLink
-                key={item.to}
-                to={item.to}
-                onClick={onClose}
-                className={({ isActive }) =>
-                  `flex items-center gap-3 px-2.5 py-2 rounded-lg text-xs font-medium transition-all duration-200 group/item overflow-hidden ${
-                    isActive
-                      ? "bg-primary/12 text-primary"
-                      : "text-muted-foreground hover:bg-surface-2 hover:text-foreground"
-                  }`
-                }
-              >
-                <Icon className="w-[18px] h-[18px] shrink-0" />
-                <span className="whitespace-nowrap lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-200">
-                  {item.label}
-                </span>
-              </NavLink>
+              <div key={item.to} className="relative group/navitem flex items-center">
+                <NavLink
+                  to={item.to}
+                  onClick={onClose}
+                  className={({ isActive }) =>
+                    `relative flex items-center gap-3 w-full px-2.5 py-2.5 rounded-xl text-xs font-medium transition-all duration-200 ${
+                      isActive
+                        ? "bg-[#F26F69]/12 text-[#F26F69]"
+                        : "text-[#8fa6a8] hover:text-[#E8F1EE] hover:bg-white/10"
+                    }`
+                  }
+                  aria-label={item.label}
+                >
+                  {({ isActive }) => (
+                    <>
+                      {/* Active Coral Indicator Bar */}
+                      {isActive && (
+                        <span
+                          className="absolute left-0 top-2 bottom-2 w-0.5 rounded-r bg-[#F26F69]"
+                          aria-hidden="true"
+                        />
+                      )}
+                      <Icon className="w-[18px] h-[18px] shrink-0" />
+                      <span className="whitespace-nowrap max-lg:inline lg:hidden lg:group-hover/navitem:block lg:absolute lg:left-[54px] lg:px-2.5 lg:py-1 lg:rounded-lg lg:text-[11px] lg:font-medium lg:bg-[#182326] lg:text-[#E8F1EE] lg:border lg:border-white/15 lg:shadow-xl lg:z-50 pointer-events-none">
+                        {item.label}
+                      </span>
+                    </>
+                  )}
+                </NavLink>
+              </div>
             )
           })}
         </nav>
 
         {/* Footer */}
-        <div className="p-2 border-t border-border/30 flex items-center justify-center lg:group-hover:justify-between overflow-hidden">
-          <span className="text-[10px] text-muted-foreground/50 font-mono hidden lg:group-hover:inline whitespace-nowrap">
-            Decision Support
-          </span>
-          <span className="text-[10px] text-muted-foreground/40 font-mono">
+        <div className="p-2.5 border-t border-white/10 flex items-center justify-center">
+          <span className="text-[10px] text-[#8fa6a8]/50 font-mono" title="CoroVista Platform Version 1.0">
             v1.0
           </span>
         </div>

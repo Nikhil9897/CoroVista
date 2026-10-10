@@ -70,25 +70,22 @@ export const CadRiskCard: React.FC<CadRiskCardProps> = ({
       {/* Structured Clinical & Model Metadata Grid */}
       <div className="grid grid-cols-3 gap-2 pt-2 border-t border-border/40 text-[11px]">
         <div className="bg-surface-2/80 rounded-xl p-2.5 border border-border/40 text-center">
-          <span className="text-[10px] font-mono text-muted-foreground uppercase block tracking-wider">Threshold</span>
-          <span className="font-mono text-xs font-bold text-foreground block mt-0.5">
-            {formatPercent(prediction.threshold)}
+          <span className="text-[10px] font-mono text-muted-foreground uppercase block tracking-wider">Boundary</span>
+          <span className="font-mono text-[11px] font-semibold text-foreground block mt-0.5 leading-snug">
+            Decision Threshold: {formatPercent(prediction.threshold)}
           </span>
-          <span className="text-[9px] text-muted-foreground font-mono block">θ Cutoff</span>
         </div>
         <div className="bg-surface-2/80 rounded-xl p-2.5 border border-border/40 text-center">
-          <span className="text-[10px] font-mono text-muted-foreground uppercase block tracking-wider">Model</span>
-          <span className="font-mono text-xs font-bold text-foreground block mt-0.5">
-            {prediction.model_family || "XGBoost"}
+          <span className="text-[10px] font-mono text-muted-foreground uppercase block tracking-wider">Architecture</span>
+          <span className="font-mono text-[11px] font-medium text-foreground block mt-0.5 leading-snug">
+            Model: {prediction.model_family || "XGBoost"}
           </span>
-          <span className="text-[9px] text-muted-foreground font-mono block">Classifier</span>
         </div>
         <div className="bg-surface-2/80 rounded-xl p-2.5 border border-border/40 text-center">
           <span className="text-[10px] font-mono text-muted-foreground uppercase block tracking-wider">Calibration</span>
-          <span className="font-mono text-xs font-bold text-foreground block mt-0.5">
-            {prediction.calibration ? "Platt / Sigmoid" : "Empirical"}
+          <span className="font-mono text-[11px] font-medium text-foreground block mt-0.5 leading-snug">
+            Calibration: {prediction.calibration || "Platt/Sigmoid"}
           </span>
-          <span className="text-[9px] text-muted-foreground font-mono block">Decoupled</span>
         </div>
       </div>
     </div>

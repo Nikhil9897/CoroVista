@@ -1,0 +1,136 @@
+.circuit-board {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  border-radius: 20px;
+  background: radial-gradient(circle at 50% 50%, rgba(13, 26, 45, 0.8) 0%, rgba(4, 10, 22, 0.95) 100%);
+  border: 1px solid rgba(45, 212, 191, 0.15);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  user-select: none;
+}
+
+.circuit-board__grid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(45, 212, 191, 0.12) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+
+.circuit-board__glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(20, 184, 166, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.circuit-board__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.circuit-trace-base {
+  stroke: rgba(255, 255, 255, 0.12);
+  stroke-width: 1.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.circuit-trace-pulse {
+  stroke: #2dd4bf;
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 24 160;
+  animation: circuitFlow 2.8s linear infinite;
+  filter: drop-shadow(0 0 6px #2dd4bf) drop-shadow(0 0 12px rgba(45, 212, 191, 0.6));
+}
+
+.circuit-trace-pulse--delay-1 {
+  animation-delay: -0.7s;
+}
+
+.circuit-trace-pulse--delay-2 {
+  animation-delay: -1.4s;
+}
+
+.circuit-trace-pulse--delay-3 {
+  animation-delay: -2.1s;
+}
+
+@keyframes circuitFlow {
+  from {
+    stroke-dashoffset: 184;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.circuit-node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 10;
+}
+
+.circuit-node:hover {
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.circuit-node__box {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #162438 0%, #0d1726 100%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+  transition: all 0.25s ease;
+}
+
+.circuit-node:hover .circuit-node__box,
+.circuit-node[data-active="true"] .circuit-node__box {
+  border-color: #2dd4bf;
+  color: #2dd4bf;
+  box-shadow: 0 0 20px rgba(45, 212, 191, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.circuit-node[data-active="true"] {
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.circuit-node__label {
+  margin-top: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #cbd5e1;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.circuit-node:hover .circuit-node__label,
+.circuit-node[data-active="true"] .circuit-node__label {
+  color: #f1f5f9;
+}
+
+.circuit-node__sublabel {
+  font-size: 9px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  color: #64748b;
+  white-space: nowrap;
+}

@@ -40,28 +40,19 @@ export const ClinicalInput: React.FC<ClinicalInputProps> = ({
   const isNumericValid = !isNaN(numericVal)
 
   return (
-    <div className="space-y-2 p-3 rounded-xl bg-surface-1/70 border border-border/60 hover:border-border transition-colors">
+    <div className="space-y-2 p-3 rounded-xl bg-[#0A1514]/50 border border-[#7C9692]/15 hover:border-[#7C9692]/30 transition-colors group">
       {/* Label and Unit Row */}
-      <div className="flex items-start justify-between gap-1.5 min-h-[20px]">
+      <div className="flex items-baseline justify-between gap-2 min-h-[18px]">
         <label
           htmlFor={inputId}
-          className="text-xs font-semibold text-foreground cursor-pointer flex items-center flex-wrap gap-1 leading-snug tracking-tight"
+          className="text-xs font-medium text-[#E8F1EE] cursor-pointer truncate"
           title={feature.description}
         >
-          <span>{feature.label}</span>
-          {feature.unit && (
-            <span className="text-[10px] text-muted-foreground font-mono bg-surface-2 px-1.5 py-0.5 rounded border border-border/50 shrink-0 font-normal">
-              {feature.unit}
-            </span>
-          )}
+          {feature.label}
         </label>
-
-        {feature.observedRange && (
-          <span
-            className="text-[10px] text-muted-foreground/70 font-mono shrink-0 whitespace-nowrap pt-0.5"
-            title={`Observed cohort range: ${feature.observedRange}`}
-          >
-            {feature.observedRange.split("(")[0].trim()}
+        {feature.unit && (
+          <span className="text-[10px] text-[#7C9692] font-mono shrink-0">
+            {feature.unit}
           </span>
         )}
       </div>
@@ -69,32 +60,8 @@ export const ClinicalInput: React.FC<ClinicalInputProps> = ({
       {/* Control Row based on Type */}
       {feature.type === "numeric" ? (
         <div className="space-y-1.5">
-          <input
-            id={inputId}
-            name={feature.machine_name}
-            aria-label={feature.label}
-            type="number"
-            value={typeof value === "number" || typeof value === "string" ? value : ""}
-            onChange={handleNumberChange}
-            min={feature.range?.min}
-            max={feature.range?.max}
-            step={feature.range?.step || 1}
-            disabled={disabled}
-            aria-invalid={Boolean(error)}
-            aria-describedby={error ? `${inputId}-error` : undefined}
-            className={`w-full h-8 px-2.5 py-1 text-xs font-mono rounded-lg bg-surface-2 border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary transition-colors ${
-              error
-                ? "border-destructive focus:ring-destructive"
-                : "border-border/70 hover:border-border"
-            }`}
-          />
-
-          {/* Range Slider with Min/Max Endpoints if bounded */}
-          {feature.range && isNumericValid && (
-            <div className="flex items-center gap-1.5 pt-0.5">
-              <span className="text-[9px] font-mono text-muted-foreground/70 shrink-0">
-                {feature.range.min}
-              </span>
+          <div className="flex items-center gap-2">
+            {feature.range && isNumericValid && (
               <input
                 type="range"
                 min={feature.range.min}
@@ -104,11 +71,37 @@ export const ClinicalInput: React.FC<ClinicalInputProps> = ({
                 onChange={handleSliderChange}
                 disabled={disabled}
                 aria-label={`${feature.label} slider`}
-                className="w-full h-1.5 bg-surface-3 rounded-lg appearance-none cursor-pointer accent-primary"
+                className="w-full h-1.5 rounded-lg appearance-none cursor-pointer accent-[#F26F69]"
               />
-              <span className="text-[9px] font-mono text-muted-foreground/70 shrink-0">
-                {feature.range.max}
-              </span>
+            )}
+            <input
+              id={inputId}
+              name={feature.machine_name}
+              aria-label={feature.label}
+              type="number"
+              value={typeof value === "number" || typeof value === "string" ? value : ""}
+              onChange={handleNumberChange}
+              min={feature.range?.min}
+              max={feature.range?.max}
+              step={feature.range?.step || 1}
+              disabled={disabled}
+              aria-invalid={Boolean(error)}
+              aria-describedby={error ? `${inputId}-error` : undefined}
+              className={`h-7 px-2 py-0.5 text-xs font-mono rounded-lg bg-[#162C2A] text-[#E8F1EE] text-right border focus:outline-none focus:border-[#F26F69] transition-colors ${
+                feature.range ? "w-16" : "w-full"
+              } ${
+                error
+                  ? "border-rose-500 focus:border-rose-400"
+                  : "border-[#7C9692]/20 hover:border-[#7C9692]/40"
+              }`}
+            />
+          </div>
+
+          {/* Min/Max shown only on hover/focus */}
+          {feature.range && (
+            <div className="flex justify-between text-[9px] font-mono text-[#7C9692]/40 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity">
+              <span>min {feature.range.min}</span>
+              <span>max {feature.range.max}</span>
             </div>
           )}
         </div>
@@ -125,14 +118,14 @@ export const ClinicalInput: React.FC<ClinicalInputProps> = ({
           disabled={disabled}
           aria-invalid={Boolean(error)}
           aria-describedby={error ? `${inputId}-error` : undefined}
-          className={`w-full h-8 px-2.5 py-1 text-xs rounded-lg bg-surface-2 border text-foreground focus:outline-none focus:ring-1 focus:ring-primary transition-colors cursor-pointer ${
+          className={`w-full h-7 px-2 text-xs rounded-lg bg-[#162C2A] border text-[#E8F1EE] focus:outline-none focus:border-[#F26F69] transition-colors cursor-pointer ${
             error
-              ? "border-destructive focus:ring-destructive"
-              : "border-border/70 hover:border-border"
+              ? "border-rose-500 focus:border-rose-400"
+              : "border-[#7C9692]/20 hover:border-[#7C9692]/40"
           }`}
         >
           {feature.options?.map((opt) => (
-            <option key={String(opt.value)} value={String(opt.value)}>
+            <option key={String(opt.value)} value={String(opt.value)} className="bg-[#112321] text-[#E8F1EE]">
               {opt.label}
             </option>
           ))}
@@ -142,7 +135,7 @@ export const ClinicalInput: React.FC<ClinicalInputProps> = ({
         <div
           role="radiogroup"
           aria-label={feature.label}
-          className="grid grid-cols-2 gap-1 p-0.5 bg-surface-2 rounded-lg border border-border/60"
+          className="grid grid-cols-2 gap-1 p-0.5 bg-[#162C2A]/60 rounded-lg border border-[#7C9692]/15"
         >
           {feature.options?.map((opt) => {
             const isSelected =
@@ -157,10 +150,10 @@ export const ClinicalInput: React.FC<ClinicalInputProps> = ({
                 aria-checked={isSelected}
                 disabled={disabled}
                 onClick={() => onChange(opt.value)}
-                className={`h-7 px-2 text-xs font-medium rounded-md transition-all cursor-pointer ${
+                className={`h-6 px-2 text-[11px] font-medium rounded-md transition-all cursor-pointer ${
                   isSelected
-                    ? "bg-surface-3 text-foreground shadow-xs border border-border/80 font-semibold"
-                    : "text-muted-foreground hover:text-foreground hover:bg-surface-2/60"
+                    ? "bg-[#0A1514] text-[#E8F1EE] border border-[#7C9692]/30 font-semibold shadow-xs"
+                    : "text-[#7C9692] hover:text-[#E8F1EE]"
                 }`}
               >
                 {opt.label}

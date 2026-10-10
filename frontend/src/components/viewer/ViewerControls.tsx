@@ -1,116 +1,202 @@
-import React from "react"
-import { Eye, EyeOff, RotateCcw, Compass } from "lucide-react"
+import React, { useState, useRef, useEffect } from "react"
+import { RotateCcw, HelpCircle, Eye, EyeOff, Sparkles, X } from "lucide-react"
 import type { ViewerVisibilityState, ViewPreset } from "./ViewerTypes"
+import { RISK_COLOR_STOPS } from "@/lib/vesselColors"
 
 interface ViewerControlsProps {
   visibility: ViewerVisibilityState
   onToggleVisibility: (key: keyof ViewerVisibilityState) => void
   onSelectPreset: (preset: ViewPreset) => void
+  onStartTour?: () => void
   className?: string
 }
+
+const GRADIENT_CSS = `linear-gradient(to right, ${RISK_COLOR_STOPS.map(
+  (s) => `${s.hex} ${s.stop * 100}%`
+).join(", ")})`
 
 export const ViewerControls: React.FC<ViewerControlsProps> = ({
   visibility,
   onToggleVisibility,
   onSelectPreset,
+  onStartTour,
   className = "",
 }) => {
+  const [activePreset, setActivePreset] = useState<ViewPreset>("ap")
+  const [showLegendPopover, setShowLegendPopover] = useState(false)
+  const legendRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (legendRef.current && !legendRef.current.contains(e.target as Node)) {
+        setShowLegendPopover(false)
+      }
+    }
+    if (showLegendPopover) {
+      document.addEventListener("mousedown", handleClickOutside)
+    }
+    return () => document.removeEventListener("mousedown", handleClickOutside)
+  }, [showLegendPopover])
+
+  const handlePreset = (preset: ViewPreset) => {
+    setActivePreset(preset)
+    onSelectPreset(preset)
+  }
+
   return (
     <div
-      className={`flex flex-wrap items-center justify-between gap-2.5 rounded-xl px-3 py-2 text-xs select-none ${className}`}
+      className={`relative inline-flex items-center gap-2 rounded-2xl px-3 py-2 text-xs select-none backdrop-blur-xl border border-slate-700/60 bg-[#0f1719]/90 shadow-2xl ${className}`}
       role="toolbar"
-      aria-label="3D Viewer Controls"
+      aria-label="3D Anatomical Controls"
     >
-      {/* Vessel visibility toggles */}
-      <div className="flex items-center gap-1.5">
-        <span className="text-[10px] font-mono tracking-wider text-muted-foreground uppercase mr-0.5">
-          Layers:
-        </span>
-        {(["lad", "lcx", "rca"] as const).map((vKey) => {
-          const isVisible = visibility[vKey]
+      {/* 1. Guided Tour Button */}
+      {onStartTour && (
+        <>
+          <button
+            type="button"
+            onClick={onStartTour}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium bg-[#F26F69]/15 text-[#F26F69] hover:bg-[#F26F69]/25 border border-[#F26F69]/30 transition-all cursor-pointer shadow-xs active:scale-95"
+            title="Start guided anatomical explanation tour"
+            aria-label="Explain this model"
+          >
+            <Sparkles className="w-3.5 h-3.5" />
+            <span className="font-semibold">Explain this model</span>
+          </button>
+          <div className="w-px h-5 bg-[#7C9692]/20 mx-0.5" aria-hidden="true" />
+        </>
+      )}
+
+      {/* 2. Layer Toggles (LAD / LCX / RCA / Context) */}
+      <div className="flex items-center gap-1">
+        {(["lad", "lcx", "rca"] as const).map((key) => {
+          const isVis = visibility[key]
           return (
             <button
-              key={vKey}
+              key={key}
               type="button"
-              onClick={() => onToggleVisibility(vKey)}
-              className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-mono font-medium transition-all duration-150 cursor-pointer ${
-                isVisible
-                  ? "bg-primary/20 text-primary border border-primary/40 shadow-xs hover:bg-primary/30"
-                  : "bg-surface-2 text-muted-foreground/60 line-through border border-border/30 hover:bg-surface-3 hover:text-muted-foreground"
+              onClick={() => onToggleVisibility(key)}
+              className={`px-2 py-1 rounded-lg text-[11px] font-mono transition-all cursor-pointer flex items-center gap-1 ${
+                isVis
+                  ? "bg-[#162C2A] text-[#E8F1EE] border border-[#7C9692]/30"
+                  : "bg-transparent text-[#7C9692]/50 line-through border border-transparent hover:text-[#7C9692]"
               }`}
-              title={`Toggle ${vKey.toUpperCase()} visibility`}
-              aria-pressed={isVisible}
+              title={`Toggle ${key.toUpperCase()} visibility`}
+              aria-pressed={isVis}
             >
-              {isVisible ? <Eye className="w-3 h-3 text-primary" /> : <EyeOff className="w-3 h-3 opacity-50" />}
-              <span>{vKey.toUpperCase()}</span>
+              {isVis ? <Eye className="w-3 h-3 text-[#2dd4bf]" /> : <EyeOff className="w-3 h-3" />}
+              <span>{key.toUpperCase()}</span>
             </button>
           )
         })}
 
-        {/* Context toggle */}
+        {/* Context mesh toggle */}
         <button
           type="button"
           onClick={() => onToggleVisibility("context")}
-          className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-medium transition-all duration-150 ml-0.5 cursor-pointer ${
+          className={`px-2 py-1 rounded-lg text-[11px] transition-all cursor-pointer flex items-center gap-1 ${
             visibility.context
-              ? "bg-surface-3 text-foreground border border-border/70 hover:bg-surface-4 shadow-xs"
-              : "bg-surface-2 text-muted-foreground/60 line-through border border-border/30 hover:bg-surface-3 hover:text-muted-foreground"
+              ? "bg-[#162C2A] text-[#E8F1EE] border border-[#7C9692]/30"
+              : "bg-transparent text-[#7C9692]/50 line-through border border-transparent hover:text-[#7C9692]"
           }`}
-          title="Toggle Heart Anatomy Context (Aorta & Myocardium)"
+          title="Toggle Context Myocardium & Aorta"
+          aria-label="Toggle Context Myocardium & Aorta"
           aria-pressed={visibility.context}
         >
-          {visibility.context ? <Eye className="w-3 h-3 text-foreground/80" /> : <EyeOff className="w-3 h-3 opacity-50" />}
-          <span>Context</span>
+          {visibility.context ? <Eye className="w-3 h-3 text-[#7C9692]" /> : <EyeOff className="w-3 h-3" />}
+          <span className="hidden sm:inline">Context</span>
         </button>
       </div>
 
-      {/* Preset Camera Views */}
-      <div className="flex items-center gap-1 border-l border-border/40 pl-2">
-        <span className="text-[10px] font-mono tracking-wider text-muted-foreground uppercase mr-1 flex items-center gap-1">
-          <Compass className="w-3 h-3 text-primary/70" />
-          <span>Views:</span>
-        </span>
+      <div className="w-px h-5 bg-[#7C9692]/20 mx-0.5" aria-hidden="true" />
+
+      {/* 3. View Selector Segmented Control */}
+      <div className="flex items-center gap-0.5 bg-[#071110] p-0.5 rounded-xl border border-[#7C9692]/15">
+        {(
+          [
+            { id: "ap", label: "AP", title: "Anterior-Posterior (AP) view" },
+            { id: "rao", label: "RAO", title: "Right Anterior Oblique (RAO) view" },
+            { id: "lao", label: "LAO", title: "Left Anterior Oblique (LAO) view" },
+            { id: "posterior", label: "Post", title: "Posterior view (Post)" },
+          ] as const
+        ).map((v) => (
+          <button
+            key={v.id}
+            type="button"
+            onClick={() => handlePreset(v.id)}
+            className={`px-2 py-0.5 rounded-lg text-[11px] font-mono transition-colors cursor-pointer ${
+              activePreset === v.id
+                ? "bg-[#162C2A] text-[#E8F1EE] font-medium shadow-xs"
+                : "text-[#7C9692] hover:text-[#E8F1EE]"
+            }`}
+            title={v.title}
+          >
+            {v.label}
+          </button>
+        ))}
+
         <button
           type="button"
-          onClick={() => onSelectPreset("ap")}
-          className="px-2 py-0.5 rounded-md text-[11px] font-mono bg-surface-2 hover:bg-surface-3 text-foreground/90 border border-border/40 transition-colors cursor-pointer"
-          title="Anterior-Posterior (Front) view"
+          onClick={() => handlePreset("reset")}
+          className="p-1 rounded-lg text-[#7C9692] hover:text-[#E8F1EE] hover:bg-[#162C2A] transition-colors cursor-pointer"
+          title="Reset camera view"
+          aria-label="Reset camera"
         >
-          AP
+          <RotateCcw className="w-3 h-3" />
         </button>
+      </div>
+
+      {/* 4. Tiny "?" Legend Popover */}
+      <div className="relative" ref={legendRef}>
         <button
           type="button"
-          onClick={() => onSelectPreset("rao")}
-          className="px-2 py-0.5 rounded-md text-[11px] font-mono bg-surface-2 hover:bg-surface-3 text-foreground/90 border border-border/40 transition-colors cursor-pointer"
-          title="Right Anterior Oblique view (Optimal for RCA & LAD)"
+          onClick={() => setShowLegendPopover(!showLegendPopover)}
+          className={`p-1.5 rounded-xl border transition-colors cursor-pointer ${
+            showLegendPopover
+              ? "bg-[#F26F69]/20 text-[#F26F69] border-[#F26F69]/40"
+              : "text-[#7C9692] hover:text-[#E8F1EE] bg-[#071110] border-[#7C9692]/15"
+          }`}
+          title="Color spectrum legend"
+          aria-label="Show color spectrum scale"
         >
-          RAO
+          <HelpCircle className="w-3.5 h-3.5" />
         </button>
-        <button
-          type="button"
-          onClick={() => onSelectPreset("lao")}
-          className="px-2 py-0.5 rounded-md text-[11px] font-mono bg-surface-2 hover:bg-surface-3 text-foreground/90 border border-border/40 transition-colors cursor-pointer"
-          title="Left Anterior Oblique view (Optimal for LAD bifurcation)"
-        >
-          LAO
-        </button>
-        <button
-          type="button"
-          onClick={() => onSelectPreset("posterior")}
-          className="px-2 py-0.5 rounded-md text-[11px] font-mono bg-surface-2 hover:bg-surface-3 text-foreground/90 border border-border/40 transition-colors cursor-pointer"
-          title="Posterior view (Optimal for LCX & AV groove)"
-        >
-          Post
-        </button>
-        <button
-          type="button"
-          onClick={() => onSelectPreset("reset")}
-          className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] bg-surface-3 hover:bg-surface-4 text-foreground border border-border/60 transition-colors ml-1 cursor-pointer"
-          title="Reset camera to default view"
-        >
-          <RotateCcw className="w-2.5 h-2.5 text-primary" />
-          <span>Reset</span>
-        </button>
+
+        {showLegendPopover && (
+          <div
+            className="absolute bottom-full right-0 mb-2 w-64 instrument-surface rounded-xl p-3 shadow-2xl border border-[#7C9692]/25 text-left z-50 animate-in fade-in duration-150"
+            role="dialog"
+            aria-label="Color scale legend"
+          >
+            <div className="flex items-center justify-between pb-1.5 mb-2 border-b border-[#7C9692]/15">
+              <span className="text-[11px] font-semibold text-[#E8F1EE]">
+                Predicted Stenosis Scale
+              </span>
+              <button
+                onClick={() => setShowLegendPopover(false)}
+                className="text-[#7C9692] hover:text-[#E8F1EE] p-0.5"
+                aria-label="Close legend"
+              >
+                <X className="w-3 h-3" />
+              </button>
+            </div>
+
+            <div className="space-y-1.5">
+              <div
+                className="h-2 w-full rounded-full border border-[#7C9692]/20"
+                style={{ background: GRADIENT_CSS }}
+              />
+              <div className="flex justify-between text-[10px] font-mono text-[#7C9692]">
+                <span>0% Low</span>
+                <span>50%</span>
+                <span>100% High</span>
+              </div>
+            </div>
+
+            <p className="mt-2 pt-2 border-t border-[#7C9692]/10 text-[10px] text-[#7C9692] leading-tight">
+              Colors represent continuous model-predicted stenosis probability (&theta; approx 0.38 - 0.50).
+            </p>
+          </div>
+        )}
       </div>
     </div>
   )

@@ -1,12 +1,5 @@
 import React, { useState, useCallback, useMemo } from "react"
-import {
-  Sliders,
-  Sparkles,
-  Info,
-  Play,
-  CheckCircle2,
-  FileQuestion,
-} from "lucide-react"
+import { Play, Sparkles } from "lucide-react"
 import { apiClient, ApiError } from "@/api/client"
 import type { AnalysisResponse, PatientRecord } from "@/types/patient"
 import type { TargetName } from "@/types/prediction"
@@ -15,14 +8,14 @@ import { validatePatientRecord } from "@/lib/simulatorRegistry"
 import { SimulatorForm } from "@/components/simulator/SimulatorForm"
 import { SimulatorActions } from "@/components/simulator/SimulatorActions"
 import { SimulatorStatus } from "@/components/simulator/SimulatorStatus"
-import { AnalysisResults } from "@/components/simulator/AnalysisResults"
+import { SimulatorResultPanel } from "@/components/simulator/SimulatorResultPanel"
 
 export const Simulator: React.FC = () => {
   // 1. Form state: editable clinical features
   const [formData, setFormData] = useState<PatientRecord>({ ...DEMO_PATIENT })
   const [lastSubmittedData, setLastSubmittedData] = useState<PatientRecord | null>(null)
 
-  // 2. Analysis state: latest and previous successful responses
+  // 2. Analysis state: latest and previous responses
   const [currentAnalysis, setCurrentAnalysis] = useState<AnalysisResponse | null>(null)
   const [previousAnalysis, setPreviousAnalysis] = useState<AnalysisResponse | null>(null)
 
@@ -33,7 +26,7 @@ export const Simulator: React.FC = () => {
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({})
   const [fieldWarnings, setFieldWarnings] = useState<Record<string, string>>({})
 
-  // Determine if form has unsaved/unsent edits compared to last analysis
+  // Determine if form has unsent edits
   const isDirty = useMemo(() => {
     if (!lastSubmittedData) return false
     return JSON.stringify(formData) !== JSON.stringify(lastSubmittedData)
@@ -44,7 +37,7 @@ export const Simulator: React.FC = () => {
     setFormData((prev) => {
       const next = { ...prev, [name]: value }
 
-      // Also automatically re-calculate BMI if Weight or Length is modified
+      // Automatically re-calculate BMI if Weight or Length is modified
       if (name === "Weight" || name === "Length") {
         const wt = name === "Weight" ? Number(value) : Number(prev.Weight)
         const len = name === "Length" ? Number(value) : Number(prev.Length)
@@ -67,7 +60,6 @@ export const Simulator: React.FC = () => {
 
   // Execute Analysis via API
   const handleAnalyze = useCallback(async () => {
-    // 1. Validate form fields
     const { isValid, errors, warnings } = validatePatientRecord(formData)
     setFieldErrors(errors)
     setFieldWarnings(warnings)
@@ -75,7 +67,7 @@ export const Simulator: React.FC = () => {
     if (!isValid) {
       setError(
         new ApiError(
-          "Please review and correct invalid or missing clinical fields before submitting.",
+          "Please review and correct invalid clinical fields before submitting.",
           "VALIDATION_ERROR",
           400
         )
@@ -87,19 +79,14 @@ export const Simulator: React.FC = () => {
     setError(null)
 
     try {
-      // Call authoritative backend endpoint POST /api/v1/analyze
       const res = await apiClient.analyzePatient(formData)
-
-      // Shift previous analysis if a current analysis exists
       if (currentAnalysis) {
         setPreviousAnalysis(currentAnalysis)
       }
-
       setCurrentAnalysis(res)
       setLastSubmittedData({ ...formData })
       setError(null)
     } catch (err) {
-      // Preserve previous analysis intact on failure!
       if (err instanceof ApiError) {
         setError(err)
       } else {
@@ -126,7 +113,6 @@ export const Simulator: React.FC = () => {
 
   // Clear Form
   const handleClearForm = useCallback(() => {
-    // Keep empty template
     const emptyRecord: PatientRecord = {}
     for (const key of Object.keys(DEMO_PATIENT)) {
       emptyRecord[key] = ""
@@ -137,45 +123,25 @@ export const Simulator: React.FC = () => {
   }, [])
 
   return (
-    <div className="space-y-6 max-w-[1600px] w-full mx-auto px-2 sm:px-4 py-4" role="region" aria-label="Patient Simulator Workspace">
-      {/* Page Header */}
-      <div className="glass-panel rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border border-border/70 shadow-spatial">
-        <div>
-          <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-primary/15 border border-primary/30 flex items-center justify-center text-primary shadow-xs">
-              <Sliders className="w-4 h-4" />
-            </div>
-            <h1 className="text-xl font-bold tracking-tight text-foreground">
-              Patient Simulator
-            </h1>
-            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-mono font-medium bg-primary/15 text-primary border border-primary/30">
-              <Sparkles className="w-3 h-3" />
-              <span>Educational / Decision-Support Simulation</span>
-            </span>
-          </div>
-
-          <p className="text-xs text-muted-foreground mt-1.5 leading-relaxed">
-            Explore how clinical inputs influence model-predicted cardiovascular risk.
-          </p>
-        </div>
-
-        {/* Compact Clinical Disclaimer Badge */}
-        <div
-          className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-surface-2 border border-border/60 text-[11px] text-muted-foreground self-start sm:self-auto shadow-xs"
-          role="note"
-        >
-          <Info className="w-3.5 h-3.5 text-primary shrink-0" />
-          <span>
-            <strong className="text-foreground/90 font-medium">Research Prototype:</strong> Model exploration only. Not a formal medical diagnosis.
-          </span>
-        </div>
+    <div
+      className="min-h-[calc(100vh-44px)] clinical-instrument px-4 lg:px-8 py-6 max-w-[1600px] w-full mx-auto space-y-6"
+      role="region"
+      aria-label="Patient Simulator Workspace"
+    >
+      {/* Calm Header: Serif title + one quiet subtitle line */}
+      <div className="pb-3 border-b border-[#7C9692]/15">
+        <h1 className="font-display text-3xl sm:text-4xl text-[#E8F1EE] tracking-tight">
+          Patient Simulator
+        </h1>
+        <p className="text-xs text-[#7C9692] mt-1 leading-relaxed">
+          Simulate coronary disease risk trajectories and observe real-time 3D anatomical vessel responses. Explore how clinical inputs influence model-predicted cardiovascular risk.
+        </p>
       </div>
 
-      {/* Main Workspace: 2-Column Responsive Split */}
-      <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
-        {/* Left Column: Clinical Input Form (xl:col-span-5) */}
-        <div className="xl:col-span-5 2xl:col-span-5 space-y-4">
-          {/* Action Toolbar */}
+      {/* Main 2-Column Responsive Workspace */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        {/* Left Column (≈40%): Patient inputs */}
+        <div className="lg:col-span-5 space-y-4">
           <SimulatorActions
             onAnalyze={handleAnalyze}
             onLoadDemo={handleResetDemo}
@@ -187,7 +153,6 @@ export const Simulator: React.FC = () => {
             hasErrors={Object.keys(fieldErrors).length > 0}
           />
 
-          {/* Status & Feedback */}
           <SimulatorStatus
             isLoading={isLoading}
             isStale={isDirty && Boolean(currentAnalysis)}
@@ -195,7 +160,6 @@ export const Simulator: React.FC = () => {
             onRetry={handleAnalyze}
           />
 
-          {/* 4-Category Clinical Form */}
           <SimulatorForm
             values={formData}
             onChange={handleFieldChange}
@@ -205,25 +169,27 @@ export const Simulator: React.FC = () => {
           />
         </div>
 
-        {/* Right Column: Live Synchronized Results (xl:col-span-7) */}
-        <div className="xl:col-span-7 2xl:col-span-7 space-y-6 min-w-0">
+        {/* Right Column (≈60%): Sticky Live Result + 3D Model */}
+        <div className="lg:col-span-7 lg:sticky lg:top-14 space-y-4 min-w-0">
           {!currentAnalysis ? (
             /* Initial Empty State */
             <div
-              className="glass-panel rounded-2xl p-8 sm:p-12 text-center flex flex-col items-center justify-center min-h-[480px] space-y-4 shadow-spatial border border-border/70 select-none"
+              className="instrument-surface rounded-2xl p-8 sm:p-12 text-center flex flex-col items-center justify-center min-h-[500px] space-y-4 select-none"
               role="region"
               aria-label="Simulation Results Empty State"
             >
-              <div className="w-16 h-16 rounded-2xl bg-surface-2 border border-border/80 flex items-center justify-center text-primary shadow-spatial-sm">
-                <FileQuestion className="w-8 h-8" />
+              <div className="relative mb-2">
+                <div className="w-16 h-16 rounded-2xl bg-[#0A1514] border border-[#7C9692]/20 flex items-center justify-center text-[#F26F69] shadow-lg">
+                  <Sparkles className="w-8 h-8" />
+                </div>
               </div>
 
               <div className="max-w-md space-y-1.5">
-                <h3 className="text-base font-semibold text-foreground tracking-tight">
+                <h3 className="font-display text-2xl text-[#E8F1EE] tracking-tight">
                   No Active Simulation Results
                 </h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  Configure patient baseline parameters on the left and click <strong>&ldquo;Analyze Patient&rdquo;</strong> to evaluate multi-target risk predictions, SHAP feature attributions, and 3D coronary anatomy visualization.
+                <p className="text-xs text-[#7C9692] leading-relaxed">
+                  Adjust clinical variables on the left and click <strong>&ldquo;Analyze patient&rdquo;</strong> to calculate multi-target risk predictions, SHAP feature attributions, and in-scene 3D coronary anatomy visualization.
                 </p>
               </div>
 
@@ -232,40 +198,20 @@ export const Simulator: React.FC = () => {
                   type="button"
                   onClick={handleAnalyze}
                   disabled={isLoading}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-spatial-sm cursor-pointer transition-all active:scale-95"
+                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-semibold bg-[#F26F69] hover:bg-[#F26F69]/90 text-[#0A1514] shadow-md transition-all active:scale-95 cursor-pointer"
                 >
                   <Play className="w-3.5 h-3.5 fill-current" />
-                  <span>Run Initial Analysis (Demo Profile)</span>
+                  <span>Analyze demo patient profile</span>
                 </button>
               </div>
 
-              <div className="pt-5 border-t border-border/40 w-full max-w-sm text-left">
-                <span className="text-[11px] font-mono uppercase tracking-wider text-muted-foreground block mb-2.5">
-                  Simulation Workflow Capabilities:
-                </span>
-                <ul className="text-xs text-muted-foreground space-y-2">
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>Four independent ML endpoints (Cath, LAD, LCX, RCA)</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>Continuous 3D coronary risk color mapping</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>Local TreeSHAP log-odds feature attribution breakdown</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                    <span>Consecutive run before/after sensitivity comparison</span>
-                  </li>
-                </ul>
-              </div>
+              <p className="pt-4 text-[11px] font-mono text-[#7C9692]/50">
+                Four independent machine-learning endpoints: Cath &bull; LAD &bull; LCX &bull; RCA
+              </p>
             </div>
           ) : (
-            /* Live Synchronized Results */
-            <AnalysisResults
+            /* Live Synchronized Result Panel */
+            <SimulatorResultPanel
               analysis={currentAnalysis}
               previousAnalysis={previousAnalysis}
               selectedTarget={selectedTarget}
@@ -274,6 +220,13 @@ export const Simulator: React.FC = () => {
           )}
         </div>
       </div>
+
+      {/* Single quiet disclaimer footer */}
+      <footer className="pt-8 pb-4 text-center">
+        <p className="text-[11px] text-[#7C9692]/60 font-normal">
+          <strong className="text-[#E8F1EE]/70 font-medium">Educational / Decision-Support Simulation:</strong> Model exploration only. Not a formal medical diagnosis.
+        </p>
+      </footer>
     </div>
   )
 }

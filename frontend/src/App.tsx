@@ -1,6 +1,7 @@
 import React from "react"
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import { AppShell } from "@/components/layout/AppShell"
+import { LandingPage } from "@/pages/LandingPage"
 import { Dashboard } from "@/pages/Dashboard"
 import { Simulator } from "@/pages/Simulator"
 import { About } from "@/pages/About"
@@ -12,12 +13,15 @@ export const App: React.FC = () => {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Public Scientific Landing Page */}
+        <Route path="/" element={<LandingPage health={health} />} />
+
+        {/* Clinical Application Workstation Shell */}
         <Route element={<AppShell health={health} />}>
-          <Route path="/" element={<Navigate to="/dashboard" replace />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/simulator" element={<Simulator />} />
           <Route path="/about" element={<About />} />
-          <Route path="*" element={<Navigate to="/dashboard" replace />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..500&display=swap');
+
+/* ── Hero Scoped Design Tokens (Sampled from Reference) ── */
+.hero-scope {
+  --hero-bg: #011719;
+  --hero-bg-deep: #011012;
+  --hero-bg-glow: #133b3a;
+  --hero-mint: #8ce6c7;
+  --hero-mint-bright: #97dfc6;
+  --hero-mint-glow: #d9fbef;
+  --hero-mint-base: #6eb199;
+  --hero-coral: #a5434b;
+  --hero-coral-base: #b77777;
+  --hero-coral-bright: #ff7e81;
+  --hero-coral-glow: #ffa6a8;
+  --hero-text: #e0fefe;
+  --hero-text-off: #c5e2e2;
+  --hero-muted: #5b7b7e;
+  --hero-muted-light: #7a9c9f;
+  --hero-border: rgba(140, 230, 199, 0.12);
+  --hero-pill-bg: rgba(255, 255, 255, 0.075);
+  --hero-pill-border: rgba(255, 255, 255, 0.12);
+  --hero-bokeh: #547a71;
+}
+
+.hero-serif {
+  font-family: 'Newsreader', 'Source Serif 4', 'Fraunces', Georgia, serif;
+  font-feature-settings: 'lnum' 1;
+}
+
+/* ── Entrance Animations ── */
+@keyframes heroFadeRise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ── Subtle Cardiovascular Lub-Dub Heartbeat ── */
+@keyframes heroHeartbeat {
+  0% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.05);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.03);
+  }
+  60% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* ── Bokeh Organic Drift Animations ── */
+@keyframes heroBokehDrift1 {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(25px, -30px) scale(1.08);
+  }
+  66% {
+    transform: translate(-20px, 15px) scale(0.95);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+@keyframes heroBokehDrift2 {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  40% {
+    transform: translate(-30px, 20px) scale(0.92);
+  }
+  75% {
+    transform: translate(20px, -25px) scale(1.06);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+@keyframes heroBokehDrift3 {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  50% {
+    transform: translate(15px, 35px) scale(1.04);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.hero-animate-rise-1 {
+  animation: heroFadeRise 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+.hero-animate-rise-2 {
+  animation: heroFadeRise 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+
+.hero-animate-rise-3 {
+  animation: heroFadeRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+
+.hero-animate-rise-4 {
+  animation: heroFadeRise 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
+}
+
+.hero-cta-btn {
+  background-color: var(--hero-coral-bright);
+  color: #ffffff;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 18px rgba(255, 126, 129, 0.32);
+}
+
+.hero-cta-btn:hover {
+  background-color: #ff8e91;
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 6px 26px rgba(255, 126, 129, 0.5);
+}
+
+.hero-cta-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.hero-social-btn {
+  border-color: rgba(140, 230, 199, 0.22);
+  background: rgba(1, 28, 31, 0.4);
+  color: var(--hero-muted-light);
+  transition: all 0.25s ease;
+}
+
+.hero-social-btn:hover {
+  border-color: var(--hero-mint);
+  color: var(--hero-mint-bright);
+  background: rgba(140, 230, 199, 0.08);
+  transform: translateY(-1px);
+}
+
+.hero-play-btn {
+  border-color: rgba(217, 244, 242, 0.35);
+  background: rgba(1, 28, 31, 0.4);
+  color: var(--hero-text);
+  transition: all 0.25s ease;
+}
+
+.hero-play-btn:hover {
+  border-color: var(--hero-mint);
+  background: rgba(140, 230, 199, 0.12);
+  color: var(--hero-mint-bright);
+  transform: scale(1.06);
+}
+
+.hero-nav-pill {
+  background: var(--hero-pill-bg);
+  border: 1px solid var(--hero-pill-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.2s ease;
+}
+
+.hero-nav-pill:hover {
+  background: rgba(255, 255, 255, 0.11);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-animate-rise-1,
+  .hero-animate-rise-2,
+  .hero-animate-rise-3,
+  .hero-animate-rise-4 {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

@@ -17,7 +17,7 @@ export const AppShell: React.FC<AppShellProps> = ({ health }) => {
   const isSpatialPage = location.pathname === "/dashboard" || location.pathname === "/simulator"
 
   return (
-    <div className="min-h-screen bg-background text-foreground flex">
+    <div className="min-h-screen bg-[#011719] text-foreground flex">
       {/* Spatial Navigation Rail */}
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 

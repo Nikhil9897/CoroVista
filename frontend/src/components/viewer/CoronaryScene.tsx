@@ -12,13 +12,15 @@ import type {
 import type { TargetName, PredictionResponse } from "@/types/prediction"
 import { CoronaryVesselMesh } from "./CoronaryVesselMesh"
 import { ContextAnatomyMesh } from "./ContextAnatomyMesh"
+import { VesselFloatingLabel } from "./VesselFloatingLabel"
 
 interface CoronarySceneProps {
   predictions?: PredictionResponse["predictions"]
-  selectedTarget?: TargetName
+  selectedTarget?: TargetName | null
+  focusedVessel?: CoronaryVesselId | null
   visibility: ViewerVisibilityState
   presetTrigger: { preset: ViewPreset; timestamp: number } | null
-  onSelectVessel: (id: CoronaryVesselId) => void
+  onSelectVessel: (id: CoronaryVesselId | null) => void
   onHoverVessel: (info: HoveredVesselInfo | null) => void
 }
 
@@ -37,9 +39,23 @@ const PRESET_POSITIONS: Record<ViewPreset, [number, number, number]> = {
   reset: [0, -6, 96],
 }
 
+// Vessel-specific focus camera positions for clear, unobstructed diagnostic views
+const FOCUS_POSITIONS: Record<CoronaryVesselId, [number, number, number]> = {
+  lad: [14, -8, 64],
+  lcx: [52, -4, 54],
+  rca: [-44, -8, 62],
+}
+
+const FOCUS_TARGETS: Record<CoronaryVesselId, [number, number, number]> = {
+  lad: [2, -8, 0],
+  lcx: [10, -4, 0],
+  rca: [-8, -8, 0],
+}
+
 export const CoronaryScene: React.FC<CoronarySceneProps> = ({
   predictions,
   selectedTarget,
+  focusedVessel,
   visibility,
   presetTrigger,
   onSelectVessel,
@@ -47,6 +63,7 @@ export const CoronaryScene: React.FC<CoronarySceneProps> = ({
 }) => {
   const controlsRef = useRef<OrbitControlsImpl>(null)
   const targetCamPos = useRef<THREE.Vector3 | null>(null)
+  const targetLookAt = useRef<THREE.Vector3 | null>(null)
 
   // Load the pre-processed master scene GLB
   const gltf = useGLTF("/models/corovista_heart.glb")
@@ -56,19 +73,39 @@ export const CoronaryScene: React.FC<CoronarySceneProps> = ({
     if (!presetTrigger || !controlsRef.current) return
     const pos = PRESET_POSITIONS[presetTrigger.preset] || PRESET_POSITIONS.ap
     targetCamPos.current = new THREE.Vector3(...pos)
+    targetLookAt.current = new THREE.Vector3(0, -6, 0)
   }, [presetTrigger])
 
-  // Smooth camera flight on preset change
+  // Focus mode camera transition
+  useEffect(() => {
+    if (!controlsRef.current) return
+    if (focusedVessel && focusedVessel in FOCUS_POSITIONS) {
+      targetCamPos.current = new THREE.Vector3(...FOCUS_POSITIONS[focusedVessel])
+      targetLookAt.current = new THREE.Vector3(...FOCUS_TARGETS[focusedVessel])
+    }
+  }, [focusedVessel])
+
+  // Smooth camera flight on preset change and vessel focus
   useFrame((_, delta) => {
-    if (!targetCamPos.current || !controlsRef.current) return
+    if (!controlsRef.current) return
     const controls = controlsRef.current
     const camera = controls.object as THREE.PerspectiveCamera
-    camera.position.lerp(targetCamPos.current, Math.min(1, delta * 5))
-    controls.target.set(0, -6, 0)
-    controls.update()
-    if (camera.position.distanceTo(targetCamPos.current) < 0.2) {
-      targetCamPos.current = null
+
+    if (targetCamPos.current) {
+      camera.position.lerp(targetCamPos.current, Math.min(1, delta * 4.5))
+      if (camera.position.distanceTo(targetCamPos.current) < 0.25) {
+        targetCamPos.current = null
+      }
     }
+
+    if (targetLookAt.current) {
+      controls.target.lerp(targetLookAt.current, Math.min(1, delta * 4.5))
+      if (controls.target.distanceTo(targetLookAt.current) < 0.2) {
+        targetLookAt.current = null
+      }
+    }
+
+    controls.update()
   })
 
   // Extract geometries from loaded nodes
@@ -78,6 +115,8 @@ export const CoronaryScene: React.FC<CoronarySceneProps> = ({
   const ladPred = predictions?.lad
   const lcxPred = predictions?.lcx
   const rcaPred = predictions?.rca
+
+  const isAnyFocused = Boolean(focusedVessel)
 
   return (
     <>
@@ -93,16 +132,21 @@ export const CoronaryScene: React.FC<CoronarySceneProps> = ({
         panSpeed={0.7}
       />
 
-      {/* Atmospheric Anatomical Studio Lighting */}
-      <ambientLight intensity={1.2} color="#e0f2fe" />
-      <directionalLight position={[70, 80, 90]} intensity={1.8} color="#ffffff" />
-      <directionalLight position={[-70, 30, 70]} intensity={1.1} color="#bae6fd" />
-      <directionalLight position={[0, 45, -90]} intensity={1.5} color="#38bdf8" />
-      <directionalLight position={[0, -90, 40]} intensity={0.6} color="#60a5fa" />
-      <hemisphereLight args={["#dbeafe", "#0f172a", 0.6]} />
+      {/* Clean Clinical Studio Lighting for White Viewport */}
+      <ambientLight intensity={1.1} color="#ffffff" />
+      <directionalLight position={[70, 80, 90]} intensity={1.4} color="#ffffff" />
+      <directionalLight position={[-70, 30, 70]} intensity={0.8} color="#e2e8f0" />
+      <directionalLight position={[0, 45, -90]} intensity={0.9} color="#cbd5e1" />
+      <directionalLight position={[0, -90, 40]} intensity={0.4} color="#f1f5f9" />
+      <hemisphereLight args={["#ffffff", "#e2e8f0", 0.6]} />
 
       {/* Coordinate transformation group: centers heart at (0, 0, 0) and orients AP face forward */}
-      <group rotation={[-Math.PI / 2, 0, 0]}>
+      <group
+        rotation={[-Math.PI / 2, 0, 0]}
+        onPointerMissed={() => {
+          if (focusedVessel) onSelectVessel(null)
+        }}
+      >
         <group position={[OFFSET_X, OFFSET_Y, OFFSET_Z]}>
           {/* Primary Coronary Artery Vessels */}
           {nodes.vessel_lad && (
@@ -112,9 +156,10 @@ export const CoronaryScene: React.FC<CoronarySceneProps> = ({
               probability={ladPred ? ladPred.probability : 0.0}
               threshold={ladPred ? ladPred.threshold : 0.46}
               isStenotic={ladPred ? ladPred.probability >= ladPred.threshold : false}
-              isSelected={selectedTarget === "lad"}
+              isSelected={focusedVessel === "lad" || selectedTarget === "lad"}
+              isAnyFocused={isAnyFocused}
               visible={visibility.lad}
-              onClick={onSelectVessel}
+              onClick={(id) => onSelectVessel(id)}
               onHover={onHoverVessel}
             />
           )}
@@ -126,9 +171,10 @@ export const CoronaryScene: React.FC<CoronarySceneProps> = ({
               probability={lcxPred ? lcxPred.probability : 0.0}
               threshold={lcxPred ? lcxPred.threshold : 0.5}
               isStenotic={lcxPred ? lcxPred.probability >= lcxPred.threshold : false}
-              isSelected={selectedTarget === "lcx"}
+              isSelected={focusedVessel === "lcx" || selectedTarget === "lcx"}
+              isAnyFocused={isAnyFocused}
               visible={visibility.lcx}
-              onClick={onSelectVessel}
+              onClick={(id) => onSelectVessel(id)}
               onHover={onHoverVessel}
             />
           )}
@@ -140,10 +186,48 @@ export const CoronaryScene: React.FC<CoronarySceneProps> = ({
               probability={rcaPred ? rcaPred.probability : 0.0}
               threshold={rcaPred ? rcaPred.threshold : 0.38}
               isStenotic={rcaPred ? rcaPred.probability >= rcaPred.threshold : false}
-              isSelected={selectedTarget === "rca"}
+              isSelected={focusedVessel === "rca" || selectedTarget === "rca"}
+              isAnyFocused={isAnyFocused}
               visible={visibility.rca}
-              onClick={onSelectVessel}
+              onClick={(id) => onSelectVessel(id)}
               onHover={onHoverVessel}
+            />
+          )}
+
+          {/* Anchored In-scene Diagnostic Annotations */}
+          {visibility.lad && nodes.vessel_lad && (
+            <VesselFloatingLabel
+              id="lad"
+              geometry={nodes.vessel_lad.geometry}
+              probability={ladPred ? ladPred.probability : 0.0}
+              threshold={ladPred ? ladPred.threshold : 0.46}
+              isSelected={focusedVessel === "lad" || selectedTarget === "lad"}
+              isAnyFocused={isAnyFocused}
+              onClick={(id) => onSelectVessel(id)}
+            />
+          )}
+
+          {visibility.lcx && nodes.vessel_lcx && (
+            <VesselFloatingLabel
+              id="lcx"
+              geometry={nodes.vessel_lcx.geometry}
+              probability={lcxPred ? lcxPred.probability : 0.0}
+              threshold={lcxPred ? lcxPred.threshold : 0.50}
+              isSelected={focusedVessel === "lcx" || selectedTarget === "lcx"}
+              isAnyFocused={isAnyFocused}
+              onClick={(id) => onSelectVessel(id)}
+            />
+          )}
+
+          {visibility.rca && nodes.vessel_rca && (
+            <VesselFloatingLabel
+              id="rca"
+              geometry={nodes.vessel_rca.geometry}
+              probability={rcaPred ? rcaPred.probability : 0.0}
+              threshold={rcaPred ? rcaPred.threshold : 0.38}
+              isSelected={focusedVessel === "rca" || selectedTarget === "rca"}
+              isAnyFocused={isAnyFocused}
+              onClick={(id) => onSelectVessel(id)}
             />
           )}
 

@@ -19,83 +19,69 @@ interface MaterialConfig {
 }
 
 const CONTEXT_STYLES: Record<string, MaterialConfig> = {
-  // Left main stem connects aorta bulb to LAD/LCX
+  // Left main stem connects aorta bulb to LAD/LCX — smooth slate-teal conduit
   struct_left_main: {
-    color: 0xf8fafc,
-    opacity: 0.96,
-    roughness: 0.22,
-    metalness: 0.15,
-    transparent: false,
-    depthWrite: true,
-    emissive: 0x1e293b,
-    emissiveIntensity: 0.15,
-  },
-  // Aortic bulb / root (source of coronary ostia) — soft translucent porcelain
-  struct_aorta_bulb: {
-    color: 0xdbeafe,
-    opacity: 0.62,
-    roughness: 0.26,
-    metalness: 0.10,
-    transparent: true,
-    depthWrite: false,
-    emissive: 0x1e3a5f,
-    emissiveIntensity: 0.20,
-  },
-  // Ascending aorta — continuous great vessel outflow
-  struct_aorta_ascending: {
-    color: 0xbfdbfe,
-    opacity: 0.58,
-    roughness: 0.28,
-    metalness: 0.08,
-    transparent: true,
-    depthWrite: false,
-    emissive: 0x172554,
-    emissiveIntensity: 0.18,
-  },
-  // Left ventricle free wall — living myocardial silhouette
-  struct_lv_wall: {
-    color: 0x60a5fa,
-    opacity: 0.42,
+    color: 0x64748b,
+    opacity: 0.85,
     roughness: 0.32,
-    metalness: 0.08,
+    metalness: 0.12,
     transparent: true,
     depthWrite: false,
-    emissive: 0x172554,
-    emissiveIntensity: 0.25,
   },
-  // Muscular interventricular septum — central muscular cardiac pillar
-  struct_septum: {
-    color: 0x38bdf8,
-    opacity: 0.38,
-    roughness: 0.34,
+  // Aortic bulb / root — clean translucent pearlescent anatomy
+  struct_aorta_bulb: {
+    color: 0xb0bcc9,
+    opacity: 0.45,
+    roughness: 0.45,
     metalness: 0.08,
     transparent: true,
     depthWrite: false,
-    emissive: 0x0c4a6e,
-    emissiveIntensity: 0.22,
+  },
+  // Ascending aorta — great vessel contour
+  struct_aorta_ascending: {
+    color: 0xb0bcc9,
+    opacity: 0.40,
+    roughness: 0.45,
+    metalness: 0.08,
+    transparent: true,
+    depthWrite: false,
+  },
+  // Left ventricle free wall — clear myocardial chamber silhouette
+  struct_lv_wall: {
+    color: 0xc2cdd8,
+    opacity: 0.38,
+    roughness: 0.50,
+    metalness: 0.05,
+    transparent: true,
+    depthWrite: false,
+  },
+  // Muscular interventricular septum — central anatomical core
+  struct_septum: {
+    color: 0xa4b2c0,
+    opacity: 0.40,
+    roughness: 0.50,
+    metalness: 0.05,
+    transparent: true,
+    depthWrite: false,
   },
   // Pulmonary trunk — anterior outflow tract
   struct_pulmonary_trunk: {
-    color: 0x93c5fd,
-    opacity: 0.48,
-    roughness: 0.30,
+    color: 0xb0bcc9,
+    opacity: 0.42,
+    roughness: 0.45,
     metalness: 0.08,
     transparent: true,
     depthWrite: false,
-    emissive: 0x1e3a8a,
-    emissiveIntensity: 0.18,
   },
 }
 
 const DEFAULT_STYLE: MaterialConfig = {
-  color: 0x93c5fd,
-  opacity: 0.40,
-  roughness: 0.35,
-  metalness: 0.1,
+  color: 0xbac5d2,
+  opacity: 0.38,
+  roughness: 0.48,
+  metalness: 0.06,
   transparent: true,
   depthWrite: false,
-  emissive: 0x0f172a,
-  emissiveIntensity: 0.15,
 }
 
 export const ContextAnatomyMesh: React.FC<ContextAnatomyMeshProps> = ({

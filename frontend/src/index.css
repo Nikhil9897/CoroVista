@@ -53,6 +53,13 @@
     --spatial-amber: 38 92% 50%;
     --spatial-slate: 218 10% 55%;
     --spatial-porcelain: 220 14% 92%;
+
+    /* ── Dashboard Instrument Palette ── */
+    --dash-bg: 168 52% 8%;
+    --dash-surface: 168 40% 11%;
+    --dash-text: 168 30% 90%;
+    --dash-muted: 168 15% 52%;
+    --dash-border: 168 25% 16%;
   }
 }
 
@@ -117,6 +124,30 @@
   50% { box-shadow: 0 0 12px 2px hsl(var(--primary) / 0.15); }
 }
 
+@keyframes vessel-risk-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 var(--vessel-color, hsl(var(--primary) / 0)); }
+  50% { box-shadow: 0 0 18px 4px var(--vessel-color, hsl(var(--primary) / 0.25)); }
+}
+
+@keyframes risk-bar-fill {
+  from { width: 0%; }
+}
+
+@keyframes count-up-appear {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes vessel-label-in {
+  from { opacity: 0; transform: translate(-50%, -4px) scale(0.96); }
+  to { opacity: 1; transform: translate(-50%, 0) scale(1); }
+}
+
+@keyframes guided-tour-in {
+  from { opacity: 0; transform: translateX(12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
 /* ── Spatial Utility Classes ── */
 @layer utilities {
   .spatial-fade-up {
@@ -165,6 +196,68 @@
   /* Tabular numbers for data display */
   .tabular-nums {
     font-variant-numeric: tabular-nums;
+  }
+
+  /* Risk bar animated fill */
+  .risk-bar-fill {
+    animation: risk-bar-fill 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  /* Count-up number reveal */
+  .count-up-appear {
+    animation: count-up-appear 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  /* Vessel in-scene annotation label */
+  .vessel-label-in {
+    animation: vessel-label-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  /* Guided tour panel */
+  .guided-tour-in {
+    animation: guided-tour-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  /* Serif display font for dashboard hero */
+  .font-display {
+    font-family: "Newsreader", "Georgia", ui-serif, serif;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+  }
+
+  /* Quiet Clinical Instrument Palette */
+  .clinical-instrument {
+    background-color: #011719;
+    background-image: radial-gradient(ellipse at 50% 0%, #0a2628 0%, #011719 75%);
+    color: #E8F1EE;
+  }
+
+  .instrument-surface {
+    background: rgba(22, 33, 36, 0.82);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+
+  .instrument-surface-subtle {
+    background: rgba(18, 27, 30, 0.7);
+    border: 1px solid rgba(148, 163, 184, 0.16);
+  }
+
+  .text-instrument-muted {
+    color: #8fa6a8;
+  }
+
+  .text-instrument-coral {
+    color: #F26F69;
+  }
+
+  .bg-instrument-coral {
+    background-color: #F26F69;
+  }
+
+  .border-instrument-coral {
+    border-color: #F26F69;
   }
 }
 

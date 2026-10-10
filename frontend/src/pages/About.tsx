@@ -5,9 +5,16 @@ export const About: React.FC = () => {
   return (
     <div className="max-w-5xl mx-auto px-4 py-8 space-y-10" role="region" aria-label="About CoroVista">
       {/* Editorial Header */}
-      <div className="border-b border-border/40 pb-6 space-y-2">
-        <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider bg-primary/15 text-primary border border-primary/30">
-          <span>System Architecture & Scientific Methodology</span>
+      <div className="border-b border-border/40 pb-6 space-y-3">
+        <div className="flex items-center justify-between">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider bg-primary/15 text-primary border border-primary/30">
+            <span>System Architecture & Scientific Methodology</span>
+          </div>
+          <img
+            src="/corovista-logo-dark.png"
+            alt="CoroVista"
+            className="h-7 w-auto object-contain hidden sm:block drop-shadow-sm"
+          />
         </div>
         <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
           About CoroVista

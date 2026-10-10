@@ -1,5 +1,5 @@
 import React from "react"
-import { Activity, Play } from "lucide-react"
+import { Play } from "lucide-react"
 
 interface EmptyStateProps {
   onLoadDemo: () => void
@@ -13,8 +13,12 @@ export const EmptyState: React.FC<EmptyStateProps> = ({ onLoadDemo, isLoading = 
       role="region"
       aria-label="No patient analyzed"
     >
-      <div className="w-16 h-16 rounded-2xl bg-surface-2 border border-border/70 flex items-center justify-center mb-5 text-muted-foreground shadow-spatial-sm">
-        <Activity className="w-8 h-8 text-primary" />
+      <div className="w-20 h-20 rounded-2xl bg-surface-2/60 border border-primary/20 flex items-center justify-center mb-5 p-2 shadow-spatial-sm backdrop-blur-md">
+        <img
+          src="/corovista-heart.png"
+          alt="CoroVista Heart"
+          className="w-14 h-14 object-contain drop-shadow-[0_0_16px_rgba(56,189,248,0.5)]"
+        />
       </div>
 
       <h3 className="text-xl font-bold tracking-tight text-foreground mb-1.5">No Patient Analyzed</h3>

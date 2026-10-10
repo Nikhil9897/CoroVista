@@ -1,5 +1,4 @@
 import React from "react"
-import { CheckCircle2, AlertCircle, XCircle } from "lucide-react"
 import type { HealthResponse } from "@/types/patient"
 
 interface SystemStatusBadgeProps {
@@ -11,46 +10,37 @@ export const SystemStatusBadge: React.FC<SystemStatusBadgeProps> = ({ health, cl
   if (!health) {
     return (
       <div
-        className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium bg-surface-2 text-muted-foreground border border-border/60 ${className}`}
+        className={`inline-flex items-center gap-2 text-xs text-[#7C9692] select-none ${className}`}
         aria-label="Checking system status"
       >
-        <span className="w-2 h-2 rounded-full bg-muted-foreground/60 animate-pulse" />
+        <span className="w-1.5 h-1.5 rounded-full bg-[#7C9692]/50 animate-pulse" />
         <span>Connecting...</span>
       </div>
     )
   }
 
-  if (health.status === "ok" && health.models_loaded) {
-    return (
-      <div
-        className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 shadow-xs ${className}`}
-        aria-label="API Connected and Models Ready"
-      >
-        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-        <span>API Connected &bull; Models Ready</span>
-      </div>
-    )
-  }
+  const isReady = health.status === "ok" && health.models_loaded
 
-  if (health.status === "degraded" || !health.models_loaded) {
+  if (isReady) {
     return (
       <div
-        className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium bg-amber-500/15 text-amber-400 border border-amber-500/30 ${className}`}
-        aria-label="API Connected but Models Unavailable"
+        className={`inline-flex items-center gap-2 text-xs text-[#7C9692] select-none ${className}`}
+        aria-label="Models ready"
       >
-        <AlertCircle className="w-3.5 h-3.5 text-amber-400" />
-        <span>Models Unavailable</span>
+        <span className="w-1.5 h-1.5 rounded-full bg-[#34d399]" />
+        <span className="text-[#E8F1EE]/90">Models ready</span>
+        <span className="sr-only">API Connected • Models Ready</span>
       </div>
     )
   }
 
   return (
     <div
-      className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium bg-rose-500/15 text-rose-400 border border-rose-500/30 ${className}`}
-      aria-label="Backend Unavailable"
+      className={`inline-flex items-center gap-2 text-xs text-[#7C9692] select-none ${className}`}
+      aria-label="Models unavailable"
     >
-      <XCircle className="w-3.5 h-3.5 text-rose-400" />
-      <span>Backend Unavailable</span>
+      <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+      <span className="text-amber-300/90">Models unavailable</span>
     </div>
   )
 }
