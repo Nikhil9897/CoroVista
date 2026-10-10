@@ -1,4 +1,4 @@
-import React, { Suspense } from "react"
+import React, { Suspense, lazy } from "react"
 import type { AnalysisResponse } from "@/types/patient"
 import type { TargetName } from "@/types/prediction"
 import { CadRiskCard } from "@/components/predictions/CadRiskCard"
@@ -7,7 +7,9 @@ import { ExplanationPanel } from "@/components/explanations/ExplanationPanel"
 import { ViewerLoadingFallback } from "@/components/viewer/ViewerLoadingFallback"
 import { ProbabilityComparison } from "./ProbabilityComparison"
 
-import { CoronaryViewer } from "@/components/viewer/CoronaryViewer"
+const CoronaryViewer = lazy(() =>
+  import("@/components/viewer/CoronaryViewer").then((m) => ({ default: m.CoronaryViewer }))
+)
 
 interface AnalysisResultsProps {
   analysis: AnalysisResponse
@@ -25,38 +27,48 @@ export const AnalysisResults: React.FC<AnalysisResultsProps> = ({
   className = "",
 }) => {
   return (
-    <div className={`space-y-5 ${className}`} role="region" aria-label="Simulated Risk Results">
+    <div className={`space-y-6 ${className}`} role="region" aria-label="Simulated Risk Results">
       {/* 1. Compact Primary CAD Risk Summary */}
-      <CadRiskCard prediction={analysis.predictions.cath} />
+      <div className="spatial-fade-up">
+        <CadRiskCard prediction={analysis.predictions.cath} />
+      </div>
 
-      {/* 2. Interactive 3D Coronary Anatomy Viewer (Enlarged) */}
-      <Suspense fallback={<ViewerLoadingFallback className="w-full min-h-[480px] lg:min-h-[520px]" />}>
-        <CoronaryViewer
+      {/* 2. Interactive 3D Coronary Anatomy Viewer */}
+      <div className="rounded-2xl overflow-hidden border border-border/70 shadow-spatial-lg bg-surface-0 spatial-fade-up" style={{ animationDelay: "0.1s" }}>
+        <Suspense fallback={<ViewerLoadingFallback className="w-full min-h-[480px] lg:min-h-[520px]" />}>
+          <CoronaryViewer
+            predictions={analysis.predictions}
+            selectedTarget={selectedTarget}
+            onSelectTarget={onSelectTarget}
+            className="w-full min-h-[480px] lg:min-h-[520px]"
+          />
+        </Suspense>
+      </div>
+
+      {/* Middle Section: Vessel-Specific Stenosis (LAD, LCX, RCA) */}
+      <div className="spatial-fade-up" style={{ animationDelay: "0.15s" }}>
+        <VesselRiskOverview
           predictions={analysis.predictions}
           selectedTarget={selectedTarget}
           onSelectTarget={onSelectTarget}
-          className="w-full min-h-[480px] lg:min-h-[520px]"
         />
-      </Suspense>
-
-      {/* Middle Section: Vessel-Specific Stenosis (LAD, LCX, RCA) */}
-      <VesselRiskOverview
-        predictions={analysis.predictions}
-        selectedTarget={selectedTarget}
-        onSelectTarget={onSelectTarget}
-      />
+      </div>
 
       {/* Optional Before / After Comparison View (if >= 2 analyses run) */}
       {previousAnalysis && (
-        <ProbabilityComparison previous={previousAnalysis} current={analysis} />
+        <div className="spatial-fade-up" style={{ animationDelay: "0.2s" }}>
+          <ProbabilityComparison previous={previousAnalysis} current={analysis} />
+        </div>
       )}
 
       {/* Bottom Section: Local SHAP Feature Explanations */}
-      <ExplanationPanel
-        explanations={analysis.explanations}
-        selectedTarget={selectedTarget}
-        onSelectTarget={onSelectTarget}
-      />
+      <div className="spatial-fade-up" style={{ animationDelay: "0.25s" }}>
+        <ExplanationPanel
+          explanations={analysis.explanations}
+          selectedTarget={selectedTarget}
+          onSelectTarget={onSelectTarget}
+        />
+      </div>
     </div>
   )
 }

@@ -41,31 +41,59 @@ export default {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        // Domain specific semantic risk tokens
+        // Spatial surface layers
+        surface: {
+          0: "hsl(var(--surface-0))",
+          1: "hsl(var(--surface-1))",
+          2: "hsl(var(--surface-2))",
+          3: "hsl(var(--surface-3))",
+        },
+        // Clinical risk tokens
         risk: {
           low: "hsl(var(--risk-low))",
           moderate: "hsl(var(--risk-mod))",
           high: "hsl(var(--risk-high))",
           critical: "hsl(var(--risk-critical))",
         },
+        // Spatial accent colors
+        spatial: {
+          coral: "hsl(var(--spatial-coral))",
+          jade: "hsl(var(--spatial-jade))",
+          amber: "hsl(var(--spatial-amber))",
+          slate: "hsl(var(--spatial-slate))",
+          porcelain: "hsl(var(--spatial-porcelain))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        xl: "calc(var(--radius) + 4px)",
       },
       fontFamily: {
         sans: ["Inter", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
         mono: ["JetBrains Mono", "Fira Code", "monospace"],
       },
-      animation: {
-        "pulse-subtle": "pulse-subtle 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+      fontSize: {
+        "2xs": ["0.625rem", { lineHeight: "0.875rem" }],
       },
-      keyframes: {
-        "pulse-subtle": {
-          "0%, 100%": { opacity: "1" },
-          "50%": { opacity: "0.85" },
-        },
+      animation: {
+        "pulse-subtle": "spatial-pulse-subtle 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        "spatial-glow": "spatial-glow 2s ease-in-out infinite",
+        "fade-up": "spatial-fade-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) both",
+        "fade-in": "spatial-fade-in 0.4s ease-out both",
+        "scale-in": "spatial-scale-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both",
+        "slide-in": "spatial-slide-in-right 0.4s cubic-bezier(0.16, 1, 0.3, 1) both",
+      },
+      boxShadow: {
+        "spatial-sm": "0 2px 8px -2px hsl(var(--surface-0) / 0.4)",
+        "spatial": "0 4px 16px -4px hsl(var(--surface-0) / 0.5)",
+        "spatial-lg": "0 8px 32px -8px hsl(var(--surface-0) / 0.6)",
+        "spatial-glow": "0 0 20px -4px hsl(var(--primary) / 0.15)",
+      },
+      backdropBlur: {
+        "spatial": "16px",
+        "spatial-strong": "24px",
       },
     },
   },

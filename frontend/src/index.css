@@ -4,41 +4,55 @@
 
 @layer base {
   :root {
-    --background: 222 47% 7%;
-    --foreground: 210 40% 98%;
+    /* ── Spatial Graphite Palette ── */
+    --background: 220 14% 6%;
+    --foreground: 220 14% 94%;
 
-    --card: 222 47% 10%;
-    --card-foreground: 210 40% 98%;
+    --card: 220 13% 9%;
+    --card-foreground: 220 14% 94%;
 
-    --popover: 222 47% 10%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 220 13% 9%;
+    --popover-foreground: 220 14% 94%;
 
-    --primary: 217 91% 60%;
-    --primary-foreground: 222 47% 7%;
+    --primary: 12 76% 62%;
+    --primary-foreground: 220 14% 6%;
 
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 220 10% 14%;
+    --secondary-foreground: 220 14% 94%;
 
-    --muted: 217 33% 15%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 220 10% 12%;
+    --muted-foreground: 218 10% 55%;
 
-    --accent: 217 33% 20%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 220 10% 18%;
+    --accent-foreground: 220 14% 94%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 220 14% 94%;
 
-    --border: 217 33% 18%;
-    --input: 217 33% 18%;
-    --ring: 217 91% 60%;
+    --border: 220 10% 16%;
+    --input: 220 10% 16%;
+    --ring: 12 76% 62%;
 
-    --radius: 0.5rem;
+    --radius: 0.625rem;
 
-    /* Semantic clinical risk tokens */
-    --risk-low: 152 76% 40%;
+    /* ── Spatial Surface Layers ── */
+    --surface-0: 220 14% 4%;
+    --surface-1: 220 13% 8%;
+    --surface-2: 220 12% 12%;
+    --surface-3: 220 10% 16%;
+
+    /* ── Clinical Risk Tokens ── */
+    --risk-low: 160 60% 42%;
     --risk-mod: 38 92% 50%;
     --risk-high: 16 90% 55%;
     --risk-critical: 0 84% 60%;
+
+    /* ── Spatial Accent Colors ── */
+    --spatial-coral: 12 76% 62%;
+    --spatial-jade: 160 60% 42%;
+    --spatial-amber: 38 92% 50%;
+    --spatial-slate: 218 10% 55%;
+    --spatial-porcelain: 220 14% 92%;
   }
 }
 
@@ -47,23 +61,184 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground antialiased selection:bg-primary/20 selection:text-primary font-sans;
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    @apply bg-background text-foreground antialiased font-sans;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11", "tnum";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
-/* Custom scrollbar */
+/* ── Spatial Animation Keyframes ── */
+@keyframes spatial-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spatial-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes spatial-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes spatial-slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes spatial-pulse-subtle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes spatial-glow {
+  0%, 100% { box-shadow: 0 0 0 0 hsl(var(--primary) / 0); }
+  50% { box-shadow: 0 0 12px 2px hsl(var(--primary) / 0.15); }
+}
+
+/* ── Spatial Utility Classes ── */
+@layer utilities {
+  .spatial-fade-up {
+    animation: spatial-fade-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .spatial-fade-in {
+    animation: spatial-fade-in 0.4s ease-out both;
+  }
+  .spatial-scale-in {
+    animation: spatial-scale-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .spatial-slide-in {
+    animation: spatial-slide-in-right 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  /* Glassmorphism surfaces */
+  .glass-panel {
+    background: hsl(var(--card) / 0.7);
+    backdrop-filter: blur(16px) saturate(1.2);
+    -webkit-backdrop-filter: blur(16px) saturate(1.2);
+    border: 1px solid hsl(var(--border) / 0.5);
+  }
+  .glass-panel-strong {
+    background: hsl(var(--card) / 0.85);
+    backdrop-filter: blur(24px) saturate(1.3);
+    -webkit-backdrop-filter: blur(24px) saturate(1.3);
+    border: 1px solid hsl(var(--border) / 0.6);
+  }
+
+  /* Spatial depth layers */
+  .surface-0 { background: hsl(var(--surface-0)); }
+  .surface-1 { background: hsl(var(--surface-1)); }
+  .surface-2 { background: hsl(var(--surface-2)); }
+  .surface-3 { background: hsl(var(--surface-3)); }
+
+  /* Viewer radial vignette */
+  .viewer-vignette {
+    background: radial-gradient(
+      ellipse at center,
+      transparent 40%,
+      hsl(var(--surface-0) / 0.4) 80%,
+      hsl(var(--surface-0) / 0.7) 100%
+    );
+  }
+
+  /* Tabular numbers for data display */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* ── Reduced Motion Support ── */
+@media (prefers-reduced-motion: reduce) {
+  .spatial-fade-up,
+  .spatial-fade-in,
+  .spatial-scale-in,
+  .spatial-slide-in {
+    animation: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Custom Scrollbar ── */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: hsl(var(--background));
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--border));
+  background: hsl(var(--border) / 0.6);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--muted-foreground));
+  background: hsl(var(--muted-foreground) / 0.5);
+}
+
+/* ── Spatial Range Slider Styling ── */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 9999px;
+  background: hsl(var(--surface-3));
+  outline: none;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: hsl(var(--primary));
+  border: 2px solid hsl(var(--surface-0));
+  box-shadow: 0 0 0 2px hsl(var(--primary) / 0.2);
+  cursor: pointer;
+  transition: box-shadow 0.2s ease;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 0 4px hsl(var(--primary) / 0.3);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: hsl(var(--primary));
+  border: 2px solid hsl(var(--surface-0));
+  box-shadow: 0 0 0 2px hsl(var(--primary) / 0.2);
+  cursor: pointer;
+}
+
+/* ── Focus Ring Styles ── */
+:focus-visible {
+  outline: 2px solid hsl(var(--primary) / 0.6);
+  outline-offset: 2px;
 }

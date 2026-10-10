@@ -1,6 +1,6 @@
 """
 CoroVista Backend - Explanation Route
-Stage 4: FastAPI Backend + Prediction/Explainability API
+SHAP Feature Attribution Endpoint
 """
 
 from fastapi import APIRouter

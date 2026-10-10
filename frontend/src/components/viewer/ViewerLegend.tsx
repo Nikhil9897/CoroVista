@@ -28,12 +28,12 @@ export const ViewerLegend: React.FC<ViewerLegendProps> = ({
 
   return (
     <div
-      className={`bg-card/85 backdrop-blur-md border border-border/70 rounded-lg p-2.5 shadow-sm text-xs space-y-1.5 ${className}`}
+      className={`rounded-xl p-3 text-xs space-y-2 select-none ${className}`}
       role="region"
       aria-label="Model-predicted stenosis probability legend"
     >
       <div className="flex items-center justify-between text-[11px]">
-        <span className="font-medium text-foreground">
+        <span className="font-medium text-foreground tracking-tight">
           Model-predicted stenosis probability
         </span>
         {activeVesselKey && (
@@ -69,7 +69,7 @@ export const ViewerLegend: React.FC<ViewerLegendProps> = ({
         </div>
 
         {/* Labels below gradient */}
-        <div className="flex justify-between text-[10px] font-mono text-muted-foreground mt-1 px-0.5">
+        <div className="flex justify-between text-[10px] font-mono text-muted-foreground/80 mt-1 px-0.5">
           <span>0%</span>
           <span>25%</span>
           <span>50%</span>
@@ -80,7 +80,7 @@ export const ViewerLegend: React.FC<ViewerLegendProps> = ({
 
       {/* Vessel summary chips */}
       {predictions && (
-        <div className="flex items-center gap-2 pt-0.5 text-[10px] text-muted-foreground border-t border-border/50">
+        <div className="flex items-center gap-1.5 pt-1 text-[10px] text-muted-foreground border-t border-border/40">
           {(["lad", "lcx", "rca"] as const).map((vKey) => {
             const p = predictions[vKey]
             const meta = VESSEL_NAMES[vKey]
@@ -88,12 +88,14 @@ export const ViewerLegend: React.FC<ViewerLegendProps> = ({
             return (
               <span
                 key={vKey}
-                className={`inline-flex items-center gap-1 px-1.5 py-0.5 rounded ${
-                  isSelected ? "bg-primary/15 text-primary font-semibold border border-primary/30" : "bg-muted/40"
+                className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-md font-mono transition-all ${
+                  isSelected
+                    ? "bg-primary/20 text-primary font-semibold border border-primary/40 shadow-xs"
+                    : "bg-surface-2 text-foreground/80 border border-border/30 hover:bg-surface-3"
                 }`}
               >
-                <span className="font-mono">{meta.short}:</span>
-                <span className="text-foreground">{formatPercent(p.probability)}</span>
+                <span className="font-medium">{meta.short}:</span>
+                <span className="text-foreground font-semibold">{formatPercent(p.probability)}</span>
                 <span className="text-[9px] text-muted-foreground">(&theta;={p.threshold.toFixed(2)})</span>
               </span>
             )

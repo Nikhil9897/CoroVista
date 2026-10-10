@@ -19,13 +19,11 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
       to: "/dashboard",
       label: "Clinical Dashboard",
       icon: LayoutDashboard,
-      badge: "Active",
     },
     {
       to: "/simulator",
       label: "Patient Simulator",
       icon: Sliders,
-      badge: "Live",
     },
     {
       to: "/about",
@@ -39,35 +37,34 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
       {/* Mobile Backdrop */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-background/80 backdrop-blur-sm z-40 lg:hidden"
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden"
           onClick={onClose}
           aria-hidden="true"
         />
       )}
 
-      {/* Sidebar Container */}
+      {/* Sidebar — slim icon rail on desktop, expanded on mobile */}
       <aside
-        className={`fixed top-0 bottom-0 left-0 z-50 w-64 bg-card border-r border-border flex flex-col justify-between transition-transform duration-300 ease-in-out lg:translate-x-0 ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
+        className={`fixed top-0 bottom-0 left-0 z-50 flex flex-col justify-between transition-all duration-300 ease-in-out
+          lg:w-[56px] lg:translate-x-0 lg:hover:w-[200px] lg:group
+          ${isOpen ? "w-[220px] translate-x-0" : "w-[220px] -translate-x-full lg:translate-x-0"}
+          surface-1 border-r border-border/40
+        `}
         aria-label="Sidebar Navigation"
       >
         {/* Brand Header */}
-        <div className="p-5 border-b border-border">
+        <div className="p-3 lg:px-2 lg:py-4 border-b border-border/30">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center text-primary-foreground shadow-md shadow-primary/20">
-                <HeartPulse className="w-5 h-5" />
+            <div className="flex items-center gap-2.5 overflow-hidden">
+              <div className="w-8 h-8 rounded-lg bg-primary/15 flex items-center justify-center text-primary shrink-0">
+                <HeartPulse className="w-[18px] h-[18px]" />
               </div>
-              <div>
-                <h1 className="font-bold text-base tracking-tight text-foreground flex items-center gap-1.5">
+              <div className="overflow-hidden lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
+                <h1 className="font-semibold text-[13px] tracking-tight text-foreground leading-tight">
                   CoroVista
-                  <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-primary/20 text-primary border border-primary/30">
-                    v1.0
-                  </span>
                 </h1>
-                <p className="text-[11px] text-muted-foreground truncate">
-                  Cardiovascular Risk AI
+                <p className="text-[10px] text-muted-foreground leading-tight">
+                  v1.0
                 </p>
               </div>
             </div>
@@ -83,7 +80,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         </div>
 
         {/* Navigation Items */}
-        <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
+        <nav className="flex-1 px-2 py-3 space-y-1 overflow-y-auto">
           {navItems.map((item) => {
             const Icon = item.icon
             return (
@@ -92,40 +89,30 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
                 to={item.to}
                 onClick={onClose}
                 className={({ isActive }) =>
-                  `flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-medium transition-colors ${
+                  `flex items-center gap-3 px-2.5 py-2 rounded-lg text-xs font-medium transition-all duration-200 group/item overflow-hidden ${
                     isActive
-                      ? "bg-primary/10 text-primary border border-primary/20 shadow-sm"
-                      : "text-muted-foreground hover:bg-secondary/60 hover:text-foreground"
+                      ? "bg-primary/12 text-primary"
+                      : "text-muted-foreground hover:bg-surface-2 hover:text-foreground"
                   }`
                 }
               >
-                <div className="flex items-center gap-3">
-                  <Icon className="w-4 h-4 shrink-0" />
-                  <span>{item.label}</span>
-                </div>
-                {item.badge && (
-                  <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-secondary text-muted-foreground border border-border">
-                    {item.badge}
-                  </span>
-                )}
+                <Icon className="w-[18px] h-[18px] shrink-0" />
+                <span className="whitespace-nowrap lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-200">
+                  {item.label}
+                </span>
               </NavLink>
             )
           })}
         </nav>
 
-        {/* Footer Info */}
-        <div className="p-4 border-t border-border space-y-3">
-          <div className="p-3 rounded-lg bg-secondary/50 border border-border/60 text-[11px] text-muted-foreground space-y-1">
-            <span className="font-medium text-foreground block">Hackathon 2026</span>
-            <p className="text-muted-foreground/80 leading-snug">
-              Track A: Multi-Target Cardiovascular Risk & Anatomical Prediction.
-            </p>
-          </div>
-
-          <div className="flex items-center justify-between text-[11px] text-muted-foreground/70 px-1">
-            <span>Locked Models: 4</span>
-            <span className="font-mono">API v1.0.0</span>
-          </div>
+        {/* Footer */}
+        <div className="p-2 border-t border-border/30 flex items-center justify-center lg:group-hover:justify-between overflow-hidden">
+          <span className="text-[10px] text-muted-foreground/50 font-mono hidden lg:group-hover:inline whitespace-nowrap">
+            Decision Support
+          </span>
+          <span className="text-[10px] text-muted-foreground/40 font-mono">
+            v1.0
+          </span>
         </div>
       </aside>
     </>

@@ -1,6 +1,6 @@
 """
 CoroVista Backend - Explanation Service
-Stage 4: FastAPI Backend + Prediction/Explainability API
+Patient-Level SHAP Feature Attribution Orchestration
 """
 
 from typing import Any, Dict

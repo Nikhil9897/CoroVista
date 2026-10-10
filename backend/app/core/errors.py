@@ -1,6 +1,6 @@
 """
 CoroVista Backend - Standard Error Definitions & Exception Handlers
-Stage 4: FastAPI Backend + Prediction/Explainability API
+Production Uniform Error Envelopes
 """
 
 from typing import Any, List, Optional

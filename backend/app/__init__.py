@@ -1,6 +1,6 @@
 """
 CoroVista Backend Package
-Stage 4: FastAPI Backend + Prediction/Explainability API
+FastAPI REST API & Services
 """
 from backend.app.main import app, create_app
 

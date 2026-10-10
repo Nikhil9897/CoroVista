@@ -1,5 +1,5 @@
 """
-CoroVista - Unit & Pipeline Tests for Stage 2 Machine Learning Suite
+CoroVista - Unit & Pipeline Tests for Machine Learning Training Suite
 
 Covers:
 1. Target separation & automated leakage assertion failure

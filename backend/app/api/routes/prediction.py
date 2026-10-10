@@ -1,6 +1,6 @@
 """
 CoroVista Backend - Prediction & Patient Analysis Routes
-Stage 4: FastAPI Backend + Prediction/Explainability API
+Multi-Target Inference Endpoints
 """
 
 from fastapi import APIRouter

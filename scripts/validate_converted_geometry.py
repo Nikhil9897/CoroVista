@@ -1,5 +1,5 @@
 """
-CoroVista — Stage 5B.2: Geometry Validation Script
+CoroVista — Anatomical Mesh Geometry Validation Script
 Rigorously verifies:
 1. All expected GLB meshes exist and load successfully.
 2. Coordinate systems and bounding boxes match source OBJs.

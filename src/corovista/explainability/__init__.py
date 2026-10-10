@@ -1,6 +1,6 @@
 """
 CoroVista Explainability Package
-Stage 3: Inference Verification & Explainability
+Model Interpretability & SHAP Feature Attribution
 """
 
 from src.corovista.explainability.explainers import (

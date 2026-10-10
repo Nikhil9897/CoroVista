@@ -1,6 +1,6 @@
 """
 CoroVista Backend - Application Configuration
-Stage 4: FastAPI Backend + Prediction/Explainability API
+FastAPI Settings & Environment Registry
 """
 
 import os

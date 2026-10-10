@@ -148,7 +148,7 @@ const MOCK_ANALYSIS_2: AnalysisResponse = {
   },
 }
 
-describe("Stage 5C: Interactive Patient Simulator", () => {
+describe("Interactive Patient Simulator", () => {
   beforeEach(() => {
     vi.restoreAllMocks()
   })

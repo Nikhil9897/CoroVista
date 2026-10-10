@@ -1,6 +1,6 @@
 """
 CoroVista Backend - Health Route
-Stage 4: FastAPI Backend + Prediction/Explainability API
+Service Health & Readiness Endpoint
 """
 
 from fastapi import APIRouter, Response, status

@@ -1,5 +1,5 @@
 """
-CoroVista - Stage 3 Inference Unit & Integration Tests
+CoroVista - Multi-Target Inference Unit & Integration Tests
 
 Tests:
 1. Model loading & pipeline integrity

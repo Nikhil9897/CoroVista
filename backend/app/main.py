@@ -1,6 +1,6 @@
 """
 CoroVista Backend - FastAPI Application Entry Point
-Stage 4: FastAPI Backend + Prediction/Explainability API
+Production REST Service for Multi-Target Prediction & Explainability
 """
 
 import logging

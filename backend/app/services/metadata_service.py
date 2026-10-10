@@ -1,6 +1,6 @@
 """
 CoroVista Backend - Metadata Service
-Stage 4: FastAPI Backend + Prediction/Explainability API
+Feature & Model Registry Metadata Provider
 """
 
 from typing import Any, Dict, List, Optional

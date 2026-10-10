@@ -1,5 +1,5 @@
 # CoroVista — Clinical Explainability & Model Interpretability Documentation
-**Multimodal AI Hackathon 2026 — Track A: Cardiovascular Risk Visualization & Prediction**
+**Cardiovascular Risk Visualization & Multi-Target Decision Support**
 
 > [!CAUTION]
 > **Clinical Safety & Interpretability Disclaimer**  
@@ -21,7 +21,7 @@ CoroVista incorporates **SHAP** based on cooperative game theory (Shapley values
 
 ## 2. Models Explained & Explainer Implementations
 
-The four final locked models from Stage 2 are explained using tailored, mathematically exact explainers:
+The four production models are explained using tailored, mathematically exact explainers:
 
 | Target | Clinical Endpoint | Underlying Model Architecture | Explainer Strategy | Explanation Space |
 |---|---|---|---|---|

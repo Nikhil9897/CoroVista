@@ -1,6 +1,6 @@
 """
 CoroVista - Model Pipeline & Metadata Loader Service
-Stage 3: Inference Verification & Explainability
+Cached Model Artifacts & Metadata Provider
 
 Manages cached loading and validation of serialized model artifacts:
 - CAD: models/cad/

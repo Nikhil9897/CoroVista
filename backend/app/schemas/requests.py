@@ -1,6 +1,6 @@
 """
 CoroVista Backend - Request Schemas
-Stage 4: FastAPI Backend + Prediction/Explainability API
+Pydantic Validation & Leakage Prevention Contracts
 """
 
 from typing import Any, Dict

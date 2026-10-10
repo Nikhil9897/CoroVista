@@ -35,14 +35,11 @@ export const CoronaryVesselMesh: React.FC<CoronaryVesselMeshProps> = ({
   const material = useMemo(() => {
     return new THREE.MeshStandardMaterial({
       color: new THREE.Color(hex),
-      roughness: 0.32,
-      metalness: 0.18,
-      emissive: isSelected
-        ? new THREE.Color(hex)
-        : isHovered
-        ? new THREE.Color(hex)
-        : new THREE.Color(0x000000),
-      emissiveIntensity: isSelected ? 0.55 : isHovered ? 0.35 : 0.0,
+      roughness: 0.20,
+      metalness: 0.22,
+      emissive: new THREE.Color(hex),
+      emissiveIntensity: isSelected ? 0.65 : isHovered ? 0.45 : 0.16,
+      depthWrite: true,
       side: THREE.DoubleSide,
     })
   }, [hex, isSelected, isHovered])

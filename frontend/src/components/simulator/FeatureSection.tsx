@@ -69,7 +69,7 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
 
   return (
     <div
-      className="border border-border/80 bg-card rounded-xl overflow-hidden shadow-xs transition-colors"
+      className="border border-border/70 glass-panel rounded-2xl overflow-hidden shadow-spatial-sm transition-all"
       role="region"
       aria-labelledby={`section-heading-${category.replace(/[\s/]+/g, "-")}`}
     >
@@ -78,23 +78,23 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
         type="button"
         onClick={handleToggle}
         aria-expanded={isOpen}
-        className="w-full px-4 py-3.5 flex items-center justify-between text-left hover:bg-muted/30 transition-colors cursor-pointer border-b border-border/40"
+        className="w-full px-4 py-3.5 flex items-center justify-between text-left hover:bg-surface-2/60 transition-colors cursor-pointer border-b border-border/40 select-none"
       >
         <div className="flex items-center gap-2.5">
-          <div className="w-7 h-7 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center">
+          <div className="w-8 h-8 rounded-xl bg-surface-2 border border-border/60 flex items-center justify-center shadow-xs">
             {renderIcon()}
           </div>
           <div>
             <h3
               id={`section-heading-${category.replace(/[\s/]+/g, "-")}`}
-              className="text-sm font-semibold text-foreground flex items-center gap-2"
+              className="text-sm font-semibold text-foreground flex items-center gap-2 tracking-tight"
             >
               <span>{meta.title}</span>
-              <span className="text-[11px] font-mono font-normal text-muted-foreground bg-secondary px-2 py-0.2 rounded-full border border-border/50">
+              <span className="text-[10px] font-mono font-medium text-muted-foreground bg-surface-2 px-2 py-0.5 rounded-full border border-border/50">
                 {features.length} features
               </span>
               {sectionErrors > 0 && (
-                <span className="text-[10px] font-medium text-destructive bg-destructive/10 px-1.5 py-0.5 rounded border border-destructive/30">
+                <span className="text-[10px] font-medium text-rose-400 bg-rose-500/15 px-1.5 py-0.5 rounded-md border border-rose-500/30">
                   {sectionErrors} invalid
                 </span>
               )}
@@ -105,13 +105,13 @@ export const FeatureSection: React.FC<FeatureSectionProps> = ({
           </div>
         </div>
 
-        <div className="text-muted-foreground">
+        <div className="text-muted-foreground p-1 rounded-lg hover:bg-surface-3 transition-colors">
           {isOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
         </div>
       </button>
 
-      {/* Grid of Inputs (2-column layout to prevent clipping) */}
-      <div className={isOpen ? "p-3.5 grid grid-cols-1 sm:grid-cols-2 gap-2.5 bg-card/40" : "hidden"}>
+      {/* Grid of Inputs */}
+      <div className={isOpen ? "p-3.5 grid grid-cols-1 sm:grid-cols-2 gap-2.5 bg-surface-0/40" : "hidden"}>
         {features.map((feat) => (
           <ClinicalInput
             key={feat.machine_name}

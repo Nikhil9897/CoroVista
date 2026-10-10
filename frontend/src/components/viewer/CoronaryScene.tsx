@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react"
 import { useGLTF, OrbitControls } from "@react-three/drei"
+import { useFrame } from "@react-three/fiber"
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib"
 import * as THREE from "three"
 import type {
@@ -27,6 +28,15 @@ const OFFSET_X = -20.1
 const OFFSET_Y = 124.14
 const OFFSET_Z = -1236.43
 
+// Optimal camera positions at ~96mm distance for ideal 70% viewport fill
+const PRESET_POSITIONS: Record<ViewPreset, [number, number, number]> = {
+  ap: [0, -6, 96],
+  rao: [-54, -6, 78],
+  lao: [68, -6, 68],
+  posterior: [0, -6, -96],
+  reset: [0, -6, 96],
+}
+
 export const CoronaryScene: React.FC<CoronarySceneProps> = ({
   predictions,
   selectedTarget,
@@ -36,30 +46,30 @@ export const CoronaryScene: React.FC<CoronarySceneProps> = ({
   onHoverVessel,
 }) => {
   const controlsRef = useRef<OrbitControlsImpl>(null)
+  const targetCamPos = useRef<THREE.Vector3 | null>(null)
 
   // Load the pre-processed master scene GLB
   const gltf = useGLTF("/models/corovista_heart.glb")
 
-  // Camera preset handler
+  // Camera preset trigger sets smooth interpolation target
   useEffect(() => {
     if (!presetTrigger || !controlsRef.current) return
+    const pos = PRESET_POSITIONS[presetTrigger.preset] || PRESET_POSITIONS.ap
+    targetCamPos.current = new THREE.Vector3(...pos)
+  }, [presetTrigger])
 
+  // Smooth camera flight on preset change
+  useFrame((_, delta) => {
+    if (!targetCamPos.current || !controlsRef.current) return
     const controls = controlsRef.current
     const camera = controls.object as THREE.PerspectiveCamera
-
-    const presetPositions: Record<ViewPreset, [number, number, number]> = {
-      ap: [0, -6, 138],
-      rao: [-72, -6, 118],
-      lao: [96, -6, 96],
-      posterior: [0, -6, -138],
-      reset: [0, -6, 138],
-    }
-
-    const targetPos = presetPositions[presetTrigger.preset] || [0, -6, 138]
-    camera.position.set(...targetPos)
-    controls.target.set(0, 0, 0)
+    camera.position.lerp(targetCamPos.current, Math.min(1, delta * 5))
+    controls.target.set(0, -6, 0)
     controls.update()
-  }, [presetTrigger])
+    if (camera.position.distanceTo(targetCamPos.current) < 0.2) {
+      targetCamPos.current = null
+    }
+  })
 
   // Extract geometries from loaded nodes
   const nodes = gltf.nodes as Record<string, THREE.Mesh>
@@ -75,20 +85,21 @@ export const CoronaryScene: React.FC<CoronarySceneProps> = ({
         ref={controlsRef}
         enableDamping
         dampingFactor={0.08}
-        minDistance={45}
-        maxDistance={320}
-        target={[0, 0, 0]}
+        minDistance={40}
+        maxDistance={220}
+        target={[0, -6, 0]}
         rotateSpeed={0.8}
         zoomSpeed={0.9}
         panSpeed={0.7}
       />
 
-      {/* Anatomical Studio Lighting */}
-      <ambientLight intensity={0.9} />
-      <directionalLight position={[60, 90, 100]} intensity={1.3} castShadow={false} />
-      <directionalLight position={[-60, 30, 80]} intensity={0.8} />
-      <directionalLight position={[0, 40, -100]} intensity={1.1} /> {/* Rim light for LCX */}
-      <directionalLight position={[0, -80, 40]} intensity={0.4} /> {/* Under light for apex */}
+      {/* Atmospheric Anatomical Studio Lighting */}
+      <ambientLight intensity={1.2} color="#e0f2fe" />
+      <directionalLight position={[70, 80, 90]} intensity={1.8} color="#ffffff" />
+      <directionalLight position={[-70, 30, 70]} intensity={1.1} color="#bae6fd" />
+      <directionalLight position={[0, 45, -90]} intensity={1.5} color="#38bdf8" />
+      <directionalLight position={[0, -90, 40]} intensity={0.6} color="#60a5fa" />
+      <hemisphereLight args={["#dbeafe", "#0f172a", 0.6]} />
 
       {/* Coordinate transformation group: centers heart at (0, 0, 0) and orients AP face forward */}
       <group rotation={[-Math.PI / 2, 0, 0]}>

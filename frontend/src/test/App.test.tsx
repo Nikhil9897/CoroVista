@@ -105,7 +105,7 @@ describe("Application Shell & Navigation", () => {
     fireEvent.click(aboutLink)
 
     expect(
-      screen.getByText(/Multimodal AI Hackathon 2026 • Track A/i)
+      screen.getByText(/Cardiovascular Risk Visualization & Multi-Target Stenosis Prediction System/i)
     ).toBeInTheDocument()
     expect(
       screen.getByText(/Cath \(Overall CAD\): XGBoost \+ Platt Sigmoid/i)

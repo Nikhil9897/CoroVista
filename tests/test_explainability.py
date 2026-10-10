@@ -1,5 +1,5 @@
 """
-CoroVista - Stage 3 SHAP Explainability Unit & Integration Tests
+CoroVista - SHAP Explainability Unit & Integration Tests
 
 Tests:
 1. Explainer initialization across all 4 targets (Cath, LAD, LCX, RCA)

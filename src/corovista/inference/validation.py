@@ -1,6 +1,6 @@
 """
 CoroVista - Input Feature Validation & Normalization Service
-Stage 3: Inference Verification & Explainability
+Leak-Safe Preprocessing & Categorical Cleaning Contracts
 
 Validates patient input records before inference:
 1. Target Leakage Prevention: Strictly rejects 'Cath', 'LAD', 'LCX', 'RCA'.

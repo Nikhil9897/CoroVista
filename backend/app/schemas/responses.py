@@ -1,6 +1,6 @@
 """
 CoroVista Backend - Response Schemas
-Stage 4: FastAPI Backend + Prediction/Explainability API
+Pydantic Response Envelopes & Serialization Schemas
 """
 
 from typing import Any, Dict, List, Optional

@@ -10,7 +10,7 @@ export const DisclaimerBanner: React.FC<DisclaimerBannerProps> = ({ compact = fa
   if (compact) {
     return (
       <div
-        className={`flex items-center gap-2 px-3 py-1.5 text-xs text-muted-foreground bg-muted/40 border border-border/50 rounded-md ${className}`}
+        className={`flex items-center gap-2 px-3 py-1.5 text-xs text-muted-foreground bg-surface-2 border border-border/50 rounded-xl ${className}`}
         role="note"
         aria-label="Clinical Decision Support Notice"
       >
@@ -24,12 +24,12 @@ export const DisclaimerBanner: React.FC<DisclaimerBannerProps> = ({ compact = fa
 
   return (
     <div
-      className={`border border-border/80 bg-card/60 backdrop-blur-sm rounded-lg p-3.5 text-xs text-muted-foreground shadow-sm ${className}`}
+      className={`glass-panel border border-border/70 rounded-2xl p-4 text-xs text-muted-foreground shadow-spatial select-none ${className}`}
       role="region"
       aria-label="Regulatory and Clinical Disclaimer"
     >
       <div className="flex items-start gap-3">
-        <AlertTriangle className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
+        <AlertTriangle className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
         <div className="space-y-1">
           <p className="leading-relaxed">
             <strong className="text-foreground/90 font-semibold">Educational & Decision-Support Prototype Only:</strong> Model predictions are not a formal clinical diagnosis and do not replace professional medical judgment, invasive coronary catheterization, or diagnostic imaging.

@@ -22,7 +22,7 @@ export const AnatomyPlaceholder: React.FC<AnatomyPlaceholderProps> = ({ classNam
 
         <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-secondary text-muted-foreground border border-border/60 mb-2">
           <Sparkles className="w-3 h-3 text-primary" />
-          <span>Stage 5B Module Interface</span>
+          <span>3D Digital Twin Module</span>
         </div>
 
         <h4 className="text-base font-semibold text-foreground mb-1">

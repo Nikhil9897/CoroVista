@@ -1,18 +1,18 @@
 # CoroVista — System Architecture
 
-**Track A: Cardiovascular Risk Visualization & Multi-Target Prediction**
+**Clinical Decision Support & Anatomical Digital Twin System**
 
 ---
 
 ## 1. System Overview & Architecture Diagram
 
-CoroVista is architected as a modular, decoupled web-based clinical decision support prototype:
+CoroVista is architected as a modular, decoupled web-based clinical decision support system:
 
 ```
 +-------------------------------------------------------------------+
-|                     React Frontend (Future)                       |
-|  - Interactive 3D Coronary Anatomy (Three.js)                     |
-|  - Patient Clinical Simulator Controls                            |
+|                    React Frontend Application                     |
+|  - Interactive 3D Coronary Anatomy (Three.js / React Three Fiber) |
+|  - Patient Clinical Simulator Controls (54 Real-Time Parameters)  |
 |  - Local SHAP Waterfall / Feature Impact Cards                    |
 +-------------------------------------------------------------------+
                                   |
@@ -82,7 +82,7 @@ CoroVista is architected as a modular, decoupled web-based clinical decision sup
 * **Human Feature Mapping**: Automatically translates internal pipeline names (e.g., `EF-TTE`, `Tinversion`, `Region RWMA`) to human-readable clinical labels.
 
 ### 2.4 Model Artifact Tier (`models/`)
-* **Lock State**: Serialized in Stage 2; locked and unchanged.
+* **Lock State**: Serialized production pipelines locked and versioned.
 * **Memory Management**: Cached upon service startup via thread-safe singleton loader; never reloaded per request.
 
 ---

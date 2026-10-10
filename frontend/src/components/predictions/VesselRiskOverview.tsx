@@ -28,7 +28,7 @@ export const VesselRiskOverview: React.FC<VesselRiskOverviewProps> = ({
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-2.5">
         {vessels.map((v) => (
           <VesselRiskCard
             key={v}

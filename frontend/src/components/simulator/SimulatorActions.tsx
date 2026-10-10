@@ -24,7 +24,7 @@ export const SimulatorActions: React.FC<SimulatorActionsProps> = ({
 }) => {
   return (
     <div
-      className="p-4 rounded-xl border border-border/80 bg-card/90 backdrop-blur-md shadow-sm space-y-3"
+      className="p-4 rounded-2xl glass-panel shadow-spatial border border-border/70 space-y-3 select-none"
       role="region"
       aria-label="Simulator Action Toolbar"
     >
@@ -35,7 +35,7 @@ export const SimulatorActions: React.FC<SimulatorActionsProps> = ({
             type="button"
             onClick={onAnalyze}
             disabled={isLoading}
-            className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold transition-all shadow-md cursor-pointer ${
+            className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all shadow-spatial-sm cursor-pointer ${
               isLoading
                 ? "bg-primary/70 text-primary-foreground cursor-not-allowed"
                 : "bg-primary hover:bg-primary/90 text-primary-foreground hover:shadow-primary/25 hover:shadow-lg active:scale-[0.98]"
@@ -55,14 +55,14 @@ export const SimulatorActions: React.FC<SimulatorActionsProps> = ({
           </button>
 
           {isDirty && hasResults && !isLoading && (
-            <span className="inline-flex items-center gap-1 text-[11px] font-medium text-amber-500 bg-amber-500/10 px-2.5 py-1 rounded-md border border-amber-500/20">
+            <span className="inline-flex items-center gap-1 text-[11px] font-medium text-amber-400 bg-amber-500/15 px-2.5 py-1 rounded-md border border-amber-500/30">
               <Sparkles className="w-3 h-3" />
               <span>Unsent changes in form</span>
             </span>
           )}
 
           {hasErrors && (
-            <span className="inline-flex items-center gap-1 text-[11px] font-medium text-destructive bg-destructive/10 px-2 py-1 rounded-md border border-destructive/20">
+            <span className="inline-flex items-center gap-1 text-[11px] font-medium text-rose-400 bg-rose-500/15 px-2 py-1 rounded-md border border-rose-500/30">
               <AlertCircle className="w-3 h-3" />
               <span>Resolve validation errors before submitting</span>
             </span>
@@ -76,7 +76,7 @@ export const SimulatorActions: React.FC<SimulatorActionsProps> = ({
               type="button"
               onClick={onLoadDemo}
               disabled={isLoading}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-secondary hover:bg-secondary/80 text-foreground border border-border/70 transition-colors cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-surface-2 hover:bg-surface-3 text-foreground border border-border/60 transition-colors cursor-pointer"
               title="Load standard synthetic demo patient"
             >
               <RotateCcw className="w-3.5 h-3.5" />
@@ -88,7 +88,7 @@ export const SimulatorActions: React.FC<SimulatorActionsProps> = ({
             type="button"
             onClick={onResetDemo}
             disabled={isLoading}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-secondary hover:bg-secondary/80 text-foreground border border-border/70 transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-surface-2 hover:bg-surface-3 text-foreground border border-border/60 transition-colors cursor-pointer"
             title="Restore standard 62yo male synthetic demo profile"
           >
             <RotateCcw className="w-3.5 h-3.5" />
@@ -100,7 +100,7 @@ export const SimulatorActions: React.FC<SimulatorActionsProps> = ({
               type="button"
               onClick={onClearForm}
               disabled={isLoading}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-muted-foreground hover:text-destructive hover:bg-destructive/10 border border-transparent hover:border-destructive/30 transition-colors cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-muted-foreground hover:text-rose-400 hover:bg-rose-500/10 border border-transparent hover:border-rose-500/30 transition-colors cursor-pointer"
               title="Clear all form fields"
             >
               <Trash2 className="w-3.5 h-3.5" />
@@ -111,11 +111,11 @@ export const SimulatorActions: React.FC<SimulatorActionsProps> = ({
       </div>
 
       {/* Synthetic Disclaimer Tag */}
-      <div className="pt-2 border-t border-border/50 flex flex-wrap items-center justify-between gap-2 text-[11px] text-muted-foreground">
+      <div className="pt-2 border-t border-border/40 flex flex-wrap items-center justify-between gap-2 text-[11px] text-muted-foreground">
         <span className="font-medium text-foreground/85">
           Demo / synthetic patient — not a real patient record.
         </span>
-        <span className="bg-secondary/80 px-2 py-0.5 rounded text-[10px] font-mono border border-border/60">
+        <span className="bg-surface-2 px-2 py-0.5 rounded-md text-[10px] font-mono border border-border/50">
           Source: Z-Alizadeh Sani Feature Specification
         </span>
       </div>

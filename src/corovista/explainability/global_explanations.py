@@ -1,6 +1,6 @@
 """
 CoroVista - Global Cohort SHAP Explanations & Report Generation
-Stage 3: Inference Verification & Explainability
+Population-Level Feature Importance Service
 
 Computes population-level global feature importance for each target:
 - Mean absolute SHAP values across all 303 cohort patients

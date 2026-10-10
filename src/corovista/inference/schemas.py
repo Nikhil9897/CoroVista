@@ -1,6 +1,6 @@
 """
 CoroVista - Inference Data Contracts & Schemas
-Stage 3: Inference Verification & Explainability
+Core Inference Types & Threshold Contracts
 
 Defines standardized data contracts for multi-target patient inference:
 - Overall CAD (Cath): CAD vs Normal

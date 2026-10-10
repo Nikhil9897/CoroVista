@@ -1,6 +1,6 @@
 # CoroVista — BodyParts3D Anatomy Asset Inventory & Discovery Report
 
-**Stage 5B.1: Anatomical Mesh Discovery & Verification**  
+**Anatomical Mesh Discovery & Verification**  
 **Asset Source**: `OBJ Files` (BodyParts3D, FMA Ontology)  
 **Total Assets Discovered**: 129 OBJ Files  
 
@@ -173,10 +173,10 @@ To provide proper anatomical perspective without visual clutter:
 
 ---
 
-## 6. Recommendations for Stage 5B Implementation
+## 6. Recommendations for 3D Anatomy Implementation
 
 1. **Pre-Processing / Grouping Strategy**:
-   * In Stage 5B, assemble the three vessel trunks as logical Three.js `Group` or merged geometries:
+   * Assemble the three vessel trunks as logical Three.js `Group` or merged geometries:
      * `LAD Group`: `MM420` + `MM424` + `MM425`
      * `LCX Group`: `MM426` + `MM635`
      * `RCA Group`: `MM556` + `MM436` + `MM439`

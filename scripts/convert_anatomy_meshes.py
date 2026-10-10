@@ -1,5 +1,5 @@
 """
-CoroVista — Stage 5B.2: Anatomical Mesh Conversion Pipeline
+CoroVista — Anatomical Mesh Conversion Pipeline
 Converts selected BodyParts3D OBJ assets into standardized, coordinate-aligned GLB files.
 Preserves all source assets in 'OBJ Files/' without modification.
 """
@@ -11,7 +11,7 @@ import shutil
 import trimesh
 import numpy as np
 
-# Locked anatomical mapping from Stage 5B.1
+# Verified anatomical mapping for coronary artery branches and heart structures
 LOCKED_SELECTION = {
     "vessels": {
         "vessel_lad": {
@@ -102,7 +102,7 @@ def convert_assets():
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     os.makedirs(FRONTEND_MODELS_DIR, exist_ok=True)
 
-    print("=== CoroVista Stage 5B.2: Converting BodyParts3D Meshes ===")
+    print("=== CoroVista: Converting BodyParts3D Meshes ===")
 
     manifest = {
         "metadata": {

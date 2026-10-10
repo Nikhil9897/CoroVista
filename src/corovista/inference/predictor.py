@@ -1,6 +1,6 @@
 """
 CoroVista - Multi-Target Predictor Engine
-Stage 3: Inference Verification & Explainability
+Deterministic Inference Pipeline Execution
 
 Executes deterministic multi-target inference on validated patient data:
 - Evaluates Cath, LAD, LCX, RCA pipelines independently.

@@ -1,6 +1,6 @@
 """
 CoroVista - Feature Mapping & Human-Readable Metadata
-Stage 3: Inference Verification & Explainability
+Clinical Nomenclature & Unit Translation Service
 
 Maps pipeline transformed feature names (e.g., 'BBB_RBBB', 'VHD_Moderate', 'Typical Chest Pain')
 to human-readable clinical labels, unit descriptions, and category metadata suitable

@@ -1,6 +1,6 @@
 # CoroVista — Backend API Contract & Specification
 
-**Stage 4: FastAPI Backend + Multi-Target Prediction & Explainability API**  
+**FastAPI Backend + Multi-Target Prediction & Explainability API**  
 **Version**: 1.0.0  
 **Base URL**: `/api/v1`
 
@@ -8,7 +8,7 @@
 
 ## 1. Overview & System Boundary
 
-CoroVista provides a stateless, high-throughput REST API that bridges clinical features from the future Patient Simulator / UI to the serialized Stage 2 machine learning models. 
+CoroVista provides a stateless, high-throughput REST API that bridges clinical features from the Patient Simulator and Clinical Dashboard to the serialized machine learning models. 
 
 ### Key Design Principles:
 1. **Strict Separation of Probability vs. Classification**:

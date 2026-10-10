@@ -1,6 +1,6 @@
 """
 CoroVista Backend - Metadata Routes
-Stage 4: FastAPI Backend + Prediction/Explainability API
+Features & Model Architecture Endpoints
 """
 
 from fastapi import APIRouter

@@ -1,6 +1,6 @@
 """
 CoroVista - Patient-Level SHAP Explanation Service
-Stage 3: Inference Verification & Explainability
+Patient Risk Attribution in Log-Odds Space
 
 Generates structured, human-interpretable patient explanations for any of the four targets:
 - Top positive contributors (factors elevating risk)

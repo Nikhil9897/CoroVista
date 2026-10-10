@@ -1,6 +1,6 @@
 """
-CoroVista - Stage 2 Benchmark Orchestrator & Visualization Generator
-Multimodal AI Hackathon 2026 — Track A
+CoroVista - Model Benchmark Orchestrator & Visualization Generator
+Multi-Target Evaluation & Calibration Suite
 
 Executes the complete Stage 2 experimentation suite:
 1. Repeated Stratified K-Fold (5 folds x 5 repeats = 25 runs) across all 4 targets:
@@ -49,7 +49,7 @@ def generate_evaluation_plots(
     benchmarks: Dict[str, Any],
     output_dir: Path,
 ) -> None:
-    """Generates publication-quality diagnostic plots for hackathon documentation."""
+    """Generates publication-quality diagnostic plots for model evaluation and documentation."""
     output_dir.mkdir(parents=True, exist_ok=True)
     plt.style.use("seaborn-v0_8-whitegrid" if "seaborn-v0_8-whitegrid" in plt.style.available else "default")
 

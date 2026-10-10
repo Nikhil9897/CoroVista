@@ -1,5 +1,5 @@
 """
-Tests for Stage 5B.2 geometry conversion and manifest verification.
+Tests for 3D coronary anatomy geometry conversion and manifest verification.
 """
 
 import os

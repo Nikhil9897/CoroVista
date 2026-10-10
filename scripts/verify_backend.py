@@ -1,5 +1,5 @@
 """
-CoroVista - Stage 4 Backend Verification Script
+CoroVista - Backend Verification Script
 Verifies all FastAPI REST endpoints, schema validation, and error envelopes.
 """
 
@@ -26,7 +26,7 @@ RAW_DATA_PATH = Path("data/raw/extention of Z-Alizadeh sani dataset.xlsx")
 
 def run_backend_verification():
     logger.info("========================================================")
-    logger.info("COROVISTA — STAGE 4 FASTAPI BACKEND VERIFICATION")
+    logger.info("COROVISTA — FASTAPI BACKEND CONTRACT VERIFICATION")
     logger.info("========================================================")
 
     client = TestClient(app)

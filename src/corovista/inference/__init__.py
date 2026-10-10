@@ -1,6 +1,6 @@
 """
 CoroVista Inference Package
-Stage 3: Inference Verification & Explainability
+Multi-Target Pipeline Predictor & Verification
 """
 
 from src.corovista.inference.loader import (

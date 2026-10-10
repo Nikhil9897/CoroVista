@@ -1,5 +1,5 @@
 """
-Unit and integration tests for CoroVista Dataset Audit (Stage 1).
+Unit and integration tests for CoroVista Dataset Audit & Schema Validation.
 
 Tests cover:
 - Dataset loading and sheet selection

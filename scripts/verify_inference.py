@@ -1,6 +1,6 @@
 """
-CoroVista - Stage 3 Inference & Explainability Verification Script
-Multimodal AI Hackathon 2026 — Track A
+CoroVista - Inference & Explainability Verification Script
+Production Pipeline Verification & SHAP Quality Checks
 
 Performs comprehensive verification:
 1. Loads all four final serialized models (Cath, LAD, LCX, RCA).

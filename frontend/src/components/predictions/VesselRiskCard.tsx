@@ -43,10 +43,10 @@ export const VesselRiskCard: React.FC<VesselRiskCardProps> = ({
   return (
     <div
       onClick={onSelect}
-      className={`border rounded-xl p-4 bg-card transition-all duration-200 cursor-pointer shadow-xs flex flex-col justify-between ${
+      className={`rounded-2xl p-4 transition-all duration-200 cursor-pointer flex flex-col justify-between select-none ${
         isSelected
-          ? "border-primary ring-2 ring-primary/60 bg-primary/5 shadow-md scale-[1.01]"
-          : "border-border/80 hover:border-border hover:bg-card/80"
+          ? "glass-panel-strong border-primary/80 ring-1 ring-primary/50 shadow-spatial scale-[1.01]"
+          : "glass-panel border-border/70 hover:border-border hover:bg-surface-2/70"
       } ${className}`}
       role="button"
       tabIndex={0}
@@ -63,19 +63,19 @@ export const VesselRiskCard: React.FC<VesselRiskCardProps> = ({
         <div className="flex items-start justify-between gap-1.5 mb-2.5">
           <div className="flex items-center gap-2">
             <div
-              className={`w-7 h-7 rounded-md flex items-center justify-center text-xs font-mono font-bold shrink-0 ${
+              className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs font-mono font-bold shrink-0 ${
                 isPositive
-                  ? "bg-rose-950/60 text-rose-300 border border-rose-800/70"
-                  : "bg-secondary text-foreground border border-border"
+                  ? "bg-rose-500/20 text-rose-300 border border-rose-500/40"
+                  : "bg-surface-3 text-foreground/90 border border-border/60"
               }`}
             >
               {meta.short}
             </div>
             <div className="min-w-0">
               <div className="flex items-center gap-1.5">
-                <h4 className="text-sm font-semibold text-foreground leading-tight">{meta.short}</h4>
+                <h4 className="text-sm font-semibold text-foreground leading-tight tracking-tight">{meta.short}</h4>
                 {isSelected && (
-                  <span className="text-[9px] font-mono font-medium px-1.5 py-0.2 rounded bg-primary/20 text-primary border border-primary/30">
+                  <span className="text-[9px] font-mono font-medium px-1.5 py-0.2 rounded bg-primary/20 text-primary border border-primary/40">
                     Selected
                   </span>
                 )}
@@ -97,16 +97,16 @@ export const VesselRiskCard: React.FC<VesselRiskCardProps> = ({
           <span
             className={`text-[10px] font-mono px-1.5 py-0.5 rounded border ${
               isPositive
-                ? "bg-rose-500/10 text-rose-500 border-rose-500/20"
-                : "bg-emerald-500/10 text-emerald-500 border-emerald-500/20"
+                ? "bg-rose-500/15 text-rose-400 border-rose-500/30"
+                : "bg-emerald-500/15 text-emerald-400 border-emerald-500/30"
             }`}
           >
-            {isPositive ? "&ge; cutoff" : "< cutoff"}
+            {isPositive ? "≥ cutoff" : "< cutoff"}
           </span>
         </div>
       </div>
 
-      <div className="space-y-2 pt-2 border-t border-border/50">
+      <div className="space-y-2 pt-2 border-t border-border/40">
         <RiskBar
           probability={prediction.probability}
           threshold={prediction.threshold}
@@ -116,7 +116,7 @@ export const VesselRiskCard: React.FC<VesselRiskCardProps> = ({
           <span className="truncate leading-tight" title={meta.territory}>
             {meta.territory}
           </span>
-          <span className="font-mono text-foreground/80 font-medium shrink-0 bg-secondary/70 px-1.5 py-0.5 rounded border border-border/40">
+          <span className="font-mono text-foreground/80 font-medium shrink-0 bg-surface-2 px-1.5 py-0.5 rounded-md border border-border/40">
             Cutoff: {formatPercent(prediction.threshold)}
           </span>
         </div>

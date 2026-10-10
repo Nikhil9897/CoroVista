@@ -1,6 +1,6 @@
 """
 CoroVista - SHAP Explainer Engine
-Stage 3: Inference Verification & Explainability
+Exact TreeSHAP & LinearSHAP Attributions
 
 Provides exact, robust SHAP explanation generators for all four final models:
 - Cath (XGBoost + CalibratedClassifierCV): Exact Tree SHAP in log-odds space,

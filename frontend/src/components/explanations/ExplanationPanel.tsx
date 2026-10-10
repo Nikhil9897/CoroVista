@@ -29,18 +29,18 @@ export const ExplanationPanel: React.FC<ExplanationPanelProps> = ({
 
   return (
     <div
-      className={`border border-border/80 bg-card rounded-xl p-5 shadow-sm space-y-5 ${className}`}
+      className={`glass-panel rounded-2xl p-5 sm:p-6 shadow-spatial border border-border/70 space-y-5 select-none ${className}`}
       role="region"
       aria-label="SHAP Explainability Section"
     >
       {/* Header and target selector tabs */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-border/50 pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-border/40 pb-4">
         <div>
           <div className="flex items-center gap-2">
-            <h3 className="text-base font-semibold text-foreground">
+            <h3 className="text-base font-semibold text-foreground tracking-tight">
               Why this prediction?
             </h3>
-            <span className="px-2 py-0.5 rounded text-[11px] font-mono bg-primary/10 text-primary border border-primary/20">
+            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-medium bg-primary/15 text-primary border border-primary/30">
               SHAP Log-Odds
             </span>
           </div>
@@ -50,14 +50,14 @@ export const ExplanationPanel: React.FC<ExplanationPanelProps> = ({
         </div>
 
         {/* Target Tabs */}
-        <div className="flex items-center gap-1 p-1 bg-secondary/80 rounded-lg border border-border/60 self-start sm:self-auto">
+        <div className="flex items-center gap-1 p-1 bg-surface-2 rounded-xl border border-border/60 self-start sm:self-auto">
           {targets.map((t) => (
             <button
               key={t}
               onClick={() => onSelectTarget(t)}
-              className={`px-3 py-1 text-xs font-medium rounded-md transition-all cursor-pointer ${
+              className={`px-3 py-1 text-xs font-mono font-medium rounded-lg transition-all cursor-pointer ${
                 selectedTarget === t
-                  ? "bg-card text-foreground shadow-sm border border-border/80"
+                  ? "bg-surface-3 text-foreground shadow-xs border border-border/80 font-semibold"
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >
@@ -68,7 +68,7 @@ export const ExplanationPanel: React.FC<ExplanationPanelProps> = ({
       </div>
 
       {/* Calibration Disclosure Notice */}
-      <div className="flex items-start gap-2.5 p-3 rounded-lg bg-secondary/40 border border-border/50 text-xs text-muted-foreground">
+      <div className="flex items-start gap-2.5 p-3 rounded-xl bg-surface-2/60 border border-border/50 text-xs text-muted-foreground">
         <Info className="w-4 h-4 text-primary shrink-0 mt-0.5" />
         <p className="leading-relaxed">
           <strong className="text-foreground/90 font-medium">Model Attribution Boundary:</strong>{" "}
@@ -78,7 +78,7 @@ export const ExplanationPanel: React.FC<ExplanationPanelProps> = ({
       </div>
 
       {/* Target Metadata Bar */}
-      <div className="flex items-center justify-between text-xs text-muted-foreground px-1">
+      <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground px-1">
         <span>Target: <strong className="text-foreground font-medium">{TARGET_DISPLAY_NAMES[selectedTarget]}</strong></span>
         <span>Base Score ($\phi_0$): <strong className="font-mono text-foreground">{currentExp?.base_value?.toFixed(3)}</strong></span>
         <span>Explanation Space: <strong className="font-mono text-foreground">{currentExp?.explanation_space}</strong></span>

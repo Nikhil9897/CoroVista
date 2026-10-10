@@ -24,15 +24,15 @@ export const ProbabilityComparison: React.FC<ProbabilityComparisonProps> = ({
 }) => {
   return (
     <div
-      className={`border border-border/80 bg-card rounded-xl p-5 shadow-sm space-y-4 ${className}`}
+      className={`glass-panel rounded-2xl p-5 shadow-spatial border border-border/70 space-y-4 select-none ${className}`}
       role="region"
       aria-label="Before and After Risk Probability Comparison"
     >
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border/50 pb-3">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border/40 pb-3">
         <div>
-          <h4 className="text-sm font-semibold text-foreground flex items-center gap-2">
+          <h4 className="text-sm font-semibold text-foreground flex items-center gap-2 tracking-tight">
             <span>Model Sensitivity Comparison</span>
-            <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-primary/10 text-primary border border-primary/20">
+            <span className="px-2 py-0.5 rounded-full text-[10px] font-mono bg-primary/15 text-primary border border-primary/30">
               Consecutive Simulation Runs
             </span>
           </h4>
@@ -55,10 +55,10 @@ export const ProbabilityComparison: React.FC<ProbabilityComparisonProps> = ({
           return (
             <div
               key={key}
-              className="p-3.5 rounded-lg bg-secondary/50 border border-border/60 flex flex-col justify-between space-y-2.5"
+              className="p-3.5 rounded-xl bg-surface-2/70 border border-border/60 flex flex-col justify-between space-y-2.5 shadow-xs"
             >
               <div>
-                <span className="text-xs font-semibold text-foreground block truncate">
+                <span className="text-xs font-semibold text-foreground block truncate tracking-tight">
                   {label}
                 </span>
                 <span className="text-[10px] text-muted-foreground block font-mono">
@@ -81,12 +81,12 @@ export const ProbabilityComparison: React.FC<ProbabilityComparisonProps> = ({
               <div className="pt-2 border-t border-border/40 flex items-center justify-between">
                 <span className="text-[10px] text-muted-foreground">Delta:</span>
                 <span
-                  className={`inline-flex items-center gap-1 text-[11px] font-mono font-semibold px-2 py-0.5 rounded ${
+                  className={`inline-flex items-center gap-1 text-[11px] font-mono font-semibold px-2 py-0.5 rounded-md ${
                     isIncrease
-                      ? "bg-rose-950/40 text-rose-300 border border-rose-800/60"
+                      ? "bg-rose-500/15 text-rose-400 border border-rose-500/30"
                       : isDecrease
-                      ? "bg-emerald-950/40 text-emerald-300 border border-emerald-800/60"
-                      : "bg-muted text-muted-foreground border border-border"
+                      ? "bg-emerald-500/15 text-emerald-400 border border-emerald-500/30"
+                      : "bg-surface-3 text-muted-foreground border border-border/50"
                   }`}
                 >
                   {isIncrease && <TrendingUp className="w-3 h-3" />}
@@ -105,7 +105,7 @@ export const ProbabilityComparison: React.FC<ProbabilityComparisonProps> = ({
 
       {/* Strict Clinical Non-Causality Caveat */}
       <div
-        className="flex items-start gap-2 text-[11px] text-muted-foreground bg-secondary/40 border border-border/50 p-2.5 rounded-lg leading-relaxed"
+        className="flex items-start gap-2 text-[11px] text-muted-foreground bg-surface-2/60 border border-border/50 p-2.5 rounded-xl leading-relaxed"
         role="note"
       >
         <Info className="w-3.5 h-3.5 text-primary shrink-0 mt-0.5" />

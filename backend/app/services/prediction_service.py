@@ -1,6 +1,6 @@
 """
 CoroVista Backend - Prediction Service
-Stage 4: FastAPI Backend + Prediction/Explainability API
+Multi-Target Inference Orchestration
 """
 
 from typing import Any, Dict
@@ -12,7 +12,7 @@ from src.corovista.inference.schemas import PatientInferenceResponse
 
 def get_patient_predictions(patient_data: Dict[str, Any]) -> PredictionResponse:
     """
-    Executes multi-target prediction using the Stage 3 verified inference engine.
+    Executes multi-target prediction using the verified inference engine.
 
     Parameters:
     -----------
