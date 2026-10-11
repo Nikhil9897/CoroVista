@@ -4,14 +4,15 @@
     "license": "CC BY-SA 2.1 Japan",
     "units": "millimeters",
     "coordinate_system": "Pre-aligned BodyParts3D / DICOM Space",
-    "total_selected_source_objs": 14
+    "total_selected_source_objs": 18,
+    "reconstruction_version": "2.1-cohesive-heart"
   },
   "groups": {
     "vessel_lad": {
       "name": "Left Anterior Descending Artery (LAD)",
-      "clinical_target": "LAD Stenosis",
-      "total_vertices": 1518,
-      "total_faces": 2658,
+      "role": "LAD Stenosis",
+      "total_vertices": 1335,
+      "total_faces": 2662,
       "bounds_min": [
         35.924,
         -166.257,
@@ -34,8 +35,8 @@
           "bp_id": "BP51969",
           "fma_id": "FMA74912",
           "source_file": "MM420_BP51969_FMA74912_Trunk of anterior interventricular branch of left coronary artery.obj",
-          "vertices": 397,
-          "faces": 642,
+          "vertices": 376,
+          "faces": 638,
           "bounds_min": [
             35.924,
             -138.093,
@@ -53,8 +54,8 @@
           "bp_id": "BP51969",
           "fma_id": "FMA74912",
           "source_file": "MM424_BP51969_FMA74912_Trunk of anterior interventricular branch of left coronary artery.obj",
-          "vertices": 610,
-          "faces": 1104,
+          "vertices": 598,
+          "faces": 1100,
           "bounds_min": [
             42.958,
             -153.5,
@@ -72,8 +73,8 @@
           "bp_id": "BP51969",
           "fma_id": "FMA74912",
           "source_file": "MM425_BP51969_FMA74912_Trunk of anterior interventricular branch of left coronary artery.obj",
-          "vertices": 511,
-          "faces": 912,
+          "vertices": 503,
+          "faces": 924,
           "bounds_min": [
             48.488,
             -166.257,
@@ -85,13 +86,14 @@
             1234.05
           ]
         }
-      ]
+      ],
+      "clinical_target": "LAD Stenosis"
     },
     "vessel_lcx": {
       "name": "Left Circumflex Artery (LCX)",
-      "clinical_target": "LCX Stenosis",
-      "total_vertices": 6614,
-      "total_faces": 13012,
+      "role": "LCX Stenosis",
+      "total_vertices": 6510,
+      "total_faces": 13005,
       "bounds_min": [
         12.226,
         -125.032,
@@ -114,8 +116,8 @@
           "bp_id": "BP51973",
           "fma_id": "FMA74923",
           "source_file": "MM426_BP51973_FMA74923_Trunk of circumflex branch of left coronary artery.obj",
-          "vertices": 434,
-          "faces": 764,
+          "vertices": 414,
+          "faces": 757,
           "bounds_min": [
             35.465,
             -125.032,
@@ -133,7 +135,7 @@
           "bp_id": "BP51973",
           "fma_id": "FMA74923",
           "source_file": "MM635_BP51973_FMA74923_Trunk of circumflex branch of left coronary artery.obj",
-          "vertices": 6180,
+          "vertices": 6167,
           "faces": 12248,
           "bounds_min": [
             12.226,
@@ -146,13 +148,14 @@
             1235.18
           ]
         }
-      ]
+      ],
+      "clinical_target": "LCX Stenosis"
     },
     "vessel_rca": {
       "name": "Right Coronary Artery (RCA)",
-      "clinical_target": "RCA Stenosis",
-      "total_vertices": 1813,
-      "total_faces": 3242,
+      "role": "RCA Stenosis",
+      "total_vertices": 1627,
+      "total_faces": 3218,
       "bounds_min": [
         -16.908,
         -154.235,
@@ -175,8 +178,8 @@
           "bp_id": "BP51977",
           "fma_id": "FMA3802",
           "source_file": "MM556_BP51977_FMA3802_Trunk of right coronary artery.obj",
-          "vertices": 576,
-          "faces": 1066,
+          "vertices": 567,
+          "faces": 1061,
           "bounds_min": [
             -10.716,
             -154.235,
@@ -194,8 +197,8 @@
           "bp_id": "BP51977",
           "fma_id": "FMA3802",
           "source_file": "MM436_BP51977_FMA3802_Trunk of right coronary artery.obj",
-          "vertices": 442,
-          "faces": 774,
+          "vertices": 422,
+          "faces": 766,
           "bounds_min": [
             -16.908,
             -154.171,
@@ -213,8 +216,8 @@
           "bp_id": "BP51977",
           "fma_id": "FMA3802",
           "source_file": "MM439_BP51977_FMA3802_Trunk of right coronary artery.obj",
-          "vertices": 795,
-          "faces": 1402,
+          "vertices": 754,
+          "faces": 1391,
           "bounds_min": [
             -16.784,
             -146.064,
@@ -226,17 +229,14 @@
             1205.6
           ]
         }
-      ]
+      ],
+      "clinical_target": "RCA Stenosis"
     },
     "struct_left_main": {
-      "id": "MM557",
       "name": "Left Main Coronary Artery",
-      "role": "Root connecting aortic bulb to LAD/LCX bifurcation",
-      "bp_id": "BP58405",
-      "fma_id": "FMA4685",
-      "source_file": "MM557_BP58405_FMA4685_Stem of left coronary artery.obj",
-      "total_vertices": 370,
-      "total_faces": 500,
+      "role": "Root arterial trunk connecting aortic bulb to LAD/LCX bifurcation",
+      "total_vertices": 249,
+      "total_faces": 479,
       "bounds_min": [
         29.359,
         -127.28,
@@ -251,17 +251,34 @@
         8.942,
         9.191,
         5.06
+      ],
+      "segments": [
+        {
+          "id": "MM557",
+          "role": "Left main trunk",
+          "bp_id": "BP58405",
+          "fma_id": "FMA4685",
+          "source_file": "MM557_BP58405_FMA4685_Stem of left coronary artery.obj",
+          "vertices": 313,
+          "faces": 479,
+          "bounds_min": [
+            29.359,
+            -127.28,
+            1248.33
+          ],
+          "bounds_max": [
+            38.301,
+            -118.089,
+            1253.39
+          ]
+        }
       ]
     },
     "struct_aorta_bulb": {
-      "id": "MM558",
       "name": "Aortic Bulb (Root)",
-      "role": "Origin of coronary arteries",
-      "bp_id": "BP51975",
-      "fma_id": "FMA15098",
-      "source_file": "MM558_BP51975_FMA15098_Wall of bulb of aorta.obj",
-      "total_vertices": 2327,
-      "total_faces": 3888,
+      "role": "Origin of coronary arteries and aortic root anchor",
+      "total_vertices": 1920,
+      "total_faces": 3758,
       "bounds_min": [
         2.269,
         -138.331,
@@ -276,17 +293,34 @@
         32.36,
         33.178,
         28.84
+      ],
+      "segments": [
+        {
+          "id": "MM558",
+          "role": "Wall of bulb of aorta",
+          "bp_id": "BP51975",
+          "fma_id": "FMA15098",
+          "source_file": "MM558_BP51975_FMA15098_Wall of bulb of aorta.obj",
+          "vertices": 2106,
+          "faces": 3758,
+          "bounds_min": [
+            2.269,
+            -138.331,
+            1226.83
+          ],
+          "bounds_max": [
+            34.629,
+            -105.153,
+            1255.67
+          ]
+        }
       ]
     },
     "struct_aorta_ascending": {
-      "id": "MM506",
       "name": "Ascending Aorta Proper",
-      "role": "Superior anatomical landmark",
-      "bp_id": "BP51985",
-      "fma_id": "FMA23733",
-      "source_file": "MM506_BP51985_FMA23733_Ascending aorta proper.obj",
-      "total_vertices": 1492,
-      "total_faces": 2684,
+      "role": "Superior aortic outflow tract orientation landmark",
+      "total_vertices": 1342,
+      "total_faces": 2685,
       "bounds_min": [
         -5.538,
         -136.78,
@@ -301,67 +335,34 @@
         31.32,
         27.204,
         31.0
-      ]
-    },
-    "struct_lv_wall": {
-      "id": "MM631",
-      "name": "Left Ventricular Free Wall",
-      "role": "Myocardial background silhouette",
-      "bp_id": "BP51876",
-      "fma_id": "FMA84850",
-      "source_file": "MM631_BP51876_FMA84850_Free wall of left ventricle.obj",
-      "total_vertices": 4368,
-      "total_faces": 8436,
-      "bounds_min": [
-        6.675,
-        -122.537,
-        1184.96
       ],
-      "bounds_max": [
-        29.74,
-        -94.357,
-        1213.71
-      ],
-      "dimensions_mm": [
-        23.065,
-        28.18,
-        28.75
-      ]
-    },
-    "struct_septum": {
-      "id": "MM600",
-      "name": "Muscular Interventricular Septum",
-      "role": "Septal myocardial background",
-      "bp_id": "BP51936",
-      "fma_id": "FMA7134",
-      "source_file": "MM600_BP51936_FMA7134_Muscular part of interventricular septum.obj",
-      "total_vertices": 2530,
-      "total_faces": 4868,
-      "bounds_min": [
-        9.659,
-        -163.099,
-        1180.2
-      ],
-      "bounds_max": [
-        54.63,
-        -116.388,
-        1235.19
-      ],
-      "dimensions_mm": [
-        44.971,
-        46.711,
-        54.99
+      "segments": [
+        {
+          "id": "MM506",
+          "role": "Ascending aorta proper",
+          "bp_id": "BP51985",
+          "fma_id": "FMA23733",
+          "source_file": "MM506_BP51985_FMA23733_Ascending aorta proper.obj",
+          "vertices": 1467,
+          "faces": 2685,
+          "bounds_min": [
+            -5.538,
+            -136.78,
+            1245.47
+          ],
+          "bounds_max": [
+            25.782,
+            -109.576,
+            1276.47
+          ]
+        }
       ]
     },
     "struct_pulmonary_trunk": {
-      "id": "MM607",
       "name": "Pulmonary Trunk",
-      "role": "Anterior outflow context landmark",
-      "bp_id": "BP58392",
-      "fma_id": "FMA15086",
-      "source_file": "MM607_BP58392_FMA15086_Pulmonary trunk proper.obj",
-      "total_vertices": 2504,
-      "total_faces": 3734,
+      "role": "Anterior outflow tract context landmark",
+      "total_vertices": 1853,
+      "total_faces": 3522,
       "bounds_min": [
         13.882,
         -159.669,
@@ -376,29 +377,233 @@
         29.479,
         41.406,
         44.93
+      ],
+      "segments": [
+        {
+          "id": "MM607",
+          "role": "Pulmonary trunk proper",
+          "bp_id": "BP58392",
+          "fma_id": "FMA15086",
+          "source_file": "MM607_BP58392_FMA15086_Pulmonary trunk proper.obj",
+          "vertices": 2109,
+          "faces": 3522,
+          "bounds_min": [
+            13.882,
+            -159.669,
+            1247.72
+          ],
+          "bounds_max": [
+            43.361,
+            -118.263,
+            1292.65
+          ]
+        }
+      ]
+    },
+    "struct_myocardium": {
+      "name": "Ventricular Myocardium",
+      "role": "Unified rounded ventricular myocardial cone (LV free wall, RV inflow, and RV outflow)",
+      "total_vertices": 7737,
+      "total_faces": 15462,
+      "bounds_min": [
+        -14.663,
+        -175.087,
+        1175.22
+      ],
+      "bounds_max": [
+        78.341,
+        -83.515,
+        1257.75
+      ],
+      "dimensions_mm": [
+        93.005,
+        91.572,
+        82.53
+      ],
+      "segments": [
+        {
+          "id": "MM474",
+          "role": "Free wall of left ventricle",
+          "bp_id": "BP51876",
+          "fma_id": "FMA84850",
+          "source_file": "MM474_BP51876_FMA84850_Free wall of left ventricle.obj",
+          "vertices": 2870,
+          "faces": 5470,
+          "bounds_min": [
+            6.647,
+            -165.55,
+            1175.22
+          ],
+          "bounds_max": [
+            78.341,
+            -83.515,
+            1250.09
+          ]
+        },
+        {
+          "id": "MM598",
+          "role": "Wall of inflow part of right ventricle",
+          "bp_id": "BP51897",
+          "fma_id": "FMA84851",
+          "source_file": "MM598_BP51861_FMA49207_Wall of inflow part of right ventricle.obj",
+          "vertices": 4746,
+          "faces": 8547,
+          "bounds_min": [
+            -14.663,
+            -175.087,
+            1177.02
+          ],
+          "bounds_max": [
+            52.225,
+            -117.001,
+            1239.06
+          ]
+        },
+        {
+          "id": "MM538",
+          "role": "Wall of outflow part of right ventricle",
+          "bp_id": "BP51893",
+          "fma_id": "FMA84853",
+          "source_file": "MM538_BP51878_FMA49208_Wall of outflow part of right ventricle.obj",
+          "vertices": 843,
+          "faces": 1445,
+          "bounds_min": [
+            -0.1,
+            -173.995,
+            1218.85
+          ],
+          "bounds_max": [
+            50.629,
+            -132.66,
+            1257.75
+          ]
+        }
+      ]
+    },
+    "struct_auricles": {
+      "name": "Atrial Auricular Appendages",
+      "role": "Rounded right and left auricles framing cardiac base and AV groove",
+      "total_vertices": 3625,
+      "total_faces": 7145,
+      "bounds_min": [
+        -32.169,
+        -162.962,
+        1210.63
+      ],
+      "bounds_max": [
+        62.95,
+        -94.868,
+        1272.24
+      ],
+      "dimensions_mm": [
+        95.118,
+        68.094,
+        61.61
+      ],
+      "segments": [
+        {
+          "id": "MM461",
+          "role": "Wall of right auricle proper",
+          "bp_id": "BP51915",
+          "fma_id": "FMA84093",
+          "source_file": "MM461_BP51819_FMA49299_Wall of right auricle proper.obj",
+          "vertices": 1263,
+          "faces": 2348,
+          "bounds_min": [
+            -32.169,
+            -162.962,
+            1210.63
+          ],
+          "bounds_max": [
+            6.105,
+            -130.222,
+            1266.03
+          ]
+        },
+        {
+          "id": "MM459",
+          "role": "Wall of left auricle",
+          "bp_id": "BP51910",
+          "fma_id": "FMA84087",
+          "source_file": "MM459_BP51840_FMA9547_Wall of left auricle.obj",
+          "vertices": 2662,
+          "faces": 4797,
+          "bounds_min": [
+            21.424,
+            -150.838,
+            1239.79
+          ],
+          "bounds_max": [
+            62.95,
+            -94.868,
+            1272.24
+          ]
+        }
+      ]
+    },
+    "struct_septum": {
+      "name": "Muscular Interventricular Septum",
+      "role": "Internal muscular septal partition separating ventricles",
+      "total_vertices": 2436,
+      "total_faces": 4871,
+      "bounds_min": [
+        9.659,
+        -163.099,
+        1180.2
+      ],
+      "bounds_max": [
+        54.63,
+        -116.388,
+        1235.19
+      ],
+      "dimensions_mm": [
+        44.971,
+        46.711,
+        54.99
+      ],
+      "segments": [
+        {
+          "id": "MM600",
+          "role": "Muscular part of interventricular septum",
+          "bp_id": "BP51936",
+          "fma_id": "FMA7134",
+          "source_file": "MM600_BP51936_FMA7134_Muscular part of interventricular septum.obj",
+          "vertices": 2518,
+          "faces": 4871,
+          "bounds_min": [
+            9.659,
+            -163.099,
+            1180.2
+          ],
+          "bounds_max": [
+            54.63,
+            -116.388,
+            1235.19
+          ]
+        }
       ]
     }
   },
   "global_bounds": {
     "min": [
-      -16.908,
-      -166.257,
-      1180.2
+      -32.169,
+      -175.087,
+      1175.22
     ],
     "max": [
-      57.114,
+      78.341,
       -82.017,
       1292.65
     ],
     "center": [
-      20.103,
-      -124.137,
-      1236.425
+      23.086,
+      -128.552,
+      1233.935
     ],
     "dimensions_mm": [
-      74.022,
-      84.24,
-      112.45
+      110.51,
+      93.07,
+      117.43
     ]
   }
 }

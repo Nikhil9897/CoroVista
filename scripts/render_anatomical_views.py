@@ -8,7 +8,6 @@ from pathlib import Path
 import trimesh
 import numpy as np
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 
 OUTPUT_DIR = Path("docs/screenshots")
@@ -16,21 +15,29 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 GLB_PATH = Path("frontend/public/models/corovista_heart.glb")
 
-# Colors for clinical risk rendering:
-# LAD: prob ~0.53 -> Amber/Orange (#ef9f0c)
-# LCX: prob ~0.13 -> Sky/Cyan-green (#18b6a1)
-# RCA: prob ~0.4005 -> Warm Gold/Yellow (#b9b71d)
+# Anatomical color hierarchy for rich PBR rendering
 COLOR_MAP = {
-    "vessel_lad": (0.94, 0.62, 0.05, 1.0),            # Amber / Orange (prob = 0.53, Stenotic)
-    "vessel_lcx": (0.09, 0.71, 0.63, 1.0),            # Teal / Cyan-green (prob = 0.13, Normal)
-    "vessel_rca": (0.73, 0.72, 0.11, 1.0),            # Warm gold / Yellow (prob = 0.4005, Stenotic)
-    "struct_left_main": (0.85, 0.35, 0.35, 1.0),      # Crimson root
-    "struct_aorta_bulb": (0.75, 0.25, 0.25, 0.45),    # Semi-transparent aortic root
-    "struct_aorta_ascending": (0.85, 0.30, 0.30, 0.40), # Semi-transparent ascending aorta
-    "struct_pulmonary_trunk": (0.28, 0.48, 0.78, 0.45), # Semi-transparent pulmonary trunk
-    "struct_lv_wall": (0.60, 0.20, 0.25, 0.18),       # Translucent myocardial wall
-    "struct_septum": (0.55, 0.25, 0.30, 0.18),        # Translucent septum
+    # Cohesive Myocardium (Warm natural anatomical burgundy / deep terracotta red)
+    "struct_myocardium": (0.53, 0.13, 0.18, 1.0),
+    # Auricles (Atrial appendages capping the base)
+    "struct_auricles": (0.49, 0.11, 0.16, 1.0),
+    # Internal context (subtle septum)
+    "struct_septum": (0.43, 0.10, 0.15, 0.45),
+    # Great Vessels (Aorta: warm arterial ivory / rose; Pulmonary: venous slate-blue)
+    "struct_aorta_bulb": (0.85, 0.55, 0.51, 1.0),
+    "struct_aorta_ascending": (0.89, 0.61, 0.58, 1.0),
+    "struct_pulmonary_trunk": (0.33, 0.49, 0.59, 1.0),
+    # Coronary Arteries (Continuous model-probability risk shaders)
+    "struct_left_main": (0.99, 0.65, 0.65, 1.0),
+    "vessel_lad": (0.94, 0.62, 0.05, 1.0),        # Amber / Orange (prob = 0.53, Stenotic)
+    "vessel_lcx": (0.09, 0.71, 0.63, 1.0),        # Teal / Cyan-green (prob = 0.13, Normal)
+    "vessel_rca": (0.73, 0.72, 0.11, 1.0),        # Warm gold / Yellow (prob = 0.4005, Stenotic)
 }
+
+# True anatomical assembly center
+CENTER_X = 23.09
+CENTER_Y = -128.55
+CENTER_Z = 1233.94
 
 def transform_to_viewer_coords(verts):
     """
@@ -40,9 +47,9 @@ def transform_to_viewer_coords(verts):
     Z: Superior-Inferior (Positive Z = Superior / Base, Negative Z = Inferior / Apex)
     """
     v = verts.copy()
-    v[:, 0] -= 20.10
-    v[:, 1] -= -124.14  # v[:, 1] + 124.14
-    v[:, 2] -= 1236.43
+    v[:, 0] -= CENTER_X
+    v[:, 1] -= CENTER_Y
+    v[:, 2] -= CENTER_Z
     return v
 
 def render_view(scene, elev, azim, title, filename):
@@ -59,10 +66,11 @@ def render_view(scene, elev, azim, title, filename):
     ax.set_zticks([])
     ax.axis("off")
 
-    # Render translucent structures first, then vessels on top
+    # Render background walls first, then great vessels, then coronaries on top
     render_order = [
-        "struct_lv_wall",
         "struct_septum",
+        "struct_myocardium",
+        "struct_auricles",
         "struct_aorta_ascending",
         "struct_aorta_bulb",
         "struct_pulmonary_trunk",
@@ -80,7 +88,7 @@ def render_view(scene, elev, azim, title, filename):
         faces = mesh.faces
         
         # Subsample faces if dense for faster plotting
-        if len(faces) > 3000:
+        if len(faces) > 2500:
             step = max(1, len(faces) // 2500)
             faces = faces[::step]
             
@@ -90,14 +98,14 @@ def render_view(scene, elev, azim, title, filename):
         poly = Poly3DCollection(
             triangles,
             facecolors=color,
-            edgecolors=(color[0]*0.8, color[1]*0.8, color[2]*0.8, color[3]*0.5),
-            linewidths=0.2,
+            edgecolors=(color[0]*0.8, color[1]*0.8, color[2]*0.8, color[3]*0.3),
+            linewidths=0.15,
             alpha=color[3]
         )
         ax.add_collection3d(poly)
 
     # Set coordinate limits centered around heart origin
-    limit = 55
+    limit = 65
     ax.set_xlim(-limit, limit)
     ax.set_ylim(-limit, limit)
     ax.set_zlim(-limit, limit)
@@ -107,7 +115,7 @@ def render_view(scene, elev, azim, title, filename):
 
     # Add clinical title and annotations
     fig.text(0.5, 0.94, f"CoroVista — {title}", ha="center", va="top", color="#f8fafc", fontsize=15, weight="bold")
-    fig.text(0.5, 0.90, "Authentic BodyParts3D FMA Anatomy Assembly", ha="center", va="top", color="#94a3b8", fontsize=11)
+    fig.text(0.5, 0.90, "Reconstructed BodyParts3D Complete Heart Assembly", ha="center", va="top", color="#94a3b8", fontsize=11)
     
     # Legend
     legend_text = (
@@ -124,7 +132,7 @@ def render_view(scene, elev, azim, title, filename):
     print(f"Rendered {out_path} (elev={elev}, azim={azim})")
 
 def main():
-    print("Loading corovista_heart.glb...")
+    print(f"Loading {GLB_PATH}...")
     scene = trimesh.load(GLB_PATH, process=False)
     
     # In matplotlib with Z upright:

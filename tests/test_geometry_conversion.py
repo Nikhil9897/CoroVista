@@ -20,12 +20,21 @@ def test_manifest_metadata_integrity():
         manifest = json.load(f)
 
     assert manifest["metadata"]["license"] == "CC BY-SA 2.1 Japan"
-    assert manifest["metadata"]["total_selected_source_objs"] == 14
+    assert manifest["metadata"]["total_selected_source_objs"] == 18
 
     # Verify locked vessel targets
     assert "vessel_lad" in manifest["groups"]
     assert "vessel_lcx" in manifest["groups"]
     assert "vessel_rca" in manifest["groups"]
+
+    # Verify chamber and supporting groups
+    assert "struct_myocardium" in manifest["groups"]
+    assert "struct_auricles" in manifest["groups"]
+    assert "struct_septum" in manifest["groups"]
+    assert "struct_aorta_bulb" in manifest["groups"]
+    assert "struct_aorta_ascending" in manifest["groups"]
+    assert "struct_pulmonary_trunk" in manifest["groups"]
+    assert "struct_left_main" in manifest["groups"]
 
     # LAD segments MM420, MM424, MM425
     lad_segs = [s["id"] for s in manifest["groups"]["vessel_lad"]["segments"]]

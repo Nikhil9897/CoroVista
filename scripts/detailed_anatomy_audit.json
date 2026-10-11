@@ -1,0 +1,4001 @@
+[
+  {
+    "mm_id": "MM419",
+    "bp_id": "BP51825",
+    "fma_id": "FMA9477",
+    "name": "Sinuatrial node",
+    "filename": "MM419_BP51825_FMA9477_Sinuatrial node.obj",
+    "verts": 96,
+    "faces": 126,
+    "bounds_min": [
+      -18.2147,
+      -134.589,
+      1262.36
+    ],
+    "bounds_max": [
+      -10.7588,
+      -132.049,
+      1266.51
+    ],
+    "dims": [
+      7.4559,
+      2.539999999999992,
+      4.150000000000091
+    ],
+    "center": [
+      -14.487467750665564,
+      -133.3062099762469,
+      1264.438708440666
+    ],
+    "watertight": false,
+    "euler": 5
+  },
+  {
+    "mm_id": "MM420",
+    "bp_id": "BP51969",
+    "fma_id": "FMA74912",
+    "name": "Trunk of anterior interventricular branch of left coronary artery",
+    "filename": "MM420_BP51969_FMA74912_Trunk of anterior interventricular branch of left coronary artery.obj",
+    "verts": 397,
+    "faces": 642,
+    "bounds_min": [
+      35.9236,
+      -138.093,
+      1245.52
+    ],
+    "bounds_max": [
+      45.7372,
+      -124.688,
+      1252.08
+    ],
+    "dims": [
+      9.813600000000001,
+      13.404999999999987,
+      6.559999999999945
+    ],
+    "center": [
+      40.9034988681297,
+      -131.42638021569314,
+      1249.2214147126178
+    ],
+    "watertight": false,
+    "euler": 7
+  },
+  {
+    "mm_id": "MM422",
+    "bp_id": "BP51972",
+    "fma_id": "FMA3860",
+    "name": "Diagonal branch of anterior descending branch of left coronary artery",
+    "filename": "MM422_BP51972_FMA3860_Diagonal branch of anterior descending branch of left coronary artery.obj",
+    "verts": 1118,
+    "faces": 2016,
+    "bounds_min": [
+      43.7963,
+      -138.866,
+      1233.85
+    ],
+    "bounds_max": [
+      71.4937,
+      -120.974,
+      1247.93
+    ],
+    "dims": [
+      27.697400000000002,
+      17.89200000000001,
+      14.080000000000155
+    ],
+    "center": [
+      57.39848346434437,
+      -131.11562692220016,
+      1243.3992361563294
+    ],
+    "watertight": false,
+    "euler": 7
+  },
+  {
+    "mm_id": "MM423",
+    "bp_id": "BP51965",
+    "fma_id": "FMA3888",
+    "name": "Second left anterior branch of anterior interventricular branch of left coronary artery",
+    "filename": "MM423_BP51965_FMA3888_Second left anterior branch of anterior interventricular branch of left coronary artery.obj",
+    "verts": 748,
+    "faces": 1268,
+    "bounds_min": [
+      48.6393,
+      -152.715,
+      1220.15
+    ],
+    "bounds_max": [
+      76.9354,
+      -137.339,
+      1236.08
+    ],
+    "dims": [
+      28.296100000000003,
+      15.376000000000005,
+      15.929999999999836
+    ],
+    "center": [
+      64.16426153061356,
+      -147.19688749981728,
+      1231.0820167532988
+    ],
+    "watertight": false,
+    "euler": 7
+  },
+  {
+    "mm_id": "MM424",
+    "bp_id": "BP51969",
+    "fma_id": "FMA74912",
+    "name": "Trunk of anterior interventricular branch of left coronary artery",
+    "filename": "MM424_BP51969_FMA74912_Trunk of anterior interventricular branch of left coronary artery.obj",
+    "verts": 610,
+    "faces": 1104,
+    "bounds_min": [
+      42.9584,
+      -153.5,
+      1232.76
+    ],
+    "bounds_max": [
+      51.3551,
+      -135.521,
+      1248.09
+    ],
+    "dims": [
+      8.396700000000003,
+      17.979000000000013,
+      15.329999999999927
+    ],
+    "center": [
+      47.57816545643616,
+      -144.60939442100383,
+      1241.0246680405003
+    ],
+    "watertight": false,
+    "euler": 5
+  },
+  {
+    "mm_id": "MM425",
+    "bp_id": "BP51969",
+    "fma_id": "FMA74912",
+    "name": "Trunk of anterior interventricular branch of left coronary artery",
+    "filename": "MM425_BP51969_FMA74912_Trunk of anterior interventricular branch of left coronary artery.obj",
+    "verts": 511,
+    "faces": 912,
+    "bounds_min": [
+      48.4882,
+      -166.257,
+      1186.97
+    ],
+    "bounds_max": [
+      57.1139,
+      -151.21,
+      1234.05
+    ],
+    "dims": [
+      8.625700000000002,
+      15.046999999999997,
+      47.07999999999993
+    ],
+    "center": [
+      52.54419828002322,
+      -160.7963117663588,
+      1214.950990190502
+    ],
+    "watertight": false,
+    "euler": -5
+  },
+  {
+    "mm_id": "MM426",
+    "bp_id": "BP51973",
+    "fma_id": "FMA74923",
+    "name": "Trunk of circumflex branch of left coronary artery",
+    "filename": "MM426_BP51973_FMA74923_Trunk of circumflex branch of left coronary artery.obj",
+    "verts": 434,
+    "faces": 764,
+    "bounds_min": [
+      35.4651,
+      -125.032,
+      1231.16
+    ],
+    "bounds_max": [
+      44.4317,
+      -89.3978,
+      1254.22
+    ],
+    "dims": [
+      8.9666,
+      35.63419999999999,
+      23.059999999999945
+    ],
+    "center": [
+      41.505076962374574,
+      -107.08860767395069,
+      1245.7661383253842
+    ],
+    "watertight": false,
+    "euler": 7
+  },
+  {
+    "mm_id": "MM428",
+    "bp_id": "BP51937",
+    "fma_id": "FMA3914",
+    "name": "First posterior ventricular branch of circumflex coronary artery",
+    "filename": "MM428_BP51937_FMA3914_First posterior ventricular branch of circumflex coronary artery.obj",
+    "verts": 1413,
+    "faces": 2164,
+    "bounds_min": [
+      36.623,
+      -115.852,
+      1178.86
+    ],
+    "bounds_max": [
+      69.1247,
+      -82.3112,
+      1224.0
+    ],
+    "dims": [
+      32.50170000000001,
+      33.540800000000004,
+      45.1400000000001
+    ],
+    "center": [
+      48.95324546078779,
+      -93.58243793662237,
+      1199.5110200555155
+    ],
+    "watertight": false,
+    "euler": 22
+  },
+  {
+    "mm_id": "MM430",
+    "bp_id": "BP58390",
+    "fma_id": "FMA79742",
+    "name": "Trunk of posterior interventricular branch of left coronary artery",
+    "filename": "MM430_BP58390_FMA79742_Trunk of posterior interventricular branch of left coronary artery.obj",
+    "verts": 661,
+    "faces": 1112,
+    "bounds_min": [
+      12.0301,
+      -147.073,
+      1175.12
+    ],
+    "bounds_max": [
+      45.3474,
+      -104.521,
+      1190.42
+    ],
+    "dims": [
+      33.3173,
+      42.55200000000001,
+      15.300000000000182
+    ],
+    "center": [
+      24.065749249813997,
+      -124.98159572232305,
+      1181.0598761935153
+    ],
+    "watertight": false,
+    "euler": -3
+  },
+  {
+    "mm_id": "MM431",
+    "bp_id": "BP51970",
+    "fma_id": "FMA3893",
+    "name": "Anterior septal branch of anterior interventricular artery",
+    "filename": "MM431_BP51970_FMA3893_Anterior septal branch of anterior interventricular artery.obj",
+    "verts": 752,
+    "faces": 1286,
+    "bounds_min": [
+      13.2616,
+      -140.922,
+      1225.31
+    ],
+    "bounds_max": [
+      45.1708,
+      -130.638,
+      1249.67
+    ],
+    "dims": [
+      31.9092,
+      10.283999999999992,
+      24.360000000000127
+    ],
+    "center": [
+      31.825682456375393,
+      -137.1051862568044,
+      1237.7531553006108
+    ],
+    "watertight": false,
+    "euler": 17
+  },
+  {
+    "mm_id": "MM432",
+    "bp_id": "BP51962",
+    "fma_id": "FMA3890",
+    "name": "Third left anterior branch of anterior interventricular branch of left coronary artery",
+    "filename": "MM432_BP51962_FMA3890_Third left anterior branch of anterior interventricular branch of left coronary artery.obj",
+    "verts": 1138,
+    "faces": 1922,
+    "bounds_min": [
+      51.5921,
+      -163.675,
+      1208.58
+    ],
+    "bounds_max": [
+      79.8615,
+      -156.204,
+      1220.07
+    ],
+    "dims": [
+      28.269400000000005,
+      7.471000000000004,
+      11.490000000000009
+    ],
+    "center": [
+      65.78625327596632,
+      -160.83016492240512,
+      1216.193892116898
+    ],
+    "watertight": false,
+    "euler": 8
+  },
+  {
+    "mm_id": "MM433",
+    "bp_id": "BP51970",
+    "fma_id": "FMA3893",
+    "name": "Anterior septal branch of anterior interventricular artery",
+    "filename": "MM433_BP51970_FMA3893_Anterior septal branch of anterior interventricular artery.obj",
+    "verts": 1288,
+    "faces": 2242,
+    "bounds_min": [
+      31.3752,
+      -157.663,
+      1213.86
+    ],
+    "bounds_max": [
+      50.9862,
+      -150.179,
+      1229.15
+    ],
+    "dims": [
+      19.610999999999997,
+      7.484000000000009,
+      15.290000000000191
+    ],
+    "center": [
+      41.92007117481042,
+      -154.87267849114951,
+      1224.1271127760106
+    ],
+    "watertight": false,
+    "euler": 9
+  },
+  {
+    "mm_id": "MM434",
+    "bp_id": "BP51970",
+    "fma_id": "FMA3893",
+    "name": "Anterior septal branch of anterior interventricular artery",
+    "filename": "MM434_BP51970_FMA3893_Anterior septal branch of anterior interventricular artery.obj",
+    "verts": 1352,
+    "faces": 2182,
+    "bounds_min": [
+      31.2542,
+      -164.497,
+      1202.48
+    ],
+    "bounds_max": [
+      55.124,
+      -151.439,
+      1211.73
+    ],
+    "dims": [
+      23.8698,
+      13.058000000000021,
+      9.25
+    ],
+    "center": [
+      43.89828747372354,
+      -159.2617289570546,
+      1209.1273366560686
+    ],
+    "watertight": false,
+    "euler": 21
+  },
+  {
+    "mm_id": "MM436",
+    "bp_id": "BP51977",
+    "fma_id": "FMA3802",
+    "name": "Trunk of right coronary artery",
+    "filename": "MM436_BP51977_FMA3802_Trunk of right coronary artery.obj",
+    "verts": 442,
+    "faces": 774,
+    "bounds_min": [
+      -16.9084,
+      -154.171,
+      1204.3
+    ],
+    "bounds_max": [
+      -7.71565,
+      -143.656,
+      1226.2
+    ],
+    "dims": [
+      9.19275,
+      10.514999999999986,
+      21.90000000000009
+    ],
+    "center": [
+      -13.009252531050217,
+      -150.17913087791132,
+      1215.2811738127896
+    ],
+    "watertight": false,
+    "euler": 5
+  },
+  {
+    "mm_id": "MM437",
+    "bp_id": "BP51980",
+    "fma_id": "FMA3815",
+    "name": "First anterior ventricular branch of right coronary artery",
+    "filename": "MM437_BP51980_FMA3815_First anterior ventricular branch of right coronary artery.obj",
+    "verts": 1082,
+    "faces": 1792,
+    "bounds_min": [
+      -11.4706,
+      -177.084,
+      1207.2
+    ],
+    "bounds_max": [
+      26.0143,
+      -150.824,
+      1225.85
+    ],
+    "dims": [
+      37.484899999999996,
+      26.25999999999999,
+      18.649999999999864
+    ],
+    "center": [
+      3.3968074105040476,
+      -166.23242627516953,
+      1217.6346748316
+    ],
+    "watertight": false,
+    "euler": 0
+  },
+  {
+    "mm_id": "MM438",
+    "bp_id": "BP51922",
+    "fma_id": "FMA3823",
+    "name": "Sinoatrial nodal branch of right coronary artery",
+    "filename": "MM438_BP51922_FMA3823_Sinoatrial nodal branch of right coronary artery.obj",
+    "verts": 433,
+    "faces": 640,
+    "bounds_min": [
+      -14.3361,
+      -140.973,
+      1238.96
+    ],
+    "bounds_max": [
+      7.32645,
+      -132.285,
+      1265.69
+    ],
+    "dims": [
+      21.66255,
+      8.688000000000017,
+      26.730000000000018
+    ],
+    "center": [
+      0.17226919774329658,
+      -135.3059276471979,
+      1251.815354266598
+    ],
+    "watertight": false,
+    "euler": 10
+  },
+  {
+    "mm_id": "MM439",
+    "bp_id": "BP51977",
+    "fma_id": "FMA3802",
+    "name": "Trunk of right coronary artery",
+    "filename": "MM439_BP51977_FMA3802_Trunk of right coronary artery.obj",
+    "verts": 795,
+    "faces": 1402,
+    "bounds_min": [
+      -16.7844,
+      -146.064,
+      1193.92
+    ],
+    "bounds_max": [
+      0.269238,
+      -124.139,
+      1205.6
+    ],
+    "dims": [
+      17.053638000000003,
+      21.924999999999997,
+      11.679999999999836
+    ],
+    "center": [
+      -9.55730800021327,
+      -135.14171427031783,
+      1198.8023577063966
+    ],
+    "watertight": false,
+    "euler": 6
+  },
+  {
+    "mm_id": "MM440",
+    "bp_id": "BP51950",
+    "fma_id": "FMA3818",
+    "name": "Marginal branch of right coronary artery",
+    "filename": "MM440_BP51950_FMA3818_Marginal branch of right coronary artery.obj",
+    "verts": 1018,
+    "faces": 1426,
+    "bounds_min": [
+      -16.5136,
+      -170.218,
+      1185.04
+    ],
+    "bounds_max": [
+      32.9446,
+      -142.962,
+      1205.51
+    ],
+    "dims": [
+      49.458200000000005,
+      27.256,
+      20.470000000000027
+    ],
+    "center": [
+      5.660560522170688,
+      -157.84232372249477,
+      1194.8380075191178
+    ],
+    "watertight": false,
+    "euler": 16
+  },
+  {
+    "mm_id": "MM441",
+    "bp_id": "BP51955",
+    "fma_id": "FMA3807",
+    "name": "Conus branch of right coronary artery",
+    "filename": "MM441_BP51955_FMA3807_Conus branch of right coronary artery.obj",
+    "verts": 780,
+    "faces": 1308,
+    "bounds_min": [
+      0.83929,
+      -173.026,
+      1234.66
+    ],
+    "bounds_max": [
+      31.7792,
+      -139.503,
+      1248.12
+    ],
+    "dims": [
+      30.93991,
+      33.523000000000025,
+      13.459999999999809
+    ],
+    "center": [
+      11.053586245268123,
+      -159.79724220140903,
+      1239.8216319275703
+    ],
+    "watertight": false,
+    "euler": -8
+  },
+  {
+    "mm_id": "MM443",
+    "bp_id": "BP51952",
+    "fma_id": "FMA3851",
+    "name": "Atrioventricular node branch of right coronary artery",
+    "filename": "MM443_BP51952_FMA3851_Atrioventricular node branch of right coronary artery.obj",
+    "verts": 2041,
+    "faces": 3518,
+    "bounds_min": [
+      -2.84653,
+      -127.664,
+      1194.47
+    ],
+    "bounds_max": [
+      6.67944,
+      -116.923,
+      1219.71
+    ],
+    "dims": [
+      9.52597,
+      10.741,
+      25.24000000000001
+    ],
+    "center": [
+      2.707761753355966,
+      -121.57382243044444,
+      1203.1917856761352
+    ],
+    "watertight": false,
+    "euler": 33
+  },
+  {
+    "mm_id": "MM444",
+    "bp_id": "BP51956",
+    "fma_id": "FMA3837",
+    "name": "First posterior ventricular branch of right coronary artery",
+    "filename": "MM444_BP51956_FMA3837_First posterior ventricular branch of right coronary artery.obj",
+    "verts": 524,
+    "faces": 950,
+    "bounds_min": [
+      -0.869092,
+      -150.822,
+      1174.58
+    ],
+    "bounds_max": [
+      43.3685,
+      -122.276,
+      1196.37
+    ],
+    "dims": [
+      44.237592,
+      28.546000000000006,
+      21.789999999999964
+    ],
+    "center": [
+      19.52906077144324,
+      -132.0905000860642,
+      1182.3542406836484
+    ],
+    "watertight": false,
+    "euler": -8
+  },
+  {
+    "mm_id": "MM445",
+    "bp_id": "BP51957",
+    "fma_id": "FMA3829",
+    "name": "Anterior atrial branch of right coronary artery",
+    "filename": "MM445_BP51957_FMA3829_Anterior atrial branch of right coronary artery.obj",
+    "verts": 524,
+    "faces": 888,
+    "bounds_min": [
+      -32.7997,
+      -150.079,
+      1210.48
+    ],
+    "bounds_max": [
+      -13.5425,
+      -134.937,
+      1221.38
+    ],
+    "dims": [
+      19.2572,
+      15.141999999999996,
+      10.900000000000091
+    ],
+    "center": [
+      -23.319782213917396,
+      -143.43492137519982,
+      1213.4743812420575
+    ],
+    "watertight": false,
+    "euler": -4
+  },
+  {
+    "mm_id": "MM446",
+    "bp_id": "BP58391",
+    "fma_id": "FMA76767",
+    "name": "Anterior cardiac vein",
+    "filename": "MM446_BP58391_FMA76767_Anterior cardiac vein.obj",
+    "verts": 919,
+    "faces": 1474,
+    "bounds_min": [
+      -19.7468,
+      -177.219,
+      1206.21
+    ],
+    "bounds_max": [
+      22.2182,
+      -147.344,
+      1226.07
+    ],
+    "dims": [
+      41.965,
+      29.875,
+      19.8599999999999
+    ],
+    "center": [
+      -2.4011821996269926,
+      -164.61375763833846,
+      1217.490393309714
+    ],
+    "watertight": false,
+    "euler": 2
+  },
+  {
+    "mm_id": "MM447",
+    "bp_id": "BP51947",
+    "fma_id": "FMA4707",
+    "name": "Great cardiac vein",
+    "filename": "MM447_BP51947_FMA4707_Great cardiac vein.obj",
+    "verts": 3230,
+    "faces": 4578,
+    "bounds_min": [
+      39.2305,
+      -165.948,
+      1195.99
+    ],
+    "bounds_max": [
+      79.3731,
+      -80.6974,
+      1251.05
+    ],
+    "dims": [
+      40.142599999999995,
+      85.2506,
+      55.059999999999945
+    ],
+    "center": [
+      54.080618784967854,
+      -124.84564800627986,
+      1234.0076119824491
+    ],
+    "watertight": false,
+    "euler": 112
+  },
+  {
+    "mm_id": "MM448",
+    "bp_id": "BP51947",
+    "fma_id": "FMA4707",
+    "name": "Great cardiac vein",
+    "filename": "MM448_BP51947_FMA4707_Great cardiac vein.obj",
+    "verts": 1422,
+    "faces": 2584,
+    "bounds_min": [
+      45.1,
+      -141.966,
+      1203.4
+    ],
+    "bounds_max": [
+      81.1026,
+      -87.6132,
+      1235.64
+    ],
+    "dims": [
+      36.002599999999994,
+      54.3528,
+      32.24000000000001
+    ],
+    "center": [
+      67.91000910944686,
+      -111.31123858973632,
+      1221.9333772455955
+    ],
+    "watertight": false,
+    "euler": 12
+  },
+  {
+    "mm_id": "MM449",
+    "bp_id": "BP51951",
+    "fma_id": "FMA4706",
+    "name": "Coronary sinus",
+    "filename": "MM449_BP51951_FMA4706_Coronary sinus.obj",
+    "verts": 577,
+    "faces": 966,
+    "bounds_min": [
+      3.64635,
+      -143.875,
+      1178.37
+    ],
+    "bounds_max": [
+      40.1153,
+      -106.655,
+      1203.3
+    ],
+    "dims": [
+      36.46895,
+      37.22,
+      24.930000000000064
+    ],
+    "center": [
+      15.29124332444875,
+      -120.48705993613494,
+      1189.600905251316
+    ],
+    "watertight": false,
+    "euler": 11
+  },
+  {
+    "mm_id": "MM451",
+    "bp_id": "BP51932",
+    "fma_id": "FMA4716",
+    "name": "Right marginal vein",
+    "filename": "MM451_BP51932_FMA4716_Right marginal vein.obj",
+    "verts": 680,
+    "faces": 1208,
+    "bounds_min": [
+      -16.1177,
+      -171.367,
+      1190.68
+    ],
+    "bounds_max": [
+      16.4794,
+      -141.771,
+      1202.02
+    ],
+    "dims": [
+      32.5971,
+      29.596000000000004,
+      11.339999999999918
+    ],
+    "center": [
+      -2.505762240312733,
+      -154.20242338830127,
+      1195.6628884505776
+    ],
+    "watertight": false,
+    "euler": -1
+  },
+  {
+    "mm_id": "MM452",
+    "bp_id": "BP51938",
+    "fma_id": "FMA4714",
+    "name": "Small cardiac vein",
+    "filename": "MM452_BP51938_FMA4714_Small cardiac vein.obj",
+    "verts": 1187,
+    "faces": 1924,
+    "bounds_min": [
+      -16.0693,
+      -166.147,
+      1192.41
+    ],
+    "bounds_max": [
+      8.12432,
+      -110.65,
+      1211.17
+    ],
+    "dims": [
+      24.19362,
+      55.496999999999986,
+      18.75999999999999
+    ],
+    "center": [
+      -4.33744859379045,
+      -132.75621268125536,
+      1199.6996556022802
+    ],
+    "watertight": false,
+    "euler": 17
+  },
+  {
+    "mm_id": "MM456",
+    "bp_id": "BP51862",
+    "fma_id": "FMA9306",
+    "name": "Lateral wall of left atrium",
+    "filename": "MM456_BP51862_FMA9306_Lateral wall of left atrium.obj",
+    "verts": 1428,
+    "faces": 2548,
+    "bounds_min": [
+      23.5142,
+      -109.498,
+      1215.94
+    ],
+    "bounds_max": [
+      45.6798,
+      -70.6127,
+      1265.51
+    ],
+    "dims": [
+      22.1656,
+      38.8853,
+      49.569999999999936
+    ],
+    "center": [
+      36.09421160463178,
+      -84.66410529838801,
+      1246.4420657315898
+    ],
+    "watertight": false,
+    "euler": -29
+  },
+  {
+    "mm_id": "MM458",
+    "bp_id": "BP51886",
+    "fma_id": "FMA84095",
+    "name": "Septal wall of left atrium",
+    "filename": "MM458_BP51886_FMA84095_Septal wall of left atrium.obj",
+    "verts": 1272,
+    "faces": 2290,
+    "bounds_min": [
+      -22.2626,
+      -102.687,
+      1207.45
+    ],
+    "bounds_max": [
+      -1.21232,
+      -76.0682,
+      1256.44
+    ],
+    "dims": [
+      21.05028,
+      26.618799999999993,
+      48.99000000000001
+    ],
+    "center": [
+      -13.63867623607847,
+      -89.69960826687299,
+      1231.3783747062073
+    ],
+    "watertight": false,
+    "euler": -15
+  },
+  {
+    "mm_id": "MM459",
+    "bp_id": "BP51840",
+    "fma_id": "FMA9547",
+    "name": "Wall of left auricle",
+    "filename": "MM459_BP51840_FMA9547_Wall of left auricle.obj",
+    "verts": 3053,
+    "faces": 4938,
+    "bounds_min": [
+      21.4238,
+      -150.838,
+      1239.79
+    ],
+    "bounds_max": [
+      62.9496,
+      -94.8677,
+      1272.24
+    ],
+    "dims": [
+      41.5258,
+      55.970299999999995,
+      32.450000000000045
+    ],
+    "center": [
+      45.6771134263062,
+      -122.81543244837344,
+      1256.7086157132862
+    ],
+    "watertight": false,
+    "euler": 79
+  },
+  {
+    "mm_id": "MM460",
+    "bp_id": "BP51866",
+    "fma_id": "FMA9562",
+    "name": "Superior wall of left atrium",
+    "filename": "MM460_BP51866_FMA9562_Superior wall of left atrium.obj",
+    "verts": 888,
+    "faces": 1578,
+    "bounds_min": [
+      -8.59492,
+      -109.295,
+      1247.81
+    ],
+    "bounds_max": [
+      26.0641,
+      -76.4435,
+      1265.77
+    ],
+    "dims": [
+      34.65902,
+      32.8515,
+      17.960000000000036
+    ],
+    "center": [
+      8.722059588961878,
+      -91.72221605161424,
+      1258.663532586802
+    ],
+    "watertight": false,
+    "euler": -6
+  },
+  {
+    "mm_id": "MM461",
+    "bp_id": "BP51819",
+    "fma_id": "FMA49299",
+    "name": "Wall of right auricle proper",
+    "filename": "MM461_BP51819_FMA49299_Wall of right auricle proper.obj",
+    "verts": 1275,
+    "faces": 2336,
+    "bounds_min": [
+      -32.1686,
+      -162.962,
+      1210.63
+    ],
+    "bounds_max": [
+      6.10496,
+      -130.222,
+      1266.03
+    ],
+    "dims": [
+      38.273559999999996,
+      32.73999999999998,
+      55.399999999999864
+    ],
+    "center": [
+      -13.685623324903398,
+      -146.45908169883143,
+      1242.6180146267698
+    ],
+    "watertight": false,
+    "euler": -15
+  },
+  {
+    "mm_id": "MM462",
+    "bp_id": "BP51838",
+    "fma_id": "FMA9236",
+    "name": "Crista terminalis",
+    "filename": "MM462_BP51838_FMA9236_Crista terminalis.obj",
+    "verts": 1707,
+    "faces": 2030,
+    "bounds_min": [
+      -31.4073,
+      -139.465,
+      1207.19
+    ],
+    "bounds_max": [
+      2.9787,
+      -127.939,
+      1264.26
+    ],
+    "dims": [
+      34.385999999999996,
+      11.52600000000001,
+      57.069999999999936
+    ],
+    "center": [
+      -17.354325576499328,
+      -133.23295164124994,
+      1242.9808676257303
+    ],
+    "watertight": false,
+    "euler": 104
+  },
+  {
+    "mm_id": "MM463",
+    "bp_id": "BP51847",
+    "fma_id": "FMA9240",
+    "name": "Valve of inferior vena cava",
+    "filename": "MM463_BP51847_FMA9240_Valve of inferior vena cava.obj",
+    "verts": 835,
+    "faces": 1618,
+    "bounds_min": [
+      -29.0328,
+      -132.33,
+      1192.74
+    ],
+    "bounds_max": [
+      6.7089,
+      -106.836,
+      1217.93
+    ],
+    "dims": [
+      35.7417,
+      25.494000000000014,
+      25.190000000000055
+    ],
+    "center": [
+      -9.030336383849143,
+      -120.0532515375498,
+      1201.842952735768
+    ],
+    "watertight": false,
+    "euler": -7
+  },
+  {
+    "mm_id": "MM466",
+    "bp_id": "BP51829",
+    "fma_id": "FMA49298",
+    "name": "Pectinate muscle of right auricle",
+    "filename": "MM466_BP51829_FMA49298_Pectinate muscle of right auricle.obj",
+    "verts": 5666,
+    "faces": 4782,
+    "bounds_min": [
+      -29.0621,
+      -161.328,
+      1211.97
+    ],
+    "bounds_max": [
+      4.38179,
+      -130.786,
+      1263.23
+    ],
+    "dims": [
+      33.44389,
+      30.542,
+      51.25999999999999
+    ],
+    "center": [
+      -11.115857498172543,
+      -146.33942249976525,
+      1242.189313643529
+    ],
+    "watertight": false,
+    "euler": 676
+  },
+  {
+    "mm_id": "MM467",
+    "bp_id": "BP51841",
+    "fma_id": "FMA9277",
+    "name": "Tendon of Todaro",
+    "filename": "MM467_BP51841_FMA9277_Tendon of Todaro.obj",
+    "verts": 411,
+    "faces": 692,
+    "bounds_min": [
+      3.98897,
+      -123.137,
+      1214.47
+    ],
+    "bounds_max": [
+      8.48634,
+      -109.939,
+      1226.64
+    ],
+    "dims": [
+      4.49737,
+      13.198000000000008,
+      12.170000000000073
+    ],
+    "center": [
+      6.4760282968794645,
+      -114.4531021585749,
+      1220.2836274407223
+    ],
+    "watertight": false,
+    "euler": -12
+  },
+  {
+    "mm_id": "MM474",
+    "bp_id": "BP51876",
+    "fma_id": "FMA84850",
+    "name": "Free wall of left ventricle",
+    "filename": "MM474_BP51876_FMA84850_Free wall of left ventricle.obj",
+    "verts": 3039,
+    "faces": 5530,
+    "bounds_min": [
+      6.64671,
+      -165.55,
+      1175.22
+    ],
+    "bounds_max": [
+      78.3414,
+      -83.5152,
+      1250.09
+    ],
+    "dims": [
+      71.69469,
+      82.03480000000002,
+      74.86999999999989
+    ],
+    "center": [
+      50.408509605607314,
+      -122.74958780314198,
+      1209.521598427167
+    ],
+    "watertight": false,
+    "euler": 25
+  },
+  {
+    "mm_id": "MM506",
+    "bp_id": "BP51985",
+    "fma_id": "FMA23733",
+    "name": "Ascending aorta proper",
+    "filename": "MM506_BP51985_FMA23733_Ascending aorta proper.obj",
+    "verts": 1492,
+    "faces": 2684,
+    "bounds_min": [
+      -5.53776,
+      -136.78,
+      1245.47
+    ],
+    "bounds_max": [
+      25.7819,
+      -109.576,
+      1276.47
+    ],
+    "dims": [
+      31.31966,
+      27.204000000000008,
+      31.0
+    ],
+    "center": [
+      9.058182122484238,
+      -123.6439691117959,
+      1262.208844847627
+    ],
+    "watertight": false,
+    "euler": -6
+  },
+  {
+    "mm_id": "MM514",
+    "bp_id": "BP51916",
+    "fma_id": "FMA84617",
+    "name": "Right posterior semilunar fibrous scallop of aortic valve anulus",
+    "filename": "MM514_BP51916_FMA84617_Right posterior semilunar fibrous scallop of aortic valve anulus.obj",
+    "verts": 716,
+    "faces": 1262,
+    "bounds_min": [
+      5.36709,
+      -130.103,
+      1226.34
+    ],
+    "bounds_max": [
+      15.3053,
+      -105.649,
+      1247.25
+    ],
+    "dims": [
+      9.938210000000002,
+      24.454000000000008,
+      20.910000000000082
+    ],
+    "center": [
+      10.6224988954315,
+      -115.96621750617874,
+      1233.012171994992
+    ],
+    "watertight": false,
+    "euler": -10
+  },
+  {
+    "mm_id": "MM515",
+    "bp_id": "BP51913",
+    "fma_id": "FMA84616",
+    "name": "Left posterior semilunar fibrous scallop of aortic valve anulus",
+    "filename": "MM515_BP51913_FMA84616_Left posterior semilunar fibrous scallop of aortic valve anulus.obj",
+    "verts": 612,
+    "faces": 1052,
+    "bounds_min": [
+      12.8149,
+      -130.921,
+      1239.43
+    ],
+    "bounds_max": [
+      34.4426,
+      -104.931,
+      1251.06
+    ],
+    "dims": [
+      21.627699999999997,
+      25.989999999999995,
+      11.629999999999882
+    ],
+    "center": [
+      26.715286117077188,
+      -115.27274424649995,
+      1243.2676780519243
+    ],
+    "watertight": false,
+    "euler": -27
+  },
+  {
+    "mm_id": "MM516",
+    "bp_id": "BP51915",
+    "fma_id": "FMA84618",
+    "name": "Anterior semilunar fibrous scallop of aortic valve anulus",
+    "filename": "MM516_BP51915_FMA84618_Anterior semilunar fibrous scallop of aortic valve anulus.obj",
+    "verts": 592,
+    "faces": 1068,
+    "bounds_min": [
+      6.03067,
+      -134.704,
+      1229.92
+    ],
+    "bounds_max": [
+      28.7667,
+      -129.261,
+      1249.97
+    ],
+    "dims": [
+      22.73603,
+      5.443000000000012,
+      20.049999999999955
+    ],
+    "center": [
+      20.567682296504113,
+      -132.40755221105323,
+      1236.6535079408736
+    ],
+    "watertight": false,
+    "euler": -10
+  },
+  {
+    "mm_id": "MM517",
+    "bp_id": "BP51924",
+    "fma_id": "FMA9502",
+    "name": "Fibrous ring of aortic valve",
+    "filename": "MM517_BP51924_FMA9502_Fibrous ring of aortic valve.obj",
+    "verts": 723,
+    "faces": 898,
+    "bounds_min": [
+      12.6991,
+      -107.895,
+      1231.86
+    ],
+    "bounds_max": [
+      23.8178,
+      -104.343,
+      1244.53
+    ],
+    "dims": [
+      11.118699999999999,
+      3.5519999999999925,
+      12.670000000000073
+    ],
+    "center": [
+      17.445411639476387,
+      -105.71575581507527,
+      1238.4118066720657
+    ],
+    "watertight": false,
+    "euler": 29
+  },
+  {
+    "mm_id": "MM519",
+    "bp_id": "BP51879",
+    "fma_id": "FMA7252",
+    "name": "Right posterior cusp of aortic valve",
+    "filename": "MM519_BP51879_FMA7252_Right posterior cusp of aortic valve.obj",
+    "verts": 686,
+    "faces": 1074,
+    "bounds_min": [
+      6.48167,
+      -128.857,
+      1227.01
+    ],
+    "bounds_max": [
+      19.4413,
+      -106.466,
+      1247.4
+    ],
+    "dims": [
+      12.959629999999997,
+      22.391000000000005,
+      20.3900000000001
+    ],
+    "center": [
+      14.405958412629534,
+      -117.63597759003024,
+      1233.6702592663505
+    ],
+    "watertight": false,
+    "euler": 14
+  },
+  {
+    "mm_id": "MM520",
+    "bp_id": "BP51924",
+    "fma_id": "FMA9502",
+    "name": "Fibrous ring of aortic valve",
+    "filename": "MM520_BP51924_FMA9502_Fibrous ring of aortic valve.obj",
+    "verts": 1139,
+    "faces": 1492,
+    "bounds_min": [
+      27.3129,
+      -133.425,
+      1236.48
+    ],
+    "bounds_max": [
+      34.1848,
+      -122.831,
+      1248.44
+    ],
+    "dims": [
+      6.871900000000004,
+      10.594000000000008,
+      11.960000000000036
+    ],
+    "center": [
+      30.25687004007075,
+      -129.5841922962525,
+      1242.4058663985868
+    ],
+    "watertight": false,
+    "euler": 47
+  },
+  {
+    "mm_id": "MM521",
+    "bp_id": "BP51864",
+    "fma_id": "FMA7254",
+    "name": "Left posterior cusp of aortic valve",
+    "filename": "MM521_BP51864_FMA7254_Left posterior cusp of aortic valve.obj",
+    "verts": 388,
+    "faces": 540,
+    "bounds_min": [
+      13.2221,
+      -129.656,
+      1235.32
+    ],
+    "bounds_max": [
+      34.2564,
+      -105.711,
+      1250.18
+    ],
+    "dims": [
+      21.0343,
+      23.945000000000007,
+      14.860000000000127
+    ],
+    "center": [
+      24.78486249513262,
+      -117.27330859959463,
+      1240.0772729711719
+    ],
+    "watertight": false,
+    "euler": 9
+  },
+  {
+    "mm_id": "MM524",
+    "bp_id": "BP51927",
+    "fma_id": "FMA7253",
+    "name": "Anterior cusp of aortic valve",
+    "filename": "MM524_BP51927_FMA7253_Anterior cusp of aortic valve.obj",
+    "verts": 470,
+    "faces": 722,
+    "bounds_min": [
+      6.16036,
+      -134.693,
+      1230.25
+    ],
+    "bounds_max": [
+      28.6234,
+      -123.106,
+      1250.5
+    ],
+    "dims": [
+      22.46304,
+      11.587000000000018,
+      20.25
+    ],
+    "center": [
+      20.730917146509448,
+      -128.7702286605105,
+      1237.006242702183
+    ],
+    "watertight": false,
+    "euler": 8
+  },
+  {
+    "mm_id": "MM526",
+    "bp_id": "BP51892",
+    "fma_id": "FMA9508",
+    "name": "Left fibrous trigone of heart",
+    "filename": "MM526_BP51892_FMA9508_Left fibrous trigone of heart.obj",
+    "verts": 1052,
+    "faces": 1964,
+    "bounds_min": [
+      21.5567,
+      -111.485,
+      1236.09
+    ],
+    "bounds_max": [
+      34.1872,
+      -97.9302,
+      1242.42
+    ],
+    "dims": [
+      12.630499999999998,
+      13.5548,
+      6.330000000000155
+    ],
+    "center": [
+      29.399295471959753,
+      -104.19540103162879,
+      1239.3415043056339
+    ],
+    "watertight": false,
+    "euler": -7
+  },
+  {
+    "mm_id": "MM529",
+    "bp_id": "BP51899",
+    "fma_id": "FMA9498",
+    "name": "Fibrous ring of mitral valve",
+    "filename": "MM529_BP51899_FMA9498_Fibrous ring of mitral valve.obj",
+    "verts": 9656,
+    "faces": 18256,
+    "bounds_min": [
+      7.29368,
+      -114.804,
+      1204.83
+    ],
+    "bounds_max": [
+      35.7116,
+      -85.7715,
+      1239.5
+    ],
+    "dims": [
+      28.417919999999995,
+      29.0325,
+      34.67000000000007
+    ],
+    "center": [
+      21.84294518770316,
+      -98.8387379042393,
+      1220.8154513281343
+    ],
+    "watertight": false,
+    "euler": -140
+  },
+  {
+    "mm_id": "MM532",
+    "bp_id": "BP51848",
+    "fma_id": "FMA7272",
+    "name": "Septomarginal trabecula",
+    "filename": "MM532_BP51848_FMA7272_Septomarginal trabecula.obj",
+    "verts": 1000,
+    "faces": 1822,
+    "bounds_min": [
+      17.8324,
+      -163.41,
+      1195.47
+    ],
+    "bounds_max": [
+      35.5738,
+      -153.46,
+      1215.99
+    ],
+    "dims": [
+      17.7414,
+      9.949999999999989,
+      20.519999999999982
+    ],
+    "center": [
+      27.29368533287946,
+      -158.87176852086614,
+      1204.8807798685305
+    ],
+    "watertight": false,
+    "euler": 9
+  },
+  {
+    "mm_id": "MM534",
+    "bp_id": "BP51828",
+    "fma_id": "FMA13258",
+    "name": "Mural limb of supraventricular crest",
+    "filename": "MM534_BP51828_FMA13258_Mural limb of supraventricular crest.obj",
+    "verts": 471,
+    "faces": 786,
+    "bounds_min": [
+      0.296361,
+      -144.898,
+      1228.45
+    ],
+    "bounds_max": [
+      25.5022,
+      -133.691,
+      1243.15
+    ],
+    "dims": [
+      25.205838999999997,
+      11.206999999999994,
+      14.700000000000045
+    ],
+    "center": [
+      13.427051037171806,
+      -139.5264617383756,
+      1234.4758330426698
+    ],
+    "watertight": false,
+    "euler": 3
+  },
+  {
+    "mm_id": "MM537",
+    "bp_id": "BP51810",
+    "fma_id": "FMA7262",
+    "name": "Septal papillary muscle of right ventricle",
+    "filename": "MM537_BP51810_FMA7262_Septal papillary muscle of right ventricle.obj",
+    "verts": 1866,
+    "faces": 2786,
+    "bounds_min": [
+      20.098,
+      -156.245,
+      1214.69
+    ],
+    "bounds_max": [
+      36.936,
+      -141.808,
+      1222.06
+    ],
+    "dims": [
+      16.838,
+      14.437000000000012,
+      7.369999999999891
+    ],
+    "center": [
+      28.854847513449407,
+      -148.38660007896758,
+      1218.4443620093668
+    ],
+    "watertight": false,
+    "euler": 28
+  },
+  {
+    "mm_id": "MM538",
+    "bp_id": "BP51878",
+    "fma_id": "FMA49208",
+    "name": "Wall of outflow part of right ventricle",
+    "filename": "MM538_BP51878_FMA49208_Wall of outflow part of right ventricle.obj",
+    "verts": 852,
+    "faces": 1442,
+    "bounds_min": [
+      -0.100251,
+      -173.995,
+      1218.85
+    ],
+    "bounds_max": [
+      50.6292,
+      -132.66,
+      1257.75
+    ],
+    "dims": [
+      50.729451,
+      41.33500000000001,
+      38.90000000000009
+    ],
+    "center": [
+      28.62768560122261,
+      -154.1567934899001,
+      1239.4448735467442
+    ],
+    "watertight": false,
+    "euler": -10
+  },
+  {
+    "mm_id": "MM541",
+    "bp_id": "BP51877",
+    "fma_id": "FMA7242",
+    "name": "Anterior leaflet of mitral valve",
+    "filename": "MM541_BP51877_FMA7242_Anterior leaflet of mitral valve.obj",
+    "verts": 6548,
+    "faces": 5629,
+    "bounds_min": [
+      8.37583,
+      -120.719,
+      1206.61
+    ],
+    "bounds_max": [
+      45.7802,
+      -102.19,
+      1238.6
+    ],
+    "dims": [
+      37.40437,
+      18.528999999999996,
+      31.99000000000001
+    ],
+    "center": [
+      24.26933808902945,
+      -110.97764797333511,
+      1226.5450664479831
+    ],
+    "watertight": false,
+    "euler": 790
+  },
+  {
+    "mm_id": "MM542",
+    "bp_id": "BP51793",
+    "fma_id": "FMA7243",
+    "name": "Posterior leaflet of mitral valve",
+    "filename": "MM542_BP51793_FMA7243_Posterior leaflet of mitral valve.obj",
+    "verts": 15274,
+    "faces": 20871,
+    "bounds_min": [
+      7.91489,
+      -120.727,
+      1205.02
+    ],
+    "bounds_max": [
+      45.8529,
+      -86.9248,
+      1238.65
+    ],
+    "dims": [
+      37.93801,
+      33.8022,
+      33.63000000000011
+    ],
+    "center": [
+      27.599965048751134,
+      -101.53223514922576,
+      1214.8203899355585
+    ],
+    "watertight": false,
+    "euler": 392
+  },
+  {
+    "mm_id": "MM543",
+    "bp_id": "BP51877",
+    "fma_id": "FMA7242",
+    "name": "Anterior leaflet of mitral valve",
+    "filename": "MM543_BP51877_FMA7242_Anterior leaflet of mitral valve.obj",
+    "verts": 6548,
+    "faces": 5629,
+    "bounds_min": [
+      8.37583,
+      -120.719,
+      1206.61
+    ],
+    "bounds_max": [
+      45.7802,
+      -102.19,
+      1238.6
+    ],
+    "dims": [
+      37.40437,
+      18.528999999999996,
+      31.99000000000001
+    ],
+    "center": [
+      24.26970129015623,
+      -110.97770792418193,
+      1226.5450146495875
+    ],
+    "watertight": false,
+    "euler": 790
+  },
+  {
+    "mm_id": "MM544",
+    "bp_id": "BP51793",
+    "fma_id": "FMA7243",
+    "name": "Posterior leaflet of mitral valve",
+    "filename": "MM544_BP51793_FMA7243_Posterior leaflet of mitral valve.obj",
+    "verts": 15274,
+    "faces": 20871,
+    "bounds_min": [
+      7.91489,
+      -120.727,
+      1205.02
+    ],
+    "bounds_max": [
+      45.8529,
+      -86.9248,
+      1238.65
+    ],
+    "dims": [
+      37.93801,
+      33.8022,
+      33.63000000000011
+    ],
+    "center": [
+      27.599965048751137,
+      -101.53223514922576,
+      1214.8203899355588
+    ],
+    "watertight": false,
+    "euler": 392
+  },
+  {
+    "mm_id": "MM550",
+    "bp_id": "BP51806",
+    "fma_id": "FMA7260",
+    "name": "Anterior papillary muscle of right ventricle",
+    "filename": "MM550_BP51806_FMA7260_Anterior papillary muscle of right ventricle.obj",
+    "verts": 1864,
+    "faces": 2786,
+    "bounds_min": [
+      7.20389,
+      -168.373,
+      1192.68
+    ],
+    "bounds_max": [
+      24.2572,
+      -149.006,
+      1209.58
+    ],
+    "dims": [
+      17.05331,
+      19.36699999999999,
+      16.899999999999864
+    ],
+    "center": [
+      15.915329797031484,
+      -157.66292664484232,
+      1200.5315149637
+    ],
+    "watertight": false,
+    "euler": 28
+  },
+  {
+    "mm_id": "MM551",
+    "bp_id": "BP51803",
+    "fma_id": "FMA7261",
+    "name": "Posterior papillary muscle of right ventricle",
+    "filename": "MM551_BP51803_FMA7261_Posterior papillary muscle of right ventricle.obj",
+    "verts": 1990,
+    "faces": 2862,
+    "bounds_min": [
+      15.1752,
+      -150.049,
+      1191.32
+    ],
+    "bounds_max": [
+      37.6437,
+      -140.583,
+      1202.71
+    ],
+    "dims": [
+      22.468500000000002,
+      9.466000000000008,
+      11.3900000000001
+    ],
+    "center": [
+      25.62022133183272,
+      -143.7832594379916,
+      1196.844960385634
+    ],
+    "watertight": false,
+    "euler": 41
+  },
+  {
+    "mm_id": "MM556",
+    "bp_id": "BP51977",
+    "fma_id": "FMA3802",
+    "name": "Trunk of right coronary artery",
+    "filename": "MM556_BP51977_FMA3802_Trunk of right coronary artery.obj",
+    "verts": 576,
+    "faces": 1066,
+    "bounds_min": [
+      -10.7163,
+      -154.235,
+      1224.82
+    ],
+    "bounds_max": [
+      16.5645,
+      -135.984,
+      1240.4
+    ],
+    "dims": [
+      27.2808,
+      18.251000000000005,
+      15.580000000000155
+    ],
+    "center": [
+      1.7162945754096937,
+      -145.44340414070706,
+      1235.4110929590777
+    ],
+    "watertight": false,
+    "euler": 2
+  },
+  {
+    "mm_id": "MM557",
+    "bp_id": "BP58405",
+    "fma_id": "FMA4685",
+    "name": "Stem of left coronary artery",
+    "filename": "MM557_BP58405_FMA4685_Stem of left coronary artery.obj",
+    "verts": 370,
+    "faces": 500,
+    "bounds_min": [
+      29.3593,
+      -127.28,
+      1248.33
+    ],
+    "bounds_max": [
+      38.3009,
+      -118.089,
+      1253.39
+    ],
+    "dims": [
+      8.941599999999998,
+      9.191000000000003,
+      5.060000000000173
+    ],
+    "center": [
+      33.66266035941134,
+      -122.66915214286006,
+      1250.9444995006586
+    ],
+    "watertight": false,
+    "euler": 17
+  },
+  {
+    "mm_id": "MM558",
+    "bp_id": "BP51975",
+    "fma_id": "FMA15098",
+    "name": "Wall of bulb of aorta",
+    "filename": "MM558_BP51975_FMA15098_Wall of bulb of aorta.obj",
+    "verts": 2327,
+    "faces": 3888,
+    "bounds_min": [
+      2.26922,
+      -138.331,
+      1226.83
+    ],
+    "bounds_max": [
+      34.6291,
+      -105.153,
+      1255.67
+    ],
+    "dims": [
+      32.359880000000004,
+      33.17799999999998,
+      28.840000000000146
+    ],
+    "center": [
+      16.644442732109066,
+      -121.98701986418418,
+      1242.5636644207668
+    ],
+    "watertight": false,
+    "euler": 19
+  },
+  {
+    "mm_id": "MM559",
+    "bp_id": "BP51843",
+    "fma_id": "FMA49285",
+    "name": "Anterior wall proper of right atrium",
+    "filename": "MM559_BP51843_FMA49285_Anterior wall proper of right atrium.obj",
+    "verts": 1094,
+    "faces": 1694,
+    "bounds_min": [
+      -23.2586,
+      -150.595,
+      1187.34
+    ],
+    "bounds_max": [
+      7.74547,
+      -124.385,
+      1275.56
+    ],
+    "dims": [
+      31.004070000000002,
+      26.209999999999994,
+      88.22000000000003
+    ],
+    "center": [
+      -10.210611548065442,
+      -136.42185774776644,
+      1228.7412804749308
+    ],
+    "watertight": false,
+    "euler": -2
+  },
+  {
+    "mm_id": "MM560",
+    "bp_id": "BP51837",
+    "fma_id": "FMA49286",
+    "name": "Lateral wall proper of right atrium",
+    "filename": "MM560_BP51837_FMA49286_Lateral wall proper of right atrium.obj",
+    "verts": 3387,
+    "faces": 6022,
+    "bounds_min": [
+      -35.3272,
+      -145.282,
+      1186.91
+    ],
+    "bounds_max": [
+      -16.3463,
+      -97.0453,
+      1276.71
+    ],
+    "dims": [
+      18.9809,
+      48.23670000000001,
+      89.79999999999995
+    ],
+    "center": [
+      -27.864175818466972,
+      -114.78748520790049,
+      1229.9067452672787
+    ],
+    "watertight": false,
+    "euler": -4
+  },
+  {
+    "mm_id": "MM562",
+    "bp_id": "BP51846",
+    "fma_id": "FMA9242",
+    "name": "Valve of coronary sinus",
+    "filename": "MM562_BP51846_FMA9242_Valve of coronary sinus.obj",
+    "verts": 1257,
+    "faces": 1964,
+    "bounds_min": [
+      -0.62172,
+      -116.722,
+      1203.26
+    ],
+    "bounds_max": [
+      8.0266,
+      -109.054,
+      1218.13
+    ],
+    "dims": [
+      8.64832,
+      7.667999999999992,
+      14.870000000000118
+    ],
+    "center": [
+      3.211558426753224,
+      -112.2129345925231,
+      1209.170908694656
+    ],
+    "watertight": false,
+    "euler": 7
+  },
+  {
+    "mm_id": "MM563",
+    "bp_id": "BP51852",
+    "fma_id": "FMA13257",
+    "name": "Septal limb of supraventricular crest",
+    "filename": "MM563_BP51852_FMA13257_Septal limb of supraventricular crest.obj",
+    "verts": 1828,
+    "faces": 3256,
+    "bounds_min": [
+      13.4923,
+      -167.815,
+      1206.43
+    ],
+    "bounds_max": [
+      45.1444,
+      -131.084,
+      1244.99
+    ],
+    "dims": [
+      31.652099999999997,
+      36.730999999999995,
+      38.559999999999945
+    ],
+    "center": [
+      30.48152580132114,
+      -149.18830555769006,
+      1223.2671004850645
+    ],
+    "watertight": false,
+    "euler": -4
+  },
+  {
+    "mm_id": "MM564",
+    "bp_id": "BP51832",
+    "fma_id": "FMA7270",
+    "name": "Trabecula carnea of right ventricle",
+    "filename": "MM564_BP51832_FMA7270_Trabecula carnea of right ventricle.obj",
+    "verts": 6466,
+    "faces": 7230,
+    "bounds_min": [
+      -3.21972,
+      -168.595,
+      1187.61
+    ],
+    "bounds_max": [
+      46.8133,
+      -128.558,
+      1228.11
+    ],
+    "dims": [
+      50.03302,
+      40.037000000000006,
+      40.5
+    ],
+    "center": [
+      21.85686608628938,
+      -149.70336821301427,
+      1200.6961852340003
+    ],
+    "watertight": false,
+    "euler": 373
+  },
+  {
+    "mm_id": "MM568",
+    "bp_id": "BP51893",
+    "fma_id": "FMA83468",
+    "name": "Membranous part of interventricular septum proper",
+    "filename": "MM568_BP51893_FMA83468_Membranous part of interventricular septum proper.obj",
+    "verts": 2943,
+    "faces": 5058,
+    "bounds_min": [
+      8.1931,
+      -134.434,
+      1219.35
+    ],
+    "bounds_max": [
+      17.4877,
+      -120.572,
+      1232.11
+    ],
+    "dims": [
+      9.2946,
+      13.861999999999995,
+      12.759999999999991
+    ],
+    "center": [
+      12.994971173033546,
+      -128.08504754769223,
+      1226.3992253899298
+    ],
+    "watertight": false,
+    "euler": 47
+  },
+  {
+    "mm_id": "MM569",
+    "bp_id": "BP51930",
+    "fma_id": "FMA7238",
+    "name": "Anterior leaflet of tricuspid valve",
+    "filename": "MM569_BP51930_FMA7238_Anterior leaflet of tricuspid valve.obj",
+    "verts": 4404,
+    "faces": 5051,
+    "bounds_min": [
+      -10.2136,
+      -150.812,
+      1208.21
+    ],
+    "bounds_max": [
+      21.8216,
+      -132.22,
+      1232.92
+    ],
+    "dims": [
+      32.0352,
+      18.592000000000013,
+      24.710000000000036
+    ],
+    "center": [
+      4.944100450818369,
+      -144.00767845347434,
+      1224.0806838920682
+    ],
+    "watertight": false,
+    "euler": 44
+  },
+  {
+    "mm_id": "MM570",
+    "bp_id": "BP51920",
+    "fma_id": "FMA7239",
+    "name": "Posterior leaflet of tricuspid valve",
+    "filename": "MM570_BP51920_FMA7239_Posterior leaflet of tricuspid valve.obj",
+    "verts": 4432,
+    "faces": 4830,
+    "bounds_min": [
+      -15.6787,
+      -150.824,
+      1200.64
+    ],
+    "bounds_max": [
+      16.4109,
+      -126.339,
+      1220.05
+    ],
+    "dims": [
+      32.089600000000004,
+      24.485000000000014,
+      19.409999999999854
+    ],
+    "center": [
+      -2.9485992125088587,
+      -141.65352977933443,
+      1206.6384333778478
+    ],
+    "watertight": false,
+    "euler": 75
+  },
+  {
+    "mm_id": "MM571",
+    "bp_id": "BP51920",
+    "fma_id": "FMA7239",
+    "name": "Posterior leaflet of tricuspid valve",
+    "filename": "MM571_BP51920_FMA7239_Posterior leaflet of tricuspid valve.obj",
+    "verts": 4437,
+    "faces": 4830,
+    "bounds_min": [
+      -15.6787,
+      -150.824,
+      1200.64
+    ],
+    "bounds_max": [
+      16.4109,
+      -126.339,
+      1220.05
+    ],
+    "dims": [
+      32.089600000000004,
+      24.485000000000014,
+      19.409999999999854
+    ],
+    "center": [
+      -2.948559632968943,
+      -141.65352591230885,
+      1206.6384180470156
+    ],
+    "watertight": false,
+    "euler": 76
+  },
+  {
+    "mm_id": "MM572",
+    "bp_id": "BP51918",
+    "fma_id": "FMA85237",
+    "name": "Anulus proper of tricuspid valve",
+    "filename": "MM572_BP51918_FMA85237_Anulus proper of tricuspid valve.obj",
+    "verts": 1634,
+    "faces": 3048,
+    "bounds_min": [
+      -15.7546,
+      -149.88,
+      1199.59
+    ],
+    "bounds_max": [
+      11.6594,
+      -118.571,
+      1234.55
+    ],
+    "dims": [
+      27.414,
+      31.308999999999997,
+      34.960000000000036
+    ],
+    "center": [
+      -0.8677669832514364,
+      -133.64144427628818,
+      1216.1368584355134
+    ],
+    "watertight": false,
+    "euler": -35
+  },
+  {
+    "mm_id": "MM573",
+    "bp_id": "BP51943",
+    "fma_id": "FMA7240",
+    "name": "Septal leaflet of tricuspid valve",
+    "filename": "MM573_BP51943_FMA7240_Septal leaflet of tricuspid valve.obj",
+    "verts": 4421,
+    "faces": 4738,
+    "bounds_min": [
+      -0.457523,
+      -142.828,
+      1200.86
+    ],
+    "bounds_max": [
+      22.0315,
+      -119.022,
+      1231.91
+    ],
+    "dims": [
+      22.489023,
+      23.805999999999997,
+      31.050000000000182
+    ],
+    "center": [
+      10.886375312685024,
+      -130.06480302578098,
+      1214.309145097011
+    ],
+    "watertight": false,
+    "euler": 118
+  },
+  {
+    "mm_id": "MM574",
+    "bp_id": "BP51943",
+    "fma_id": "FMA7240",
+    "name": "Septal leaflet of tricuspid valve",
+    "filename": "MM574_BP51943_FMA7240_Septal leaflet of tricuspid valve.obj",
+    "verts": 4421,
+    "faces": 4738,
+    "bounds_min": [
+      -0.457523,
+      -142.828,
+      1200.86
+    ],
+    "bounds_max": [
+      22.0315,
+      -119.022,
+      1231.91
+    ],
+    "dims": [
+      22.489023,
+      23.805999999999997,
+      31.050000000000182
+    ],
+    "center": [
+      10.886375312685026,
+      -130.064803025781,
+      1214.3091450970112
+    ],
+    "watertight": false,
+    "euler": 118
+  },
+  {
+    "mm_id": "MM575",
+    "bp_id": "BP51930",
+    "fma_id": "FMA7238",
+    "name": "Anterior leaflet of tricuspid valve",
+    "filename": "MM575_BP51930_FMA7238_Anterior leaflet of tricuspid valve.obj",
+    "verts": 4401,
+    "faces": 5051,
+    "bounds_min": [
+      -10.2136,
+      -150.812,
+      1208.21
+    ],
+    "bounds_max": [
+      21.8216,
+      -132.22,
+      1232.92
+    ],
+    "dims": [
+      32.0352,
+      18.592000000000013,
+      24.710000000000036
+    ],
+    "center": [
+      4.944101970494694,
+      -144.00765586229593,
+      1224.080716163806
+    ],
+    "watertight": false,
+    "euler": 44
+  },
+  {
+    "mm_id": "MM577",
+    "bp_id": "BP51824",
+    "fma_id": "FMA9486",
+    "name": "Right branch of atrioventricular bundle",
+    "filename": "MM577_BP51824_FMA9486_Right branch of atrioventricular bundle.obj",
+    "verts": 6220,
+    "faces": 8310,
+    "bounds_min": [
+      12.6586,
+      -160.58,
+      1199.38
+    ],
+    "bounds_max": [
+      35.2501,
+      -126.047,
+      1227.51
+    ],
+    "dims": [
+      22.591500000000003,
+      34.533000000000015,
+      28.12999999999988
+    ],
+    "center": [
+      23.86742580380831,
+      -146.42905392854146,
+      1216.7536419149365
+    ],
+    "watertight": false,
+    "euler": -396
+  },
+  {
+    "mm_id": "MM578",
+    "bp_id": "BP51790",
+    "fma_id": "FMA9489",
+    "name": "Posterior division of left branch of atrioventricular bundle",
+    "filename": "MM578_BP51790_FMA9489_Posterior division of left branch of atrioventricular bundle.obj",
+    "verts": 2289,
+    "faces": 1866,
+    "bounds_min": [
+      18.8578,
+      -138.354,
+      1193.95
+    ],
+    "bounds_max": [
+      41.9337,
+      -117.249,
+      1219.4
+    ],
+    "dims": [
+      23.0759,
+      21.105000000000018,
+      25.450000000000045
+    ],
+    "center": [
+      29.37271260596857,
+      -126.90518883756448,
+      1203.242775766654
+    ],
+    "watertight": false,
+    "euler": 270
+  },
+  {
+    "mm_id": "MM579",
+    "bp_id": "BP51789",
+    "fma_id": "FMA83331",
+    "name": "Septal division of left branch of atrioventricular bundle",
+    "filename": "MM579_BP51789_FMA83331_Septal division of left branch of atrioventricular bundle.obj",
+    "verts": 2048,
+    "faces": 1976,
+    "bounds_min": [
+      13.7767,
+      -147.38,
+      1196.32
+    ],
+    "bounds_max": [
+      47.7403,
+      -125.875,
+      1226.35
+    ],
+    "dims": [
+      33.9636,
+      21.504999999999995,
+      30.029999999999973
+    ],
+    "center": [
+      31.436762164934624,
+      -137.57895445333838,
+      1211.3441763175106
+    ],
+    "watertight": false,
+    "euler": 122
+  },
+  {
+    "mm_id": "MM580",
+    "bp_id": "BP51788",
+    "fma_id": "FMA9488",
+    "name": "Anterior division of left branch of atrioventricular bundle",
+    "filename": "MM580_BP51788_FMA9488_Anterior division of left branch of atrioventricular bundle.obj",
+    "verts": 3298,
+    "faces": 3300,
+    "bounds_min": [
+      15.2375,
+      -144.618,
+      1212.84
+    ],
+    "bounds_max": [
+      61.8901,
+      -114.362,
+      1233.91
+    ],
+    "dims": [
+      46.65259999999999,
+      30.256,
+      21.070000000000164
+    ],
+    "center": [
+      46.289123032954656,
+      -133.86287037120968,
+      1223.7243821439718
+    ],
+    "watertight": false,
+    "euler": 162
+  },
+  {
+    "mm_id": "MM582",
+    "bp_id": "BP51827",
+    "fma_id": "FMA9483",
+    "name": "Posterior internodal tract",
+    "filename": "MM582_BP51827_FMA9483_Posterior internodal tract.obj",
+    "verts": 1174,
+    "faces": 2184,
+    "bounds_min": [
+      -32.5773,
+      -134.69,
+      1202.48
+    ],
+    "bounds_max": [
+      9.08519,
+      -108.502,
+      1264.22
+    ],
+    "dims": [
+      41.662490000000005,
+      26.188000000000002,
+      61.74000000000001
+    ],
+    "center": [
+      -18.464438504891426,
+      -123.58496821185345,
+      1223.9674992880575
+    ],
+    "watertight": false,
+    "euler": -26
+  },
+  {
+    "mm_id": "MM583",
+    "bp_id": "BP51818",
+    "fma_id": "FMA9482",
+    "name": "Middle internodal tract",
+    "filename": "MM583_BP51818_FMA9482_Middle internodal tract.obj",
+    "verts": 1280,
+    "faces": 1818,
+    "bounds_min": [
+      -32.6817,
+      -135.174,
+      1222.72
+    ],
+    "bounds_max": [
+      8.55049,
+      -99.0605,
+      1268.81
+    ],
+    "dims": [
+      41.23219,
+      36.1135,
+      46.08999999999992
+    ],
+    "center": [
+      -16.98838253897714,
+      -113.5596008328311,
+      1249.3590540812852
+    ],
+    "watertight": false,
+    "euler": -19
+  },
+  {
+    "mm_id": "MM584",
+    "bp_id": "BP51831",
+    "fma_id": "FMA84578",
+    "name": "Atrial branch of anterior internodal tract",
+    "filename": "MM584_BP51831_FMA84578_Atrial branch of anterior internodal tract.obj",
+    "verts": 428,
+    "faces": 606,
+    "bounds_min": [
+      -0.358306,
+      -109.557,
+      1250.58
+    ],
+    "bounds_max": [
+      36.8695,
+      -93.0155,
+      1264.53
+    ],
+    "dims": [
+      37.227806,
+      16.5415,
+      13.950000000000045
+    ],
+    "center": [
+      18.62255739848775,
+      -104.13292493830885,
+      1259.852433011747
+    ],
+    "watertight": false,
+    "euler": -13
+  },
+  {
+    "mm_id": "MM585",
+    "bp_id": "BP51875",
+    "fma_id": "FMA9480",
+    "name": "Anterior internodal tract",
+    "filename": "MM585_BP51875_FMA9480_Anterior internodal tract.obj",
+    "verts": 541,
+    "faces": 668,
+    "bounds_min": [
+      -11.6882,
+      -131.829,
+      1222.27
+    ],
+    "bounds_max": [
+      8.78022,
+      -107.926,
+      1267.27
+    ],
+    "dims": [
+      20.468420000000002,
+      23.903000000000006,
+      45.0
+    ],
+    "center": [
+      -1.2238163427890567,
+      -116.98822705250014,
+      1251.1578372399852
+    ],
+    "watertight": false,
+    "euler": -3
+  },
+  {
+    "mm_id": "MM586",
+    "bp_id": "BP51792",
+    "fma_id": "FMA9484",
+    "name": "Atrioventricular bundle",
+    "filename": "MM586_BP51792_FMA9484_Atrioventricular bundle.obj",
+    "verts": 875,
+    "faces": 1584,
+    "bounds_min": [
+      8.03186,
+      -130.138,
+      1223.33
+    ],
+    "bounds_max": [
+      14.7104,
+      -120.428,
+      1226.65
+    ],
+    "dims": [
+      6.67854,
+      9.710000000000008,
+      3.3200000000001637
+    ],
+    "center": [
+      11.597605626511747,
+      -124.81121445387267,
+      1224.8317598632168
+    ],
+    "watertight": false,
+    "euler": -3
+  },
+  {
+    "mm_id": "MM587",
+    "bp_id": "BP51791",
+    "fma_id": "FMA9478",
+    "name": "Atrioventricular node",
+    "filename": "MM587_BP51791_FMA9478_Atrioventricular node.obj",
+    "verts": 1103,
+    "faces": 2072,
+    "bounds_min": [
+      7.58783,
+      -121.984,
+      1221.34
+    ],
+    "bounds_max": [
+      9.38383,
+      -117.669,
+      1226.36
+    ],
+    "dims": [
+      1.7959999999999994,
+      4.314999999999998,
+      5.019999999999982
+    ],
+    "center": [
+      8.4940224130654,
+      -119.69992190817668,
+      1223.6208504990761
+    ],
+    "watertight": false,
+    "euler": -4
+  },
+  {
+    "mm_id": "MM590",
+    "bp_id": "BP51888",
+    "fma_id": "FMA84094",
+    "name": "Septal wall of right atrium",
+    "filename": "MM590_BP51888_FMA84094_Septal wall of right atrium.obj",
+    "verts": 3747,
+    "faces": 6412,
+    "bounds_min": [
+      -17.29,
+      -135.526,
+      1186.59
+    ],
+    "bounds_max": [
+      10.1862,
+      -97.1419,
+      1275.42
+    ],
+    "dims": [
+      27.4762,
+      38.384100000000004,
+      88.83000000000015
+    ],
+    "center": [
+      -4.1346632740134535,
+      -112.38005137306874,
+      1231.3928208792868
+    ],
+    "watertight": false,
+    "euler": -16
+  },
+  {
+    "mm_id": "MM591",
+    "bp_id": "BP51888",
+    "fma_id": "FMA84094",
+    "name": "Septal wall of right atrium",
+    "filename": "MM591_BP51888_FMA84094_Septal wall of right atrium.obj",
+    "verts": 423,
+    "faces": 554,
+    "bounds_min": [
+      4.27533,
+      -122.397,
+      1204.61
+    ],
+    "bounds_max": [
+      10.673,
+      -110.222,
+      1228.23
+    ],
+    "dims": [
+      6.39767,
+      12.175000000000011,
+      23.62000000000012
+    ],
+    "center": [
+      7.701272207176291,
+      -116.65630397597319,
+      1217.4876124397485
+    ],
+    "watertight": false,
+    "euler": 11
+  },
+  {
+    "mm_id": "MM592",
+    "bp_id": "BP51898",
+    "fma_id": "FMA7108",
+    "name": "Interatrial septum",
+    "filename": "MM592_BP51898_FMA7108_Interatrial septum.obj",
+    "verts": 1841,
+    "faces": 2978,
+    "bounds_min": [
+      -12.0851,
+      -117.859,
+      1208.69
+    ],
+    "bounds_max": [
+      7.18945,
+      -97.7297,
+      1256.06
+    ],
+    "dims": [
+      19.27455,
+      20.1293,
+      47.36999999999989
+    ],
+    "center": [
+      -2.8898723552004912,
+      -104.44262304694638,
+      1229.8177491706633
+    ],
+    "watertight": false,
+    "euler": 26
+  },
+  {
+    "mm_id": "MM593",
+    "bp_id": "BP51898",
+    "fma_id": "FMA7108",
+    "name": "Interatrial septum",
+    "filename": "MM593_BP51898_FMA7108_Interatrial septum.obj",
+    "verts": 1488,
+    "faces": 2918,
+    "bounds_min": [
+      -11.3216,
+      -116.258,
+      1208.13
+    ],
+    "bounds_max": [
+      8.23851,
+      -97.3604,
+      1240.54
+    ],
+    "dims": [
+      19.56011,
+      18.897599999999997,
+      32.409999999999854
+    ],
+    "center": [
+      -0.22424606894143054,
+      -105.33479269388414,
+      1221.7916869993762
+    ],
+    "watertight": false,
+    "euler": -3
+  },
+  {
+    "mm_id": "MM594",
+    "bp_id": "BP51936",
+    "fma_id": "FMA7134",
+    "name": "Muscular part of interventricular septum",
+    "filename": "MM594_BP51936_FMA7134_Muscular part of interventricular septum.obj",
+    "verts": 1026,
+    "faces": 1766,
+    "bounds_min": [
+      7.86423,
+      -121.437,
+      1210.51
+    ],
+    "bounds_max": [
+      13.9703,
+      -112.783,
+      1222.5
+    ],
+    "dims": [
+      6.10607,
+      8.653999999999996,
+      11.990000000000009
+    ],
+    "center": [
+      10.65619040749247,
+      -116.65432608472527,
+      1217.3721768186585
+    ],
+    "watertight": false,
+    "euler": 13
+  },
+  {
+    "mm_id": "MM595",
+    "bp_id": "BP51903",
+    "fma_id": "FMA7136",
+    "name": "Atrioventricular septum",
+    "filename": "MM595_BP51903_FMA7136_Atrioventricular septum.obj",
+    "verts": 1573,
+    "faces": 2540,
+    "bounds_min": [
+      8.54146,
+      -127.021,
+      1219.24
+    ],
+    "bounds_max": [
+      12.0789,
+      -117.822,
+      1229.21
+    ],
+    "dims": [
+      3.53744,
+      9.198999999999998,
+      9.970000000000027
+    ],
+    "center": [
+      10.215135517108921,
+      -121.47911125115165,
+      1224.037305229805
+    ],
+    "watertight": false,
+    "euler": 37
+  },
+  {
+    "mm_id": "MM596",
+    "bp_id": "BP51912",
+    "fma_id": "FMA9505",
+    "name": "Right fibrous trigone of heart",
+    "filename": "MM596_BP51912_FMA9505_Right fibrous trigone of heart.obj",
+    "verts": 2365,
+    "faces": 4066,
+    "bounds_min": [
+      7.43657,
+      -121.569,
+      1219.38
+    ],
+    "bounds_max": [
+      12.1646,
+      -109.659,
+      1229.65
+    ],
+    "dims": [
+      4.72803,
+      11.909999999999997,
+      10.269999999999982
+    ],
+    "center": [
+      9.224321629782052,
+      -116.04130399905141,
+      1224.7899186399447
+    ],
+    "watertight": false,
+    "euler": 32
+  },
+  {
+    "mm_id": "MM598",
+    "bp_id": "BP51861",
+    "fma_id": "FMA49207",
+    "name": "Wall of inflow part of right ventricle",
+    "filename": "MM598_BP51861_FMA49207_Wall of inflow part of right ventricle.obj",
+    "verts": 4887,
+    "faces": 8560,
+    "bounds_min": [
+      -14.6634,
+      -175.087,
+      1177.02
+    ],
+    "bounds_max": [
+      52.2246,
+      -117.001,
+      1239.06
+    ],
+    "dims": [
+      66.888,
+      58.085999999999984,
+      62.039999999999964
+    ],
+    "center": [
+      17.139665657126717,
+      -153.9440882941674,
+      1202.8540709763831
+    ],
+    "watertight": false,
+    "euler": -35
+  },
+  {
+    "mm_id": "MM599",
+    "bp_id": "BP51796",
+    "fma_id": "FMA7271",
+    "name": "Trabecula carnea of left ventricle",
+    "filename": "MM599_BP51796_FMA7271_Trabecula carnea of left ventricle.obj",
+    "verts": 7782,
+    "faces": 6872,
+    "bounds_min": [
+      29.5884,
+      -157.676,
+      1186.01
+    ],
+    "bounds_max": [
+      66.6956,
+      -102.198,
+      1235.8
+    ],
+    "dims": [
+      37.1072,
+      55.477999999999994,
+      49.789999999999964
+    ],
+    "center": [
+      52.413469172182396,
+      -132.41466393190794,
+      1206.1422593129003
+    ],
+    "watertight": false,
+    "euler": 767
+  },
+  {
+    "mm_id": "MM600",
+    "bp_id": "BP51936",
+    "fma_id": "FMA7134",
+    "name": "Muscular part of interventricular septum",
+    "filename": "MM600_BP51936_FMA7134_Muscular part of interventricular septum.obj",
+    "verts": 2530,
+    "faces": 4868,
+    "bounds_min": [
+      9.65895,
+      -163.099,
+      1180.2
+    ],
+    "bounds_max": [
+      54.63,
+      -116.388,
+      1235.19
+    ],
+    "dims": [
+      44.971050000000005,
+      46.710999999999984,
+      54.99000000000001
+    ],
+    "center": [
+      32.18214250044741,
+      -140.07452895446855,
+      1205.4651802897554
+    ],
+    "watertight": false,
+    "euler": -9
+  },
+  {
+    "mm_id": "MM601",
+    "bp_id": "BP51900",
+    "fma_id": "FMA84619",
+    "name": "Right anterior semilunar fibrous scallop of pulmonary valve anulus",
+    "filename": "MM601_BP51900_FMA84619_Right anterior semilunar fibrous scallop of pulmonary valve anulus.obj",
+    "verts": 496,
+    "faces": 634,
+    "bounds_min": [
+      14.6845,
+      -154.431,
+      1244.47
+    ],
+    "bounds_max": [
+      25.1302,
+      -132.464,
+      1261.74
+    ],
+    "dims": [
+      10.445699999999999,
+      21.967000000000013,
+      17.269999999999982
+    ],
+    "center": [
+      19.56702308479727,
+      -145.83488599305025,
+      1250.7103570023444
+    ],
+    "watertight": false,
+    "euler": 3
+  },
+  {
+    "mm_id": "MM602",
+    "bp_id": "BP58389",
+    "fma_id": "FMA84625",
+    "name": "Posterior semilunar fibrous scallop of pulmonary valve anulus",
+    "filename": "MM602_BP58389_FMA84625_Posterior semilunar fibrous scallop of pulmonary valve anulus.obj",
+    "verts": 988,
+    "faces": 1704,
+    "bounds_min": [
+      23.8882,
+      -143.454,
+      1242.49
+    ],
+    "bounds_max": [
+      42.6038,
+      -132.357,
+      1261.14
+    ],
+    "dims": [
+      18.7156,
+      11.097000000000008,
+      18.65000000000009
+    ],
+    "center": [
+      35.006938874591725,
+      -137.8265871042227,
+      1249.3066530044507
+    ],
+    "watertight": false,
+    "euler": -16
+  },
+  {
+    "mm_id": "MM603",
+    "bp_id": "BP51914",
+    "fma_id": "FMA84626",
+    "name": "Left anterior semilunar fibrous scallop of pulmonary valve anulus",
+    "filename": "MM603_BP51914_FMA84626_Left anterior semilunar fibrous scallop of pulmonary valve anulus.obj",
+    "verts": 961,
+    "faces": 1826,
+    "bounds_min": [
+      22.9868,
+      -159.197,
+      1251.76
+    ],
+    "bounds_max": [
+      42.1207,
+      -142.445,
+      1261.6
+    ],
+    "dims": [
+      19.1339,
+      16.75200000000001,
+      9.839999999999918
+    ],
+    "center": [
+      34.73426240858659,
+      -153.4000134219364,
+      1255.292382948895
+    ],
+    "watertight": false,
+    "euler": -7
+  },
+  {
+    "mm_id": "MM604",
+    "bp_id": "BP51948",
+    "fma_id": "FMA7249",
+    "name": "Right anterior cusp of pulmonary valve",
+    "filename": "MM604_BP51948_FMA7249_Right anterior cusp of pulmonary valve.obj",
+    "verts": 2246,
+    "faces": 3714,
+    "bounds_min": [
+      15.4186,
+      -154.487,
+      1243.84
+    ],
+    "bounds_max": [
+      30.1332,
+      -132.862,
+      1260.42
+    ],
+    "dims": [
+      14.714599999999999,
+      21.625,
+      16.580000000000155
+    ],
+    "center": [
+      23.509479589231855,
+      -146.2430996233231,
+      1249.4840770958192
+    ],
+    "watertight": false,
+    "euler": 35
+  },
+  {
+    "mm_id": "MM605",
+    "bp_id": "BP51935",
+    "fma_id": "FMA7250",
+    "name": "Posterior cusp of pulmonary valve",
+    "filename": "MM605_BP51935_FMA7250_Posterior cusp of pulmonary valve.obj",
+    "verts": 1696,
+    "faces": 2752,
+    "bounds_min": [
+      24.7447,
+      -146.147,
+      1242.14
+    ],
+    "bounds_max": [
+      42.6227,
+      -132.915,
+      1257.98
+    ],
+    "dims": [
+      17.878,
+      13.232,
+      15.839999999999918
+    ],
+    "center": [
+      33.538538236618905,
+      -141.12337778027253,
+      1247.8235856991037
+    ],
+    "watertight": false,
+    "euler": 19
+  },
+  {
+    "mm_id": "MM606",
+    "bp_id": "BP51921",
+    "fma_id": "FMA7247",
+    "name": "Left anterior cusp of pulmonary valve",
+    "filename": "MM606_BP51921_FMA7247_Left anterior cusp of pulmonary valve.obj",
+    "verts": 3944,
+    "faces": 7450,
+    "bounds_min": [
+      22.9385,
+      -158.777,
+      1247.82
+    ],
+    "bounds_max": [
+      42.1439,
+      -143.341,
+      1260.91
+    ],
+    "dims": [
+      19.2054,
+      15.435999999999979,
+      13.090000000000146
+    ],
+    "center": [
+      32.931021039506774,
+      -151.26808843659583,
+      1252.5379512336626
+    ],
+    "watertight": false,
+    "euler": -6
+  },
+  {
+    "mm_id": "MM607",
+    "bp_id": "BP58392",
+    "fma_id": "FMA15086",
+    "name": "Pulmonary trunk proper",
+    "filename": "MM607_BP58392_FMA15086_Pulmonary trunk proper.obj",
+    "verts": 2504,
+    "faces": 3734,
+    "bounds_min": [
+      13.882,
+      -159.669,
+      1247.72
+    ],
+    "bounds_max": [
+      43.3614,
+      -118.263,
+      1292.65
+    ],
+    "dims": [
+      29.479400000000005,
+      41.406000000000006,
+      44.930000000000064
+    ],
+    "center": [
+      28.5303360588464,
+      -136.78319963394878,
+      1269.749988503494
+    ],
+    "watertight": false,
+    "euler": 82
+  },
+  {
+    "mm_id": "MM609",
+    "bp_id": "BP58397",
+    "fma_id": "FMA77435",
+    "name": "Triangle of sinu-atrial node",
+    "filename": "MM609_BP58397_FMA77435_Triangle of sinu-atrial node.obj",
+    "verts": 604,
+    "faces": 635,
+    "bounds_min": [
+      5.09901,
+      -123.137,
+      1211.7
+    ],
+    "bounds_max": [
+      10.1986,
+      -112.028,
+      1226.38
+    ],
+    "dims": [
+      5.099590000000001,
+      11.108999999999995,
+      14.680000000000064
+    ],
+    "center": [
+      7.803106996947839,
+      -117.8134941664044,
+      1219.2031009722184
+    ],
+    "watertight": false,
+    "euler": 56
+  },
+  {
+    "mm_id": "MM610",
+    "bp_id": "BP51926",
+    "fma_id": "FMA3902",
+    "name": "Left marginal artery",
+    "filename": "MM610_BP51926_FMA3902_Left marginal artery.obj",
+    "verts": 2113,
+    "faces": 3984,
+    "bounds_min": [
+      40.8818,
+      -147.773,
+      1194.92
+    ],
+    "bounds_max": [
+      79.4521,
+      -88.8659,
+      1236.2
+    ],
+    "dims": [
+      38.5703,
+      58.9071,
+      41.27999999999997
+    ],
+    "center": [
+      67.22726231984657,
+      -110.43479255601224,
+      1217.398871906602
+    ],
+    "watertight": false,
+    "euler": 11
+  },
+  {
+    "mm_id": "MM613",
+    "bp_id": "BP52013",
+    "fma_id": "FMA9345",
+    "name": "Septal wall of left ventricle",
+    "filename": "MM613_BP52013_FMA9345_Septal wall of left ventricle.obj",
+    "verts": 390,
+    "faces": 672,
+    "bounds_min": [
+      14.0158,
+      -143.381,
+      1218.42
+    ],
+    "bounds_max": [
+      41.6721,
+      -123.432,
+      1246.65
+    ],
+    "dims": [
+      27.6563,
+      19.948999999999998,
+      28.230000000000018
+    ],
+    "center": [
+      29.033065933702932,
+      -135.29601911727914,
+      1233.387557129989
+    ],
+    "watertight": false,
+    "euler": -6
+  },
+  {
+    "mm_id": "MM614",
+    "bp_id": "BP51876",
+    "fma_id": "FMA84850",
+    "name": "Free wall of left ventricle",
+    "filename": "MM614_BP51876_FMA84850_Free wall of left ventricle.obj",
+    "verts": 2022,
+    "faces": 3996,
+    "bounds_min": [
+      31.3601,
+      -141.012,
+      1230.22
+    ],
+    "bounds_max": [
+      66.9646,
+      -99.0132,
+      1250.04
+    ],
+    "dims": [
+      35.6045,
+      41.9988,
+      19.819999999999936
+    ],
+    "center": [
+      46.96207510292171,
+      -117.74760184206868,
+      1242.5664093992434
+    ],
+    "watertight": false,
+    "euler": -9
+  },
+  {
+    "mm_id": "MM615",
+    "bp_id": "BP51876",
+    "fma_id": "FMA84850",
+    "name": "Free wall of left ventricle",
+    "filename": "MM615_BP51876_FMA84850_Free wall of left ventricle.obj",
+    "verts": 632,
+    "faces": 1198,
+    "bounds_min": [
+      32.221,
+      -112.841,
+      1203.14
+    ],
+    "bounds_max": [
+      67.0208,
+      -83.957,
+      1241.83
+    ],
+    "dims": [
+      34.7998,
+      28.884,
+      38.68999999999983
+    ],
+    "center": [
+      49.93634077864203,
+      -97.03927855997001,
+      1224.9468605663744
+    ],
+    "watertight": false,
+    "euler": -12
+  },
+  {
+    "mm_id": "MM616",
+    "bp_id": "BP51876",
+    "fma_id": "FMA84850",
+    "name": "Free wall of left ventricle",
+    "filename": "MM616_BP51876_FMA84850_Free wall of left ventricle.obj",
+    "verts": 433,
+    "faces": 764,
+    "bounds_min": [
+      16.3086,
+      -106.651,
+      1185.93
+    ],
+    "bounds_max": [
+      55.4361,
+      -83.5684,
+      1218.37
+    ],
+    "dims": [
+      39.127500000000005,
+      23.0826,
+      32.43999999999983
+    ],
+    "center": [
+      35.110110068909464,
+      -93.0146413893398,
+      1201.003791226147
+    ],
+    "watertight": false,
+    "euler": -7
+  },
+  {
+    "mm_id": "MM618",
+    "bp_id": "BP52013",
+    "fma_id": "FMA9345",
+    "name": "Septal wall of left ventricle",
+    "filename": "MM618_BP52013_FMA9345_Septal wall of left ventricle.obj",
+    "verts": 2836,
+    "faces": 5584,
+    "bounds_min": [
+      12.8533,
+      -153.468,
+      1184.61
+    ],
+    "bounds_max": [
+      40.357,
+      -121.811,
+      1219.68
+    ],
+    "dims": [
+      27.5037,
+      31.656999999999982,
+      35.070000000000164
+    ],
+    "center": [
+      26.613975852058303,
+      -136.70256481119776,
+      1201.9658337311478
+    ],
+    "watertight": false,
+    "euler": -13
+  },
+  {
+    "mm_id": "MM619",
+    "bp_id": "BP52013",
+    "fma_id": "FMA9345",
+    "name": "Septal wall of left ventricle",
+    "filename": "MM619_BP52013_FMA9345_Septal wall of left ventricle.obj",
+    "verts": 531,
+    "faces": 986,
+    "bounds_min": [
+      21.0241,
+      -158.163,
+      1206.66
+    ],
+    "bounds_max": [
+      56.0188,
+      -134.347,
+      1242.42
+    ],
+    "dims": [
+      34.994699999999995,
+      23.816000000000003,
+      35.75999999999999
+    ],
+    "center": [
+      38.79742170259796,
+      -146.46497280008955,
+      1224.2589724886038
+    ],
+    "watertight": false,
+    "euler": -11
+  },
+  {
+    "mm_id": "MM620",
+    "bp_id": "BP51876",
+    "fma_id": "FMA84850",
+    "name": "Free wall of left ventricle",
+    "filename": "MM620_BP51876_FMA84850_Free wall of left ventricle.obj",
+    "verts": 901,
+    "faces": 1654,
+    "bounds_min": [
+      42.1465,
+      -156.051,
+      1211.74
+    ],
+    "bounds_max": [
+      76.922,
+      -111.731,
+      1245.95
+    ],
+    "dims": [
+      34.775499999999994,
+      44.31999999999999,
+      34.210000000000036
+    ],
+    "center": [
+      61.44594816507118,
+      -134.42494472849137,
+      1231.2309357875172
+    ],
+    "watertight": false,
+    "euler": -17
+  },
+  {
+    "mm_id": "MM621",
+    "bp_id": "BP51876",
+    "fma_id": "FMA84850",
+    "name": "Free wall of left ventricle",
+    "filename": "MM621_BP51876_FMA84850_Free wall of left ventricle.obj",
+    "verts": 295,
+    "faces": 438,
+    "bounds_min": [
+      51.9098,
+      -130.404,
+      1192.22
+    ],
+    "bounds_max": [
+      77.0941,
+      -93.2587,
+      1233.49
+    ],
+    "dims": [
+      25.1843,
+      37.14529999999999,
+      41.26999999999998
+    ],
+    "center": [
+      66.2349723260181,
+      -111.78874259157044,
+      1211.232686197744
+    ],
+    "watertight": false,
+    "euler": 4
+  },
+  {
+    "mm_id": "MM622",
+    "bp_id": "BP51876",
+    "fma_id": "FMA84850",
+    "name": "Free wall of left ventricle",
+    "filename": "MM622_BP51876_FMA84850_Free wall of left ventricle.obj",
+    "verts": 718,
+    "faces": 1364,
+    "bounds_min": [
+      28.466,
+      -122.476,
+      1177.18
+    ],
+    "bounds_max": [
+      68.3341,
+      -92.3196,
+      1204.38
+    ],
+    "dims": [
+      39.868100000000005,
+      30.156400000000005,
+      27.200000000000045
+    ],
+    "center": [
+      49.055998639229514,
+      -106.57368315306374,
+      1189.6220975217354
+    ],
+    "watertight": false,
+    "euler": -9
+  },
+  {
+    "mm_id": "MM623",
+    "bp_id": "BP51876",
+    "fma_id": "FMA84850",
+    "name": "Free wall of left ventricle",
+    "filename": "MM623_BP51876_FMA84850_Free wall of left ventricle.obj",
+    "verts": 705,
+    "faces": 1320,
+    "bounds_min": [
+      12.5385,
+      -135.196,
+      1177.01
+    ],
+    "bounds_max": [
+      46.398,
+      -103.224,
+      1202.06
+    ],
+    "dims": [
+      33.859500000000004,
+      31.971999999999994,
+      25.049999999999955
+    ],
+    "center": [
+      29.356219760781492,
+      -120.72912060717387,
+      1187.2839332152123
+    ],
+    "watertight": false,
+    "euler": -5
+  },
+  {
+    "mm_id": "MM624",
+    "bp_id": "BP51876",
+    "fma_id": "FMA84850",
+    "name": "Free wall of left ventricle",
+    "filename": "MM624_BP51876_FMA84850_Free wall of left ventricle.obj",
+    "verts": 3456,
+    "faces": 6396,
+    "bounds_min": [
+      47.4417,
+      -165.434,
+      1194.26
+    ],
+    "bounds_max": [
+      77.7902,
+      -130.587,
+      1229.06
+    ],
+    "dims": [
+      30.3485,
+      34.84700000000001,
+      34.799999999999955
+    ],
+    "center": [
+      65.44327529968274,
+      -151.01476711913335,
+      1213.0226506265153
+    ],
+    "watertight": false,
+    "euler": 8
+  },
+  {
+    "mm_id": "MM625",
+    "bp_id": "BP52013",
+    "fma_id": "FMA9345",
+    "name": "Septal wall of left ventricle",
+    "filename": "MM625_BP52013_FMA9345_Septal wall of left ventricle.obj",
+    "verts": 3642,
+    "faces": 6788,
+    "bounds_min": [
+      30.4587,
+      -165.448,
+      1186.03
+    ],
+    "bounds_max": [
+      61.7257,
+      -141.722,
+      1222.68
+    ],
+    "dims": [
+      31.267000000000003,
+      23.726,
+      36.65000000000009
+    ],
+    "center": [
+      46.35406444937559,
+      -154.9792386293038,
+      1201.405351520523
+    ],
+    "watertight": false,
+    "euler": 8
+  },
+  {
+    "mm_id": "MM626",
+    "bp_id": "BP51876",
+    "fma_id": "FMA84850",
+    "name": "Free wall of left ventricle",
+    "filename": "MM626_BP51876_FMA84850_Free wall of left ventricle.obj",
+    "verts": 1047,
+    "faces": 1900,
+    "bounds_min": [
+      28.7957,
+      -156.157,
+      1175.27
+    ],
+    "bounds_max": [
+      64.07,
+      -112.508,
+      1196.88
+    ],
+    "dims": [
+      35.2743,
+      43.649000000000015,
+      21.610000000000127
+    ],
+    "center": [
+      47.86761037828739,
+      -136.08667401215553,
+      1183.6004808826613
+    ],
+    "watertight": false,
+    "euler": -7
+  },
+  {
+    "mm_id": "MM627",
+    "bp_id": "BP51876",
+    "fma_id": "FMA84850",
+    "name": "Free wall of left ventricle",
+    "filename": "MM627_BP51876_FMA84850_Free wall of left ventricle.obj",
+    "verts": 1282,
+    "faces": 2478,
+    "bounds_min": [
+      54.9272,
+      -150.837,
+      1177.74
+    ],
+    "bounds_max": [
+      78.2466,
+      -111.437,
+      1215.52
+    ],
+    "dims": [
+      23.3194,
+      39.39999999999999,
+      37.77999999999997
+    ],
+    "center": [
+      68.63980273229434,
+      -130.05793694466448,
+      1193.8391007972598
+    ],
+    "watertight": false,
+    "euler": -8
+  },
+  {
+    "mm_id": "MM628",
+    "bp_id": "BP51876",
+    "fma_id": "FMA84850",
+    "name": "Free wall of left ventricle",
+    "filename": "MM628_BP51876_FMA84850_Free wall of left ventricle.obj",
+    "verts": 979,
+    "faces": 1814,
+    "bounds_min": [
+      50.0067,
+      -165.549,
+      1176.56
+    ],
+    "bounds_max": [
+      77.0186,
+      -135.808,
+      1208.34
+    ],
+    "dims": [
+      27.011900000000004,
+      29.741000000000014,
+      31.779999999999973
+    ],
+    "center": [
+      64.65907160824857,
+      -152.3916196019238,
+      1190.7808185284437
+    ],
+    "watertight": false,
+    "euler": 0
+  },
+  {
+    "mm_id": "MM629",
+    "bp_id": "BP52013",
+    "fma_id": "FMA9345",
+    "name": "Septal wall of left ventricle",
+    "filename": "MM629_BP52013_FMA9345_Septal wall of left ventricle.obj",
+    "verts": 2031,
+    "faces": 3558,
+    "bounds_min": [
+      6.87562,
+      -139.665,
+      1193.72
+    ],
+    "bounds_max": [
+      24.9867,
+      -110.65,
+      1226.09
+    ],
+    "dims": [
+      18.11108,
+      29.014999999999986,
+      32.36999999999989
+    ],
+    "center": [
+      15.374994921743825,
+      -124.02822785378868,
+      1210.6436774329559
+    ],
+    "watertight": false,
+    "euler": 3
+  },
+  {
+    "mm_id": "MM630",
+    "bp_id": "BP52013",
+    "fma_id": "FMA9345",
+    "name": "Septal wall of left ventricle",
+    "filename": "MM630_BP52013_FMA9345_Septal wall of left ventricle.obj",
+    "verts": 468,
+    "faces": 758,
+    "bounds_min": [
+      7.48536,
+      -121.583,
+      1211.61
+    ],
+    "bounds_max": [
+      13.5787,
+      -111.788,
+      1222.52
+    ],
+    "dims": [
+      6.0933399999999995,
+      9.795000000000002,
+      10.910000000000082
+    ],
+    "center": [
+      10.286661591418895,
+      -116.77427800441747,
+      1217.4146038179854
+    ],
+    "watertight": false,
+    "euler": 10
+  },
+  {
+    "mm_id": "MM631",
+    "bp_id": "BP51876",
+    "fma_id": "FMA84850",
+    "name": "Free wall of left ventricle",
+    "filename": "MM631_BP51876_FMA84850_Free wall of left ventricle.obj",
+    "verts": 4368,
+    "faces": 8436,
+    "bounds_min": [
+      6.67498,
+      -122.537,
+      1184.96
+    ],
+    "bounds_max": [
+      29.7399,
+      -94.3568,
+      1213.71
+    ],
+    "dims": [
+      23.06492,
+      28.1802,
+      28.75
+    ],
+    "center": [
+      16.642370268011568,
+      -109.03075253759141,
+      1197.1481595471664
+    ],
+    "watertight": false,
+    "euler": -4
+  },
+  {
+    "mm_id": "MM632",
+    "bp_id": "BP51844",
+    "fma_id": "FMA49292",
+    "name": "Anterior wall proper of left atrium",
+    "filename": "MM632_BP51844_FMA49292_Anterior wall proper of left atrium.obj",
+    "verts": 2659,
+    "faces": 5012,
+    "bounds_min": [
+      -3.06128,
+      -116.351,
+      1217.68
+    ],
+    "bounds_max": [
+      43.9691,
+      -79.7761,
+      1263.01
+    ],
+    "dims": [
+      47.030379999999994,
+      36.5749,
+      45.32999999999993
+    ],
+    "center": [
+      21.253733124055042,
+      -101.78122592001942,
+      1242.8350251980044
+    ],
+    "watertight": false,
+    "euler": -15
+  },
+  {
+    "mm_id": "MM633",
+    "bp_id": "BP51882",
+    "fma_id": "FMA9542",
+    "name": "Posterior wall of left atrium",
+    "filename": "MM633_BP51882_FMA9542_Posterior wall of left atrium.obj",
+    "verts": 2583,
+    "faces": 5040,
+    "bounds_min": [
+      -9.26695,
+      -109.343,
+      1202.96
+    ],
+    "bounds_max": [
+      38.3375,
+      -70.6143,
+      1256.12
+    ],
+    "dims": [
+      47.60445,
+      38.7287,
+      53.159999999999854
+    ],
+    "center": [
+      11.80646365366944,
+      -81.22534284108538,
+      1224.8653476436343
+    ],
+    "watertight": false,
+    "euler": -12
+  },
+  {
+    "mm_id": "MM634",
+    "bp_id": "BP51951",
+    "fma_id": "FMA4706",
+    "name": "Coronary sinus",
+    "filename": "MM634_BP51951_FMA4706_Coronary sinus.obj",
+    "verts": 3095,
+    "faces": 4922,
+    "bounds_min": [
+      0.823595,
+      -118.161,
+      1197.0
+    ],
+    "bounds_max": [
+      43.3267,
+      -79.5329,
+      1216.83
+    ],
+    "dims": [
+      42.503105000000005,
+      38.6281,
+      19.829999999999927
+    ],
+    "center": [
+      17.23940007747058,
+      -96.31010888095031,
+      1205.4774814023785
+    ],
+    "watertight": false,
+    "euler": 5
+  },
+  {
+    "mm_id": "MM635",
+    "bp_id": "BP51973",
+    "fma_id": "FMA74923",
+    "name": "Trunk of circumflex branch of left coronary artery",
+    "filename": "MM635_BP51973_FMA74923_Trunk of circumflex branch of left coronary artery.obj",
+    "verts": 6180,
+    "faces": 12248,
+    "bounds_min": [
+      12.2259,
+      -104.991,
+      1188.94
+    ],
+    "bounds_max": [
+      43.8613,
+      -82.0171,
+      1235.18
+    ],
+    "dims": [
+      31.6354,
+      22.9739,
+      46.24000000000001
+    ],
+    "center": [
+      29.47921764751888,
+      -88.55503057005672,
+      1211.1717573004846
+    ],
+    "watertight": false,
+    "euler": -1
+  },
+  {
+    "mm_id": "MM636",
+    "bp_id": "BP51794",
+    "fma_id": "FMA7264",
+    "name": "Anterior papillary muscle of left ventricle",
+    "filename": "MM636_BP51794_FMA7264_Anterior papillary muscle of left ventricle.obj",
+    "verts": 1887,
+    "faces": 2786,
+    "bounds_min": [
+      42.6302,
+      -128.41,
+      1209.77
+    ],
+    "bounds_max": [
+      72.0373,
+      -107.846,
+      1225.36
+    ],
+    "dims": [
+      29.4071,
+      20.563999999999993,
+      15.589999999999918
+    ],
+    "center": [
+      59.68549004804273,
+      -116.35622830908905,
+      1217.4526244986666
+    ],
+    "watertight": false,
+    "euler": 35
+  },
+  {
+    "mm_id": "MM637",
+    "bp_id": "BP51813",
+    "fma_id": "FMA7266",
+    "name": "Posterior papillary muscle of left ventricle",
+    "filename": "MM637_BP51813_FMA7266_Posterior papillary muscle of left ventricle.obj",
+    "verts": 1879,
+    "faces": 2786,
+    "bounds_min": [
+      29.2744,
+      -130.374,
+      1182.54
+    ],
+    "bounds_max": [
+      47.5911,
+      -117.718,
+      1207.91
+    ],
+    "dims": [
+      18.316699999999997,
+      12.655999999999992,
+      25.37000000000012
+    ],
+    "center": [
+      37.3140714559008,
+      -123.82183484628166,
+      1193.5957685472802
+    ],
+    "watertight": false,
+    "euler": 33
+  },
+  {
+    "mm_id": "MM638",
+    "bp_id": "BP51951",
+    "fma_id": "FMA4706",
+    "name": "Coronary sinus",
+    "filename": "MM638_BP51951_FMA4706_Coronary sinus.obj",
+    "verts": 860,
+    "faces": 1458,
+    "bounds_min": [
+      32.6936,
+      -123.886,
+      1177.42
+    ],
+    "bounds_max": [
+      66.7981,
+      -79.6663,
+      1211.63
+    ],
+    "dims": [
+      34.1045,
+      44.21969999999999,
+      34.210000000000036
+    ],
+    "center": [
+      48.64827825900595,
+      -94.56986732530349,
+      1195.031743210388
+    ],
+    "watertight": false,
+    "euler": 18
+  }
+]

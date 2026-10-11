@@ -49,6 +49,9 @@ export const CoronaryVesselMesh: React.FC<CoronaryVesselMeshProps> = ({
       opacity: isDimmed ? 0.28 : 1.0,
       depthWrite: !isDimmed,
       side: THREE.DoubleSide,
+      polygonOffset: true,
+      polygonOffsetFactor: -1,
+      polygonOffsetUnits: -1,
     })
   }, [hex, isSelected, isHovered, isStenotic, isDimmed])
 
@@ -80,6 +83,7 @@ export const CoronaryVesselMesh: React.FC<CoronaryVesselMeshProps> = ({
       ref={meshRef}
       geometry={geometry}
       material={material}
+      renderOrder={5}
       onClick={(e) => {
         e.stopPropagation()
         onClick(id)

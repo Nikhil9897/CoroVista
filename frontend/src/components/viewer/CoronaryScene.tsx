@@ -26,32 +26,35 @@ interface CoronarySceneProps {
   onHoverVessel: (info: HoveredVesselInfo | null) => void
 }
 
-// Global heart center offset from BodyParts3D DICOM inventory:
-// Centroid in mm: X=20.10, Y=-124.14, Z=1236.43
-const OFFSET_X = -20.1
-const OFFSET_Y = 124.14
-const OFFSET_Z = -1236.43
+// Anatomical heart center offset from complete 18-mesh cohesive assembly:
+// Centroid in mm: X=23.09, Y=-128.55, Z=1233.94
+const OFFSET_X = -23.09
+const OFFSET_Y = 128.55
+const OFFSET_Z = -1233.94
 
-// Default camera positions at ~175-180mm distance for ideal whole-heart framing (no enlargement)
+// Anatomical camera target: centered slightly below base towards ventricular body
+const TARGET_POINT: [number, number, number] = [0, -5, 0]
+
+// Presets calibrated for full 110.5 x 93.1 x 117.4 mm cohesive heart at ~210 mm distance
 const PRESET_POSITIONS: Record<ViewPreset, [number, number, number]> = {
-  ap: [0, -4, 180],
-  rao: [-95, -4, 150],
-  lao: [120, -4, 130],
-  posterior: [0, -4, -180],
-  reset: [0, -4, 180],
+  ap: [0, -5, 210],
+  rao: [-120, -5, 175],
+  lao: [135, -5, 160],
+  posterior: [0, -5, -210],
+  reset: [0, -5, 210],
 }
 
-// Vessel-specific viewing angles maintaining default distance so the heart stays at natural default size
+// Vessel-specific viewing angles preserving full anatomical heart context
 const FOCUS_POSITIONS: Record<CoronaryVesselId, [number, number, number]> = {
-  lad: [35, -4, 175],
-  lcx: [115, -4, 135],
-  rca: [-100, -4, 145],
+  lad: [45, -12, 190],
+  lcx: [145, -5, 145],
+  rca: [-125, -5, 165],
 }
 
 const FOCUS_TARGETS: Record<CoronaryVesselId, [number, number, number]> = {
-  lad: [0, -4, 0],
-  lcx: [0, -4, 0],
-  rca: [0, -4, 0],
+  lad: [12, -12, 0],
+  lcx: [18, -5, -8],
+  rca: [-14, -5, 0],
 }
 
 export const CoronaryScene: React.FC<CoronarySceneProps> = ({
@@ -69,7 +72,7 @@ export const CoronaryScene: React.FC<CoronarySceneProps> = ({
   const targetCamPos = useRef<THREE.Vector3 | null>(null)
   const targetLookAt = useRef<THREE.Vector3 | null>(null)
 
-  // Load the pre-processed master scene GLB
+  // Load the pre-processed master scene GLB containing all reconstructed anatomical nodes
   const gltf = useGLTF("/models/corovista_heart.glb")
 
   // Camera preset trigger sets smooth interpolation target
@@ -77,7 +80,7 @@ export const CoronaryScene: React.FC<CoronarySceneProps> = ({
     if (!presetTrigger || !controlsRef.current) return
     const pos = PRESET_POSITIONS[presetTrigger.preset] || PRESET_POSITIONS.ap
     targetCamPos.current = new THREE.Vector3(...pos)
-    targetLookAt.current = new THREE.Vector3(0, -4, 0)
+    targetLookAt.current = new THREE.Vector3(...TARGET_POINT)
   }, [presetTrigger])
 
   // Focus mode camera transition: smooth re-orientation at natural default distance
@@ -88,7 +91,7 @@ export const CoronaryScene: React.FC<CoronarySceneProps> = ({
       targetLookAt.current = new THREE.Vector3(...FOCUS_TARGETS[focusedVessel])
     } else if (!focusedVessel) {
       targetCamPos.current = new THREE.Vector3(...PRESET_POSITIONS.ap)
-      targetLookAt.current = new THREE.Vector3(0, -4, 0)
+      targetLookAt.current = new THREE.Vector3(...TARGET_POINT)
     }
   }, [focusedVessel])
 
@@ -131,23 +134,23 @@ export const CoronaryScene: React.FC<CoronarySceneProps> = ({
         ref={controlsRef}
         enableDamping
         dampingFactor={0.08}
-        minDistance={60}
-        maxDistance={350}
-        target={[0, -4, 0]}
+        minDistance={80}
+        maxDistance={400}
+        target={TARGET_POINT}
         rotateSpeed={0.8}
         zoomSpeed={0.9}
         panSpeed={0.7}
       />
 
-      {/* Clinical Anatomical Studio Lighting for High-Contrast Dark Viewport */}
-      <ambientLight intensity={0.95} color="#e0f2fe" />
-      <directionalLight position={[70, 80, 90]} intensity={1.8} color="#ffffff" />
-      <directionalLight position={[-70, 30, 70]} intensity={1.1} color="#38bdf8" />
-      <directionalLight position={[0, 45, -90]} intensity={1.5} color="#2dd4bf" />
-      <directionalLight position={[0, -90, 40]} intensity={0.6} color="#60a5fa" />
-      <hemisphereLight args={["#dbeafe", "#021c1f", 0.65]} />
+      {/* Clinical Anatomical Studio Lighting: soft balanced illumination without harsh hotspots */}
+      <ambientLight intensity={0.85} color="#f8fafc" />
+      <directionalLight position={[60, 70, 80]} intensity={1.15} color="#ffffff" />
+      <directionalLight position={[-60, 30, 60]} intensity={0.75} color="#f1f5f9" />
+      <directionalLight position={[0, 40, -85]} intensity={0.65} color="#cbd5e1" />
+      <directionalLight position={[0, -75, 30]} intensity={0.25} color="#64748b" />
+      <hemisphereLight args={["#f8fafc", "#1e293b", 0.45]} />
 
-      {/* Coordinate transformation group: centers heart at (0, 0, 0) and orients AP face forward */}
+      {/* Coordinate transformation group: centers complete heart at (0, 0, 0) and orients AP face forward */}
       <group
         rotation={[-Math.PI / 2, 0, 0]}
         onPointerMissed={() => {
@@ -155,7 +158,7 @@ export const CoronaryScene: React.FC<CoronarySceneProps> = ({
         }}
       >
         <group position={[OFFSET_X, OFFSET_Y, OFFSET_Z]}>
-          {/* Primary Coronary Artery Vessels */}
+          {/* Primary Coronary Artery Vessels with Risk Prediction Shaders */}
           {nodes.vessel_lad && (
             <CoronaryVesselMesh
               id="lad"
@@ -241,7 +244,7 @@ export const CoronaryScene: React.FC<CoronarySceneProps> = ({
             />
           )}
 
-          {/* Left Main Stem (Root) */}
+          {/* Left Main Stem (Root arterial trunk) */}
           {nodes.struct_left_main && (
             <ContextAnatomyMesh
               id="struct_left_main"
@@ -250,7 +253,7 @@ export const CoronaryScene: React.FC<CoronarySceneProps> = ({
             />
           )}
 
-          {/* Supporting Context Anatomy */}
+          {/* Great Vessels */}
           {nodes.struct_aorta_bulb && (
             <ContextAnatomyMesh
               id="struct_aorta_bulb"
@@ -267,6 +270,33 @@ export const CoronaryScene: React.FC<CoronarySceneProps> = ({
             />
           )}
 
+          {nodes.struct_pulmonary_trunk && (
+            <ContextAnatomyMesh
+              id="struct_pulmonary_trunk"
+              geometry={nodes.struct_pulmonary_trunk.geometry}
+              visible={visibility.context}
+            />
+          )}
+
+          {/* Cohesive Reconstructed Ventricular Myocardium */}
+          {nodes.struct_myocardium && (
+            <ContextAnatomyMesh
+              id="struct_myocardium"
+              geometry={nodes.struct_myocardium.geometry}
+              visible={visibility.context}
+            />
+          )}
+
+          {/* Reconstructed Auricles framing the base */}
+          {nodes.struct_auricles && (
+            <ContextAnatomyMesh
+              id="struct_auricles"
+              geometry={nodes.struct_auricles.geometry}
+              visible={visibility.context}
+            />
+          )}
+
+          {/* Compatibility fallbacks if separate chamber walls are provided */}
           {nodes.struct_lv_wall && (
             <ContextAnatomyMesh
               id="struct_lv_wall"
@@ -274,19 +304,33 @@ export const CoronaryScene: React.FC<CoronarySceneProps> = ({
               visible={visibility.context}
             />
           )}
-
-          {nodes.struct_septum && (
+          {nodes.struct_rv_wall && (
             <ContextAnatomyMesh
-              id="struct_septum"
-              geometry={nodes.struct_septum.geometry}
+              id="struct_rv_wall"
+              geometry={nodes.struct_rv_wall.geometry}
+              visible={visibility.context}
+            />
+          )}
+          {nodes.struct_ra_wall && (
+            <ContextAnatomyMesh
+              id="struct_ra_wall"
+              geometry={nodes.struct_ra_wall.geometry}
+              visible={visibility.context}
+            />
+          )}
+          {nodes.struct_la_wall && (
+            <ContextAnatomyMesh
+              id="struct_la_wall"
+              geometry={nodes.struct_la_wall.geometry}
               visible={visibility.context}
             />
           )}
 
-          {nodes.struct_pulmonary_trunk && (
+          {/* Internal Interventricular Septum */}
+          {nodes.struct_septum && (
             <ContextAnatomyMesh
-              id="struct_pulmonary_trunk"
-              geometry={nodes.struct_pulmonary_trunk.geometry}
+              id="struct_septum"
+              geometry={nodes.struct_septum.geometry}
               visible={visibility.context}
             />
           )}

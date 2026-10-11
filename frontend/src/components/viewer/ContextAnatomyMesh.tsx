@@ -16,86 +16,151 @@ interface MaterialConfig {
   depthWrite: boolean
   emissive?: number
   emissiveIntensity?: number
+  side?: THREE.Side
 }
 
 const CONTEXT_STYLES: Record<string, MaterialConfig> = {
-  // Left main stem connects aorta bulb to LAD/LCX — crisp, prominent anatomical arterial conduit
-  struct_left_main: {
-    color: 0xf8fafc,
-    opacity: 0.96,
-    roughness: 0.22,
-    metalness: 0.18,
+  // Unified ventricular myocardium — cohesive rounded muscular cone in rich anatomical burgundy
+  struct_myocardium: {
+    color: 0x88202d,
+    opacity: 1.0,
+    roughness: 0.58,
+    metalness: 0.02,
     transparent: false,
     depthWrite: true,
-    emissive: 0x334155,
-    emissiveIntensity: 0.25,
+    emissive: 0x22070a,
+    emissiveIntensity: 0.12,
+    side: THREE.FrontSide,
   },
-  // Aortic bulb / root (source of coronary ostia) — soft translucent porcelain anatomy
-  struct_aorta_bulb: {
-    color: 0xdbeafe,
-    opacity: 0.52,
-    roughness: 0.28,
-    metalness: 0.12,
-    transparent: true,
-    depthWrite: false,
-    emissive: 0x1e3a5f,
-    emissiveIntensity: 0.20,
+  // Auricles / Atrial appendages — capping the cardiac base smoothly
+  struct_auricles: {
+    color: 0x7c1c28,
+    opacity: 1.0,
+    roughness: 0.56,
+    metalness: 0.02,
+    transparent: false,
+    depthWrite: true,
+    emissive: 0x200609,
+    emissiveIntensity: 0.10,
+    side: THREE.FrontSide,
   },
-  // Ascending aorta — great vessel outflow contour
-  struct_aorta_ascending: {
-    color: 0xbfdbfe,
-    opacity: 0.46,
-    roughness: 0.30,
-    metalness: 0.12,
-    transparent: true,
-    depthWrite: false,
-    emissive: 0x172554,
-    emissiveIntensity: 0.18,
-  },
-  // Left ventricle free wall — living translucent myocardial silhouette
-  struct_lv_wall: {
-    color: 0x38bdf8,
-    opacity: 0.30,
-    roughness: 0.36,
-    metalness: 0.08,
-    transparent: true,
-    depthWrite: false,
-    emissive: 0x0c4a6e,
-    emissiveIntensity: 0.22,
-  },
-  // Muscular interventricular septum — central cardiac pillar
-  struct_septum: {
-    color: 0x2563eb,
-    opacity: 0.28,
-    roughness: 0.40,
-    metalness: 0.06,
-    transparent: true,
-    depthWrite: false,
-    emissive: 0x0f172a,
-    emissiveIntensity: 0.18,
-  },
-  // Pulmonary trunk — anterior outflow tract
-  struct_pulmonary_trunk: {
-    color: 0x93c5fd,
-    opacity: 0.42,
+  // Left main stem connects aorta bulb to LAD/LCX bifurcation — crisp arterial conduit take-off
+  struct_left_main: {
+    color: 0xfca5a5,
+    opacity: 1.0,
     roughness: 0.32,
-    metalness: 0.10,
-    transparent: true,
-    depthWrite: false,
-    emissive: 0x1e3a8a,
+    metalness: 0.08,
+    transparent: false,
+    depthWrite: true,
+    emissive: 0x450a0a,
     emissiveIntensity: 0.18,
+    side: THREE.DoubleSide,
+  },
+  // Aortic bulb / root (origin of coronary ostia) — warm anatomical arterial ivory-rose
+  struct_aorta_bulb: {
+    color: 0xd98b83,
+    opacity: 1.0,
+    roughness: 0.44,
+    metalness: 0.04,
+    transparent: false,
+    depthWrite: true,
+    emissive: 0x331412,
+    emissiveIntensity: 0.12,
+    side: THREE.DoubleSide,
+  },
+  // Ascending aorta — superior arterial outflow tract
+  struct_aorta_ascending: {
+    color: 0xe29b93,
+    opacity: 1.0,
+    roughness: 0.44,
+    metalness: 0.04,
+    transparent: false,
+    depthWrite: true,
+    emissive: 0x331412,
+    emissiveIntensity: 0.12,
+    side: THREE.DoubleSide,
+  },
+  // Pulmonary trunk — anterior outflow tract, anatomical slate cyan
+  struct_pulmonary_trunk: {
+    color: 0x547d96,
+    opacity: 1.0,
+    roughness: 0.44,
+    metalness: 0.04,
+    transparent: false,
+    depthWrite: true,
+    emissive: 0x102533,
+    emissiveIntensity: 0.12,
+    side: THREE.DoubleSide,
+  },
+  // Muscular interventricular septum — internal ventricular divider
+  struct_septum: {
+    color: 0x6e1925,
+    opacity: 0.90,
+    roughness: 0.60,
+    metalness: 0.02,
+    transparent: true,
+    depthWrite: true,
+    emissive: 0x1a0407,
+    emissiveIntensity: 0.08,
+    side: THREE.FrontSide,
+  },
+  // Fallbacks for individual chamber walls
+  struct_lv_wall: {
+    color: 0x88202d,
+    opacity: 1.0,
+    roughness: 0.58,
+    metalness: 0.02,
+    transparent: false,
+    depthWrite: true,
+    emissive: 0x22070a,
+    emissiveIntensity: 0.12,
+    side: THREE.FrontSide,
+  },
+  struct_rv_wall: {
+    color: 0x88202d,
+    opacity: 1.0,
+    roughness: 0.58,
+    metalness: 0.02,
+    transparent: false,
+    depthWrite: true,
+    emissive: 0x22070a,
+    emissiveIntensity: 0.12,
+    side: THREE.FrontSide,
+  },
+  struct_ra_wall: {
+    color: 0x7c1c28,
+    opacity: 1.0,
+    roughness: 0.56,
+    metalness: 0.02,
+    transparent: false,
+    depthWrite: true,
+    emissive: 0x200609,
+    emissiveIntensity: 0.10,
+    side: THREE.FrontSide,
+  },
+  struct_la_wall: {
+    color: 0x7c1c28,
+    opacity: 1.0,
+    roughness: 0.56,
+    metalness: 0.02,
+    transparent: false,
+    depthWrite: true,
+    emissive: 0x200609,
+    emissiveIntensity: 0.10,
+    side: THREE.FrontSide,
   },
 }
 
 const DEFAULT_STYLE: MaterialConfig = {
-  color: 0x93c5fd,
-  opacity: 0.35,
-  roughness: 0.36,
-  metalness: 0.08,
-  transparent: true,
-  depthWrite: false,
-  emissive: 0x0f172a,
-  emissiveIntensity: 0.15,
+  color: 0x88202d,
+  opacity: 1.0,
+  roughness: 0.58,
+  metalness: 0.02,
+  transparent: false,
+  depthWrite: true,
+  emissive: 0x22070a,
+  emissiveIntensity: 0.12,
+  side: THREE.FrontSide,
 }
 
 export const ContextAnatomyMesh: React.FC<ContextAnatomyMeshProps> = ({
@@ -114,7 +179,7 @@ export const ContextAnatomyMesh: React.FC<ContextAnatomyMeshProps> = ({
       metalness: style.metalness,
       emissive: style.emissive ? new THREE.Color(style.emissive) : undefined,
       emissiveIntensity: style.emissiveIntensity ?? 0,
-      side: THREE.DoubleSide,
+      side: style.side ?? THREE.FrontSide,
     })
   }, [id])
 

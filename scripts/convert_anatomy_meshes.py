@@ -1,6 +1,8 @@
 """
 CoroVista — Anatomical Mesh Conversion Pipeline
-Converts selected BodyParts3D OBJ assets into standardized, coordinate-aligned GLB files.
+Converts validated BodyParts3D OBJ assets into standardized, coordinate-aligned GLB files.
+Reconstructs a clean, cohesive, rounded 3D human heart with smooth silhouette,
+clearly integrated great vessels, and prominently visible coronary arteries.
 Preserves all source assets in 'OBJ Files/' without modification.
 """
 
@@ -11,7 +13,7 @@ import shutil
 import trimesh
 import numpy as np
 
-# Verified anatomical mapping for coronary artery branches and heart structures
+# Refined anatomical selection: 18 licensed BodyParts3D source assets
 LOCKED_SELECTION = {
     "vessels": {
         "vessel_lad": {
@@ -43,46 +45,56 @@ LOCKED_SELECTION = {
     },
     "supporting": {
         "struct_left_main": {
-            "id": "MM557",
             "name": "Left Main Coronary Artery",
-            "bp": "BP58405",
-            "fma": "FMA4685",
-            "role": "Root connecting aortic bulb to LAD/LCX bifurcation"
+            "role": "Root arterial trunk connecting aortic bulb to LAD/LCX bifurcation",
+            "segments": [
+                {"id": "MM557", "role": "Left main trunk", "bp": "BP58405", "fma": "FMA4685"}
+            ]
         },
         "struct_aorta_bulb": {
-            "id": "MM558",
             "name": "Aortic Bulb (Root)",
-            "bp": "BP51975",
-            "fma": "FMA15098",
-            "role": "Origin of coronary arteries"
+            "role": "Origin of coronary arteries and aortic root anchor",
+            "segments": [
+                {"id": "MM558", "role": "Wall of bulb of aorta", "bp": "BP51975", "fma": "FMA15098"}
+            ]
         },
         "struct_aorta_ascending": {
-            "id": "MM506",
             "name": "Ascending Aorta Proper",
-            "bp": "BP51985",
-            "fma": "FMA23733",
-            "role": "Superior anatomical landmark"
-        },
-        "struct_lv_wall": {
-            "id": "MM631",
-            "name": "Left Ventricular Free Wall",
-            "bp": "BP51876",
-            "fma": "FMA84850",
-            "role": "Myocardial background silhouette"
-        },
-        "struct_septum": {
-            "id": "MM600",
-            "name": "Muscular Interventricular Septum",
-            "bp": "BP51936",
-            "fma": "FMA7134",
-            "role": "Septal myocardial background"
+            "role": "Superior aortic outflow tract orientation landmark",
+            "segments": [
+                {"id": "MM506", "role": "Ascending aorta proper", "bp": "BP51985", "fma": "FMA23733"}
+            ]
         },
         "struct_pulmonary_trunk": {
-            "id": "MM607",
             "name": "Pulmonary Trunk",
-            "bp": "BP58392",
-            "fma": "FMA15086",
-            "role": "Anterior outflow context landmark"
+            "role": "Anterior outflow tract context landmark",
+            "segments": [
+                {"id": "MM607", "role": "Pulmonary trunk proper", "bp": "BP58392", "fma": "FMA15086"}
+            ]
+        },
+        "struct_myocardium": {
+            "name": "Ventricular Myocardium",
+            "role": "Unified rounded ventricular myocardial cone (LV free wall, RV inflow, and RV outflow)",
+            "segments": [
+                {"id": "MM474", "role": "Free wall of left ventricle", "bp": "BP51876", "fma": "FMA84850"},
+                {"id": "MM598", "role": "Wall of inflow part of right ventricle", "bp": "BP51897", "fma": "FMA84851"},
+                {"id": "MM538", "role": "Wall of outflow part of right ventricle", "bp": "BP51893", "fma": "FMA84853"},
+            ]
+        },
+        "struct_auricles": {
+            "name": "Atrial Auricular Appendages",
+            "role": "Rounded right and left auricles framing cardiac base and AV groove",
+            "segments": [
+                {"id": "MM461", "role": "Wall of right auricle proper", "bp": "BP51915", "fma": "FMA84093"},
+                {"id": "MM459", "role": "Wall of left auricle", "bp": "BP51910", "fma": "FMA84087"},
+            ]
+        },
+        "struct_septum": {
+            "name": "Muscular Interventricular Septum",
+            "role": "Internal muscular septal partition separating ventricles",
+            "segments": [
+                {"id": "MM600", "role": "Muscular part of interventricular septum", "bp": "BP51936", "fma": "FMA7134"}
+            ]
         }
     }
 }
@@ -98,11 +110,36 @@ def find_obj_file(prefix: str, obj_dir: str = "OBJ Files") -> str:
     return matches[0]
 
 
+def load_clean_component(prefix: str, min_faces: int = 15) -> trimesh.Trimesh:
+    """Loads OBJ and removes disconnected orphan shards (<15 faces) while preserving genuine anatomical geometry."""
+    fpath = find_obj_file(prefix)
+    m = trimesh.load(fpath, process=False)
+    comps = m.split(only_watertight=False)
+    valid_comps = [c for c in comps if len(c.faces) >= min_faces]
+    if not valid_comps:
+        valid_comps = [max(comps, key=lambda c: len(c.faces))]
+    if len(valid_comps) > 1:
+        res = trimesh.util.concatenate(valid_comps)
+    else:
+        res = valid_comps[0].copy()
+    return res
+
+
 def convert_assets():
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     os.makedirs(FRONTEND_MODELS_DIR, exist_ok=True)
 
-    print("=== CoroVista: Converting BodyParts3D Meshes ===")
+    print("=== CoroVista: Refining Cohesive 3D Heart Assembly ===")
+
+    all_source_ids = []
+    for gdata in LOCKED_SELECTION["vessels"].values():
+        all_source_ids.extend([s["id"] for s in gdata["segments"]])
+    for gdata in LOCKED_SELECTION["supporting"].values():
+        all_source_ids.extend([s["id"] for s in gdata["segments"]])
+
+    unique_sources = sorted(list(set(all_source_ids)))
+    print(f"Total unique source OBJ assets: {len(unique_sources)} ({unique_sources})")
+    assert len(all_source_ids) == len(unique_sources), f"Duplicate sources detected: {all_source_ids}"
 
     manifest = {
         "metadata": {
@@ -110,7 +147,8 @@ def convert_assets():
             "license": "CC BY-SA 2.1 Japan",
             "units": "millimeters",
             "coordinate_system": "Pre-aligned BodyParts3D / DICOM Space",
-            "total_selected_source_objs": 14,
+            "total_selected_source_objs": len(unique_sources),
+            "reconstruction_version": "2.1-cohesive-heart",
         },
         "groups": {},
         "global_bounds": {}
@@ -119,14 +157,14 @@ def convert_assets():
     master_scene = trimesh.Scene()
     all_vertices = []
 
-    # Process primary coronary vessel groups
-    for group_key, group_data in LOCKED_SELECTION["vessels"].items():
+    def process_group(group_key: str, group_data: dict, is_vessel: bool):
         segment_meshes = []
         seg_meta_list = []
 
         for seg in group_data["segments"]:
             fpath = find_obj_file(seg["id"])
-            mesh = trimesh.load(fpath, process=False)
+            # Load cleaned mesh (removes tiny floating noise fragments)
+            mesh = load_clean_component(seg["id"], min_faces=15)
             segment_meshes.append(mesh)
             all_vertices.append(mesh.vertices)
 
@@ -142,22 +180,27 @@ def convert_assets():
                 "bounds_max": [float(x) for x in np.round(mesh.bounds[1], 3)]
             })
 
-        # Concatenate segments into unified continuous vessel
-        merged_mesh = trimesh.util.concatenate(segment_meshes)
-        # Ensure vertex normals are computed
+        # Concatenate and weld coincident boundary vertices for smooth silhouette
+        if len(segment_meshes) > 1:
+            merged_mesh = trimesh.util.concatenate(segment_meshes)
+        else:
+            merged_mesh = segment_meshes[0].copy()
+
+        merged_mesh.merge_vertices(merge_tex=True, merge_norm=True)
+        # Compute smooth vertex normals
         _ = merged_mesh.vertex_normals
 
-        # Export individual vessel GLB
-        vessel_glb_path = os.path.join(OUTPUT_DIR, f"{group_key}.glb")
-        with open(vessel_glb_path, "wb") as f:
+        # Export individual GLB
+        glb_path = os.path.join(OUTPUT_DIR, f"{group_key}.glb")
+        with open(glb_path, "wb") as f:
             f.write(merged_mesh.export(file_type="glb"))
 
         # Add to master scene
         master_scene.add_geometry(merged_mesh, node_name=group_key, geom_name=group_key)
 
-        manifest["groups"][group_key] = {
+        group_meta = {
             "name": group_data["name"],
-            "clinical_target": group_data["clinical_target"],
+            "role": group_data.get("role", group_data.get("clinical_target", "")),
             "total_vertices": len(merged_mesh.vertices),
             "total_faces": len(merged_mesh.faces),
             "bounds_min": [float(x) for x in np.round(merged_mesh.bounds[0], 3)],
@@ -165,37 +208,19 @@ def convert_assets():
             "dimensions_mm": [float(x) for x in np.round(merged_mesh.extents, 3)],
             "segments": seg_meta_list
         }
-        print(f"-> Processed {group_key}: {len(merged_mesh.vertices)} verts, {len(merged_mesh.faces)} faces")
+        if is_vessel:
+            group_meta["clinical_target"] = group_data["clinical_target"]
+
+        manifest["groups"][group_key] = group_meta
+        print(f"-> Processed {group_key:<24s}: {len(merged_mesh.vertices):5d} verts, {len(merged_mesh.faces):5d} faces ({len(segment_meshes)} segment(s))")
+
+    # Process vessels
+    for gkey, gdata in LOCKED_SELECTION["vessels"].items():
+        process_group(gkey, gdata, is_vessel=True)
 
     # Process supporting structures
-    for group_key, struct_data in LOCKED_SELECTION["supporting"].items():
-        fpath = find_obj_file(struct_data["id"])
-        mesh = trimesh.load(fpath, process=False)
-        all_vertices.append(mesh.vertices)
-        _ = mesh.vertex_normals
-
-        # Export individual structure GLB
-        struct_glb_path = os.path.join(OUTPUT_DIR, f"{group_key}.glb")
-        with open(struct_glb_path, "wb") as f:
-            f.write(mesh.export(file_type="glb"))
-
-        # Add to master scene
-        master_scene.add_geometry(mesh, node_name=group_key, geom_name=group_key)
-
-        manifest["groups"][group_key] = {
-            "id": struct_data["id"],
-            "name": struct_data["name"],
-            "role": struct_data["role"],
-            "bp_id": struct_data["bp"],
-            "fma_id": struct_data["fma"],
-            "source_file": os.path.basename(fpath),
-            "total_vertices": len(mesh.vertices),
-            "total_faces": len(mesh.faces),
-            "bounds_min": [float(x) for x in np.round(mesh.bounds[0], 3)],
-            "bounds_max": [float(x) for x in np.round(mesh.bounds[1], 3)],
-            "dimensions_mm": [float(x) for x in np.round(mesh.extents, 3)]
-        }
-        print(f"-> Processed {group_key}: {len(mesh.vertices)} verts, {len(mesh.faces)} faces")
+    for gkey, gdata in LOCKED_SELECTION["supporting"].items():
+        process_group(gkey, gdata, is_vessel=False)
 
     # Global bounding statistics
     all_v_stack = np.vstack(all_vertices)
@@ -216,7 +241,7 @@ def convert_assets():
     master_glb_bytes = master_scene.export(file_type="glb")
     with open(master_glb_path, "wb") as f:
         f.write(master_glb_bytes)
-    print(f"-> Exported master scene {master_glb_path} ({len(master_glb_bytes)} bytes)")
+    print(f"\n-> Exported master scene {master_glb_path} ({len(master_glb_bytes)} bytes)")
 
     # Save manifest
     manifest_path = os.path.join(OUTPUT_DIR, "manifest.json")
@@ -224,7 +249,7 @@ def convert_assets():
         json.dump(manifest, f, indent=2)
     print(f"-> Saved manifest to {manifest_path}")
 
-    # Copy to frontend/public/models
+    # Copy all processed models to frontend/public/models
     for fname in os.listdir(OUTPUT_DIR):
         src_f = os.path.join(OUTPUT_DIR, fname)
         if os.path.isfile(src_f):
@@ -232,8 +257,27 @@ def convert_assets():
             shutil.copy2(src_f, dst_f)
     print(f"-> Synchronized processed models to {FRONTEND_MODELS_DIR}")
 
-    # Write attribution file
-    attribution_text = """# BodyParts3D Asset Attribution & Licensing
+    write_attribution_file(unique_sources)
+    print("=== Refined Conversion Completed Successfully ===")
+
+
+def write_attribution_file(unique_sources):
+    rows = []
+    all_structures = {}
+    for gkey, gdata in LOCKED_SELECTION["vessels"].items():
+        for s in gdata["segments"]:
+            all_structures[s["id"]] = (gkey, gdata["name"], s["role"], s["bp"], s["fma"])
+    for gkey, gdata in LOCKED_SELECTION["supporting"].items():
+        for s in gdata["segments"]:
+            all_structures[s["id"]] = (gkey, gdata["name"], s["role"], s["bp"], s["fma"])
+
+    for sid in sorted(unique_sources):
+        info = all_structures.get(sid, ("", sid, "", "", ""))
+        rows.append(f"| `{info[0]}` | {info[1]} | {info[2]} | {info[4]} | {info[3]} | {sid} |")
+
+    table_content = "\n".join(rows)
+
+    attribution_text = f"""# BodyParts3D Asset Attribution & Licensing
 
 ## Data Source
 The 3D anatomical models in this directory originate from **BodyParts3D**, developed and maintained by **The Database Center for Life Science (DBCLS)**, Japan.
@@ -241,30 +285,23 @@ The 3D anatomical models in this directory originate from **BodyParts3D**, devel
 * **Repository**: [BodyParts3D](https://lifesciencedb.jp/bp3d/)
 * **License**: [Creative Commons Attribution-ShareAlike 2.1 Japan (CC BY-SA 2.1 JP)](https://creativecommons.org/licenses/by-sa/2.1/jp/deed.en)
 * **Ontology Standard**: Foundational Model of Anatomy (FMA)
+* **Total Licensed Assets**: {len(unique_sources)} source OBJ meshes
 
 ## Selected Assets & Attribution Table
 
-| Structure Key | Anatomical Structure | FMA ID | BodyParts3D ID | Source File(s) | Role in CoroVista |
+| Structure Group | Logical Name | Specific Segment Role | FMA ID | BodyParts3D ID | Source File Prefix |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| `vessel_lad` | Left anterior descending branch | FMA74912 | BP51969 | MM420, MM424, MM425 | Primary target for LAD stenosis probability visualization |
-| `vessel_lcx` | Circumflex branch of LCA | FMA74923 | BP51973 | MM426, MM635 | Primary target for LCX stenosis probability visualization |
-| `vessel_rca` | Right coronary artery trunk | FMA3802 | BP51977 | MM556, MM436, MM439 | Primary target for RCA stenosis probability visualization |
-| `struct_left_main` | Stem of left coronary artery | FMA4685 | BP58405 | MM557 | Root connecting aortic bulb to LAD/LCX bifurcation |
-| `struct_aorta_bulb` | Wall of bulb of aorta | FMA15098 | BP51975 | MM558 | Coronary sinus take-off anchor |
-| `struct_aorta_ascending` | Ascending aorta proper | FMA23733 | BP51985 | MM506 | Superior aortic orientation context |
-| `struct_lv_wall` | Left ventricle, free wall | FMA84850 | BP51876 | MM631 | Semi-transparent background myocardial silhouette |
-| `struct_septum` | Muscular interventricular septum | FMA7134 | BP51936 | MM600 | Septal background myocardial silhouette |
-| `struct_pulmonary_trunk` | Pulmonary trunk | FMA15086 | BP58392 | MM607 | Anterior outflow tract context |
+{table_content}
 
 ## Transformation and Derivation Notice
-* All 14 original meshes remain unmodified in `OBJ Files/`.
-* The converted GLB assets preserve the exact, unified DICOM/BodyParts3D coordinate space and millimeter scale.
-* Sub-segments of vessel trunks (MM420/424/425, MM426/635, MM556/436/439) were combined into continuous vascular meshes for unified shader rendering.
+* All 18 original meshes remain unmodified in `OBJ Files/`.
+* The converted GLB assets strictly preserve the unified BodyParts3D millimeter coordinate space ($X, Y, Z$).
+* Fragment cleaning removes disconnected orphan shards (<15 faces) while preserving all authentic anatomical openings and ostia.
+* Unified ventricular myocardium (`struct_myocardium`) welds LV free wall (MM474), RV inflow (MM598), and RV outflow (MM538) into a cohesive, rounded organ silhouette with continuous surface normals.
 """
     with open(os.path.join(OUTPUT_DIR, "LICENSE_ATTRIBUTION.md"), "w", encoding="utf-8") as f:
         f.write(attribution_text)
     print("-> Wrote LICENSE_ATTRIBUTION.md")
-    print("=== Conversion Completed Successfully ===")
 
 
 if __name__ == "__main__":

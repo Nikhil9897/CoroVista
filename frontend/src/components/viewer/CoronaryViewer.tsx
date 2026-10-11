@@ -137,7 +137,7 @@ export const CoronaryViewer: React.FC<CoronaryViewerProps> = ({
                 predictions.cath.probability >= predictions.cath.threshold ? "above" : "below"
               } the ${(predictions.cath.threshold * 100).toFixed(0)}% decision threshold.`
             : "Global CAD risk evaluation derived from patient baseline biomarkers and clinical presentation.",
-        camPosition: [0, -4, 180],
+        camPosition: [0, -5, 215],
       },
     ]
 
@@ -148,7 +148,7 @@ export const CoronaryViewer: React.FC<CoronaryViewerProps> = ({
         subtitle: "Anterior Myocardium & Septum",
         description: `LAD supplies the critical anterior myocardial wall. Model estimates a ${(predictions.lad.probability * 100).toFixed(0)}% stenosis probability vs a ${(predictions.lad.threshold * 100).toFixed(0)}% threshold.`,
         target: "lad",
-        camPosition: [35, -4, 175],
+        camPosition: [45, -15, 195],
       })
     }
 
@@ -159,7 +159,7 @@ export const CoronaryViewer: React.FC<CoronaryViewerProps> = ({
         subtitle: "Lateral & Posterior Left Ventricle",
         description: `LCX traverses the atrioventricular groove. Model estimates a ${(predictions.lcx.probability * 100).toFixed(0)}% stenosis probability vs a ${(predictions.lcx.threshold * 100).toFixed(0)}% threshold.`,
         target: "lcx",
-        camPosition: [115, -4, 135],
+        camPosition: [150, -5, 145],
       })
     }
 
@@ -170,7 +170,7 @@ export const CoronaryViewer: React.FC<CoronaryViewerProps> = ({
         subtitle: "Inferior Wall & Right Ventricle",
         description: `RCA perfuses the inferior myocardium and nodal conduction tissue. Model estimates a ${(predictions.rca.probability * 100).toFixed(0)}% stenosis probability vs a ${(predictions.rca.threshold * 100).toFixed(0)}% threshold.`,
         target: "rca",
-        camPosition: [-100, -4, 145],
+        camPosition: [-130, -5, 165],
       })
     }
 
@@ -258,7 +258,7 @@ export const CoronaryViewer: React.FC<CoronaryViewerProps> = ({
         <ViewerErrorBoundary>
           <Suspense fallback={<ViewerLoadingFallback className="h-full w-full rounded-none border-0 bg-[#021315] text-[#E8F1EE]" />}>
             <Canvas
-              camera={{ position: [0, -4, 180], fov: 45, near: 0.5, far: 800 }}
+              camera={{ position: [0, -5, 210], fov: 45, near: 0.5, far: 800 }}
               dpr={[1, 2]}
               gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
               className="w-full h-full cursor-grab active:cursor-grabbing"
