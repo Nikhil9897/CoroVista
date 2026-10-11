@@ -108,8 +108,8 @@ export const SimulatorResultPanel: React.FC<SimulatorResultPanelProps> = ({
       </div>
 
       {/* 2. Interactive 3D Coronary Anatomy Viewport */}
-      <div className="relative rounded-2xl overflow-hidden border border-slate-700/30 shadow-2xl bg-white min-h-[460px] lg:min-h-[500px]">
-        <Suspense fallback={<ViewerLoadingFallback className="h-full w-full rounded-none border-0 bg-white" />}>
+      <div className="relative rounded-2xl overflow-hidden border border-[#7C9692]/25 shadow-2xl bg-[#021315] min-h-[460px] lg:min-h-[500px]">
+        <Suspense fallback={<ViewerLoadingFallback className="h-full w-full rounded-none border-0 bg-[#021315]" />}>
           <CoronaryViewer
             predictions={analysis.predictions}
             explanations={analysis.explanations}

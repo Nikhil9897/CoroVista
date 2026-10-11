@@ -133,10 +133,10 @@ export const Dashboard: React.FC = () => {
 
             {/* Right: Compact 3D Coronary Preview */}
             <div className="lg:col-span-7 flex flex-col">
-              <div className="relative rounded-2xl overflow-hidden border border-slate-700/30 shadow-2xl bg-white min-h-[500px] lg:min-h-[560px]">
+              <div className="relative rounded-2xl overflow-hidden border border-[#7C9692]/25 shadow-2xl bg-[#021315] min-h-[500px] lg:min-h-[560px]">
                 <Suspense
                   fallback={
-                    <ViewerLoadingFallback className="h-full w-full rounded-none border-0 bg-white" />
+                    <ViewerLoadingFallback className="h-full w-full rounded-none border-0 bg-[#021315]" />
                   }
                 >
                   <CoronaryViewer

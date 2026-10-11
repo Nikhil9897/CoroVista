@@ -1,6 +1,6 @@
 import React, { useState, Suspense, useEffect, useMemo, useCallback } from "react"
 import { Canvas } from "@react-three/fiber"
-import { Info, SlidersHorizontal } from "lucide-react"
+import { Info, SlidersHorizontal, RotateCcw } from "lucide-react"
 import type { TargetName, PredictionResponse } from "@/types/prediction"
 import type { ExplanationResponse } from "@/types/explanation"
 import type {
@@ -45,6 +45,7 @@ export const CoronaryViewer: React.FC<CoronaryViewerProps> = ({
   const [presetTrigger, setPresetTrigger] = useState<{ preset: ViewPreset; timestamp: number } | null>(null)
   const [internalFocused, setInternalFocused] = useState<CoronaryVesselId | null>(null)
   const [dismissedTarget, setDismissedTarget] = useState<string | null>(null)
+  const [dismissedLabels, setDismissedLabels] = useState<Set<CoronaryVesselId>>(new Set())
   const [tourActive, setTourActive] = useState<boolean>(false)
   const [tourStepIndex, setTourStepIndex] = useState<number>(0)
   const [showClinicalTooltip, setShowClinicalTooltip] = useState<boolean>(false)
@@ -76,18 +77,48 @@ export const CoronaryViewer: React.FC<CoronaryViewerProps> = ({
   }, [selectedTarget])
 
   const handleToggleVisibility = (key: keyof ViewerVisibilityState) => {
-    setVisibility((prev) => ({ ...prev, [key]: !prev[key] }))
+    setVisibility((prev) => {
+      const next = { ...prev, [key]: !prev[key] }
+      // Re-show vessel callout box if visibility is toggled back on
+      if (next[key] && (key === "lad" || key === "lcx" || key === "rca")) {
+        setDismissedLabels((curr) => {
+          if (!curr.has(key)) return curr
+          const updated = new Set(curr)
+          updated.delete(key)
+          return updated
+        })
+      }
+      return next
+    })
   }
 
   const handleSelectPreset = (preset: ViewPreset) => {
     setPresetTrigger({ preset, timestamp: Date.now() })
+    if (preset === "reset") {
+      setDismissedLabels(new Set())
+    }
   }
+
+  const handleDismissLabel = useCallback((id: CoronaryVesselId) => {
+    setDismissedLabels((prev) => new Set(prev).add(id))
+  }, [])
+
+  const handleRestoreLabels = useCallback(() => {
+    setDismissedLabels(new Set())
+  }, [])
 
   const handleSelectVessel = (id: CoronaryVesselId | null) => {
     setInternalFocused(id)
     if (id) {
       setDismissedTarget(null)
       onSelectTarget?.(id)
+      // If the selected vessel box was dismissed, restore it on user click
+      setDismissedLabels((prev) => {
+        if (!prev.has(id)) return prev
+        const next = new Set(prev)
+        next.delete(id)
+        return next
+      })
     } else {
       setDismissedTarget(selectedTarget ?? null)
     }
@@ -106,7 +137,7 @@ export const CoronaryViewer: React.FC<CoronaryViewerProps> = ({
                 predictions.cath.probability >= predictions.cath.threshold ? "above" : "below"
               } the ${(predictions.cath.threshold * 100).toFixed(0)}% decision threshold.`
             : "Global CAD risk evaluation derived from patient baseline biomarkers and clinical presentation.",
-        camPosition: [0, -6, 96],
+        camPosition: [0, -4, 180],
       },
     ]
 
@@ -117,7 +148,7 @@ export const CoronaryViewer: React.FC<CoronaryViewerProps> = ({
         subtitle: "Anterior Myocardium & Septum",
         description: `LAD supplies the critical anterior myocardial wall. Model estimates a ${(predictions.lad.probability * 100).toFixed(0)}% stenosis probability vs a ${(predictions.lad.threshold * 100).toFixed(0)}% threshold.`,
         target: "lad",
-        camPosition: [14, -8, 64],
+        camPosition: [35, -4, 175],
       })
     }
 
@@ -128,7 +159,7 @@ export const CoronaryViewer: React.FC<CoronaryViewerProps> = ({
         subtitle: "Lateral & Posterior Left Ventricle",
         description: `LCX traverses the atrioventricular groove. Model estimates a ${(predictions.lcx.probability * 100).toFixed(0)}% stenosis probability vs a ${(predictions.lcx.threshold * 100).toFixed(0)}% threshold.`,
         target: "lcx",
-        camPosition: [52, -4, 54],
+        camPosition: [115, -4, 135],
       })
     }
 
@@ -139,7 +170,7 @@ export const CoronaryViewer: React.FC<CoronaryViewerProps> = ({
         subtitle: "Inferior Wall & Right Ventricle",
         description: `RCA perfuses the inferior myocardium and nodal conduction tissue. Model estimates a ${(predictions.rca.probability * 100).toFixed(0)}% stenosis probability vs a ${(predictions.rca.threshold * 100).toFixed(0)}% threshold.`,
         target: "rca",
-        camPosition: [-44, -8, 62],
+        camPosition: [-100, -4, 145],
       })
     }
 
@@ -199,7 +230,7 @@ export const CoronaryViewer: React.FC<CoronaryViewerProps> = ({
 
   return (
     <div
-      className={`relative overflow-hidden bg-white flex flex-col justify-between select-none ${className}`}
+      className={`relative overflow-hidden bg-[#021315] flex flex-col justify-between select-none ${className}`}
       role="region"
       aria-label="Interactive 3D Coronary Anatomy Model"
     >
@@ -212,33 +243,34 @@ export const CoronaryViewer: React.FC<CoronaryViewerProps> = ({
         Vessel colors represent model-predicted stenosis probability, not physical lesion location.
       </div>
 
-      {/* Subtle crisp clinical vignette overlay */}
+      {/* Subtle depth vignette overlay (ambient edges, crystal clear center) */}
       <div
-        className="absolute inset-0 pointer-events-none z-[1]"
+        className="absolute inset-0 pointer-events-none z-10"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 45%, #ffffff 55%, #f1f5f9 100%)",
+            "radial-gradient(ellipse at 50% 50%, transparent 45%, rgba(2, 19, 21, 0.45) 80%, rgba(1, 10, 11, 0.85) 100%)",
         }}
         aria-hidden="true"
       />
 
       {/* Main 3D Canvas Area */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,#082427_0%,#031416_60%,#010a0b_100%)]">
         <ViewerErrorBoundary>
-          <Suspense fallback={<ViewerLoadingFallback className="h-full w-full rounded-none border-0 bg-white text-slate-800" />}>
+          <Suspense fallback={<ViewerLoadingFallback className="h-full w-full rounded-none border-0 bg-[#021315] text-[#E8F1EE]" />}>
             <Canvas
-              camera={{ position: [0, -6, 96], fov: 36, near: 0.5, far: 500 }}
+              camera={{ position: [0, -4, 180], fov: 45, near: 0.5, far: 800 }}
               dpr={[1, 2]}
-              gl={{ antialias: true, alpha: false, powerPreference: "high-performance" }}
+              gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
               className="w-full h-full cursor-grab active:cursor-grabbing"
             >
-              <color attach="background" args={["#ffffff"]} />
               <CoronaryScene
                 predictions={predictions}
                 selectedTarget={selectedTarget}
                 focusedVessel={effectiveFocusedVessel}
                 visibility={visibility}
                 presetTrigger={presetTrigger}
+                dismissedLabels={dismissedLabels}
+                onDismissLabel={handleDismissLabel}
                 onSelectVessel={handleSelectVessel}
                 onHoverVessel={setHoveredVessel}
               />
@@ -247,7 +279,7 @@ export const CoronaryViewer: React.FC<CoronaryViewerProps> = ({
         </ViewerErrorBoundary>
       </div>
 
-      {/* Top HUD: Quiet Anatomy Badge, Clinical Note Tooltip, Simulator Link */}
+      {/* Top HUD: Quiet Anatomy Badge, Restore Boxes Button, Clinical Note Tooltip, Simulator Link */}
       <div className="absolute top-3 left-3 right-3 z-20 flex flex-wrap items-center justify-between gap-2 pointer-events-none">
         <div className="flex items-center gap-2 pointer-events-auto">
           {/* Illustrative Anatomy Badge */}
@@ -255,6 +287,19 @@ export const CoronaryViewer: React.FC<CoronaryViewerProps> = ({
             <span className="w-1.5 h-1.5 rounded-full bg-[#2dd4bf]" aria-hidden="true" />
             <span className="font-medium tracking-tight">Illustrative anatomy</span>
           </div>
+
+          {/* Restore Closed Labels Button (visible when any text box has been closed) */}
+          {dismissedLabels.size > 0 && (
+            <button
+              type="button"
+              onClick={handleRestoreLabels}
+              className="instrument-surface rounded-xl px-2.5 py-1.5 text-xs text-[#2dd4bf] hover:text-[#E8F1EE] hover:border-[#2dd4bf]/40 flex items-center gap-1.5 transition-all cursor-pointer shadow-lg"
+              title="Restore closed diagnostic text boxes"
+            >
+              <RotateCcw className="w-3 h-3" />
+              <span>Restore boxes ({dismissedLabels.size})</span>
+            </button>
+          )}
 
           {/* Clinical Note Info Button & Tooltip */}
           <div className="relative">

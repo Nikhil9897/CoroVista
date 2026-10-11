@@ -20,6 +20,8 @@ interface CoronarySceneProps {
   focusedVessel?: CoronaryVesselId | null
   visibility: ViewerVisibilityState
   presetTrigger: { preset: ViewPreset; timestamp: number } | null
+  dismissedLabels?: Set<CoronaryVesselId>
+  onDismissLabel?: (id: CoronaryVesselId) => void
   onSelectVessel: (id: CoronaryVesselId | null) => void
   onHoverVessel: (info: HoveredVesselInfo | null) => void
 }
@@ -30,26 +32,26 @@ const OFFSET_X = -20.1
 const OFFSET_Y = 124.14
 const OFFSET_Z = -1236.43
 
-// Optimal camera positions at ~96mm distance for ideal 70% viewport fill
+// Default camera positions at ~175-180mm distance for ideal whole-heart framing (no enlargement)
 const PRESET_POSITIONS: Record<ViewPreset, [number, number, number]> = {
-  ap: [0, -6, 96],
-  rao: [-54, -6, 78],
-  lao: [68, -6, 68],
-  posterior: [0, -6, -96],
-  reset: [0, -6, 96],
+  ap: [0, -4, 180],
+  rao: [-95, -4, 150],
+  lao: [120, -4, 130],
+  posterior: [0, -4, -180],
+  reset: [0, -4, 180],
 }
 
-// Vessel-specific focus camera positions for clear, unobstructed diagnostic views
+// Vessel-specific viewing angles maintaining default distance so the heart stays at natural default size
 const FOCUS_POSITIONS: Record<CoronaryVesselId, [number, number, number]> = {
-  lad: [14, -8, 64],
-  lcx: [52, -4, 54],
-  rca: [-44, -8, 62],
+  lad: [35, -4, 175],
+  lcx: [115, -4, 135],
+  rca: [-100, -4, 145],
 }
 
 const FOCUS_TARGETS: Record<CoronaryVesselId, [number, number, number]> = {
-  lad: [2, -8, 0],
-  lcx: [10, -4, 0],
-  rca: [-8, -8, 0],
+  lad: [0, -4, 0],
+  lcx: [0, -4, 0],
+  rca: [0, -4, 0],
 }
 
 export const CoronaryScene: React.FC<CoronarySceneProps> = ({
@@ -58,6 +60,8 @@ export const CoronaryScene: React.FC<CoronarySceneProps> = ({
   focusedVessel,
   visibility,
   presetTrigger,
+  dismissedLabels,
+  onDismissLabel,
   onSelectVessel,
   onHoverVessel,
 }) => {
@@ -73,15 +77,18 @@ export const CoronaryScene: React.FC<CoronarySceneProps> = ({
     if (!presetTrigger || !controlsRef.current) return
     const pos = PRESET_POSITIONS[presetTrigger.preset] || PRESET_POSITIONS.ap
     targetCamPos.current = new THREE.Vector3(...pos)
-    targetLookAt.current = new THREE.Vector3(0, -6, 0)
+    targetLookAt.current = new THREE.Vector3(0, -4, 0)
   }, [presetTrigger])
 
-  // Focus mode camera transition
+  // Focus mode camera transition: smooth re-orientation at natural default distance
   useEffect(() => {
     if (!controlsRef.current) return
     if (focusedVessel && focusedVessel in FOCUS_POSITIONS) {
       targetCamPos.current = new THREE.Vector3(...FOCUS_POSITIONS[focusedVessel])
       targetLookAt.current = new THREE.Vector3(...FOCUS_TARGETS[focusedVessel])
+    } else if (!focusedVessel) {
+      targetCamPos.current = new THREE.Vector3(...PRESET_POSITIONS.ap)
+      targetLookAt.current = new THREE.Vector3(0, -4, 0)
     }
   }, [focusedVessel])
 
@@ -124,21 +131,21 @@ export const CoronaryScene: React.FC<CoronarySceneProps> = ({
         ref={controlsRef}
         enableDamping
         dampingFactor={0.08}
-        minDistance={40}
-        maxDistance={220}
-        target={[0, -6, 0]}
+        minDistance={60}
+        maxDistance={350}
+        target={[0, -4, 0]}
         rotateSpeed={0.8}
         zoomSpeed={0.9}
         panSpeed={0.7}
       />
 
-      {/* Clean Clinical Studio Lighting for White Viewport */}
-      <ambientLight intensity={1.1} color="#ffffff" />
-      <directionalLight position={[70, 80, 90]} intensity={1.4} color="#ffffff" />
-      <directionalLight position={[-70, 30, 70]} intensity={0.8} color="#e2e8f0" />
-      <directionalLight position={[0, 45, -90]} intensity={0.9} color="#cbd5e1" />
-      <directionalLight position={[0, -90, 40]} intensity={0.4} color="#f1f5f9" />
-      <hemisphereLight args={["#ffffff", "#e2e8f0", 0.6]} />
+      {/* Clinical Anatomical Studio Lighting for High-Contrast Dark Viewport */}
+      <ambientLight intensity={0.95} color="#e0f2fe" />
+      <directionalLight position={[70, 80, 90]} intensity={1.8} color="#ffffff" />
+      <directionalLight position={[-70, 30, 70]} intensity={1.1} color="#38bdf8" />
+      <directionalLight position={[0, 45, -90]} intensity={1.5} color="#2dd4bf" />
+      <directionalLight position={[0, -90, 40]} intensity={0.6} color="#60a5fa" />
+      <hemisphereLight args={["#dbeafe", "#021c1f", 0.65]} />
 
       {/* Coordinate transformation group: centers heart at (0, 0, 0) and orients AP face forward */}
       <group
@@ -195,7 +202,7 @@ export const CoronaryScene: React.FC<CoronarySceneProps> = ({
           )}
 
           {/* Anchored In-scene Diagnostic Annotations */}
-          {visibility.lad && nodes.vessel_lad && (
+          {visibility.lad && nodes.vessel_lad && !dismissedLabels?.has("lad") && (
             <VesselFloatingLabel
               id="lad"
               geometry={nodes.vessel_lad.geometry}
@@ -204,10 +211,11 @@ export const CoronaryScene: React.FC<CoronarySceneProps> = ({
               isSelected={focusedVessel === "lad" || selectedTarget === "lad"}
               isAnyFocused={isAnyFocused}
               onClick={(id) => onSelectVessel(id)}
+              onDismiss={onDismissLabel}
             />
           )}
 
-          {visibility.lcx && nodes.vessel_lcx && (
+          {visibility.lcx && nodes.vessel_lcx && !dismissedLabels?.has("lcx") && (
             <VesselFloatingLabel
               id="lcx"
               geometry={nodes.vessel_lcx.geometry}
@@ -216,10 +224,11 @@ export const CoronaryScene: React.FC<CoronarySceneProps> = ({
               isSelected={focusedVessel === "lcx" || selectedTarget === "lcx"}
               isAnyFocused={isAnyFocused}
               onClick={(id) => onSelectVessel(id)}
+              onDismiss={onDismissLabel}
             />
           )}
 
-          {visibility.rca && nodes.vessel_rca && (
+          {visibility.rca && nodes.vessel_rca && !dismissedLabels?.has("rca") && (
             <VesselFloatingLabel
               id="rca"
               geometry={nodes.vessel_rca.geometry}
@@ -228,6 +237,7 @@ export const CoronaryScene: React.FC<CoronarySceneProps> = ({
               isSelected={focusedVessel === "rca" || selectedTarget === "rca"}
               isAnyFocused={isAnyFocused}
               onClick={(id) => onSelectVessel(id)}
+              onDismiss={onDismissLabel}
             />
           )}
 

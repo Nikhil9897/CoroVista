@@ -5,7 +5,6 @@ import {
   ArrowRight,
   Sparkles,
   Layers,
-  Info,
   Sliders,
   Cpu,
   Binary,
@@ -400,19 +399,6 @@ export const LandingPage: React.FC<LandingPageProps> = ({ health }) => {
         />
 
         <div className="max-w-5xl mx-auto space-y-16 relative z-10">
-          {/* Regulatory Notice Card */}
-          <ScrollReveal delay={0}>
-            <div className="bg-[#141208]/80 border border-amber-500/30 rounded-2xl p-6 sm:p-8 space-y-3.5 text-amber-200/90 backdrop-blur-md shadow-xl">
-              <div className="flex items-center gap-2.5 text-amber-400 font-semibold text-sm">
-                <Info className="w-4 h-4 shrink-0" />
-                <span>Clinical &amp; Regulatory Decision-Support Notice</span>
-              </div>
-              <p className="text-xs text-amber-200/80 leading-relaxed font-sans">
-                CoroVista is an educational and clinical decision-support research prototype based on the Z-Alizadeh Sani cohort ($N=303$). Model predictions reflect observational statistical likelihood of luminal stenosis (≥ 50%) and do not establish biological causality. Predicted vessel probabilities are not physical lesion coordinates or surgical navigation markers. Model outputs do not replace formal coronary angiography or physician diagnosis.
-              </p>
-            </div>
-          </ScrollReveal>
-
           {/* Final Launchpad CTA */}
           <div className="text-center space-y-8">
             <ScrollReveal delay={100}>
