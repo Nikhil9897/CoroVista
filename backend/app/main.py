@@ -51,7 +51,14 @@ def create_app() -> FastAPI:
     )
 
     # 1. Configure CORS
-    origins = settings.get_cors_origins()
+    origins = [
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+    ]
+    for origin in settings.get_cors_origins():
+        if origin not in origins:
+            origins.append(origin)
+
     logger.info(f"Configuring CORS origins: {origins}")
     app.add_middleware(
         CORSMiddleware,

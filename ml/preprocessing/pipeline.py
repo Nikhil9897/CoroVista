@@ -143,7 +143,7 @@ class ClinicalFeatureCleaner(BaseEstimator, TransformerMixin):
 
         # 2. Normalize binary string features ('Y' -> 1, 'N' -> 0)
         for col in FEATURE_PARTITIONS["binary_string"]:
-            if col in X_clean.columns and X_clean[col].dtype == "object":
+            if col in X_clean.columns and (X_clean[col].dtype == "object" or pd.api.types.is_string_dtype(X_clean[col])):
                 X_clean[col] = (
                     X_clean[col].astype(str).str.strip().str.upper().map({"Y": 1, "N": 0}).fillna(0).astype(int)
                 )
