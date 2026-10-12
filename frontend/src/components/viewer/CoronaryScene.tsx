@@ -13,6 +13,7 @@ import type { TargetName, PredictionResponse } from "@/types/prediction"
 import { CoronaryVesselMesh } from "./CoronaryVesselMesh"
 import { ContextAnatomyMesh } from "./ContextAnatomyMesh"
 import { VesselFloatingLabel } from "./VesselFloatingLabel"
+import { VESSEL_NAMES } from "@/lib/vesselColors"
 
 interface CoronarySceneProps {
   predictions?: PredictionResponse["predictions"]
@@ -164,8 +165,12 @@ export const CoronaryScene: React.FC<CoronarySceneProps> = ({
               id="lad"
               geometry={nodes.vessel_lad.geometry}
               probability={ladPred ? ladPred.probability : 0.0}
-              threshold={ladPred ? ladPred.threshold : 0.46}
-              isStenotic={ladPred ? ladPred.probability >= ladPred.threshold : false}
+              threshold={ladPred ? ladPred.threshold : VESSEL_NAMES.lad.defaultThreshold}
+              isStenotic={
+                ladPred
+                  ? ladPred.prediction === "Stenotic"
+                  : false
+              }
               isSelected={focusedVessel === "lad" || selectedTarget === "lad"}
               isAnyFocused={isAnyFocused}
               visible={visibility.lad}
@@ -179,8 +184,12 @@ export const CoronaryScene: React.FC<CoronarySceneProps> = ({
               id="lcx"
               geometry={nodes.vessel_lcx.geometry}
               probability={lcxPred ? lcxPred.probability : 0.0}
-              threshold={lcxPred ? lcxPred.threshold : 0.5}
-              isStenotic={lcxPred ? lcxPred.probability >= lcxPred.threshold : false}
+              threshold={lcxPred ? lcxPred.threshold : VESSEL_NAMES.lcx.defaultThreshold}
+              isStenotic={
+                lcxPred
+                  ? lcxPred.prediction === "Stenotic"
+                  : false
+              }
               isSelected={focusedVessel === "lcx" || selectedTarget === "lcx"}
               isAnyFocused={isAnyFocused}
               visible={visibility.lcx}
@@ -194,8 +203,12 @@ export const CoronaryScene: React.FC<CoronarySceneProps> = ({
               id="rca"
               geometry={nodes.vessel_rca.geometry}
               probability={rcaPred ? rcaPred.probability : 0.0}
-              threshold={rcaPred ? rcaPred.threshold : 0.38}
-              isStenotic={rcaPred ? rcaPred.probability >= rcaPred.threshold : false}
+              threshold={rcaPred ? rcaPred.threshold : VESSEL_NAMES.rca.defaultThreshold}
+              isStenotic={
+                rcaPred
+                  ? rcaPred.prediction === "Stenotic"
+                  : false
+              }
               isSelected={focusedVessel === "rca" || selectedTarget === "rca"}
               isAnyFocused={isAnyFocused}
               visible={visibility.rca}
@@ -210,7 +223,7 @@ export const CoronaryScene: React.FC<CoronarySceneProps> = ({
               id="lad"
               geometry={nodes.vessel_lad.geometry}
               probability={ladPred ? ladPred.probability : 0.0}
-              threshold={ladPred ? ladPred.threshold : 0.46}
+              threshold={ladPred ? ladPred.threshold : VESSEL_NAMES.lad.defaultThreshold}
               isSelected={focusedVessel === "lad" || selectedTarget === "lad"}
               isAnyFocused={isAnyFocused}
               onClick={(id) => onSelectVessel(id)}
@@ -223,7 +236,7 @@ export const CoronaryScene: React.FC<CoronarySceneProps> = ({
               id="lcx"
               geometry={nodes.vessel_lcx.geometry}
               probability={lcxPred ? lcxPred.probability : 0.0}
-              threshold={lcxPred ? lcxPred.threshold : 0.50}
+              threshold={lcxPred ? lcxPred.threshold : VESSEL_NAMES.lcx.defaultThreshold}
               isSelected={focusedVessel === "lcx" || selectedTarget === "lcx"}
               isAnyFocused={isAnyFocused}
               onClick={(id) => onSelectVessel(id)}
@@ -236,7 +249,7 @@ export const CoronaryScene: React.FC<CoronarySceneProps> = ({
               id="rca"
               geometry={nodes.vessel_rca.geometry}
               probability={rcaPred ? rcaPred.probability : 0.0}
-              threshold={rcaPred ? rcaPred.threshold : 0.38}
+              threshold={rcaPred ? rcaPred.threshold : VESSEL_NAMES.rca.defaultThreshold}
               isSelected={focusedVessel === "rca" || selectedTarget === "rca"}
               isAnyFocused={isAnyFocused}
               onClick={(id) => onSelectVessel(id)}

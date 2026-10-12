@@ -54,7 +54,7 @@ vi.mock("@/components/viewer/CoronaryScene", () => ({
             short: "LAD",
             full: "Left Anterior Descending",
             probability: 0.724,
-            threshold: 0.46,
+            threshold: 0.50,
             isStenotic: true,
             territory: "Anterior wall, septum & apex",
           })
@@ -76,7 +76,7 @@ const mockPredictions: PredictionResponse["predictions"] = {
   lad: {
     probability: 0.724,
     prediction: "Stenotic",
-    threshold: 0.46,
+    threshold: 0.50,
   },
   lcx: {
     probability: 0.412,
@@ -197,7 +197,7 @@ describe("CoronaryViewer Component", () => {
           short: "LAD",
           full: "Left Anterior Descending",
           probability: 0.724,
-          threshold: 0.46,
+          threshold: 0.50,
           isStenotic: true,
           territory: "Anterior wall, septum & apex",
         }}
@@ -208,7 +208,7 @@ describe("CoronaryViewer Component", () => {
     expect(tooltip).toBeInTheDocument()
     expect(tooltip).toHaveTextContent("LAD")
     expect(tooltip).toHaveTextContent("72.4%")
-    expect(tooltip).toHaveTextContent("46.0%")
+    expect(tooltip).toHaveTextContent("50.0%")
     expect(tooltip).toHaveTextContent("Stenotic")
     expect(tooltip).toHaveTextContent("Anterior wall, septum & apex")
   })
@@ -233,5 +233,62 @@ describe("CoronaryViewer Component", () => {
     expect(screen.getByRole("alert")).toBeInTheDocument()
     expect(screen.getByText("3D Graphics Rendering Issue")).toBeInTheDocument()
     expect(screen.getByText(/WebGL context lost test/i)).toBeInTheDocument()
+  })
+
+  it("ensures viewer hover tooltip classifications agree with threshold below, equal to, and above canonical threshold", () => {
+    // 1. Below threshold: prob 0.49 < threshold 0.50 -> Non-Stenotic
+    const { rerender } = render(
+      <ViewerHoverTooltip
+        info={{
+          id: "lad",
+          short: "LAD",
+          full: "Left Anterior Descending",
+          probability: 0.49,
+          threshold: 0.50,
+          isStenotic: false,
+          territory: "Anterior wall, septum & apex",
+        }}
+      />
+    )
+    let tooltip = screen.getByRole("tooltip")
+    expect(tooltip).toHaveTextContent("Non-Stenotic")
+    expect(tooltip).toHaveTextContent("49.0%")
+    expect(tooltip).toHaveTextContent("50.0%")
+
+    // 2. Equal to threshold: prob 0.50 == threshold 0.50 -> Stenotic
+    rerender(
+      <ViewerHoverTooltip
+        info={{
+          id: "lad",
+          short: "LAD",
+          full: "Left Anterior Descending",
+          probability: 0.50,
+          threshold: 0.50,
+          isStenotic: true,
+          territory: "Anterior wall, septum & apex",
+        }}
+      />
+    )
+    tooltip = screen.getByRole("tooltip")
+    expect(tooltip).toHaveTextContent("Stenotic")
+    expect(tooltip).toHaveTextContent("50.0%")
+
+    // 3. Above threshold: prob 0.51 > threshold 0.50 -> Stenotic
+    rerender(
+      <ViewerHoverTooltip
+        info={{
+          id: "lad",
+          short: "LAD",
+          full: "Left Anterior Descending",
+          probability: 0.51,
+          threshold: 0.50,
+          isStenotic: true,
+          territory: "Anterior wall, septum & apex",
+        }}
+      />
+    )
+    tooltip = screen.getByRole("tooltip")
+    expect(tooltip).toHaveTextContent("Stenotic")
+    expect(tooltip).toHaveTextContent("51.0%")
   })
 })

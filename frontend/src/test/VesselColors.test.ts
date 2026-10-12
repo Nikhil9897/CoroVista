@@ -50,12 +50,31 @@ describe("Continuous Vessel Risk Color Mapping", () => {
 
   it("defines correct metadata and default thresholds for all 3 clinical targets", () => {
     expect(VESSEL_NAMES.lad.short).toBe("LAD")
-    expect(VESSEL_NAMES.lad.defaultThreshold).toBe(0.46)
+    expect(VESSEL_NAMES.lad.defaultThreshold).toBe(0.50)
 
     expect(VESSEL_NAMES.lcx.short).toBe("LCX")
     expect(VESSEL_NAMES.lcx.defaultThreshold).toBe(0.50)
 
     expect(VESSEL_NAMES.rca.short).toBe("RCA")
     expect(VESSEL_NAMES.rca.defaultThreshold).toBe(0.38)
+  })
+
+  it("evaluates decision threshold classifications consistently below, equal to, and above threshold", () => {
+    const ladThreshold = VESSEL_NAMES.lad.defaultThreshold // 0.50
+
+    // Below threshold: 0.49 -> Normal
+    expect(0.49 >= ladThreshold).toBe(false)
+
+    // Equal to threshold: 0.50 -> Stenotic
+    expect(0.50 >= ladThreshold).toBe(true)
+
+    // Above threshold: 0.51 -> Stenotic
+    expect(0.51 >= ladThreshold).toBe(true)
+
+    // Verify RCA boundary at 0.38
+    const rcaThreshold = VESSEL_NAMES.rca.defaultThreshold // 0.38
+    expect(0.379 >= rcaThreshold).toBe(false)
+    expect(0.380 >= rcaThreshold).toBe(true)
+    expect(0.4005 >= rcaThreshold).toBe(true)
   })
 })

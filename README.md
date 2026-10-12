@@ -7,8 +7,8 @@
 [![FastAPI](https://img.shields.io/badge/FastAPI-1.0.0-009688.svg)](https://fastapi.tiangolo.com)
 [![React](https://img.shields.io/badge/React-19.2-61DAFB.svg)](https://react.dev)
 [![Three.js](https://img.shields.io/badge/Three.js-R186-black.svg)](https://threejs.org)
-[![Pytest Suite](https://img.shields.io/badge/Pytest-59%20Passed-success.svg)](tests)
-[![Vitest Suite](https://img.shields.io/badge/Vitest-48%20Passed-success.svg)](frontend/src/test)
+[![Pytest Suite](https://img.shields.io/badge/Pytest-62%20Passed-success.svg)](tests)
+[![Vitest Suite](https://img.shields.io/badge/Vitest-50%20Passed-success.svg)](frontend/src/test)
 [![License: MIT](https://img.shields.io/badge/Code%20License-MIT-yellow.svg)](LICENSE)
 [![Anatomy License](https://img.shields.io/badge/Anatomy%20License-CC%20BY--SA%202.1%20JP-lightgrey.svg)](docs/anatomy-assets.md)
 
@@ -139,7 +139,7 @@ For complete technical contracts, see [`docs/architecture.md`](docs/architecture
 | **Machine Learning** | Scikit-learn / XGBoost | 1.3+ / 2.0+ | Pipeline training, calibration, inference |
 | **Explainability** | SHAP | 0.44+ | TreeSHAP and LinearSHAP attributions |
 | **Anatomical Meshes** | Trimesh / BodyParts3D | — | 3D mesh alignment, optimization & GLB packaging |
-| **Automated Testing** | Pytest / Vitest | 9.x / 5.x | 107 full-coverage automated test cases |
+| **Automated Testing** | Pytest / Vitest | 9.x / 5.x | 112 full-coverage automated test cases |
 
 ---
 
@@ -149,10 +149,10 @@ All pipelines were validated using **Repeated Stratified K-Fold Cross-Validation
 
 | Target | Clinical Endpoint | Selected Model | Preprocessing | Calibration | ROC-AUC (Mean ± Std) | PR-AUC (Mean ± Std) | Balanced Accuracy | Brier Score | Decision Cutoff |
 |---|---|---|---|---|---|---|---|---|---|
-| **Cath** | Overall CAD Status | **XGBoost** | One-Hot / None | Sigmoid (Platt) | **0.910 ± 0.041** | **0.958 ± 0.021** | 0.843 ± 0.056 | **0.108** | 0.50 |
-| **LAD** | Left Anterior Descending | **XGBoost** | One-Hot / None | Sigmoid (Platt) | **0.836 ± 0.049** | **0.878 ± 0.041** | 0.763 ± 0.056 | **0.165** | 0.50 |
-| **LCX** | Left Circumflex | **RandomForest / XGBoost** | One-Hot / None | Uncalibrated | **0.724 ± 0.065** | **0.608 ± 0.086** | 0.662 ± 0.060 | **0.210** | 0.50 |
-| **RCA** | Right Coronary Artery | **LogisticRegression** | One-Hot / Standard | Sigmoid (Platt) | **0.716 ± 0.060** | **0.613 ± 0.075** | 0.666 ± 0.048 | **0.225** | 0.38 |
+| **Cath** | Overall CAD Status | **XGBoost** | One-Hot / None | Sigmoid (Platt) | **0.915 ± 0.041** | **0.962 ± 0.020** | 0.822 ± 0.060 | **0.102 ± 0.025** | 0.50 |
+| **LAD** | Left Anterior Descending | **XGBoost** | One-Hot / None | Sigmoid (Platt) | **0.842 ± 0.048** | **0.880 ± 0.042** | 0.768 ± 0.040 | **0.160 ± 0.021** | 0.50 |
+| **LCX** | Left Circumflex | **XGBoost** | One-Hot / None | Uncalibrated | **0.738 ± 0.061** | **0.622 ± 0.087** | 0.676 ± 0.065 | **0.204 ± 0.024** | 0.50 |
+| **RCA** | Right Coronary Artery | **LogisticRegression** | One-Hot / Standard | Sigmoid (Platt) | **0.716 ± 0.057** | **0.609 ± 0.073** | 0.597 ± 0.043 | **0.205 ± 0.014** | 0.38 |
 
 ### Key Machine Learning Findings:
 1. **Target Leakage Safeguard**: Feature extraction strictly isolates target columns (`Cath`, `LAD`, `LCX`, `RCA`). If any target is detected in the input feature matrix, the pipeline raises an immediate `TargetLeakageError`.

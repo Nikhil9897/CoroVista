@@ -8,16 +8,16 @@
 
 ## 1. Executive Summary & Selected Final Models
 
-Following rigorous **Repeated Stratified 5-Fold Cross-Validation (5 Repeats = 25 evaluation runs per model)** with strict leakage prevention, the best model for each target was independently selected:
+Following rigorous **Repeated Stratified 5-Fold Cross-Validation (5 Repeats = 25 evaluation runs per model)** with strict leakage prevention, the final locked models and their recorded cross-validation metrics (from serialized model metadata) are:
 
-| Target | Clinical Endpoint | Selected Model Family | Preprocessing / Scaler | Calibration | ROC-AUC (Mean ± Std) | PR-AUC (Mean ± Std) | Balanced Acc | Brier Score |
-|---|---|---|---|---|---|---|---|---|
-| **Cath** | Overall CAD Status | **XGBoost** | `onehot` / `none` | `sigmoid` | **0.910 ± 0.041** | **0.958 ± 0.021** | 0.843 ± 0.056 | 0.108 |
-| **LAD** | Left Anterior Descending Stenosis | **XGBoost** | `onehot` / `none` | `sigmoid` | **0.836 ± 0.049** | **0.878 ± 0.041** | 0.763 ± 0.056 | 0.165 |
-| **LCX** | Left Circumflex Stenosis | **RandomForest** | `onehot` / `none` | `uncalibrated` | **0.724 ± 0.065** | **0.608 ± 0.086** | 0.662 ± 0.060 | 0.210 |
-| **RCA** | Right Coronary Artery Stenosis | **LogisticRegression** | `onehot` / `standard` | `uncalibrated` | **0.716 ± 0.060** | **0.613 ± 0.075** | 0.666 ± 0.048 | 0.225 |
+| Target | Clinical Endpoint | Selected Model Family | Preprocessing / Scaler | Calibration Method | Decision Threshold | ROC-AUC (Mean ± Std) | PR-AUC (Mean ± Std) | Balanced Acc | Brier Score |
+|---|---|---|---|---|---|---|---|---|---|
+| **Cath** | Overall CAD Status | **XGBoost** | `onehot` / `none` | `sigmoid` (Platt) | 0.50 | **0.915 ± 0.041** | **0.962 ± 0.020** | 0.822 ± 0.060 | 0.102 ± 0.025 |
+| **LAD** | Left Anterior Descending Stenosis | **XGBoost** | `onehot` / `none` | `sigmoid` (Platt) | 0.50 | **0.842 ± 0.048** | **0.880 ± 0.042** | 0.768 ± 0.040 | 0.160 ± 0.021 |
+| **LCX** | Left Circumflex Stenosis | **XGBoost** | `onehot` / `none` | `uncalibrated` | 0.50 | **0.738 ± 0.061** | **0.622 ± 0.087** | 0.676 ± 0.065 | 0.204 ± 0.024 |
+| **RCA** | Right Coronary Artery Stenosis | **LogisticRegression** | `onehot` / `standard` | `sigmoid` (Platt) | 0.38 | **0.716 ± 0.057** | **0.609 ± 0.073** | 0.597 ± 0.043 | 0.205 ± 0.014 |
 
-*Notice: As designed, different model families were independently chosen for each target to optimize target-specific clinical accuracy, probability calibration, and discrimination.*
+*Note: The metrics above represent recorded cross-validation performance of the final selected and locked model pipelines (as documented in `models/*/metadata.json`). Exploratory uncalibrated comparisons across model families from initial screening runs are documented in Section 2 below.*
 
 ## 2. Comprehensive Model Family Comparisons (25-Fold CV)
 

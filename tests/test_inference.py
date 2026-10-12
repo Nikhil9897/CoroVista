@@ -134,8 +134,66 @@ def test_invalid_categorical_rejection(sample_patient_dict):
 
 # 8. Strict Target Leakage Rejection
 def test_target_leakage_rejection(sample_patient_dict):
-    for target_col in ["Cath", "LAD", "LCX", "RCA", "cath", "lad"]:
+    for target_col in ["Cath", "LAD", "LCX", "RCA", "cath", "lad", "lcx", "rca", "CATH"]:
         leaked_input = dict(sample_patient_dict)
         leaked_input[target_col] = "Normal"
         with pytest.raises(ValueError, match="TARGET LEAKAGE DETECTED"):
             predict_patient(leaked_input)
+
+
+# 9. Constant Feature (Exertional CP) Handling
+def test_constant_feature_handling(sample_patient_dict):
+    # Case A: Missing Exertional CP (e.g. from simulator payload) -> automatically populated and succeeds
+    data_without_ecp = dict(sample_patient_dict)
+    data_without_ecp.pop("Exertional CP", None)
+    clean_df = validate_and_normalize_patient_input(data_without_ecp)
+    assert "Exertional CP" in clean_df.columns
+    assert clean_df["Exertional CP"].iloc[0] == "N"
+    res = predict_patient(data_without_ecp)
+    assert res.cath.probability is not None
+
+    # Case B: Exertional CP explicitly provided as 'N' or 0 -> succeeds
+    data_with_ecp = dict(sample_patient_dict)
+    data_with_ecp["Exertional CP"] = "N"
+    res_b = predict_patient(data_with_ecp)
+    assert res_b.cath.probability == res.cath.probability
+
+
+# 10. Unexpected / Extra Field Handling
+def test_unexpected_fields_ignored_gracefully(sample_patient_dict):
+    data_with_extra = dict(sample_patient_dict)
+    data_with_extra["nonexistent_lab_marker"] = 999.5
+    data_with_extra["unrelated_clinical_note"] = "Patient is resting"
+    clean_df = validate_and_normalize_patient_input(data_with_extra)
+    assert "nonexistent_lab_marker" not in clean_df.columns
+    assert "unrelated_clinical_note" not in clean_df.columns
+    res = predict_patient(data_with_extra)
+    assert res.lad.probability is not None
+
+
+# 11. Boundary Classification Logic Across All Targets
+def test_threshold_boundary_classifications():
+    from src.corovista.inference.schemas import TARGET_LABEL_MAP
+
+    thresholds = {"cath": 0.50, "lad": 0.50, "lcx": 0.50, "rca": 0.38}
+
+    for target, thresh in thresholds.items():
+        # Below threshold -> negative label (Normal)
+        prob_below = round(thresh - 0.01, 4)
+        is_pos_below = int(prob_below >= thresh)
+        assert is_pos_below == 0
+        assert TARGET_LABEL_MAP[target][is_pos_below] == "Normal"
+
+        # Equal to threshold -> positive label (CAD for Cath, Stenotic for vessels)
+        prob_equal = thresh
+        is_pos_equal = int(prob_equal >= thresh)
+        assert is_pos_equal == 1
+        expected_pos_label = "CAD" if target == "cath" else "Stenotic"
+        assert TARGET_LABEL_MAP[target][is_pos_equal] == expected_pos_label
+
+        # Above threshold -> positive label
+        prob_above = round(thresh + 0.01, 4)
+        is_pos_above = int(prob_above >= thresh)
+        assert is_pos_above == 1
+        assert TARGET_LABEL_MAP[target][is_pos_above] == expected_pos_label
+
