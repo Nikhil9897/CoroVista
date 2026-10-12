@@ -34,12 +34,20 @@
 
 ## 2. Visual Previews & System Interface
 
-### Interactive Patient Simulator & Sensitivity Analysis
-The Patient Simulator enables interactive exploration of 54 clinical variables, calculating real-time risk shifts and highlighting key positive/negative feature drivers:
+### Scientific Landing Page
+Scientific overview presenting multi-target machine learning models, 3D anatomical coronary shaders, and clinical diagnostic workflows:
 
-| Patient Simulator Workspace | Real-Time Sensitivity Analysis |
-|:---:|:---:|
-| ![Patient Simulator Initial State](docs/screenshots/simulator_initial_state.png) | ![Patient Simulator Sensitivity Comparison](docs/screenshots/simulator_sensitivity_comparison.png) |
+![Scientific Landing Page](docs/screenshots/landing_page.png)
+
+### Clinical Risk Dashboard
+Unified clinical workstation displaying overall CAD risk score, vessel-specific stenosis probabilities (LAD, LCX, RCA), top TreeSHAP feature drivers, and real-time interactive 3D coronary anatomy:
+
+![Clinical Risk Dashboard](docs/screenshots/clinical_dashboard.png)
+
+### Interactive Patient Simulator
+Interactive clinical simulation workspace enabling real-time exploration across 54 patient parameters, instantaneous sensitivity recalculation, and anatomical risk projection:
+
+![Interactive Patient Simulator](docs/screenshots/patient_simulator.png)
 
 ### 3D Coronary Anatomy & Multi-Angle Digital Twin
 High-resolution anatomical meshes with risk-driven colormaps, transparent myocardial context, and vessel-specific raycasting:
