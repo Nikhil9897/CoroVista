@@ -76,6 +76,13 @@ class ModelUnavailableError(CoroVistaAPIException):
         )
 
 
+CORS_HEADERS = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "*",
+    "Access-Control-Allow-Headers": "*",
+}
+
+
 async def corovista_exception_handler(request: Request, exc: CoroVistaAPIException) -> JSONResponse:
     """Handles all domain CoroVistaAPIException instances."""
     envelope = ErrorEnvelope(
@@ -85,7 +92,7 @@ async def corovista_exception_handler(request: Request, exc: CoroVistaAPIExcepti
             details=exc.details,
         )
     )
-    return JSONResponse(status_code=exc.status_code, content=envelope.model_dump())
+    return JSONResponse(status_code=exc.status_code, content=envelope.model_dump(), headers=CORS_HEADERS)
 
 
 async def validation_exception_handler(request: Request, exc: RequestValidationError) -> JSONResponse:
@@ -105,7 +112,7 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
             details=cleaned_details,
         )
     )
-    return JSONResponse(status_code=HTTP_422, content=envelope.model_dump())
+    return JSONResponse(status_code=HTTP_422, content=envelope.model_dump(), headers=CORS_HEADERS)
 
 
 async def value_error_handler(request: Request, exc: ValueError) -> JSONResponse:
@@ -125,16 +132,29 @@ async def value_error_handler(request: Request, exc: ValueError) -> JSONResponse
             details=[],
         )
     )
-    return JSONResponse(status_code=status_code, content=envelope.model_dump())
+    return JSONResponse(status_code=status_code, content=envelope.model_dump(), headers=CORS_HEADERS)
 
 
 async def generic_exception_handler(request: Request, exc: Exception) -> JSONResponse:
-    """Catches unhandled errors without leaking stack traces or internal filepaths."""
+    """Catches unhandled errors, logs traceback, and returns CORS-enabled response."""
+    import logging
+    import traceback
+
+    logger = logging.getLogger("corovista.backend")
+    logger.exception("Unhandled server exception: %s", exc)
+
+    error_msg = f"{type(exc).__name__}: {str(exc)}"
+    tb_lines = traceback.format_exc().splitlines()
+
     envelope = ErrorEnvelope(
         error=ErrorDetails(
             code="INTERNAL_ERROR",
-            message="An unexpected internal server error occurred while processing the request.",
-            details=[],
+            message=error_msg,
+            details=tb_lines[-10:],
         )
     )
-    return JSONResponse(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, content=envelope.model_dump())
+    return JSONResponse(
+        status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+        content=envelope.model_dump(),
+        headers=CORS_HEADERS,
+    )

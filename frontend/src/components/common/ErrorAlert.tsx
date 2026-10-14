@@ -13,12 +13,12 @@ export const ErrorAlert: React.FC<ErrorAlertProps> = ({ error, onRetry, classNam
 
   let userFriendlyMessage = error.message
 
-  if (error.code === "NETWORK_ERROR") {
-    userFriendlyMessage = "Unable to connect to the CoroVista API service. Please verify that the FastAPI backend is running on http://localhost:8000."
-  } else if (error.status === 422) {
+  if (error.status === 422) {
     userFriendlyMessage = "Patient input validation failed. Please review the provided clinical variables."
   } else if (error.status === 503) {
     userFriendlyMessage = "The machine learning model artifacts are currently unavailable on the server."
+  } else if (!userFriendlyMessage) {
+    userFriendlyMessage = "An unexpected error occurred while communicating with the CoroVista API service."
   }
 
   return (
