@@ -14,8 +14,11 @@ export const AppShell: React.FC<AppShellProps> = ({ health }) => {
   const [isExpanded, setIsExpanded] = useState(false)
   const location = useLocation()
 
-  // Dashboard and simulator get full-bleed spatial layout
-  const isSpatialPage = location.pathname === "/dashboard" || location.pathname === "/simulator"
+  // Dashboard, simulator, and about get full-bleed spatial layout
+  const isSpatialPage =
+    location.pathname === "/dashboard" ||
+    location.pathname === "/simulator" ||
+    location.pathname === "/about"
 
   return (
     <div className="min-h-screen bg-[#011719] text-foreground flex flex-col">

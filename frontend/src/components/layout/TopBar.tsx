@@ -25,25 +25,26 @@ export const TopBar: React.FC<TopBarProps> = ({ health, onOpenSidebar }) => {
         {/* Enlarged Prominent CoroVista Logo */}
         <Link
           to="/"
-          className="flex items-center gap-3 group/logo focus:outline-hidden"
+          className="flex items-center gap-3.5 group/logo focus:outline-hidden"
           title="CoroVista — Cardiovascular AI Platform"
         >
-          <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-white/[0.06] border border-white/15 p-1.5 flex items-center justify-center shrink-0 shadow-lg shadow-black/40 backdrop-blur-md group-hover/logo:border-[#2dd4bf]/40 group-hover/logo:scale-105 transition-all">
+          <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-white/[0.06] border border-white/15 p-1.5 flex items-center justify-center shrink-0 shadow-lg shadow-black/40 backdrop-blur-md group-hover/logo:border-[#2dd4bf]/40 group-hover/logo:scale-105 transition-all">
             <img
               src="/corovista-heart.png"
               alt="CoroVista Logo"
-              className="w-7 h-7 sm:w-8 sm:h-8 object-contain drop-shadow-[0_0_10px_rgba(45,212,191,0.35)]"
+              className="w-9 h-9 sm:w-10 sm:h-10 object-contain drop-shadow-[0_0_12px_rgba(45,212,191,0.4)]"
             />
           </div>
 
           <div className="flex flex-col">
             <div className="flex items-center gap-2">
-              <h1 className="font-bold text-sm sm:text-base tracking-tight text-[#E8F1EE] leading-none">
-                CoroVista
+              <h1 className="font-bold text-base sm:text-lg tracking-tight leading-none">
+                <span className="text-white">Coro</span>
+                <span className="bg-gradient-to-r from-[#38bdf8] via-[#60a5fa] to-[#93c5fd] bg-clip-text text-transparent">Vista</span>
               </h1>
               <span className="w-1.5 h-1.5 rounded-full bg-[#2dd4bf] shadow-[0_0_8px_#2dd4bf] animate-pulse" />
             </div>
-            <p className="text-[11px] text-[#7C9692] font-mono leading-tight mt-1 hidden sm:block">
+            <p className="text-[11px] text-[#7C9692] font-mono leading-tight mt-1 hidden sm:block tracking-wide">
               Cardiovascular Risk Visualization &bull; Stenosis Prediction System
             </p>
           </div>

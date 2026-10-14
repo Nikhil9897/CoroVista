@@ -4,7 +4,6 @@ import {
   HeartPulse,
   SlidersHorizontal,
   FileText,
-  LayoutGrid,
   Power,
   ChevronLeft,
 } from "lucide-react"
@@ -44,12 +43,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
       label: "About & Methodology",
       subtitle: "Clinical Validation & SHAP",
       icon: FileText,
-    },
-    {
-      to: "/",
-      label: "Platform Overview",
-      subtitle: "Scientific Architecture",
-      icon: LayoutGrid,
     },
   ]
 

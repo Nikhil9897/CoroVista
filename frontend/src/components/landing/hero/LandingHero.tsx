@@ -111,18 +111,19 @@ export const LandingHero: React.FC<LandingHeroProps> = ({ health }) => {
             className="flex items-center gap-3.5 group"
             aria-label="CoroVista Home"
           >
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3.5">
               <img
                 src="/corovista-heart.png"
                 alt="CoroVista Logo Mark"
-                className="w-10 h-10 object-contain drop-shadow-[0_0_14px_rgba(56,189,248,0.45)] group-hover:scale-105 transition-transform"
+                className="w-12 h-12 sm:w-14 sm:h-14 object-contain drop-shadow-[0_0_16px_rgba(56,189,248,0.5)] group-hover:scale-105 transition-transform"
               />
-              <div className="hidden xl:block">
-                <span className="text-sm font-semibold text-white tracking-tight block">
-                  CoroVista
-                </span>
-                <span className="text-[10px] text-[#5b7b7e] font-mono block">
-                  Cardiovascular AI & 3D Anatomy
+              <div className="hidden sm:block">
+                <div className="text-base sm:text-lg font-bold tracking-tight leading-none">
+                  <span className="text-white">Coro</span>
+                  <span className="bg-gradient-to-r from-[#38bdf8] via-[#60a5fa] to-[#93c5fd] bg-clip-text text-transparent">Vista</span>
+                </div>
+                <span className="text-[10px] sm:text-[11px] text-[#7C9692] font-mono tracking-wider block mt-1">
+                  Cardiovascular AI &amp; 3D Anatomy
                 </span>
               </div>
             </div>
