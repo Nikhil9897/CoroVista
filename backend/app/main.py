@@ -51,22 +51,33 @@ def create_app() -> FastAPI:
     )
 
     # 1. Configure CORS
-    origins = [
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-    ]
-    for origin in settings.get_cors_origins():
-        if origin not in origins:
-            origins.append(origin)
+    configured_origins = settings.get_cors_origins()
+    if "*" in configured_origins:
+        logger.info("Configuring permissive CORS wildcard (*)")
+        app.add_middleware(
+            CORSMiddleware,
+            allow_origins=["*"],
+            allow_credentials=False,
+            allow_methods=["*"],
+            allow_headers=["*"],
+        )
+    else:
+        origins = [
+            "http://localhost:5173",
+            "http://127.0.0.1:5173",
+        ]
+        for origin in configured_origins:
+            if origin not in origins:
+                origins.append(origin)
 
-    logger.info(f"Configuring CORS origins: {origins}")
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origins=origins,
-        allow_credentials=True,
-        allow_methods=["GET", "POST", "OPTIONS"],
-        allow_headers=["*"],
-    )
+        logger.info(f"Configuring CORS origins: {origins}")
+        app.add_middleware(
+            CORSMiddleware,
+            allow_origins=origins,
+            allow_credentials=True,
+            allow_methods=["*"],
+            allow_headers=["*"],
+        )
 
     # 2. Register Exception Handlers
     app.add_exception_handler(CoroVistaAPIException, corovista_exception_handler)

@@ -16,7 +16,7 @@ class Settings(BaseSettings):
     COROVISTA_ENV: str = Field(default="development", description="Environment: development, test, or production")
     COROVISTA_API_PREFIX: str = Field(default="/api/v1", description="API route prefix")
     COROVISTA_CORS_ORIGINS: Union[List[str], str] = Field(
-        default=["http://localhost:5173", "http://127.0.0.1:5173"],
+        default=["*"],
         description="Allowed CORS origins",
     )
     COROVISTA_MODEL_DIR: str = Field(default="models", description="Path to serialized models directory")

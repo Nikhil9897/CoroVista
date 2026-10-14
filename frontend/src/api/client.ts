@@ -10,7 +10,9 @@ import type {
   TargetName,
 } from "./types"
 
-const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000"
+const rawBase = (import.meta.env.VITE_API_BASE_URL || "http://localhost:8000").trim()
+const BASE_URL = rawBase.replace(/\/+$/, "")
+
 export class ApiError extends Error {
   public code: string
   public status: number
@@ -35,9 +37,10 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
   let response: Response
   try {
     response = await fetch(url, { ...options, headers })
-  } catch {
+  } catch (err) {
+    console.error(`[CoroVista API Error] Failed to reach ${url}:`, err)
     throw new ApiError(
-      "Unable to connect to CoroVista API service. Please verify backend is running.",
+      `Unable to connect to CoroVista API service at ${url}. Please verify your backend is running, awake, and CORS is enabled.`,
       "NETWORK_ERROR",
       0
     )
