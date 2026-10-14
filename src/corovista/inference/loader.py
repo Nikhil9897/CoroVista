@@ -14,7 +14,66 @@ from pathlib import Path
 from typing import Any, Dict, Optional, Tuple
 
 import joblib
+from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
+
+# ---------------------------------------------------------------------------
+# Cross-version scikit-learn compatibility patch:
+# Ensures models pickled with scikit-learn < 1.6 run cleanly in scikit-learn >= 1.6
+# where SimpleImputer expects '_fill_dtype' during .transform()
+# ---------------------------------------------------------------------------
+if not isinstance(getattr(SimpleImputer, "_fill_dtype", None), property):
+    class _FillDtypeDescriptor:
+        def __get__(self, instance, owner):
+            if instance is None:
+                return self
+            if "_fill_dtype" in instance.__dict__:
+                return instance.__dict__["_fill_dtype"]
+            if hasattr(instance, "statistics_") and instance.statistics_ is not None:
+                return instance.statistics_.dtype
+            return object
+
+        def __set__(self, instance, value):
+            instance.__dict__["_fill_dtype"] = value
+
+    SimpleImputer._fill_dtype = _FillDtypeDescriptor()
+
+
+def _patch_pipeline_compatibility(pipeline: Any) -> None:
+    """Recursively patches any SimpleImputer instances in pipeline."""
+    def _visit(obj: Any):
+        if obj is None:
+            return
+        if isinstance(obj, SimpleImputer):
+            if not hasattr(obj, "_fill_dtype") or getattr(obj, "_fill_dtype", None) is None:
+                if hasattr(obj, "statistics_") and obj.statistics_ is not None:
+                    obj._fill_dtype = obj.statistics_.dtype
+                else:
+                    obj._fill_dtype = object
+        if hasattr(obj, "named_steps"):
+            for step in obj.named_steps.values():
+                _visit(step)
+        if hasattr(obj, "steps"):
+            for _, step in obj.steps:
+                _visit(step)
+        if hasattr(obj, "transformers_"):
+            for _, transformer, _ in obj.transformers_:
+                _visit(transformer)
+        if hasattr(obj, "transformers"):
+            for item in obj.transformers:
+                if isinstance(item, tuple) and len(item) >= 2:
+                    _visit(item[1])
+        if hasattr(obj, "estimator"):
+            _visit(obj.estimator)
+        if hasattr(obj, "calibrated_classifiers_"):
+            for cc in obj.calibrated_classifiers_:
+                if hasattr(cc, "estimator"):
+                    _visit(cc.estimator)
+                if hasattr(cc, "base_estimator"):
+                    _visit(cc.base_estimator)
+
+    _visit(pipeline)
+
 
 TARGET_DIR_MAP: Dict[str, str] = {
     "cath": "cad",
@@ -64,6 +123,8 @@ def load_model_pipeline(
         raise FileNotFoundError(f"Model metadata not found at {metadata_path.resolve()}")
 
     pipeline: Pipeline = joblib.load(pipeline_path)
+    _patch_pipeline_compatibility(pipeline)
+
     with open(metadata_path, "r", encoding="utf-8") as f:
         metadata: Dict[str, Any] = json.load(f)
 
