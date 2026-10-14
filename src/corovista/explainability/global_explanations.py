@@ -13,9 +13,16 @@ import json
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-import matplotlib
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
+try:
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    HAS_MATPLOTLIB = True
+except ImportError:
+    matplotlib = None
+    plt = None
+    HAS_MATPLOTLIB = False
+
 import numpy as np
 import pandas as pd
 import shap
@@ -93,8 +100,8 @@ def compute_global_explanations(
             "full_ranking": ranking,
         }
 
-        # Generate summary plot if plots_dir is specified
-        if plots_dir:
+        # Generate summary plot if plots_dir is specified and matplotlib is available
+        if plots_dir and HAS_MATPLOTLIB and plt is not None:
             fig = plt.figure(figsize=(10, 6))
             # Human labels for plot
             human_cols = [get_human_label(fn) for fn in feat_names]
