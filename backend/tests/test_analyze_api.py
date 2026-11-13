@@ -19,6 +19,16 @@ def test_analyze_valid(client: TestClient, valid_patient_dict: dict):
     assert "explanations" in data
     assert set(data["explanations"].keys()) == {"cath", "lad", "lcx", "rca"}
 
+    # Verify explanation metadata and calibration disclosure across all targets
+    for target_key, exp in data["explanations"].items():
+        assert exp["target"] == target_key
+        assert exp["explanation_space"] == "log-odds (model score)"
+        assert "calibration_disclosure" in exp
+        assert "probability calibration is applied separately" in exp["calibration_disclosure"]
+        assert "base_value" in exp
+        assert "features" in exp
+        assert len(exp["features"]) > 0
+
     # Disclaimers check
     assert "clinical_disclaimer" in data
     assert "Educational and decision-support prototype only" in data["clinical_disclaimer"]

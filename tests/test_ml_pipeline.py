@@ -14,17 +14,21 @@ Covers:
 10. Controlled ablation switches (drop_rwma, drop_bmi)
 """
 
+import json
 from pathlib import Path
 
+import joblib
 import numpy as np
 import pandas as pd
 import pytest
+from sklearn.calibration import CalibratedClassifierCV
+from sklearn.linear_model import LogisticRegression
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
 
 from ml.preprocessing.feature_metadata import (
-    ELIGIBLE_FEATURES,
     FEATURE_REGISTRY,
     TARGET_COLUMNS,
-    ZERO_VARIANCE_COLUMNS,
     assert_no_target_leakage,
     get_eligible_feature_names,
     get_feature_metadata,
@@ -36,10 +40,9 @@ from ml.preprocessing.pipeline import (
     extract_features_and_targets,
     load_dataset,
 )
+from ml.training.benchmark import DynamicScalePosWeightXGBClassifier
 from ml.training.trainer import (
     create_final_pipeline,
-    load_target_model,
-    predict_patient,
     train_and_save_final_model,
 )
 
@@ -207,3 +210,186 @@ def test_model_saving_and_inference(raw_df, tmp_path):
     )
     assert (save_dir / "pipeline.joblib").exists()
     assert (save_dir / "metadata.json").exists()
+
+
+# 10. Calibration Pipeline Structure & Fallback Methodology
+def test_create_final_pipeline_calibrated_and_uncalibrated():
+    """Verifies calibrated and uncalibrated pipeline instantiation contracts."""
+    # Uncalibrated pipeline creation (calibration_method=None)
+    pipe_uncal = create_final_pipeline("LogisticRegression", scaler_type="standard", calibration_method=None)
+    assert isinstance(pipe_uncal, Pipeline)
+    assert not isinstance(pipe_uncal, CalibratedClassifierCV)
+    assert "preprocessing" in pipe_uncal.named_steps
+    assert "classifier" in pipe_uncal.named_steps
+    assert isinstance(pipe_uncal.named_steps["classifier"], LogisticRegression)
+
+    # Uncalibrated pipeline creation (calibration_method="uncalibrated")
+    pipe_uncal_str = create_final_pipeline("XGBoost", scaler_type="none", calibration_method="uncalibrated")
+    assert isinstance(pipe_uncal_str, Pipeline)
+    assert not isinstance(pipe_uncal_str, CalibratedClassifierCV)
+    assert isinstance(pipe_uncal_str.named_steps["classifier"], DynamicScalePosWeightXGBClassifier)
+
+    # Calibrated pipeline creation (sigmoid)
+    pipe_cal_sig = create_final_pipeline("LogisticRegression", scaler_type="standard", calibration_method="sigmoid")
+    assert isinstance(pipe_cal_sig, CalibratedClassifierCV)
+    assert pipe_cal_sig.method == "sigmoid"
+    assert isinstance(pipe_cal_sig.estimator, Pipeline)
+    assert "preprocessing" in pipe_cal_sig.estimator.named_steps
+    assert "classifier" in pipe_cal_sig.estimator.named_steps
+
+    # Calibrated pipeline creation (isotonic)
+    pipe_cal_iso = create_final_pipeline("XGBoost", scaler_type="none", calibration_method="isotonic")
+    assert isinstance(pipe_cal_iso, CalibratedClassifierCV)
+    assert pipe_cal_iso.method == "isotonic"
+    assert isinstance(pipe_cal_iso.estimator, Pipeline)
+    assert isinstance(pipe_cal_iso.estimator.named_steps["classifier"], DynamicScalePosWeightXGBClassifier)
+
+
+def test_preprocessing_inside_calibration_estimator(raw_df, monkeypatch):
+    """
+    Verifies that create_final_pipeline encapsulates the complete Pipeline (preprocessing
+    + classifier) inside CalibratedClassifierCV so preprocessing is fitted inside each
+    calibration partition rather than on the full dataset beforehand.
+    """
+    X, _ = extract_features_and_targets(raw_df)
+
+    fit_sample_sizes = []
+    orig_scaler_fit = StandardScaler.fit
+
+    def spy_scaler_fit(self, X_in, y_in=None, **kwargs):
+        fit_sample_sizes.append(len(X_in))
+        return orig_scaler_fit(self, X_in, y_in, **kwargs)
+
+    monkeypatch.setattr(StandardScaler, "fit", spy_scaler_fit)
+
+    X_slice = X.iloc[:30]
+    y_slice = pd.Series([1] * 15 + [0] * 15, index=X_slice.index)
+
+    pipe_cal = create_final_pipeline(
+        "LogisticRegression",
+        scaler_type="standard",
+        calibration_method="sigmoid",
+        random_state=42,
+    )
+    assert isinstance(pipe_cal, CalibratedClassifierCV)
+    assert isinstance(pipe_cal.estimator, Pipeline)
+
+    pipe_cal.fit(X_slice, y_slice)
+
+    # In 3-fold CalibratedClassifierCV on 30 samples, each calibration training fold is 20 samples.
+    # Preprocessing must fit strictly inside calibration splits (20 samples), never on full 30.
+    assert len(fit_sample_sizes) == 3
+    assert all(sz == 20 for sz in fit_sample_sizes)
+    assert 30 not in fit_sample_sizes
+
+    probs = pipe_cal.predict_proba(X.iloc[30:50])
+    assert probs.shape == (20, 2)
+    assert (probs >= 0.0).all() and (probs <= 1.0).all()
+
+
+def test_xgboost_fold_specific_class_weights(raw_df):
+    """
+    Verifies that DynamicScalePosWeightXGBClassifier dynamically computes scale_pos_weight
+    strictly from each partition's training labels, both uncalibrated and calibrated.
+    """
+    X, _ = extract_features_and_targets(raw_df)
+
+    # 1. Uncalibrated pipeline: dynamic weight derivation across different fit partitions
+    pipe_uncal = create_final_pipeline("XGBoost", scaler_type="none", random_state=42)
+
+    # Partition 1: 30 samples, 10 positives, 20 negatives -> scale_pos_weight = 20 / 10 = 2.0
+    y_part1 = pd.Series([1] * 10 + [0] * 20, index=X.iloc[:30].index)
+    pipe_uncal.fit(X.iloc[:30], y_part1)
+    xgb_clf1 = pipe_uncal.named_steps["classifier"]
+    assert isinstance(xgb_clf1, DynamicScalePosWeightXGBClassifier)
+    assert xgb_clf1.computed_scale_pos_weight_ == 2.0
+
+    # Partition 2: 35 samples, 5 positives, 30 negatives -> scale_pos_weight = 30 / 5 = 6.0
+    y_part2 = pd.Series([1] * 5 + [0] * 30, index=X.iloc[:35].index)
+    pipe_uncal.fit(X.iloc[:35], y_part2)
+    xgb_clf2 = pipe_uncal.named_steps["classifier"]
+    assert xgb_clf2.computed_scale_pos_weight_ == 6.0
+
+    # 2. Calibrated pipeline: each calibration fold computes its own fold-specific class weight
+    y_part3 = pd.Series([1] * 15 + [0] * 30, index=X.iloc[:45].index)
+    pipe_cal = create_final_pipeline("XGBoost", scaler_type="none", calibration_method="sigmoid", random_state=42)
+    pipe_cal.fit(X.iloc[:45], y_part3)
+
+    assert isinstance(pipe_cal, CalibratedClassifierCV)
+    assert len(pipe_cal.calibrated_classifiers_) == 3
+
+    for cal_clf in pipe_cal.calibrated_classifiers_:
+        fold_pipe = cal_clf.estimator
+        assert isinstance(fold_pipe, Pipeline)
+        fold_xgb = fold_pipe.named_steps["classifier"]
+        assert isinstance(fold_xgb, DynamicScalePosWeightXGBClassifier)
+        assert hasattr(fold_xgb, "computed_scale_pos_weight_")
+        assert fold_xgb.computed_scale_pos_weight_ > 0
+
+
+def test_low_minority_count_calibration_fallback(raw_df, tmp_path):
+    """
+    Verifies that when minority class count is < 2:
+    1. create_final_pipeline with y safely falls back to uncalibrated Pipeline and does not fail.
+    2. train_and_save_final_model safely falls back to uncalibrated pipeline, saves artifacts,
+       and records 'uncalibrated' in metadata.json while preserving training_positives.
+    """
+    X, _ = extract_features_and_targets(raw_df)
+    X_tiny = X.iloc[:20]
+
+    # Exactly 1 positive sample (< 2 minority count)
+    y_single_pos = pd.Series([1] + [0] * 19, index=X_tiny.index)
+
+    # 1. Pipeline creation with low-minority y falls back to uncalibrated Pipeline
+    pipe_fallback = create_final_pipeline(
+        "LogisticRegression",
+        scaler_type="standard",
+        calibration_method="sigmoid",
+        random_state=42,
+        y=y_single_pos,
+    )
+    assert isinstance(pipe_fallback, Pipeline)
+    assert not isinstance(pipe_fallback, CalibratedClassifierCV)
+    assert "preprocessing" in pipe_fallback.named_steps
+    assert "classifier" in pipe_fallback.named_steps
+
+    # Fitting must succeed without calibration fold failure
+    pipe_fallback.fit(X_tiny, y_single_pos)
+    probs = pipe_fallback.predict_proba(X_tiny)
+    assert probs.shape == (20, 2)
+    assert (probs >= 0.0).all() and (probs <= 1.0).all()
+
+    # 2. train_and_save_final_model with low-minority raw dataframe
+    df_tiny = raw_df.iloc[:20].copy()
+    df_tiny["Cath"] = ["CAD"] + ["Normal"] * 19
+
+    save_dir = train_and_save_final_model(
+        target_name="Cath",
+        df_raw=df_tiny,
+        model_config={
+            "model_family": "LogisticRegression",
+            "scaler_type": "standard",
+            "calibration_method": "sigmoid",
+            "decision_threshold": 0.5,
+        },
+        cv_summary_metrics={"roc_auc": {"mean": 0.75, "std": 0.05}},
+        output_dir=tmp_path / "low_minority_cad",
+        random_state=42,
+    )
+
+    assert (save_dir / "pipeline.joblib").exists()
+    assert (save_dir / "metadata.json").exists()
+
+    with open(save_dir / "metadata.json", "r", encoding="utf-8") as f:
+        meta = json.load(f)
+
+    # Metadata must accurately reflect uncalibrated fallback and positive count
+    assert meta["calibration_method"] == "uncalibrated"
+    assert meta["training_positives"] == 1
+    assert meta["training_samples"] == 20
+
+    # Saved pipeline should be uncalibrated Pipeline
+    saved_pipe = joblib.load(save_dir / "pipeline.joblib")
+    assert isinstance(saved_pipe, Pipeline)
+    assert not isinstance(saved_pipe, CalibratedClassifierCV)
+

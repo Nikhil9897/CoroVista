@@ -10,7 +10,7 @@ Generates structured, human-interpretable patient explanations for any of the fo
 """
 
 from typing import Any, Dict, List, Optional, Union
-import numpy as np
+
 import pandas as pd
 
 from src.corovista.explainability.explainers import get_target_explainer
@@ -76,6 +76,10 @@ def explain_patient(
         "target": t_clean,
         "explanation_space": explainer.explanation_space,
         "calibration_note": (
+            "SHAP values explain the underlying predictive model score (log-odds/margin); "
+            "probability calibration is applied separately to determine the final visual risk probability."
+        ),
+        "calibration_disclosure": (
             "SHAP values explain the underlying predictive model score (log-odds/margin); "
             "probability calibration is applied separately to determine the final visual risk probability."
         ),
