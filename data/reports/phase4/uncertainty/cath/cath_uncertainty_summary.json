@@ -1,0 +1,104 @@
+{
+  "target": "Cath",
+  "clinical_name": "Overall CAD Status",
+  "model_family": "XGBoost",
+  "operating_threshold": 0.5,
+  "calibration_method": "sigmoid",
+  "scientific_disclaimer": "Empirical fold variability (standard deviation across repeated outer CV folds) measures model stability, not formally calibrated prediction intervals. Entropy quantifies predictive uncertainty given model output p, not frequentist epistemic error.",
+  "overall_error_count": 38,
+  "overall_error_rate": 0.1254125412541254,
+  "empirical_fold_variability": {
+    "mean_sd": 0.038465213284607294,
+    "std_sd": 0.03565861059070658,
+    "median_sd": 0.024843371492147617,
+    "mean_q10_q90_interval_width": 0.08048733007008459,
+    "methodological_caveat": "Quantiles and standard deviations represent empirical across-model variability across correlated training partitions, NOT formally calibrated prediction intervals."
+  },
+  "entropy_uncertainty": {
+    "mean_entropy": 0.5751374924701209,
+    "std_entropy": 0.2539299118146625,
+    "median_entropy": 0.5272673694638702,
+    "correct_predictions_entropy_mean": 0.5458374205607399,
+    "correct_predictions_entropy_median": 0.4510391266518341,
+    "incorrect_predictions_entropy_mean": 0.7794669413118566,
+    "incorrect_predictions_entropy_median": 0.8566448714577752,
+    "entropy_error_auc": 0.7592850049652433
+  },
+  "margin_uncertainty": {
+    "mean_margin": 0.3325967307861017,
+    "median_margin": 0.3807270485737091,
+    "correct_predictions_margin_mean": 0.3471360676105124,
+    "incorrect_predictions_margin_mean": 0.23120398714218504,
+    "margin_error_auc": 0.7592850049652433
+  },
+  "entropy_stratification": [
+    {
+      "entropy_bin": "0.2 - 0.4",
+      "patient_count": 121,
+      "error_rate": 0.03305785123966942,
+      "mean_probability": 0.9418282525016761,
+      "mean_variance": 0.00013331722730986137,
+      "mean_margin": 0.4418282525016763,
+      "brier_score": 0.03242354855510826
+    },
+    {
+      "entropy_bin": "0.4 - 0.6",
+      "patient_count": 48,
+      "error_rate": 0.08333333333333333,
+      "mean_probability": 0.7528745262649065,
+      "mean_variance": 0.0010092906741663412,
+      "mean_margin": 0.3911666351900734,
+      "brier_score": 0.07608549607779323
+    },
+    {
+      "entropy_bin": "0.6 - 0.8",
+      "patient_count": 52,
+      "error_rate": 0.11538461538461539,
+      "mean_probability": 0.4676972718613213,
+      "mean_variance": 0.002876085279554393,
+      "mean_margin": 0.3042310533286853,
+      "brier_score": 0.11021430814195549
+    },
+    {
+      "entropy_bin": "0.8 - 1.0",
+      "patient_count": 82,
+      "error_rate": 0.2926829268292683,
+      "mean_probability": 0.49662576040617307,
+      "mean_variance": 0.0075542963257629065,
+      "mean_margin": 0.15511680016183943,
+      "brier_score": 0.2123453243696932
+    }
+  ],
+  "margin_stratification": [
+    {
+      "margin_bin": "< 0.05",
+      "patient_count": 6,
+      "error_rate": 0.5,
+      "mean_std_prob": 0.10273516619175559
+    },
+    {
+      "margin_bin": "0.05 - 0.10",
+      "patient_count": 14,
+      "error_rate": 0.21428571428571427,
+      "mean_std_prob": 0.09108662033135244
+    },
+    {
+      "margin_bin": "0.10 - 0.20",
+      "patient_count": 37,
+      "error_rate": 0.24324324324324326,
+      "mean_std_prob": 0.0797474241383759
+    },
+    {
+      "margin_bin": "0.20 - 0.35",
+      "patient_count": 74,
+      "error_rate": 0.1891891891891892,
+      "mean_std_prob": 0.054969371598198175
+    },
+    {
+      "margin_bin": ">= 0.35",
+      "patient_count": 172,
+      "error_rate": 0.05232558139534884,
+      "mean_std_prob": 0.015958998558488195
+    }
+  ]
+}

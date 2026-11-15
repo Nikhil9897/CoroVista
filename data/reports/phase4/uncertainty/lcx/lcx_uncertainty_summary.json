@@ -1,0 +1,104 @@
+{
+  "target": "LCX",
+  "clinical_name": "Left Circumflex Stenosis",
+  "model_family": "XGBoost",
+  "operating_threshold": 0.5,
+  "calibration_method": "uncalibrated",
+  "scientific_disclaimer": "Empirical fold variability (standard deviation across repeated outer CV folds) measures model stability, not formally calibrated prediction intervals. Entropy quantifies predictive uncertainty given model output p, not frequentist epistemic error.",
+  "overall_error_count": 89,
+  "overall_error_rate": 0.29372937293729373,
+  "empirical_fold_variability": {
+    "mean_sd": 0.07007827377393533,
+    "std_sd": 0.034099813678062425,
+    "median_sd": 0.06752941316646992,
+    "mean_q10_q90_interval_width": 0.1490409341373361,
+    "methodological_caveat": "Quantiles and standard deviations represent empirical across-model variability across correlated training partitions, NOT formally calibrated prediction intervals."
+  },
+  "entropy_uncertainty": {
+    "mean_entropy": 0.8340591462389134,
+    "std_entropy": 0.1767234322181712,
+    "median_entropy": 0.9005536388463131,
+    "correct_predictions_entropy_mean": 0.8093915445906729,
+    "correct_predictions_entropy_median": 0.8827659299185168,
+    "incorrect_predictions_entropy_mean": 0.8933722558200762,
+    "incorrect_predictions_entropy_median": 0.9434858662727337,
+    "entropy_error_auc": 0.6392418355560224
+  },
+  "margin_uncertainty": {
+    "mean_margin": 0.19442231613441857,
+    "median_margin": 0.1834829032421112,
+    "correct_predictions_margin_mean": 0.21201022258463584,
+    "incorrect_predictions_margin_mean": 0.15213229388333438,
+    "margin_error_auc": 0.6392418355560224
+  },
+  "entropy_stratification": [
+    {
+      "entropy_bin": "0.2 - 0.4",
+      "patient_count": 9,
+      "error_rate": 0.0,
+      "mean_probability": 0.059447318522466555,
+      "mean_variance": 0.00039530952166330743,
+      "mean_margin": 0.44055268147753346,
+      "brier_score": 0.0036478728938853125
+    },
+    {
+      "entropy_bin": "0.4 - 0.6",
+      "patient_count": 30,
+      "error_rate": 0.1,
+      "mean_probability": 0.268794236406684,
+      "mean_variance": 0.0010058717297063732,
+      "mean_margin": 0.38089087781806785,
+      "brier_score": 0.09015788598855114
+    },
+    {
+      "entropy_bin": "0.6 - 0.8",
+      "patient_count": 61,
+      "error_rate": 0.2459016393442623,
+      "mean_probability": 0.3457096356837477,
+      "mean_variance": 0.0027636004388548615,
+      "mean_margin": 0.30456286776261243,
+      "brier_score": 0.18801237157648343
+    },
+    {
+      "entropy_bin": "0.8 - 1.0",
+      "patient_count": 203,
+      "error_rate": 0.3497536945812808,
+      "mean_probability": 0.5005172343603497,
+      "mean_variance": 0.00806914406547632,
+      "mean_margin": 0.12285678023334794,
+      "brier_score": 0.22479835330688502
+    }
+  ],
+  "margin_stratification": [
+    {
+      "margin_bin": "< 0.05",
+      "patient_count": 45,
+      "error_rate": 0.5333333333333333,
+      "mean_std_prob": 0.0958579474963954
+    },
+    {
+      "margin_bin": "0.05 - 0.10",
+      "patient_count": 38,
+      "error_rate": 0.34210526315789475,
+      "mean_std_prob": 0.08275117601074797
+    },
+    {
+      "margin_bin": "0.10 - 0.20",
+      "patient_count": 84,
+      "error_rate": 0.2619047619047619,
+      "mean_std_prob": 0.08372917896138082
+    },
+    {
+      "margin_bin": "0.20 - 0.35",
+      "patient_count": 93,
+      "error_rate": 0.27956989247311825,
+      "mean_std_prob": 0.059977080322966045
+    },
+    {
+      "margin_bin": ">= 0.35",
+      "patient_count": 43,
+      "error_rate": 0.09302325581395349,
+      "mean_std_prob": 0.027080119185217594
+    }
+  ]
+}
