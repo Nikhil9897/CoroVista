@@ -13,15 +13,14 @@ Tests:
 """
 
 from pathlib import Path
-import pytest
-import pandas as pd
-import numpy as np
 
-from src.corovista.inference.loader import load_all_models, load_model_pipeline, clear_model_cache
+import pytest
+
+from ml.preprocessing.pipeline import extract_features_and_targets, load_dataset
+from src.corovista.inference.loader import clear_model_cache, load_all_models, load_model_pipeline
 from src.corovista.inference.predictor import predict_patient
 from src.corovista.inference.schemas import PatientInferenceResponse, TargetPrediction
 from src.corovista.inference.validation import validate_and_normalize_patient_input
-from ml.preprocessing.pipeline import load_dataset, extract_features_and_targets
 
 RAW_DATA_PATH = Path("data/raw/extention of Z-Alizadeh sani dataset.xlsx")
 
@@ -44,7 +43,7 @@ def test_load_all_models():
     assert models["cath"]["threshold"] == 0.50
     assert models["lad"]["threshold"] == 0.50
     assert models["lcx"]["threshold"] == 0.50
-    assert models["rca"]["threshold"] == 0.38
+    assert models["rca"]["threshold"] == 0.35
 
     # Verify model families
     assert models["cath"]["model_family"] == "XGBoost"
@@ -83,9 +82,9 @@ def test_predict_patient_dict_format(sample_patient_dict):
 # 3. Threshold Separation
 def test_threshold_separation(sample_patient_dict):
     res = predict_patient(sample_patient_dict)
-    # RCA has calibrated threshold of 0.38
-    assert res.rca.threshold == 0.38
-    if res.rca.probability >= 0.38:
+    # RCA has calibrated threshold of 0.35
+    assert res.rca.threshold == 0.35
+    if res.rca.probability >= 0.35:
         assert res.rca.prediction == "Stenotic"
     else:
         assert res.rca.prediction == "Normal"
@@ -175,7 +174,7 @@ def test_unexpected_fields_ignored_gracefully(sample_patient_dict):
 def test_threshold_boundary_classifications():
     from src.corovista.inference.schemas import TARGET_LABEL_MAP
 
-    thresholds = {"cath": 0.50, "lad": 0.50, "lcx": 0.50, "rca": 0.38}
+    thresholds = {"cath": 0.50, "lad": 0.50, "lcx": 0.50, "rca": 0.35}
 
     for target, thresh in thresholds.items():
         # Below threshold -> negative label (Normal)
