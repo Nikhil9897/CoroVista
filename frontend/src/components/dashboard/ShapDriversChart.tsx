@@ -44,7 +44,7 @@ export const ShapDriversChart: React.FC<ShapDriversChartProps> = ({
             What&apos;s driving this risk <span className="text-[#7C9692] font-normal text-xs">(Why this prediction?)</span>
           </h4>
           <p className="text-xs text-[#7C9692] mt-0.5">
-            Top 5 TreeSHAP Log-Odds feature contributions for {targetLabel}
+            Top 5 SHAP Log-Odds feature contributions for {targetLabel}
           </p>
         </div>
 
@@ -128,6 +128,15 @@ export const ShapDriversChart: React.FC<ShapDriversChartProps> = ({
             </div>
           )
         })}
+      </div>
+
+      {/* Attribution space disclosure */}
+      <div className="mt-4 pt-3 border-t border-[#7C9692]/15 flex items-start gap-2 text-[11px] text-[#7C9692]">
+        <p className="leading-tight">
+          <strong className="text-[#E8F1EE] font-medium">Attribution Boundary:</strong>{" "}
+          {explanation.calibration_disclosure ||
+            "SHAP values explain the underlying predictive model score (log-odds/margin); probability calibration is applied separately to determine the displayed risk probability."}
+        </p>
       </div>
     </div>
   )

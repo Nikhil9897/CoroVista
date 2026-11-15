@@ -12,27 +12,24 @@ Performs comprehensive verification:
 7. Computes and exports global SHAP explanations to data/reports/shap_global.json and plots.
 """
 
-from pathlib import Path
+import logging
 import sys
+from pathlib import Path
 
 # Ensure project root and src are in sys.path
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
-import logging
-import pandas as pd
-import numpy as np
-
-from ml.preprocessing.pipeline import load_dataset, extract_features_and_targets
-from src.corovista.inference.loader import load_all_models
-from src.corovista.inference.predictor import predict_patient
-from src.corovista.explainability.patient_explanations import (
+from ml.preprocessing.pipeline import extract_features_and_targets, load_dataset  # noqa: E402
+from src.corovista.explainability.global_explanations import compute_global_explanations  # noqa: E402
+from src.corovista.explainability.patient_explanations import (  # noqa: E402
     explain_patient,
-    top_positive_contributors,
     top_negative_contributors,
+    top_positive_contributors,
 )
-from src.corovista.explainability.global_explanations import compute_global_explanations
+from src.corovista.inference.loader import load_all_models  # noqa: E402
+from src.corovista.inference.predictor import predict_patient  # noqa: E402
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger("verify_inference")
@@ -58,7 +55,7 @@ def main():
     assert models["cath"]["threshold"] == 0.50
     assert models["lad"]["threshold"] == 0.50
     assert models["lcx"]["threshold"] == 0.50
-    assert models["rca"]["threshold"] == 0.38
+    assert models["rca"]["threshold"] == 0.35
 
     logger.info("\n=== STEP 2: Loading Raw Dataset & Selecting Representative Patients ===")
     df_raw = load_dataset(RAW_DATA_PATH)
@@ -146,7 +143,7 @@ def main():
 
     logger.info("\n=== STEP 8: Computing Global Cohort SHAP & Generating Plots ===")
     json_path = REPORTS_DIR / "shap_global.json"
-    global_results = compute_global_explanations(
+    compute_global_explanations(
         df_raw, output_json_path=json_path, plots_dir=SHAP_PLOTS_DIR
     )
     assert json_path.exists(), f"Global SHAP JSON report not found at {json_path}"

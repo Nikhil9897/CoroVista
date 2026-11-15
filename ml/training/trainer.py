@@ -13,21 +13,32 @@ Responsible for:
 4. Providing deterministic model loading and inference verification.
 """
 
+import datetime
 import json
+import logging
+import platform
 from pathlib import Path
+import platform
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 import joblib
 import numpy as np
 import pandas as pd
+import sklearn
+import xgboost
+import sklearn
 from sklearn.calibration import CalibratedClassifierCV
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import StratifiedKFold
 from sklearn.pipeline import Pipeline
-from xgboost import XGBClassifier
+import xgboost
 
-from ml.preprocessing.feature_metadata import TARGET_COLUMNS, assert_no_target_leakage
+from ml.preprocessing.feature_metadata import assert_no_target_leakage
 from ml.preprocessing.pipeline import build_preprocessing_pipeline, extract_features_and_targets
+from ml.training.benchmark import DynamicScalePosWeightXGBClassifier
+
+logger = logging.getLogger("corovista_trainer")
 
 MODEL_DIR_MAP = {
     "Cath": Path("models/cad"),
@@ -46,8 +57,18 @@ def create_final_pipeline(
     scale_pos_weight: float = 1.0,
     calibration_method: Optional[str] = None,
     random_state: int = 42,
-) -> Pipeline:
-    """Instantiates a full end-to-end pipeline (preprocessing + estimator/calibrator)."""
+    cv: Optional[Union[int, Any]] = None,
+    y: Optional[Union[pd.Series, np.ndarray, List[int]]] = None,
+) -> Union[Pipeline, CalibratedClassifierCV]:
+    """
+    Instantiates a full end-to-end pipeline (preprocessing + estimator/calibrator).
+
+    When calibration is enabled:
+    - Preprocessing and classifier are encapsulated in a Pipeline.
+    - The complete Pipeline is passed to CalibratedClassifierCV so preprocessing
+      and XGBoost class weighting are fitted independently inside every calibration partition.
+    - If minority class count in y is < 2, falls back safely to an uncalibrated Pipeline.
+    """
     # 1. Base preprocessing
     prep_pipe = build_preprocessing_pipeline(
         vhd_encoding=vhd_encoding,  # type: ignore
@@ -75,7 +96,7 @@ def create_final_pipeline(
             n_jobs=-1,
         )
     elif model_family == "XGBoost":
-        estimator = XGBClassifier(
+        estimator = DynamicScalePosWeightXGBClassifier(
             n_estimators=100,
             max_depth=3,
             learning_rate=0.05,
@@ -89,21 +110,43 @@ def create_final_pipeline(
     else:
         raise ValueError(f"Unsupported model family: {model_family}")
 
-    # 3. Optional calibration wrapper
-    if calibration_method in ["sigmoid", "isotonic"]:
-        model_step = CalibratedClassifierCV(
-            estimator=estimator,
-            method=calibration_method,
-            cv=3,
-        )
-    else:
-        model_step = estimator
-
-    # Compose final pipeline
-    return Pipeline([
+    # 3. Base pipeline combining preprocessing and classifier
+    base_pipeline = Pipeline([
         ("preprocessing", prep_pipe),
-        ("classifier", model_step),
+        ("classifier", estimator),
     ])
+
+    # 4. Optional calibration wrapper
+    if calibration_method in ["sigmoid", "isotonic"]:
+        if y is not None:
+            y_arr = np.asarray(y)
+            unique_classes, class_counts = np.unique(y_arr, return_counts=True)
+            min_class_count = int(np.min(class_counts)) if len(unique_classes) >= 2 else 0
+            if min_class_count < 2:
+                logger.warning(
+                    "Insufficient minority class count (%d < 2) for %s calibration; "
+                    "falling back to uncalibrated pipeline.",
+                    min_class_count,
+                    calibration_method,
+                )
+                return base_pipeline
+
+            cal_splits = min(3, min_class_count) if cv is None else cv
+        else:
+            cal_splits = 3 if cv is None else cv
+
+        if isinstance(cal_splits, int):
+            cal_cv = StratifiedKFold(n_splits=cal_splits, shuffle=True, random_state=random_state)
+        else:
+            cal_cv = cal_splits
+
+        return CalibratedClassifierCV(
+            estimator=base_pipeline,
+            method=calibration_method,
+            cv=cal_cv,
+        )
+
+    return base_pipeline
 
 
 def train_and_save_final_model(
@@ -124,10 +167,8 @@ def train_and_save_final_model(
     X, targets = extract_features_and_targets(df_raw)
     y = targets[target_name]
 
-    # Calculate scale_pos_weight for XGBoost
+    # Positive class count preserved for audit metadata
     n_pos = int(y.sum())
-    n_neg = len(y) - n_pos
-    pos_weight = round(n_neg / n_pos, 3) if n_pos > 0 else 1.0
 
     pipeline = create_final_pipeline(
         model_family=model_config["model_family"],
@@ -135,9 +176,11 @@ def train_and_save_final_model(
         scaler_type=model_config.get("scaler_type", "none"),
         drop_rwma=model_config.get("drop_rwma", False),
         drop_bmi=model_config.get("drop_bmi", False),
-        scale_pos_weight=pos_weight,
+        scale_pos_weight=model_config.get("scale_pos_weight", 1.0),
         calibration_method=model_config.get("calibration_method", None),
         random_state=random_state,
+        cv=model_config.get("cv", None),
+        y=y,
     )
 
     # Train pipeline
@@ -147,6 +190,12 @@ def train_and_save_final_model(
     model_path = save_dir / "pipeline.joblib"
     joblib.dump(pipeline, model_path)
 
+    # Record calibration method accurately (handles fallback to uncalibrated)
+    if isinstance(pipeline, CalibratedClassifierCV):
+        actual_calibration = model_config.get("calibration_method", "uncalibrated")
+    else:
+        actual_calibration = "uncalibrated"
+
     # Save metadata JSON
     metadata = {
         "target": target_name,
@@ -155,14 +204,34 @@ def train_and_save_final_model(
         "scaler_type": model_config.get("scaler_type", "none"),
         "drop_rwma": model_config.get("drop_rwma", False),
         "drop_bmi": model_config.get("drop_bmi", False),
-        "calibration_method": model_config.get("calibration_method", "uncalibrated"),
-        "decision_threshold": model_config.get("decision_threshold", 0.5),
+        "calibration_method": actual_calibration,
+        "decision_threshold": float(model_config.get("decision_threshold", 0.5)),
         "random_state": random_state,
+        "dataset_identifier": "Z-Alizadeh Sani extension cohort (303 patients, 54 predictive features)",
+        "training_timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+        "software_versions": {
+            "python": platform.python_version(),
+            "scikit_learn": sklearn.__version__,
+            "xgboost": xgboost.__version__,
+            "joblib": joblib.__version__,
+        },
+        "benchmark_protocol": (
+            "RepeatedStratifiedKFold (5 splits x 5 repeats = 25 folds), "
+            "nested inner-OOF threshold selection, internal repeated CV (correlated folds; no external validation)"
+        ),
         "training_samples": len(X),
         "training_positives": n_pos,
         "input_features": X.columns.tolist(),
+        "feature_schema": {col: str(X[col].dtype) for col in X.columns},
         "cross_validation_metrics": cv_summary_metrics,
     }
+
+    if "standard_metrics" in model_config:
+        metadata["cross_validation_standard_metrics"] = model_config["standard_metrics"]
+    if "tuned_metrics" in model_config:
+        metadata["cross_validation_tuned_metrics"] = model_config["tuned_metrics"]
+    if "rationale" in model_config:
+        metadata["model_selection_rationale"] = model_config["rationale"]
 
     metadata_path = save_dir / "metadata.json"
     with open(metadata_path, "w", encoding="utf-8") as f:
@@ -171,7 +240,7 @@ def train_and_save_final_model(
     return save_dir
 
 
-def load_target_model(target_name: str) -> Tuple[Pipeline, Dict[str, Any]]:
+def load_target_model(target_name: str) -> Tuple[Union[Pipeline, CalibratedClassifierCV], Dict[str, Any]]:
     """Loads a serialized final model pipeline and metadata."""
     target_dir = MODEL_DIR_MAP[target_name]
     model_path = target_dir / "pipeline.joblib"

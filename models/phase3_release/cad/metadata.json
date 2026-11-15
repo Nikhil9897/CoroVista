@@ -1,0 +1,332 @@
+{
+  "target": "Cath",
+  "model_family": "XGBoost",
+  "vhd_encoding": "onehot",
+  "scaler_type": "none",
+  "drop_rwma": false,
+  "drop_bmi": false,
+  "calibration_method": "sigmoid",
+  "decision_threshold": 0.5,
+  "random_state": 42,
+  "dataset_identifier": "Z-Alizadeh Sani extension cohort (303 patients, 54 predictive features)",
+  "training_timestamp": "2026-11-15T06:45:23.430848+00:00",
+  "software_versions": {
+    "python": "3.11.18",
+    "scikit_learn": "1.7.2",
+    "xgboost": "3.2.0",
+    "joblib": "1.6.0"
+  },
+  "benchmark_protocol": "RepeatedStratifiedKFold (5 splits x 5 repeats = 25 folds), nested inner-OOF threshold selection, internal repeated CV (correlated folds; no external validation)",
+  "training_samples": 303,
+  "training_positives": 216,
+  "input_features": [
+    "Age",
+    "Weight",
+    "Length",
+    "Sex",
+    "BMI",
+    "DM",
+    "HTN",
+    "Current Smoker",
+    "EX-Smoker",
+    "FH",
+    "Obesity",
+    "CRF",
+    "CVA",
+    "Airway disease",
+    "Thyroid Disease",
+    "CHF",
+    "DLP",
+    "BP",
+    "PR",
+    "Edema",
+    "Weak Peripheral Pulse",
+    "Lung rales",
+    "Systolic Murmur",
+    "Diastolic Murmur",
+    "Typical Chest Pain",
+    "Dyspnea",
+    "Function Class",
+    "Atypical",
+    "Nonanginal",
+    "Exertional CP",
+    "LowTH Ang",
+    "Q Wave",
+    "St Elevation",
+    "St Depression",
+    "Tinversion",
+    "LVH",
+    "Poor R Progression",
+    "BBB",
+    "FBS",
+    "CR",
+    "TG",
+    "LDL",
+    "HDL",
+    "BUN",
+    "ESR",
+    "HB",
+    "K",
+    "Na",
+    "WBC",
+    "Lymph",
+    "Neut",
+    "PLT",
+    "EF-TTE",
+    "Region RWMA",
+    "VHD"
+  ],
+  "feature_schema": {
+    "Age": "int64",
+    "Weight": "int64",
+    "Length": "int64",
+    "Sex": "str",
+    "BMI": "float64",
+    "DM": "int64",
+    "HTN": "int64",
+    "Current Smoker": "int64",
+    "EX-Smoker": "int64",
+    "FH": "int64",
+    "Obesity": "str",
+    "CRF": "str",
+    "CVA": "str",
+    "Airway disease": "str",
+    "Thyroid Disease": "str",
+    "CHF": "str",
+    "DLP": "str",
+    "BP": "int64",
+    "PR": "int64",
+    "Edema": "int64",
+    "Weak Peripheral Pulse": "str",
+    "Lung rales": "str",
+    "Systolic Murmur": "str",
+    "Diastolic Murmur": "str",
+    "Typical Chest Pain": "int64",
+    "Dyspnea": "str",
+    "Function Class": "int64",
+    "Atypical": "str",
+    "Nonanginal": "str",
+    "Exertional CP": "str",
+    "LowTH Ang": "str",
+    "Q Wave": "int64",
+    "St Elevation": "int64",
+    "St Depression": "int64",
+    "Tinversion": "int64",
+    "LVH": "str",
+    "Poor R Progression": "str",
+    "BBB": "str",
+    "FBS": "int64",
+    "CR": "float64",
+    "TG": "int64",
+    "LDL": "int64",
+    "HDL": "float64",
+    "BUN": "int64",
+    "ESR": "int64",
+    "HB": "float64",
+    "K": "float64",
+    "Na": "int64",
+    "WBC": "int64",
+    "Lymph": "int64",
+    "Neut": "int64",
+    "PLT": "int64",
+    "EF-TTE": "int64",
+    "Region RWMA": "int64",
+    "VHD": "str"
+  },
+  "cross_validation_metrics": {
+    "roc_auc": {
+      "mean": 0.9123,
+      "std": 0.0396,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "pr_auc": {
+      "mean": 0.9597,
+      "std": 0.0196,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "accuracy": {
+      "mean": 0.8667,
+      "std": 0.0403,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "precision": {
+      "mean": 0.8953,
+      "std": 0.0312,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "recall": {
+      "mean": 0.9212,
+      "std": 0.0354,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "f1": {
+      "mean": 0.9077,
+      "std": 0.0279,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "balanced_accuracy": {
+      "mean": 0.8262,
+      "std": 0.0503,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "brier_score": {
+      "mean": 0.1034,
+      "std": 0.0246,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "ece": {
+      "mean": 0.1004,
+      "std": 0.0222,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    }
+  },
+  "cross_validation_standard_metrics": {
+    "roc_auc": {
+      "mean": 0.9123,
+      "std": 0.0396,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "pr_auc": {
+      "mean": 0.9597,
+      "std": 0.0196,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "accuracy": {
+      "mean": 0.8667,
+      "std": 0.0403,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "precision": {
+      "mean": 0.8953,
+      "std": 0.0312,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "recall": {
+      "mean": 0.9212,
+      "std": 0.0354,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "f1": {
+      "mean": 0.9077,
+      "std": 0.0279,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "balanced_accuracy": {
+      "mean": 0.8262,
+      "std": 0.0503,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "brier_score": {
+      "mean": 0.1034,
+      "std": 0.0246,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "ece": {
+      "mean": 0.1004,
+      "std": 0.0222,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    }
+  },
+  "cross_validation_tuned_metrics": {
+    "roc_auc": {
+      "mean": 0.9123,
+      "std": 0.0396,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "pr_auc": {
+      "mean": 0.9597,
+      "std": 0.0196,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "accuracy": {
+      "mean": 0.8686,
+      "std": 0.0384,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "precision": {
+      "mean": 0.8954,
+      "std": 0.034,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "recall": {
+      "mean": 0.9249,
+      "std": 0.0379,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "f1": {
+      "mean": 0.9093,
+      "std": 0.0265,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "balanced_accuracy": {
+      "mean": 0.8269,
+      "std": 0.051,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "brier_score": {
+      "mean": 0.1034,
+      "std": 0.0246,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "ece": {
+      "mean": 0.1004,
+      "std": 0.0222,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    }
+  },
+  "model_selection_rationale": "XGBoost with Sigmoid Platt calibration achieves lowest Brier score (0.1034) and lowest ECE (0.1004) with high discrimination (ROC-AUC 0.912 \u00b1 0.040, PR-AUC 0.960 \u00b1 0.020) and 92.1% sensitivity."
+}

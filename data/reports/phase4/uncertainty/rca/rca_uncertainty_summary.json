@@ -1,0 +1,89 @@
+{
+  "target": "RCA",
+  "clinical_name": "Right Coronary Artery Stenosis",
+  "model_family": "LogisticRegression",
+  "operating_threshold": 0.35,
+  "calibration_method": "sigmoid",
+  "scientific_disclaimer": "Empirical fold variability (standard deviation across repeated outer CV folds) measures model stability, not formally calibrated prediction intervals. Entropy quantifies predictive uncertainty given model output p, not frequentist epistemic error.",
+  "overall_error_count": 104,
+  "overall_error_rate": 0.3432343234323432,
+  "empirical_fold_variability": {
+    "mean_sd": 0.04038445546568051,
+    "std_sd": 0.017580788081117377,
+    "median_sd": 0.03699487079834595,
+    "mean_q10_q90_interval_width": 0.086357738925601,
+    "methodological_caveat": "Quantiles and standard deviations represent empirical across-model variability across correlated training partitions, NOT formally calibrated prediction intervals."
+  },
+  "entropy_uncertainty": {
+    "mean_entropy": 0.8904118916506862,
+    "std_entropy": 0.12236526632767404,
+    "median_entropy": 0.9384824542723855,
+    "correct_predictions_entropy_mean": 0.865050887461711,
+    "correct_predictions_entropy_median": 0.9166577242400953,
+    "incorrect_predictions_entropy_mean": 0.9389391977430525,
+    "incorrect_predictions_entropy_median": 0.9688098308525733,
+    "entropy_error_auc": 0.6795516041747197
+  },
+  "margin_uncertainty": {
+    "mean_margin": 0.11782185289227504,
+    "median_margin": 0.10589769531025858,
+    "correct_predictions_margin_mean": 0.1235929413469848,
+    "incorrect_predictions_margin_mean": 0.10677909709912849,
+    "margin_error_auc": 0.5601565519907228
+  },
+  "entropy_stratification": [
+    {
+      "entropy_bin": "0.4 - 0.6",
+      "patient_count": 11,
+      "error_rate": 0.09090909090909091,
+      "mean_probability": 0.12058287290337177,
+      "mean_variance": 0.0007037763842647686,
+      "mean_margin": 0.2294171270966282,
+      "brier_score": 0.08009319272255405
+    },
+    {
+      "entropy_bin": "0.6 - 0.8",
+      "patient_count": 51,
+      "error_rate": 0.11764705882352941,
+      "mean_probability": 0.19933502507355358,
+      "mean_variance": 0.0012673926546995016,
+      "mean_margin": 0.15066497492644645,
+      "brier_score": 0.1130606961192132
+    },
+    {
+      "entropy_bin": "0.8 - 1.0",
+      "patient_count": 241,
+      "error_rate": 0.4024896265560166,
+      "mean_probability": 0.4233794506802732,
+      "mean_variance": 0.002138746494961238,
+      "mean_margin": 0.10577808841098613,
+      "brier_score": 0.2290144739752396
+    }
+  ],
+  "margin_stratification": [
+    {
+      "margin_bin": "< 0.05",
+      "patient_count": 75,
+      "error_rate": 0.44,
+      "mean_std_prob": 0.03764028342243857
+    },
+    {
+      "margin_bin": "0.05 - 0.10",
+      "patient_count": 68,
+      "error_rate": 0.3382352941176471,
+      "mean_std_prob": 0.03667754588107796
+    },
+    {
+      "margin_bin": "0.10 - 0.20",
+      "patient_count": 112,
+      "error_rate": 0.30357142857142855,
+      "mean_std_prob": 0.04341447555725891
+    },
+    {
+      "margin_bin": "0.20 - 0.35",
+      "patient_count": 48,
+      "error_rate": 0.2916666666666667,
+      "mean_std_prob": 0.042853632647750044
+    }
+  ]
+}

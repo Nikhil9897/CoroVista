@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react"
 import { describe, it, expect, vi } from "vitest"
 import { ExplanationPanel } from "@/components/explanations/ExplanationPanel"
 import { ShapContributionList } from "@/components/explanations/ShapContributionList"
+import { ShapDriversChart } from "@/components/dashboard/ShapDriversChart"
 import type { ExplanationResponse } from "@/types/explanation"
 import type { TargetName } from "@/types/prediction"
 
@@ -87,5 +88,18 @@ describe("SHAP Explanation Components", () => {
       screen.getByText(/probability calibration is applied separately/)
     ).toBeInTheDocument()
     expect(screen.getByText("log-odds (model score)")).toBeInTheDocument()
+  })
+
+  it("renders ShapDriversChart with attribution boundary disclosure and log-odds labeling", () => {
+    render(<ShapDriversChart explanation={mockExplanation} targetLabel="Overall CAD" />)
+
+    expect(screen.getByText(/Top 5 SHAP Log-Odds/)).toBeInTheDocument()
+    expect(screen.getByText("Attribution Boundary:")).toBeInTheDocument()
+    expect(
+      screen.getByText(/probability calibration is applied separately/)
+    ).toBeInTheDocument()
+    // Verify values are displayed as numbers, not percentages
+    expect(screen.getByText("+0.46")).toBeInTheDocument()
+    expect(screen.queryByText("+46%")).not.toBeInTheDocument()
   })
 })

@@ -1,0 +1,905 @@
+{
+  "target": "Cath",
+  "clinical_name": "Overall CAD Status",
+  "model_family": "XGBoost",
+  "operating_threshold": 0.5,
+  "numerical_perturbation": {
+    "perturbation_scales": [
+      0.1,
+      0.5,
+      1.0
+    ],
+    "features_evaluated_count": 22,
+    "feature_sensitivities": [
+      {
+        "feature": "Age",
+        "training_std": 10.39227750453444,
+        "min_val": 30.0,
+        "max_val": 86.0,
+        "sensitivity_moderate_0_5_sigma": 0.020119852796898305,
+        "flip_rate_moderate_0_5_sigma": 0.02178217821782178,
+        "scales": {
+          "scale_0.1": {
+            "mean_abs_prob_shift": 0.0038759482367751144,
+            "flip_rate": 0.0046204620462046205
+          },
+          "scale_0.5": {
+            "mean_abs_prob_shift": 0.020119852796898305,
+            "flip_rate": 0.02178217821782178
+          },
+          "scale_1.0": {
+            "mean_abs_prob_shift": 0.03955021009878381,
+            "flip_rate": 0.04356435643564356
+          }
+        }
+      },
+      {
+        "feature": "TG",
+        "training_std": 97.95945072085185,
+        "min_val": 37.0,
+        "max_val": 1050.0,
+        "sensitivity_moderate_0_5_sigma": 0.020090005007700078,
+        "flip_rate_moderate_0_5_sigma": 0.01782178217821782,
+        "scales": {
+          "scale_0.1": {
+            "mean_abs_prob_shift": 0.0047157751214069316,
+            "flip_rate": 0.0046204620462046205
+          },
+          "scale_0.5": {
+            "mean_abs_prob_shift": 0.020090005007700078,
+            "flip_rate": 0.01782178217821782
+          },
+          "scale_1.0": {
+            "mean_abs_prob_shift": 0.033907632743901454,
+            "flip_rate": 0.031023102310231022
+          }
+        }
+      },
+      {
+        "feature": "FBS",
+        "training_std": 52.07965276703074,
+        "min_val": 62.0,
+        "max_val": 400.0,
+        "sensitivity_moderate_0_5_sigma": 0.019268268839374332,
+        "flip_rate_moderate_0_5_sigma": 0.0165016501650165,
+        "scales": {
+          "scale_0.1": {
+            "mean_abs_prob_shift": 0.004984102415181022,
+            "flip_rate": 0.0046204620462046205
+          },
+          "scale_0.5": {
+            "mean_abs_prob_shift": 0.019268268839374332,
+            "flip_rate": 0.0165016501650165
+          },
+          "scale_1.0": {
+            "mean_abs_prob_shift": 0.02483760953043594,
+            "flip_rate": 0.019801980198019802
+          }
+        }
+      },
+      {
+        "feature": "EF-TTE",
+        "training_std": 8.927194182365653,
+        "min_val": 15.0,
+        "max_val": 60.0,
+        "sensitivity_moderate_0_5_sigma": 0.014968832528637874,
+        "flip_rate_moderate_0_5_sigma": 0.018151815181518153,
+        "scales": {
+          "scale_0.1": {
+            "mean_abs_prob_shift": 0.014966923439462572,
+            "flip_rate": 0.018151815181518153
+          },
+          "scale_0.5": {
+            "mean_abs_prob_shift": 0.014968832528637874,
+            "flip_rate": 0.018151815181518153
+          },
+          "scale_1.0": {
+            "mean_abs_prob_shift": 0.02852044406861695,
+            "flip_rate": 0.030363036303630363
+          }
+        }
+      },
+      {
+        "feature": "ESR",
+        "training_std": 15.936475044964782,
+        "min_val": 1.0,
+        "max_val": 90.0,
+        "sensitivity_moderate_0_5_sigma": 0.00946607830773011,
+        "flip_rate_moderate_0_5_sigma": 0.009240924092409241,
+        "scales": {
+          "scale_0.1": {
+            "mean_abs_prob_shift": 0.0030922006588557363,
+            "flip_rate": 0.005280528052805281
+          },
+          "scale_0.5": {
+            "mean_abs_prob_shift": 0.00946607830773011,
+            "flip_rate": 0.009240924092409241
+          },
+          "scale_1.0": {
+            "mean_abs_prob_shift": 0.015265483163574076,
+            "flip_rate": 0.013861386138613862
+          }
+        }
+      },
+      {
+        "feature": "BMI",
+        "training_std": 4.098865084776586,
+        "min_val": 18.115412710007302,
+        "max_val": 40.90065778377467,
+        "sensitivity_moderate_0_5_sigma": 0.005039862539954467,
+        "flip_rate_moderate_0_5_sigma": 0.0046204620462046205,
+        "scales": {
+          "scale_0.1": {
+            "mean_abs_prob_shift": 0.0013398211407297678,
+            "flip_rate": 0.0013201320132013201
+          },
+          "scale_0.5": {
+            "mean_abs_prob_shift": 0.005039862539954467,
+            "flip_rate": 0.0046204620462046205
+          },
+          "scale_1.0": {
+            "mean_abs_prob_shift": 0.007968203184106815,
+            "flip_rate": 0.006930693069306931
+          }
+        }
+      },
+      {
+        "feature": "BP",
+        "training_std": 18.938105135143886,
+        "min_val": 90.0,
+        "max_val": 190.0,
+        "sensitivity_moderate_0_5_sigma": 0.004578092022712073,
+        "flip_rate_moderate_0_5_sigma": 0.0036303630363036304,
+        "scales": {
+          "scale_0.1": {
+            "mean_abs_prob_shift": 0.0015779400043048728,
+            "flip_rate": 0.0013201320132013201
+          },
+          "scale_0.5": {
+            "mean_abs_prob_shift": 0.004578092022712073,
+            "flip_rate": 0.0036303630363036304
+          },
+          "scale_1.0": {
+            "mean_abs_prob_shift": 0.00972054059370606,
+            "flip_rate": 0.009240924092409241
+          }
+        }
+      },
+      {
+        "feature": "HB",
+        "training_std": 1.6104520583998867,
+        "min_val": 8.9,
+        "max_val": 17.6,
+        "sensitivity_moderate_0_5_sigma": 0.003760245725205333,
+        "flip_rate_moderate_0_5_sigma": 0.0036303630363036304,
+        "scales": {
+          "scale_0.1": {
+            "mean_abs_prob_shift": 0.0007956367787138159,
+            "flip_rate": 0.0009900990099009901
+          },
+          "scale_0.5": {
+            "mean_abs_prob_shift": 0.003760245725205333,
+            "flip_rate": 0.0036303630363036304
+          },
+          "scale_1.0": {
+            "mean_abs_prob_shift": 0.005987045542835455,
+            "flip_rate": 0.0049504950495049506
+          }
+        }
+      },
+      {
+        "feature": "K",
+        "training_std": 0.4582017632143438,
+        "min_val": 3.0,
+        "max_val": 6.6,
+        "sensitivity_moderate_0_5_sigma": 0.0037310734657974194,
+        "flip_rate_moderate_0_5_sigma": 0.0049504950495049506,
+        "scales": {
+          "scale_0.1": {
+            "mean_abs_prob_shift": 0.0006562883310612752,
+            "flip_rate": 0.0006600660066006601
+          },
+          "scale_0.5": {
+            "mean_abs_prob_shift": 0.0037310734657974194,
+            "flip_rate": 0.0049504950495049506
+          },
+          "scale_1.0": {
+            "mean_abs_prob_shift": 0.006335903549381445,
+            "flip_rate": 0.007260726072607261
+          }
+        }
+      },
+      {
+        "feature": "PLT",
+        "training_std": 60.79619927480209,
+        "min_val": 25.0,
+        "max_val": 742.0,
+        "sensitivity_moderate_0_5_sigma": 0.00320880142062413,
+        "flip_rate_moderate_0_5_sigma": 0.0023102310231023103,
+        "scales": {
+          "scale_0.1": {
+            "mean_abs_prob_shift": 0.0010158879784318365,
+            "flip_rate": 0.00033003300330033004
+          },
+          "scale_0.5": {
+            "mean_abs_prob_shift": 0.00320880142062413,
+            "flip_rate": 0.0023102310231023103
+          },
+          "scale_1.0": {
+            "mean_abs_prob_shift": 0.004586751972879117,
+            "flip_rate": 0.0029702970297029703
+          }
+        }
+      },
+      {
+        "feature": "CR",
+        "training_std": 0.264296279451307,
+        "min_val": 0.5,
+        "max_val": 2.2,
+        "sensitivity_moderate_0_5_sigma": 0.0030454322877032265,
+        "flip_rate_moderate_0_5_sigma": 0.0023102310231023103,
+        "scales": {
+          "scale_0.1": {
+            "mean_abs_prob_shift": 0.0010216751918787582,
+            "flip_rate": 0.00033003300330033004
+          },
+          "scale_0.5": {
+            "mean_abs_prob_shift": 0.0030454322877032265,
+            "flip_rate": 0.0023102310231023103
+          },
+          "scale_1.0": {
+            "mean_abs_prob_shift": 0.0048204819523362495,
+            "flip_rate": 0.0042904290429042905
+          }
+        }
+      },
+      {
+        "feature": "Weight",
+        "training_std": 11.987357556913805,
+        "min_val": 48.0,
+        "max_val": 120.0,
+        "sensitivity_moderate_0_5_sigma": 0.0029969011684887687,
+        "flip_rate_moderate_0_5_sigma": 0.0039603960396039604,
+        "scales": {
+          "scale_0.1": {
+            "mean_abs_prob_shift": 0.0007511894495200629,
+            "flip_rate": 0.0023102310231023103
+          },
+          "scale_0.5": {
+            "mean_abs_prob_shift": 0.0029969011684887687,
+            "flip_rate": 0.0039603960396039604
+          },
+          "scale_1.0": {
+            "mean_abs_prob_shift": 0.00503152229098593,
+            "flip_rate": 0.005610561056105611
+          }
+        }
+      },
+      {
+        "feature": "HDL",
+        "training_std": 10.55907692571349,
+        "min_val": 15.9,
+        "max_val": 111.0,
+        "sensitivity_moderate_0_5_sigma": 0.002867550430997896,
+        "flip_rate_moderate_0_5_sigma": 0.0033003300330033004,
+        "scales": {
+          "scale_0.1": {
+            "mean_abs_prob_shift": 0.0010129865318867608,
+            "flip_rate": 0.0016501650165016502
+          },
+          "scale_0.5": {
+            "mean_abs_prob_shift": 0.002867550430997896,
+            "flip_rate": 0.0033003300330033004
+          },
+          "scale_1.0": {
+            "mean_abs_prob_shift": 0.004000256935388094,
+            "flip_rate": 0.0039603960396039604
+          }
+        }
+      },
+      {
+        "feature": "Na",
+        "training_std": 3.807885117982797,
+        "min_val": 128.0,
+        "max_val": 156.0,
+        "sensitivity_moderate_0_5_sigma": 0.002862070442531247,
+        "flip_rate_moderate_0_5_sigma": 0.0023102310231023103,
+        "scales": {
+          "scale_0.1": {
+            "mean_abs_prob_shift": 0.0010859370675995073,
+            "flip_rate": 0.0009900990099009901
+          },
+          "scale_0.5": {
+            "mean_abs_prob_shift": 0.002862070442531247,
+            "flip_rate": 0.0023102310231023103
+          },
+          "scale_1.0": {
+            "mean_abs_prob_shift": 0.005187820837877666,
+            "flip_rate": 0.0036303630363036304
+          }
+        }
+      },
+      {
+        "feature": "LDL",
+        "training_std": 35.39668788292359,
+        "min_val": 18.0,
+        "max_val": 232.0,
+        "sensitivity_moderate_0_5_sigma": 0.002765425783543657,
+        "flip_rate_moderate_0_5_sigma": 0.0019801980198019802,
+        "scales": {
+          "scale_0.1": {
+            "mean_abs_prob_shift": 0.0008501383150847333,
+            "flip_rate": 0.0013201320132013201
+          },
+          "scale_0.5": {
+            "mean_abs_prob_shift": 0.002765425783543657,
+            "flip_rate": 0.0019801980198019802
+          },
+          "scale_1.0": {
+            "mean_abs_prob_shift": 0.0046006294660427514,
+            "flip_rate": 0.0042904290429042905
+          }
+        }
+      },
+      {
+        "feature": "PR",
+        "training_std": 8.91180066124266,
+        "min_val": 50.0,
+        "max_val": 110.0,
+        "sensitivity_moderate_0_5_sigma": 0.0026916322486277944,
+        "flip_rate_moderate_0_5_sigma": 0.0036303630363036304,
+        "scales": {
+          "scale_0.1": {
+            "mean_abs_prob_shift": 0.0003125081944533614,
+            "flip_rate": 0.0006600660066006601
+          },
+          "scale_0.5": {
+            "mean_abs_prob_shift": 0.0026916322486277944,
+            "flip_rate": 0.0036303630363036304
+          },
+          "scale_1.0": {
+            "mean_abs_prob_shift": 0.004559998205512844,
+            "flip_rate": 0.005280528052805281
+          }
+        }
+      },
+      {
+        "feature": "WBC",
+        "training_std": 2413.739323339799,
+        "min_val": 3700.0,
+        "max_val": 18000.0,
+        "sensitivity_moderate_0_5_sigma": 0.0025549949846960843,
+        "flip_rate_moderate_0_5_sigma": 0.0016501650165016502,
+        "scales": {
+          "scale_0.1": {
+            "mean_abs_prob_shift": 0.0007374174220066101,
+            "flip_rate": 0.0006600660066006601
+          },
+          "scale_0.5": {
+            "mean_abs_prob_shift": 0.0025549949846960843,
+            "flip_rate": 0.0016501650165016502
+          },
+          "scale_1.0": {
+            "mean_abs_prob_shift": 0.0038947306731159682,
+            "flip_rate": 0.0036303630363036304
+          }
+        }
+      },
+      {
+        "feature": "Neut",
+        "training_std": 10.182493226947498,
+        "min_val": 32.0,
+        "max_val": 89.0,
+        "sensitivity_moderate_0_5_sigma": 0.002516354580339363,
+        "flip_rate_moderate_0_5_sigma": 0.0036303630363036304,
+        "scales": {
+          "scale_0.1": {
+            "mean_abs_prob_shift": 0.0006162633453424521,
+            "flip_rate": 0.0009900990099009901
+          },
+          "scale_0.5": {
+            "mean_abs_prob_shift": 0.002516354580339363,
+            "flip_rate": 0.0036303630363036304
+          },
+          "scale_1.0": {
+            "mean_abs_prob_shift": 0.004150534316371224,
+            "flip_rate": 0.0036303630363036304
+          }
+        }
+      },
+      {
+        "feature": "Lymph",
+        "training_std": 9.972591556076441,
+        "min_val": 7.0,
+        "max_val": 60.0,
+        "sensitivity_moderate_0_5_sigma": 0.002188334042345683,
+        "flip_rate_moderate_0_5_sigma": 0.0023102310231023103,
+        "scales": {
+          "scale_0.1": {
+            "mean_abs_prob_shift": 0.0005261672133770208,
+            "flip_rate": 0.0
+          },
+          "scale_0.5": {
+            "mean_abs_prob_shift": 0.002188334042345683,
+            "flip_rate": 0.0023102310231023103
+          },
+          "scale_1.0": {
+            "mean_abs_prob_shift": 0.0032510661584804956,
+            "flip_rate": 0.0036303630363036304
+          }
+        }
+      },
+      {
+        "feature": "BUN",
+        "training_std": 6.956760772568413,
+        "min_val": 6.0,
+        "max_val": 52.0,
+        "sensitivity_moderate_0_5_sigma": 0.002066045669581739,
+        "flip_rate_moderate_0_5_sigma": 0.0026402640264026403,
+        "scales": {
+          "scale_0.1": {
+            "mean_abs_prob_shift": 0.0008698660316302249,
+            "flip_rate": 0.0006600660066006601
+          },
+          "scale_0.5": {
+            "mean_abs_prob_shift": 0.002066045669581739,
+            "flip_rate": 0.0026402640264026403
+          },
+          "scale_1.0": {
+            "mean_abs_prob_shift": 0.0033117482596880677,
+            "flip_rate": 0.0029702970297029703
+          }
+        }
+      },
+      {
+        "feature": "Length",
+        "training_std": 9.327661411852311,
+        "min_val": 140.0,
+        "max_val": 188.0,
+        "sensitivity_moderate_0_5_sigma": 0.0018392964745522278,
+        "flip_rate_moderate_0_5_sigma": 0.0019801980198019802,
+        "scales": {
+          "scale_0.1": {
+            "mean_abs_prob_shift": 0.00044547772473305076,
+            "flip_rate": 0.0006600660066006601
+          },
+          "scale_0.5": {
+            "mean_abs_prob_shift": 0.0018392964745522278,
+            "flip_rate": 0.0019801980198019802
+          },
+          "scale_1.0": {
+            "mean_abs_prob_shift": 0.002749929143715795,
+            "flip_rate": 0.0026402640264026403
+          }
+        }
+      },
+      {
+        "feature": "Function Class",
+        "training_std": 1.0320419005827184,
+        "min_val": 0.0,
+        "max_val": 3.0,
+        "sensitivity_moderate_0_5_sigma": 0.0004777214127512766,
+        "flip_rate_moderate_0_5_sigma": 0.00033003300330033004,
+        "scales": {
+          "scale_0.1": {
+            "mean_abs_prob_shift": 0.0,
+            "flip_rate": 0.0
+          },
+          "scale_0.5": {
+            "mean_abs_prob_shift": 0.0004777214127512766,
+            "flip_rate": 0.00033003300330033004
+          },
+          "scale_1.0": {
+            "mean_abs_prob_shift": 0.0004777214127512766,
+            "flip_rate": 0.00033003300330033004
+          }
+        }
+      }
+    ]
+  },
+  "categorical_robustness": {
+    "categorical_substitutions_count": 19,
+    "results": [
+      {
+        "feature": "Typical Chest Pain",
+        "perturbation_type": "Binary Substitution (0 <-> 1)",
+        "mean_abs_prob_shift": 0.3103814675359276,
+        "flip_rate": 0.3920792079207921
+      },
+      {
+        "feature": "Tinversion",
+        "perturbation_type": "Binary Substitution (0 <-> 1)",
+        "mean_abs_prob_shift": 0.043610389127336224,
+        "flip_rate": 0.04950495049504951
+      },
+      {
+        "feature": "HTN",
+        "perturbation_type": "Binary Substitution (0 <-> 1)",
+        "mean_abs_prob_shift": 0.03391707824291822,
+        "flip_rate": 0.033003300330033
+      },
+      {
+        "feature": "DM",
+        "perturbation_type": "Binary Substitution (0 <-> 1)",
+        "mean_abs_prob_shift": 0.027463785244225294,
+        "flip_rate": 0.02838283828382838
+      },
+      {
+        "feature": "Atypical",
+        "perturbation_type": "Binary Substitution (0 <-> 1)",
+        "mean_abs_prob_shift": 0.011466290482264265,
+        "flip_rate": 0.009240924092409241
+      },
+      {
+        "feature": "Dyspnea",
+        "perturbation_type": "Binary Substitution (0 <-> 1)",
+        "mean_abs_prob_shift": 0.008478152429000806,
+        "flip_rate": 0.012541254125412541
+      },
+      {
+        "feature": "FH",
+        "perturbation_type": "Binary Substitution (0 <-> 1)",
+        "mean_abs_prob_shift": 0.0064040880063289405,
+        "flip_rate": 0.005280528052805281
+      },
+      {
+        "feature": "St Depression",
+        "perturbation_type": "Binary Substitution (0 <-> 1)",
+        "mean_abs_prob_shift": 0.006252021780424247,
+        "flip_rate": 0.005940594059405941
+      },
+      {
+        "feature": "Sex",
+        "perturbation_type": "Binary Substitution (0 <-> 1)",
+        "mean_abs_prob_shift": 0.003839917507872107,
+        "flip_rate": 0.0039603960396039604
+      },
+      {
+        "feature": "Current Smoker",
+        "perturbation_type": "Binary Substitution (0 <-> 1)",
+        "mean_abs_prob_shift": 0.003762501180138579,
+        "flip_rate": 0.0039603960396039604
+      },
+      {
+        "feature": "Nonanginal",
+        "perturbation_type": "Binary Substitution (0 <-> 1)",
+        "mean_abs_prob_shift": 0.0023846615922752694,
+        "flip_rate": 0.0
+      },
+      {
+        "feature": "VHD",
+        "perturbation_type": "Adjacent Severity Grade Shift",
+        "mean_abs_prob_shift": 0.0021363198423541554,
+        "flip_rate": 0.0033003300330033004
+      },
+      {
+        "feature": "EX-Smoker",
+        "perturbation_type": "Binary Substitution (0 <-> 1)",
+        "mean_abs_prob_shift": 0.0,
+        "flip_rate": 0.0
+      },
+      {
+        "feature": "Obesity",
+        "perturbation_type": "Binary Substitution (0 <-> 1)",
+        "mean_abs_prob_shift": 0.0,
+        "flip_rate": 0.0
+      },
+      {
+        "feature": "LowTH Ang",
+        "perturbation_type": "Binary Substitution (0 <-> 1)",
+        "mean_abs_prob_shift": 0.0,
+        "flip_rate": 0.0
+      },
+      {
+        "feature": "Q Wave",
+        "perturbation_type": "Binary Substitution (0 <-> 1)",
+        "mean_abs_prob_shift": 0.0,
+        "flip_rate": 0.0
+      },
+      {
+        "feature": "St Elevation",
+        "perturbation_type": "Binary Substitution (0 <-> 1)",
+        "mean_abs_prob_shift": 0.0,
+        "flip_rate": 0.0
+      },
+      {
+        "feature": "LVH",
+        "perturbation_type": "Binary Substitution (0 <-> 1)",
+        "mean_abs_prob_shift": 0.0,
+        "flip_rate": 0.0
+      },
+      {
+        "feature": "Poor R Progression",
+        "perturbation_type": "Binary Substitution (0 <-> 1)",
+        "mean_abs_prob_shift": 0.0,
+        "flip_rate": 0.0
+      }
+    ]
+  },
+  "missingness_stress_test": {
+    "audited_dataset_missing_count": 0,
+    "methodological_note": "The audited Z-Alizadeh Sani cohort contains zero missing values. This experiment represents a synthetic stress test of the preprocessing pipeline's defensive SimpleImputer behavior under MCAR conditions, not real-world missingness.",
+    "results": [
+      {
+        "missingness_rate": 0.05,
+        "roc_auc_mean": 0.9694231587909747,
+        "roc_auc_std": 0.008228329952380728,
+        "pr_auc_mean": 0.9869507328613274,
+        "pr_auc_std": 0.0031932213946299585,
+        "brier_score_mean": 0.06464711224092194,
+        "brier_score_std": 0.006675782351007741,
+        "mean_abs_probability_drift": 0.019574770609136975
+      },
+      {
+        "missingness_rate": 0.1,
+        "roc_auc_mean": 0.954459344401873,
+        "roc_auc_std": 0.011326308025626938,
+        "pr_auc_mean": 0.9810589734948681,
+        "pr_auc_std": 0.004992164277014307,
+        "brier_score_mean": 0.08074739836201476,
+        "brier_score_std": 0.008757728798263776,
+        "mean_abs_probability_drift": 0.04347753218349996
+      },
+      {
+        "missingness_rate": 0.2,
+        "roc_auc_mean": 0.9326734780757769,
+        "roc_auc_std": 0.01819277218686704,
+        "pr_auc_mean": 0.9705563956457937,
+        "pr_auc_std": 0.008242567844057856,
+        "brier_score_mean": 0.09596770858500756,
+        "brier_score_std": 0.010753107417664762,
+        "mean_abs_probability_drift": 0.0696247319239942
+      },
+      {
+        "missingness_rate": 0.3,
+        "roc_auc_mean": 0.9041187739463601,
+        "roc_auc_std": 0.010047662692380091,
+        "pr_auc_mean": 0.957412155742913,
+        "pr_auc_std": 0.003740090550237394,
+        "brier_score_mean": 0.1180024252573442,
+        "brier_score_std": 0.007945525667699089,
+        "mean_abs_probability_drift": 0.10191638037214922
+      }
+    ]
+  },
+  "feature_ablation": {
+    "target": "Cath",
+    "baseline_metrics": {
+      "roc_auc": 0.9017667092379736,
+      "pr_auc": 0.9574118232914015,
+      "brier": 0.10988747932401796,
+      "recall": 0.9120370370370371,
+      "balanced_accuracy": 0.8065932311621967
+    },
+    "ablations": [
+      {
+        "ablation_name": "Symptoms & Exam",
+        "ablation_type": "Domain Group",
+        "features_removed": [
+          "BP",
+          "PR",
+          "Edema",
+          "Weak Peripheral Pulse",
+          "Lung rales",
+          "Systolic Murmur",
+          "Diastolic Murmur",
+          "Typical Chest Pain",
+          "Dyspnea",
+          "Function Class",
+          "Atypical",
+          "Nonanginal",
+          "LowTH Ang"
+        ],
+        "features_removed_count": 13,
+        "roc_auc": 0.8171030225627927,
+        "delta_roc_auc": -0.08466368667518098,
+        "pr_auc": 0.8945795462223929,
+        "delta_pr_auc": -0.06283227706900862,
+        "brier_score": 0.14787860127723199,
+        "delta_brier": 0.037991121953214024,
+        "recall": 0.8981481481481481,
+        "delta_recall": -0.01388888888888895,
+        "balanced_accuracy": 0.68470625798212,
+        "delta_balanced_accuracy": -0.12188697318007669
+      },
+      {
+        "ablation_name": "Typical Chest Pain",
+        "ablation_type": "Single Feature",
+        "features_removed": [
+          "Typical Chest Pain"
+        ],
+        "features_removed_count": 1,
+        "roc_auc": 0.8732439335887612,
+        "delta_roc_auc": -0.028522775649212462,
+        "pr_auc": 0.9398533363827394,
+        "delta_pr_auc": -0.01755848690866213,
+        "brier_score": 0.12457073017633073,
+        "delta_brier": 0.01468325085231277,
+        "recall": 0.9074074074074074,
+        "delta_recall": -0.00462962962962965,
+        "balanced_accuracy": 0.758301404853129,
+        "delta_balanced_accuracy": -0.0482918263090677
+      },
+      {
+        "ablation_name": "Echocardiography",
+        "ablation_type": "Domain Group",
+        "features_removed": [
+          "EF-TTE",
+          "Region RWMA",
+          "VHD"
+        ],
+        "features_removed_count": 3,
+        "roc_auc": 0.8817581949765858,
+        "delta_roc_auc": -0.020008514261387833,
+        "pr_auc": 0.9444134042686569,
+        "delta_pr_auc": -0.012998419022744567,
+        "brier_score": 0.12037327115378639,
+        "delta_brier": 0.010485791829768429,
+        "recall": 0.8981481481481481,
+        "delta_recall": -0.01388888888888895,
+        "balanced_accuracy": 0.7824074074074074,
+        "delta_balanced_accuracy": -0.024185823754789282
+      },
+      {
+        "ablation_name": "Region RWMA",
+        "ablation_type": "Single Feature",
+        "features_removed": [
+          "Region RWMA"
+        ],
+        "features_removed_count": 1,
+        "roc_auc": 0.8972435078756918,
+        "delta_roc_auc": -0.004523201362281792,
+        "pr_auc": 0.9548688105177048,
+        "delta_pr_auc": -0.002543012773696729,
+        "brier_score": 0.11222921254549875,
+        "delta_brier": 0.0023417332214807907,
+        "recall": 0.9166666666666666,
+        "delta_recall": 0.004629629629629539,
+        "balanced_accuracy": 0.7744252873563218,
+        "delta_balanced_accuracy": -0.032167943805874954
+      },
+      {
+        "ablation_name": "12-Lead ECG",
+        "ablation_type": "Domain Group",
+        "features_removed": [
+          "Q Wave",
+          "St Elevation",
+          "St Depression",
+          "Tinversion",
+          "LVH",
+          "Poor R Progression",
+          "BBB"
+        ],
+        "features_removed_count": 7,
+        "roc_auc": 0.8993188590889741,
+        "delta_roc_auc": -0.0024478501489995086,
+        "pr_auc": 0.9585489992405765,
+        "delta_pr_auc": 0.0011371759491749511,
+        "brier_score": 0.11418433023761752,
+        "delta_brier": 0.004296850913599562,
+        "recall": 0.9074074074074074,
+        "delta_recall": -0.00462962962962965,
+        "balanced_accuracy": 0.787037037037037,
+        "delta_balanced_accuracy": -0.019556194125159743
+      },
+      {
+        "ablation_name": "History & Habits",
+        "ablation_type": "Domain Group",
+        "features_removed": [
+          "DM",
+          "HTN",
+          "Current Smoker",
+          "EX-Smoker",
+          "FH",
+          "Obesity",
+          "CRF",
+          "CVA",
+          "Airway disease",
+          "Thyroid Disease",
+          "CHF",
+          "DLP"
+        ],
+        "features_removed_count": 12,
+        "roc_auc": 0.9011281396338867,
+        "delta_roc_auc": -0.0006385696040869249,
+        "pr_auc": 0.9570954332190158,
+        "delta_pr_auc": -0.00031639007238570827,
+        "brier_score": 0.1089229269378199,
+        "delta_brier": -0.000964552386198067,
+        "recall": 0.9166666666666666,
+        "delta_recall": 0.004629629629629539,
+        "balanced_accuracy": 0.8376436781609196,
+        "delta_balanced_accuracy": 0.031050446998722836
+      },
+      {
+        "ablation_name": "EF-TTE",
+        "ablation_type": "Single Feature",
+        "features_removed": [
+          "EF-TTE"
+        ],
+        "features_removed_count": 1,
+        "roc_auc": 0.9043742017879949,
+        "delta_roc_auc": 0.00260749255002124,
+        "pr_auc": 0.9581789803945393,
+        "delta_pr_auc": 0.0007671571031377944,
+        "brier_score": 0.10924529047286732,
+        "delta_brier": -0.000642188851150638,
+        "recall": 0.9166666666666666,
+        "delta_recall": 0.004629629629629539,
+        "balanced_accuracy": 0.8031609195402298,
+        "delta_balanced_accuracy": -0.003432311621966888
+      },
+      {
+        "ablation_name": "Demographics",
+        "ablation_type": "Domain Group",
+        "features_removed": [
+          "Age",
+          "Weight",
+          "Length",
+          "Sex",
+          "BMI"
+        ],
+        "features_removed_count": 5,
+        "roc_auc": 0.9072477650063857,
+        "delta_roc_auc": 0.005481055768412069,
+        "pr_auc": 0.9626823547804417,
+        "delta_pr_auc": 0.00527053148904022,
+        "brier_score": 0.11175133111998213,
+        "delta_brier": 0.0018638517959641693,
+        "recall": 0.9120370370370371,
+        "delta_recall": 0.0,
+        "balanced_accuracy": 0.8008461047254152,
+        "delta_balanced_accuracy": -0.005747126436781547
+      },
+      {
+        "ablation_name": "Age",
+        "ablation_type": "Single Feature",
+        "features_removed": [
+          "Age"
+        ],
+        "features_removed_count": 1,
+        "roc_auc": 0.9076734780757769,
+        "delta_roc_auc": 0.005906768837803278,
+        "pr_auc": 0.9626917726504463,
+        "delta_pr_auc": 0.005279949359044744,
+        "brier_score": 0.11101460946052762,
+        "delta_brier": 0.0011271301365096548,
+        "recall": 0.9212962962962963,
+        "delta_recall": 0.00925925925925919,
+        "balanced_accuracy": 0.7939814814814814,
+        "delta_balanced_accuracy": -0.012611749680715323
+      },
+      {
+        "ablation_name": "Laboratory",
+        "ablation_type": "Domain Group",
+        "features_removed": [
+          "FBS",
+          "CR",
+          "TG",
+          "LDL",
+          "HDL",
+          "BUN",
+          "ESR",
+          "HB",
+          "K",
+          "Na",
+          "WBC",
+          "Lymph",
+          "Neut",
+          "PLT"
+        ],
+        "features_removed_count": 14,
+        "roc_auc": 0.910387398893146,
+        "delta_roc_auc": 0.008620689655172376,
+        "pr_auc": 0.9588077489501201,
+        "delta_pr_auc": 0.0013959256587185997,
+        "brier_score": 0.10218787759555409,
+        "delta_brier": -0.007699601728463873,
+        "recall": 0.9259259259259259,
+        "delta_recall": 0.01388888888888884,
+        "balanced_accuracy": 0.8020434227330779,
+        "delta_balanced_accuracy": -0.004549808429118785
+      }
+    ]
+  }
+}

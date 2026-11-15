@@ -8,15 +8,16 @@ Executes deterministic multi-target inference on validated patient data:
 - Guarantees target-specific label mapping ('CAD'/'Normal' for Cath; 'Stenotic'/'Normal' for vessels).
 """
 
+from pathlib import Path
 from typing import Any, Dict, Optional, Union
-import numpy as np
+
 import pandas as pd
 
-from src.corovista.inference.loader import load_all_models, load_model_pipeline
+from src.corovista.inference.loader import load_all_models
 from src.corovista.inference.schemas import (
+    TARGET_LABEL_MAP,
     PatientInferenceResponse,
     TargetPrediction,
-    TARGET_LABEL_MAP,
 )
 from src.corovista.inference.validation import validate_and_normalize_patient_input
 
@@ -24,6 +25,7 @@ from src.corovista.inference.validation import validate_and_normalize_patient_in
 def predict_patient(
     patient_data: Union[Dict[str, Any], pd.Series, pd.DataFrame],
     return_dict: bool = False,
+    models_root: Optional[Path] = None,
 ) -> Union[PatientInferenceResponse, Dict[str, Dict[str, Any]]]:
     """
     Performs inference across all four coronary targets for a single patient record.
@@ -32,6 +34,7 @@ def predict_patient(
     -----------
     patient_data: Raw feature dictionary, Series, or 1-row DataFrame.
     return_dict: If True, returns pure Python dictionary matching JSON API specification.
+    models_root: Optional custom models directory path (e.g. for staged validation).
 
     Returns:
     --------
@@ -41,7 +44,7 @@ def predict_patient(
     clean_df = validate_and_normalize_patient_input(patient_data)
 
     # 2. Load all model pipelines
-    models = load_all_models()
+    models = load_all_models(models_root=models_root)
 
     predictions = {}
     for target_key in ["cath", "lad", "lcx", "rca"]:
