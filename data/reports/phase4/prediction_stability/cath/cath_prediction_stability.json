@@ -1,0 +1,248 @@
+{
+  "target": "Cath",
+  "clinical_name": "Overall CAD Status",
+  "model_family": "XGBoost",
+  "operating_threshold": 0.5,
+  "calibration_method": "sigmoid",
+  "probability_stability": {
+    "mean_sd": 0.038465213284607294,
+    "std_sd": 0.03565861059070658,
+    "median_sd": 0.024843371492147617,
+    "q90_sd": 0.09227218191146332,
+    "max_sd": 0.17333187725696114,
+    "pct_sd_over_0_05": 0.2739273927392739,
+    "pct_sd_over_0_10": 0.07920792079207921,
+    "mean_iqr": 0.03956851517067672,
+    "median_iqr": 0.025321319118985497,
+    "mean_range": 0.10776654000302315,
+    "median_range": 0.06668632730720615,
+    "cv_summary": {
+      "evaluated_patients_count": 303,
+      "min_mean_prob_filter": 0.05,
+      "mean_cv": 0.08684501799217151,
+      "median_cv": 0.03734194494145286
+    }
+  },
+  "classification_stability": {
+    "mean_agreement": 0.9782178217821781,
+    "pct_100_percent_consistent": 0.9108910891089109,
+    "pct_at_least_80_percent_consistent": 0.9801980198019802,
+    "mean_disagreement_pairs": 0.39603960396039606,
+    "max_disagreement_pairs": 6,
+    "threshold_proximity_stratification": [
+      {
+        "bin": "< 0.05",
+        "count": 6,
+        "mean_agreement": 0.6333333333333334,
+        "perfect_agreement_pct": 0.0,
+        "mean_std_prob": 0.10273516619175559,
+        "mean_disagreement_pairs": 5.666666666666667
+      },
+      {
+        "bin": "0.05 - 0.10",
+        "count": 14,
+        "mean_agreement": 0.8428571428571429,
+        "perfect_agreement_pct": 0.2857142857142857,
+        "mean_std_prob": 0.09108662033135244,
+        "mean_disagreement_pairs": 3.0
+      },
+      {
+        "bin": "0.10 - 0.20",
+        "count": 37,
+        "mean_agreement": 0.9513513513513512,
+        "perfect_agreement_pct": 0.7567567567567568,
+        "mean_std_prob": 0.0797474241383759,
+        "mean_disagreement_pairs": 0.972972972972973
+      },
+      {
+        "bin": ">= 0.20",
+        "count": 246,
+        "mean_agreement": 0.9983739837398373,
+        "perfect_agreement_pct": 0.991869918699187,
+        "mean_std_prob": 0.027693826220839983,
+        "mean_disagreement_pairs": 0.032520325203252036
+      }
+    ],
+    "high_instability_patients_count": 9,
+    "high_instability_patients": [
+      {
+        "patient_idx": 3,
+        "y_true": 0,
+        "mean_prob": 0.5244243704528371,
+        "std_prob": 0.0833545049229576,
+        "agreement": 0.6,
+        "disagreement_pairs": 6,
+        "probs_per_repeat": [
+          0.427270842186033,
+          0.65634057535186,
+          0.5603569176891462,
+          0.5344040074716416,
+          0.44374950956550463
+        ]
+      },
+      {
+        "patient_idx": 53,
+        "y_true": 1,
+        "mean_prob": 0.4831862625494585,
+        "std_prob": 0.145262290064969,
+        "agreement": 0.6,
+        "disagreement_pairs": 6,
+        "probs_per_repeat": [
+          0.31464711721291455,
+          0.5815140824720028,
+          0.2995825559241244,
+          0.6375756322363838,
+          0.582611924901867
+        ]
+      },
+      {
+        "patient_idx": 151,
+        "y_true": 0,
+        "mean_prob": 0.6757226493015841,
+        "std_prob": 0.1567535198215924,
+        "agreement": 0.8,
+        "disagreement_pairs": 4,
+        "probs_per_repeat": [
+          0.8808756942273336,
+          0.43436189880463466,
+          0.5729504284622239,
+          0.7113326271856012,
+          0.779092597828127
+        ]
+      },
+      {
+        "patient_idx": 157,
+        "y_true": 1,
+        "mean_prob": 0.7141635216632486,
+        "std_prob": 0.15172219586923724,
+        "agreement": 0.8,
+        "disagreement_pairs": 4,
+        "probs_per_repeat": [
+          0.7445661982399577,
+          0.7977705195496098,
+          0.8311587218720992,
+          0.7814371328474842,
+          0.41588503580709224
+        ]
+      },
+      {
+        "patient_idx": 204,
+        "y_true": 0,
+        "mean_prob": 0.546601034960202,
+        "std_prob": 0.1403613915637732,
+        "agreement": 0.6,
+        "disagreement_pairs": 6,
+        "probs_per_repeat": [
+          0.5067517819593647,
+          0.6046253327124085,
+          0.46755845248947203,
+          0.7837370784766721,
+          0.3703325291630928
+        ]
+      },
+      {
+        "patient_idx": 236,
+        "y_true": 1,
+        "mean_prob": 0.6941493582061046,
+        "std_prob": 0.17333187725696114,
+        "agreement": 0.8,
+        "disagreement_pairs": 4,
+        "probs_per_repeat": [
+          0.41260309646786614,
+          0.5801483735906553,
+          0.7794336641284755,
+          0.8849894928873981,
+          0.813572163956128
+        ]
+      },
+      {
+        "patient_idx": 268,
+        "y_true": 0,
+        "mean_prob": 0.43139108724937153,
+        "std_prob": 0.12370570675305465,
+        "agreement": 0.6,
+        "disagreement_pairs": 6,
+        "probs_per_repeat": [
+          0.26711828498774803,
+          0.3880988996278511,
+          0.5246344432244487,
+          0.6158835595786893,
+          0.3612202488281206
+        ]
+      },
+      {
+        "patient_idx": 283,
+        "y_true": 1,
+        "mean_prob": 0.5129296709700581,
+        "std_prob": 0.07116582494009488,
+        "agreement": 0.6,
+        "disagreement_pairs": 6,
+        "probs_per_repeat": [
+          0.4739855263245653,
+          0.440436826364782,
+          0.5352369779514788,
+          0.47358578728899375,
+          0.6414032369204703
+        ]
+      },
+      {
+        "patient_idx": 297,
+        "y_true": 0,
+        "mean_prob": 0.4762748428928171,
+        "std_prob": 0.12988739522253323,
+        "agreement": 0.6,
+        "disagreement_pairs": 6,
+        "probs_per_repeat": [
+          0.7023429549514718,
+          0.3294269927069026,
+          0.4374448040543802,
+          0.5244871060508735,
+          0.3876723567004574
+        ]
+      }
+    ]
+  },
+  "risk_ranking_stability": {
+    "n_repeats": 5,
+    "n_patients": 303,
+    "spearman_rank_correlation": {
+      "mean": 0.922051487564232,
+      "std": 0.009129990505020693,
+      "median": 0.9197067319140417,
+      "min": 0.9023321162719269,
+      "max": 0.9352639516304365,
+      "values": [
+        0.9170244229023807,
+        0.9352639516304365,
+        0.9288083783979652,
+        0.9205090951758124,
+        0.917915650052283,
+        0.918557972039797,
+        0.9023321162719269,
+        0.9329961969706903,
+        0.9189043686522711,
+        0.9282027235487575
+      ]
+    },
+    "top10_pct_overlap": {
+      "k_patients": 30,
+      "mean_jaccard": 0.28940230789145194,
+      "std_jaccard": 0.0479251868848172,
+      "min_jaccard": 0.17647058823529413,
+      "max_jaccard": 0.36363636363636365
+    },
+    "top20_pct_overlap": {
+      "k_patients": 61,
+      "mean_jaccard": 0.4632207508659024,
+      "std_jaccard": 0.07581815359556156,
+      "min_jaccard": 0.35555555555555557,
+      "max_jaccard": 0.5844155844155844
+    },
+    "patient_rank_sd": {
+      "mean": 19.20897395942483,
+      "median": 17.652195330892983,
+      "q90": 33.55997436977691,
+      "max": 49.80361432667312
+    }
+  }
+}
