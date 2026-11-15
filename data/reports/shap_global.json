@@ -6,68 +6,69 @@
     "calibration_method": "sigmoid",
     "explanation_space": "log-odds (model score)",
     "calibration_note": "SHAP values explain the underlying predictive model score (log-odds/margin); probability calibration is applied separately to determine the final visual risk probability.",
-    "base_value": -0.1192,
+    "calibration_disclosure": "SHAP values explain the underlying predictive model score (log-odds/margin); probability calibration is applied separately to determine the final visual risk probability.",
+    "base_value": -0.0982,
     "total_features": 57,
     "top_10": [
       {
         "rank": 1,
         "feature": "Typical Chest Pain",
         "label": "Typical Anginal Chest Pain",
-        "mean_abs_shap": 1.1327
+        "mean_abs_shap": 1.103
       },
       {
         "rank": 2,
         "feature": "Age",
         "label": "Patient Age (years)",
-        "mean_abs_shap": 0.3838
+        "mean_abs_shap": 0.4213
       },
       {
         "rank": 3,
         "feature": "EF-TTE",
         "label": "Left Ventricular Ejection Fraction (% Echo)",
-        "mean_abs_shap": 0.3616
+        "mean_abs_shap": 0.3684
       },
       {
         "rank": 4,
         "feature": "Region RWMA",
         "label": "Regional Wall Motion Abnormality Count (Echo)",
-        "mean_abs_shap": 0.3312
+        "mean_abs_shap": 0.3135
       },
       {
         "rank": 5,
         "feature": "FBS",
         "label": "Fasting Blood Sugar (mg/dL)",
-        "mean_abs_shap": 0.2656
+        "mean_abs_shap": 0.2255
       },
       {
         "rank": 6,
         "feature": "TG",
         "label": "Serum Triglycerides (mg/dL)",
-        "mean_abs_shap": 0.1855
+        "mean_abs_shap": 0.2254
       },
       {
         "rank": 7,
         "feature": "HTN",
         "label": "Hypertension History",
-        "mean_abs_shap": 0.1729
+        "mean_abs_shap": 0.2065
       },
       {
         "rank": 8,
         "feature": "Tinversion",
         "label": "T-Wave Inversion (ECG)",
-        "mean_abs_shap": 0.1587
+        "mean_abs_shap": 0.1493
       },
       {
         "rank": 9,
-        "feature": "ESR",
-        "label": "Erythrocyte Sedimentation Rate (mm/hr)",
-        "mean_abs_shap": 0.1216
+        "feature": "DM",
+        "label": "Diabetes Mellitus History",
+        "mean_abs_shap": 0.1164
       },
       {
         "rank": 10,
-        "feature": "BMI",
-        "label": "Body Mass Index (kg/m\u00b2)",
-        "mean_abs_shap": 0.0982
+        "feature": "ESR",
+        "label": "Erythrocyte Sedimentation Rate (mm/hr)",
+        "mean_abs_shap": 0.1046
       }
     ],
     "top_20": [
@@ -75,121 +76,121 @@
         "rank": 1,
         "feature": "Typical Chest Pain",
         "label": "Typical Anginal Chest Pain",
-        "mean_abs_shap": 1.1327
+        "mean_abs_shap": 1.103
       },
       {
         "rank": 2,
         "feature": "Age",
         "label": "Patient Age (years)",
-        "mean_abs_shap": 0.3838
+        "mean_abs_shap": 0.4213
       },
       {
         "rank": 3,
         "feature": "EF-TTE",
         "label": "Left Ventricular Ejection Fraction (% Echo)",
-        "mean_abs_shap": 0.3616
+        "mean_abs_shap": 0.3684
       },
       {
         "rank": 4,
         "feature": "Region RWMA",
         "label": "Regional Wall Motion Abnormality Count (Echo)",
-        "mean_abs_shap": 0.3312
+        "mean_abs_shap": 0.3135
       },
       {
         "rank": 5,
         "feature": "FBS",
         "label": "Fasting Blood Sugar (mg/dL)",
-        "mean_abs_shap": 0.2656
+        "mean_abs_shap": 0.2255
       },
       {
         "rank": 6,
         "feature": "TG",
         "label": "Serum Triglycerides (mg/dL)",
-        "mean_abs_shap": 0.1855
+        "mean_abs_shap": 0.2254
       },
       {
         "rank": 7,
         "feature": "HTN",
         "label": "Hypertension History",
-        "mean_abs_shap": 0.1729
+        "mean_abs_shap": 0.2065
       },
       {
         "rank": 8,
         "feature": "Tinversion",
         "label": "T-Wave Inversion (ECG)",
-        "mean_abs_shap": 0.1587
+        "mean_abs_shap": 0.1493
       },
       {
         "rank": 9,
-        "feature": "ESR",
-        "label": "Erythrocyte Sedimentation Rate (mm/hr)",
-        "mean_abs_shap": 0.1216
+        "feature": "DM",
+        "label": "Diabetes Mellitus History",
+        "mean_abs_shap": 0.1164
       },
       {
         "rank": 10,
-        "feature": "BMI",
-        "label": "Body Mass Index (kg/m\u00b2)",
-        "mean_abs_shap": 0.0982
+        "feature": "ESR",
+        "label": "Erythrocyte Sedimentation Rate (mm/hr)",
+        "mean_abs_shap": 0.1046
       },
       {
         "rank": 11,
-        "feature": "BP",
-        "label": "Systolic Blood Pressure (mmHg)",
-        "mean_abs_shap": 0.0976
+        "feature": "Atypical",
+        "label": "Atypical Angina Symptoms",
+        "mean_abs_shap": 0.0956
       },
       {
         "rank": 12,
-        "feature": "DM",
-        "label": "Diabetes Mellitus History",
-        "mean_abs_shap": 0.0929
+        "feature": "BP",
+        "label": "Systolic Blood Pressure (mmHg)",
+        "mean_abs_shap": 0.0834
       },
       {
         "rank": 13,
-        "feature": "PR",
-        "label": "Resting Heart Rate (bpm)",
-        "mean_abs_shap": 0.0737
+        "feature": "BMI",
+        "label": "Body Mass Index (kg/m\u00b2)",
+        "mean_abs_shap": 0.0779
       },
       {
         "rank": 14,
-        "feature": "Atypical",
-        "label": "Atypical Angina Symptoms",
-        "mean_abs_shap": 0.0568
+        "feature": "Na",
+        "label": "Serum Sodium (mEq/L)",
+        "mean_abs_shap": 0.0625
       },
       {
         "rank": 15,
-        "feature": "Neut",
-        "label": "Neutrophil Percentage (%)",
-        "mean_abs_shap": 0.0559
+        "feature": "VHD_Normal",
+        "label": "Normal Cardiac Valves (Echo)",
+        "mean_abs_shap": 0.0588
       },
       {
         "rank": 16,
         "feature": "K",
         "label": "Serum Potassium (mEq/L)",
-        "mean_abs_shap": 0.0519
+        "mean_abs_shap": 0.0509
       },
       {
         "rank": 17,
         "feature": "Weight",
         "label": "Body Weight (kg)",
-        "mean_abs_shap": 0.0465
+        "mean_abs_shap": 0.0456
       },
       {
         "rank": 18,
-        "feature": "Na",
-        "label": "Serum Sodium (mEq/L)",
-        "mean_abs_shap": 0.046
+        "feature": "Neut",
+        "label": "Neutrophil Percentage (%)",
+        "mean_abs_shap": 0.0439
       },
       {
         "rank": 19,
-        "feature": "HB",
-        "label": "Hemoglobin Concentration (g/dL)",
-        "mean_abs_shap": 0.0406
+        "feature": "CR",
+        "label": "Serum Creatinine (mg/dL)",
+        "mean_abs_shap": 0.0364
       },
       {
         "rank": 20,
-        "feature": "LDL",
-        "label": "LDL Cholesterol (mg/dL)",
-        "mean_abs_shap": 0.039
+        "feature": "HB",
+        "label": "Hemoglobin Concentration (g/dL)",
+        "mean_abs_shap": 0.0347
       }
     ],
     "full_ranking": [
@@ -197,276 +198,276 @@
         "rank": 1,
         "feature": "Typical Chest Pain",
         "label": "Typical Anginal Chest Pain",
-        "mean_abs_shap": 1.1327
+        "mean_abs_shap": 1.103
       },
       {
         "rank": 2,
         "feature": "Age",
         "label": "Patient Age (years)",
-        "mean_abs_shap": 0.3838
+        "mean_abs_shap": 0.4213
       },
       {
         "rank": 3,
         "feature": "EF-TTE",
         "label": "Left Ventricular Ejection Fraction (% Echo)",
-        "mean_abs_shap": 0.3616
+        "mean_abs_shap": 0.3684
       },
       {
         "rank": 4,
         "feature": "Region RWMA",
         "label": "Regional Wall Motion Abnormality Count (Echo)",
-        "mean_abs_shap": 0.3312
+        "mean_abs_shap": 0.3135
       },
       {
         "rank": 5,
         "feature": "FBS",
         "label": "Fasting Blood Sugar (mg/dL)",
-        "mean_abs_shap": 0.2656
+        "mean_abs_shap": 0.2255
       },
       {
         "rank": 6,
         "feature": "TG",
         "label": "Serum Triglycerides (mg/dL)",
-        "mean_abs_shap": 0.1855
+        "mean_abs_shap": 0.2254
       },
       {
         "rank": 7,
         "feature": "HTN",
         "label": "Hypertension History",
-        "mean_abs_shap": 0.1729
+        "mean_abs_shap": 0.2065
       },
       {
         "rank": 8,
         "feature": "Tinversion",
         "label": "T-Wave Inversion (ECG)",
-        "mean_abs_shap": 0.1587
+        "mean_abs_shap": 0.1493
       },
       {
         "rank": 9,
-        "feature": "ESR",
-        "label": "Erythrocyte Sedimentation Rate (mm/hr)",
-        "mean_abs_shap": 0.1216
+        "feature": "DM",
+        "label": "Diabetes Mellitus History",
+        "mean_abs_shap": 0.1164
       },
       {
         "rank": 10,
-        "feature": "BMI",
-        "label": "Body Mass Index (kg/m\u00b2)",
-        "mean_abs_shap": 0.0982
+        "feature": "ESR",
+        "label": "Erythrocyte Sedimentation Rate (mm/hr)",
+        "mean_abs_shap": 0.1046
       },
       {
         "rank": 11,
-        "feature": "BP",
-        "label": "Systolic Blood Pressure (mmHg)",
-        "mean_abs_shap": 0.0976
+        "feature": "Atypical",
+        "label": "Atypical Angina Symptoms",
+        "mean_abs_shap": 0.0956
       },
       {
         "rank": 12,
-        "feature": "DM",
-        "label": "Diabetes Mellitus History",
-        "mean_abs_shap": 0.0929
+        "feature": "BP",
+        "label": "Systolic Blood Pressure (mmHg)",
+        "mean_abs_shap": 0.0834
       },
       {
         "rank": 13,
-        "feature": "PR",
-        "label": "Resting Heart Rate (bpm)",
-        "mean_abs_shap": 0.0737
+        "feature": "BMI",
+        "label": "Body Mass Index (kg/m\u00b2)",
+        "mean_abs_shap": 0.0779
       },
       {
         "rank": 14,
-        "feature": "Atypical",
-        "label": "Atypical Angina Symptoms",
-        "mean_abs_shap": 0.0568
+        "feature": "Na",
+        "label": "Serum Sodium (mEq/L)",
+        "mean_abs_shap": 0.0625
       },
       {
         "rank": 15,
-        "feature": "Neut",
-        "label": "Neutrophil Percentage (%)",
-        "mean_abs_shap": 0.0559
+        "feature": "VHD_Normal",
+        "label": "Normal Cardiac Valves (Echo)",
+        "mean_abs_shap": 0.0588
       },
       {
         "rank": 16,
         "feature": "K",
         "label": "Serum Potassium (mEq/L)",
-        "mean_abs_shap": 0.0519
+        "mean_abs_shap": 0.0509
       },
       {
         "rank": 17,
         "feature": "Weight",
         "label": "Body Weight (kg)",
-        "mean_abs_shap": 0.0465
+        "mean_abs_shap": 0.0456
       },
       {
         "rank": 18,
-        "feature": "Na",
-        "label": "Serum Sodium (mEq/L)",
-        "mean_abs_shap": 0.046
+        "feature": "Neut",
+        "label": "Neutrophil Percentage (%)",
+        "mean_abs_shap": 0.0439
       },
       {
         "rank": 19,
-        "feature": "HB",
-        "label": "Hemoglobin Concentration (g/dL)",
-        "mean_abs_shap": 0.0406
+        "feature": "CR",
+        "label": "Serum Creatinine (mg/dL)",
+        "mean_abs_shap": 0.0364
       },
       {
         "rank": 20,
-        "feature": "LDL",
-        "label": "LDL Cholesterol (mg/dL)",
-        "mean_abs_shap": 0.039
+        "feature": "HB",
+        "label": "Hemoglobin Concentration (g/dL)",
+        "mean_abs_shap": 0.0347
       },
       {
         "rank": 21,
-        "feature": "HDL",
-        "label": "HDL Cholesterol (mg/dL)",
-        "mean_abs_shap": 0.0373
+        "feature": "PR",
+        "label": "Resting Heart Rate (bpm)",
+        "mean_abs_shap": 0.0331
       },
       {
         "rank": 22,
-        "feature": "PLT",
-        "label": "Platelet Count (\u00d710\u00b3/\u00b5L)",
-        "mean_abs_shap": 0.0356
+        "feature": "St Depression",
+        "label": "ST-Segment Depression (ECG)",
+        "mean_abs_shap": 0.0325
       },
       {
         "rank": 23,
-        "feature": "WBC",
-        "label": "White Blood Cell Count (/\u00b5L)",
-        "mean_abs_shap": 0.0315
+        "feature": "HDL",
+        "label": "HDL Cholesterol (mg/dL)",
+        "mean_abs_shap": 0.0309
       },
       {
         "rank": 24,
-        "feature": "Dyspnea",
-        "label": "Exertional Dyspnea (Shortness of Breath)",
-        "mean_abs_shap": 0.0312
+        "feature": "Nonanginal",
+        "label": "Non-Anginal Chest Pain",
+        "mean_abs_shap": 0.0301
       },
       {
         "rank": 25,
-        "feature": "Nonanginal",
-        "label": "Non-Anginal Chest Pain",
-        "mean_abs_shap": 0.03
+        "feature": "PLT",
+        "label": "Platelet Count (\u00d710\u00b3/\u00b5L)",
+        "mean_abs_shap": 0.0258
       },
       {
         "rank": 26,
-        "feature": "CR",
-        "label": "Serum Creatinine (mg/dL)",
-        "mean_abs_shap": 0.0295
+        "feature": "LDL",
+        "label": "LDL Cholesterol (mg/dL)",
+        "mean_abs_shap": 0.0243
       },
       {
         "rank": 27,
-        "feature": "VHD_Normal",
-        "label": "Normal Cardiac Valves (Echo)",
-        "mean_abs_shap": 0.0285
+        "feature": "Dyspnea",
+        "label": "Exertional Dyspnea (Shortness of Breath)",
+        "mean_abs_shap": 0.0236
       },
       {
         "rank": 28,
-        "feature": "Lymph",
-        "label": "Lymphocyte Percentage (%)",
-        "mean_abs_shap": 0.0187
+        "feature": "WBC",
+        "label": "White Blood Cell Count (/\u00b5L)",
+        "mean_abs_shap": 0.02
       },
       {
         "rank": 29,
-        "feature": "BUN",
-        "label": "Blood Urea Nitrogen (mg/dL)",
-        "mean_abs_shap": 0.0167
+        "feature": "Sex",
+        "label": "Biological Sex (Male = 1, Female = 0)",
+        "mean_abs_shap": 0.0175
       },
       {
         "rank": 30,
-        "feature": "Sex",
-        "label": "Biological Sex (Male = 1, Female = 0)",
-        "mean_abs_shap": 0.0122
+        "feature": "BUN",
+        "label": "Blood Urea Nitrogen (mg/dL)",
+        "mean_abs_shap": 0.0173
       },
       {
         "rank": 31,
-        "feature": "FH",
-        "label": "Family History of Premature CAD",
-        "mean_abs_shap": 0.0122
+        "feature": "Lymph",
+        "label": "Lymphocyte Percentage (%)",
+        "mean_abs_shap": 0.0168
       },
       {
         "rank": 32,
-        "feature": "St Depression",
-        "label": "ST-Segment Depression (ECG)",
-        "mean_abs_shap": 0.0121
+        "feature": "Current Smoker",
+        "label": "Current Tobacco Smoker",
+        "mean_abs_shap": 0.0159
       },
       {
         "rank": 33,
-        "feature": "Length",
-        "label": "Height / Stature (cm)",
-        "mean_abs_shap": 0.0118
+        "feature": "FH",
+        "label": "Family History of Premature CAD",
+        "mean_abs_shap": 0.0148
       },
       {
         "rank": 34,
-        "feature": "Current Smoker",
-        "label": "Current Tobacco Smoker",
-        "mean_abs_shap": 0.0114
+        "feature": "Function Class",
+        "label": "NYHA Functional Class (0\u20133)",
+        "mean_abs_shap": 0.0109
       },
       {
         "rank": 35,
-        "feature": "Function Class",
-        "label": "NYHA Functional Class (0\u20133)",
-        "mean_abs_shap": 0.0052
+        "feature": "Length",
+        "label": "Height / Stature (cm)",
+        "mean_abs_shap": 0.0099
       },
       {
         "rank": 36,
         "feature": "DLP",
         "label": "Dyslipidemia History",
-        "mean_abs_shap": 0.0029
+        "mean_abs_shap": 0.0095
       },
       {
         "rank": 37,
         "feature": "Systolic Murmur",
         "label": "Auscultated Systolic Murmur",
-        "mean_abs_shap": 0.002
+        "mean_abs_shap": 0.0021
       },
       {
         "rank": 38,
-        "feature": "Obesity",
-        "label": "Clinical Obesity (BMI > 25)",
-        "mean_abs_shap": 0.0019
+        "feature": "VHD_Severe",
+        "label": "Severe Valvular Heart Disease (Echo)",
+        "mean_abs_shap": 0.0
       },
       {
         "rank": 39,
-        "feature": "VHD_Severe",
-        "label": "Severe Valvular Heart Disease (Echo)",
-        "mean_abs_shap": 0.0013
+        "feature": "EX-Smoker",
+        "label": "Former Tobacco Smoker",
+        "mean_abs_shap": 0.0
       },
       {
         "rank": 40,
+        "feature": "Lung rales",
+        "label": "Pulmonary Rales / Crackles",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "rank": 41,
+        "feature": "VHD_Moderate",
+        "label": "Moderate Valvular Heart Disease (Echo)",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "rank": 42,
+        "feature": "BBB_RBBB",
+        "label": "Right Bundle Branch Block (ECG)",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "rank": 43,
+        "feature": "BBB_N",
+        "label": "Normal Intraventricular Conduction (No BBB)",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "rank": 44,
+        "feature": "Poor R Progression",
+        "label": "Poor Precordial R-Wave Progression (ECG)",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "rank": 45,
         "feature": "LVH",
         "label": "Left Ventricular Hypertrophy Criteria (ECG)",
         "mean_abs_shap": 0.0
       },
       {
-        "rank": 41,
+        "rank": 46,
         "feature": "LowTH Ang",
         "label": "Low-Threshold Angina",
-        "mean_abs_shap": 0.0
-      },
-      {
-        "rank": 42,
-        "feature": "CRF",
-        "label": "Chronic Renal Failure History",
-        "mean_abs_shap": 0.0
-      },
-      {
-        "rank": 43,
-        "feature": "Thyroid Disease",
-        "label": "Thyroid Disease History",
-        "mean_abs_shap": 0.0
-      },
-      {
-        "rank": 44,
-        "feature": "Airway disease",
-        "label": "Chronic Airway Disease (COPD/Asthma)",
-        "mean_abs_shap": 0.0
-      },
-      {
-        "rank": 45,
-        "feature": "CVA",
-        "label": "Cerebrovascular Accident (Stroke/TIA)",
-        "mean_abs_shap": 0.0
-      },
-      {
-        "rank": 46,
-        "feature": "CHF",
-        "label": "Congestive Heart Failure History",
         "mean_abs_shap": 0.0
       },
       {
@@ -477,50 +478,50 @@
       },
       {
         "rank": 48,
-        "feature": "Lung rales",
-        "label": "Pulmonary Rales / Crackles",
-        "mean_abs_shap": 0.0
-      },
-      {
-        "rank": 49,
         "feature": "Weak Peripheral Pulse",
         "label": "Diminished Peripheral Pulses",
         "mean_abs_shap": 0.0
       },
       {
+        "rank": 49,
+        "feature": "Q Wave",
+        "label": "Pathological Q Waves (ECG)",
+        "mean_abs_shap": 0.0
+      },
+      {
         "rank": 50,
-        "feature": "BBB_N",
-        "label": "Normal Intraventricular Conduction (No BBB)",
+        "feature": "CHF",
+        "label": "Congestive Heart Failure History",
         "mean_abs_shap": 0.0
       },
       {
         "rank": 51,
-        "feature": "Poor R Progression",
-        "label": "Poor Precordial R-Wave Progression (ECG)",
+        "feature": "Thyroid Disease",
+        "label": "Thyroid Disease History",
         "mean_abs_shap": 0.0
       },
       {
         "rank": 52,
-        "feature": "BBB_RBBB",
-        "label": "Right Bundle Branch Block (ECG)",
+        "feature": "Airway disease",
+        "label": "Chronic Airway Disease (COPD/Asthma)",
         "mean_abs_shap": 0.0
       },
       {
         "rank": 53,
-        "feature": "VHD_Moderate",
-        "label": "Moderate Valvular Heart Disease (Echo)",
+        "feature": "CVA",
+        "label": "Cerebrovascular Accident (Stroke/TIA)",
         "mean_abs_shap": 0.0
       },
       {
         "rank": 54,
-        "feature": "Edema",
-        "label": "Peripheral Edema",
+        "feature": "CRF",
+        "label": "Chronic Renal Failure History",
         "mean_abs_shap": 0.0
       },
       {
         "rank": 55,
-        "feature": "Q Wave",
-        "label": "Pathological Q Waves (ECG)",
+        "feature": "Obesity",
+        "label": "Clinical Obesity (BMI > 25)",
         "mean_abs_shap": 0.0
       },
       {
@@ -531,8 +532,8 @@
       },
       {
         "rank": 57,
-        "feature": "EX-Smoker",
-        "label": "Former Tobacco Smoker",
+        "feature": "Edema",
+        "label": "Peripheral Edema",
         "mean_abs_shap": 0.0
       }
     ]
@@ -544,68 +545,69 @@
     "calibration_method": "sigmoid",
     "explanation_space": "log-odds (model score)",
     "calibration_note": "SHAP values explain the underlying predictive model score (log-odds/margin); probability calibration is applied separately to determine the final visual risk probability.",
-    "base_value": -0.0477,
+    "calibration_disclosure": "SHAP values explain the underlying predictive model score (log-odds/margin); probability calibration is applied separately to determine the final visual risk probability.",
+    "base_value": -0.066,
     "total_features": 57,
     "top_10": [
       {
         "rank": 1,
         "feature": "Typical Chest Pain",
         "label": "Typical Anginal Chest Pain",
-        "mean_abs_shap": 0.7621
+        "mean_abs_shap": 0.7451
       },
       {
         "rank": 2,
         "feature": "Region RWMA",
         "label": "Regional Wall Motion Abnormality Count (Echo)",
-        "mean_abs_shap": 0.4438
+        "mean_abs_shap": 0.4348
       },
       {
         "rank": 3,
         "feature": "EF-TTE",
         "label": "Left Ventricular Ejection Fraction (% Echo)",
-        "mean_abs_shap": 0.3912
+        "mean_abs_shap": 0.3625
       },
       {
         "rank": 4,
         "feature": "Age",
         "label": "Patient Age (years)",
-        "mean_abs_shap": 0.2863
+        "mean_abs_shap": 0.3437
       },
       {
         "rank": 5,
         "feature": "ESR",
         "label": "Erythrocyte Sedimentation Rate (mm/hr)",
-        "mean_abs_shap": 0.1474
+        "mean_abs_shap": 0.141
       },
       {
         "rank": 6,
         "feature": "Lymph",
         "label": "Lymphocyte Percentage (%)",
-        "mean_abs_shap": 0.1188
+        "mean_abs_shap": 0.1271
       },
       {
         "rank": 7,
         "feature": "TG",
         "label": "Serum Triglycerides (mg/dL)",
-        "mean_abs_shap": 0.1106
+        "mean_abs_shap": 0.1174
       },
       {
         "rank": 8,
         "feature": "FBS",
         "label": "Fasting Blood Sugar (mg/dL)",
-        "mean_abs_shap": 0.104
+        "mean_abs_shap": 0.098
       },
       {
         "rank": 9,
-        "feature": "WBC",
-        "label": "White Blood Cell Count (/\u00b5L)",
-        "mean_abs_shap": 0.0951
+        "feature": "Neut",
+        "label": "Neutrophil Percentage (%)",
+        "mean_abs_shap": 0.0966
       },
       {
         "rank": 10,
-        "feature": "Neut",
-        "label": "Neutrophil Percentage (%)",
-        "mean_abs_shap": 0.0882
+        "feature": "LDL",
+        "label": "LDL Cholesterol (mg/dL)",
+        "mean_abs_shap": 0.0822
       }
     ],
     "top_20": [
@@ -613,121 +615,121 @@
         "rank": 1,
         "feature": "Typical Chest Pain",
         "label": "Typical Anginal Chest Pain",
-        "mean_abs_shap": 0.7621
+        "mean_abs_shap": 0.7451
       },
       {
         "rank": 2,
         "feature": "Region RWMA",
         "label": "Regional Wall Motion Abnormality Count (Echo)",
-        "mean_abs_shap": 0.4438
+        "mean_abs_shap": 0.4348
       },
       {
         "rank": 3,
         "feature": "EF-TTE",
         "label": "Left Ventricular Ejection Fraction (% Echo)",
-        "mean_abs_shap": 0.3912
+        "mean_abs_shap": 0.3625
       },
       {
         "rank": 4,
         "feature": "Age",
         "label": "Patient Age (years)",
-        "mean_abs_shap": 0.2863
+        "mean_abs_shap": 0.3437
       },
       {
         "rank": 5,
         "feature": "ESR",
         "label": "Erythrocyte Sedimentation Rate (mm/hr)",
-        "mean_abs_shap": 0.1474
+        "mean_abs_shap": 0.141
       },
       {
         "rank": 6,
         "feature": "Lymph",
         "label": "Lymphocyte Percentage (%)",
-        "mean_abs_shap": 0.1188
+        "mean_abs_shap": 0.1271
       },
       {
         "rank": 7,
         "feature": "TG",
         "label": "Serum Triglycerides (mg/dL)",
-        "mean_abs_shap": 0.1106
+        "mean_abs_shap": 0.1174
       },
       {
         "rank": 8,
         "feature": "FBS",
         "label": "Fasting Blood Sugar (mg/dL)",
-        "mean_abs_shap": 0.104
+        "mean_abs_shap": 0.098
       },
       {
         "rank": 9,
-        "feature": "WBC",
-        "label": "White Blood Cell Count (/\u00b5L)",
-        "mean_abs_shap": 0.0951
+        "feature": "Neut",
+        "label": "Neutrophil Percentage (%)",
+        "mean_abs_shap": 0.0966
       },
       {
         "rank": 10,
-        "feature": "Neut",
-        "label": "Neutrophil Percentage (%)",
-        "mean_abs_shap": 0.0882
+        "feature": "LDL",
+        "label": "LDL Cholesterol (mg/dL)",
+        "mean_abs_shap": 0.0822
       },
       {
         "rank": 11,
-        "feature": "HTN",
-        "label": "Hypertension History",
-        "mean_abs_shap": 0.0803
+        "feature": "WBC",
+        "label": "White Blood Cell Count (/\u00b5L)",
+        "mean_abs_shap": 0.0784
       },
       {
         "rank": 12,
-        "feature": "Tinversion",
-        "label": "T-Wave Inversion (ECG)",
-        "mean_abs_shap": 0.0768
+        "feature": "PR",
+        "label": "Resting Heart Rate (bpm)",
+        "mean_abs_shap": 0.0743
       },
       {
         "rank": 13,
-        "feature": "BMI",
-        "label": "Body Mass Index (kg/m\u00b2)",
-        "mean_abs_shap": 0.0737
+        "feature": "HDL",
+        "label": "HDL Cholesterol (mg/dL)",
+        "mean_abs_shap": 0.0702
       },
       {
         "rank": 14,
-        "feature": "PR",
-        "label": "Resting Heart Rate (bpm)",
-        "mean_abs_shap": 0.0709
+        "feature": "BMI",
+        "label": "Body Mass Index (kg/m\u00b2)",
+        "mean_abs_shap": 0.0691
       },
       {
         "rank": 15,
-        "feature": "LDL",
-        "label": "LDL Cholesterol (mg/dL)",
-        "mean_abs_shap": 0.0704
+        "feature": "Tinversion",
+        "label": "T-Wave Inversion (ECG)",
+        "mean_abs_shap": 0.0684
       },
       {
         "rank": 16,
-        "feature": "Na",
-        "label": "Serum Sodium (mEq/L)",
-        "mean_abs_shap": 0.0677
+        "feature": "PLT",
+        "label": "Platelet Count (\u00d710\u00b3/\u00b5L)",
+        "mean_abs_shap": 0.0671
       },
       {
         "rank": 17,
-        "feature": "Length",
-        "label": "Height / Stature (cm)",
-        "mean_abs_shap": 0.0641
+        "feature": "Weight",
+        "label": "Body Weight (kg)",
+        "mean_abs_shap": 0.0628
       },
       {
         "rank": 18,
-        "feature": "PLT",
-        "label": "Platelet Count (\u00d710\u00b3/\u00b5L)",
-        "mean_abs_shap": 0.0636
+        "feature": "St Depression",
+        "label": "ST-Segment Depression (ECG)",
+        "mean_abs_shap": 0.0596
       },
       {
         "rank": 19,
-        "feature": "Weight",
-        "label": "Body Weight (kg)",
-        "mean_abs_shap": 0.0493
+        "feature": "Sex",
+        "label": "Biological Sex (Male = 1, Female = 0)",
+        "mean_abs_shap": 0.0536
       },
       {
         "rank": 20,
-        "feature": "HDL",
-        "label": "HDL Cholesterol (mg/dL)",
-        "mean_abs_shap": 0.0441
+        "feature": "BP",
+        "label": "Systolic Blood Pressure (mmHg)",
+        "mean_abs_shap": 0.0526
       }
     ],
     "full_ranking": [
@@ -735,246 +737,246 @@
         "rank": 1,
         "feature": "Typical Chest Pain",
         "label": "Typical Anginal Chest Pain",
-        "mean_abs_shap": 0.7621
+        "mean_abs_shap": 0.7451
       },
       {
         "rank": 2,
         "feature": "Region RWMA",
         "label": "Regional Wall Motion Abnormality Count (Echo)",
-        "mean_abs_shap": 0.4438
+        "mean_abs_shap": 0.4348
       },
       {
         "rank": 3,
         "feature": "EF-TTE",
         "label": "Left Ventricular Ejection Fraction (% Echo)",
-        "mean_abs_shap": 0.3912
+        "mean_abs_shap": 0.3625
       },
       {
         "rank": 4,
         "feature": "Age",
         "label": "Patient Age (years)",
-        "mean_abs_shap": 0.2863
+        "mean_abs_shap": 0.3437
       },
       {
         "rank": 5,
         "feature": "ESR",
         "label": "Erythrocyte Sedimentation Rate (mm/hr)",
-        "mean_abs_shap": 0.1474
+        "mean_abs_shap": 0.141
       },
       {
         "rank": 6,
         "feature": "Lymph",
         "label": "Lymphocyte Percentage (%)",
-        "mean_abs_shap": 0.1188
+        "mean_abs_shap": 0.1271
       },
       {
         "rank": 7,
         "feature": "TG",
         "label": "Serum Triglycerides (mg/dL)",
-        "mean_abs_shap": 0.1106
+        "mean_abs_shap": 0.1174
       },
       {
         "rank": 8,
         "feature": "FBS",
         "label": "Fasting Blood Sugar (mg/dL)",
-        "mean_abs_shap": 0.104
+        "mean_abs_shap": 0.098
       },
       {
         "rank": 9,
-        "feature": "WBC",
-        "label": "White Blood Cell Count (/\u00b5L)",
-        "mean_abs_shap": 0.0951
+        "feature": "Neut",
+        "label": "Neutrophil Percentage (%)",
+        "mean_abs_shap": 0.0966
       },
       {
         "rank": 10,
-        "feature": "Neut",
-        "label": "Neutrophil Percentage (%)",
-        "mean_abs_shap": 0.0882
+        "feature": "LDL",
+        "label": "LDL Cholesterol (mg/dL)",
+        "mean_abs_shap": 0.0822
       },
       {
         "rank": 11,
-        "feature": "HTN",
-        "label": "Hypertension History",
-        "mean_abs_shap": 0.0803
+        "feature": "WBC",
+        "label": "White Blood Cell Count (/\u00b5L)",
+        "mean_abs_shap": 0.0784
       },
       {
         "rank": 12,
-        "feature": "Tinversion",
-        "label": "T-Wave Inversion (ECG)",
-        "mean_abs_shap": 0.0768
+        "feature": "PR",
+        "label": "Resting Heart Rate (bpm)",
+        "mean_abs_shap": 0.0743
       },
       {
         "rank": 13,
-        "feature": "BMI",
-        "label": "Body Mass Index (kg/m\u00b2)",
-        "mean_abs_shap": 0.0737
+        "feature": "HDL",
+        "label": "HDL Cholesterol (mg/dL)",
+        "mean_abs_shap": 0.0702
       },
       {
         "rank": 14,
-        "feature": "PR",
-        "label": "Resting Heart Rate (bpm)",
-        "mean_abs_shap": 0.0709
+        "feature": "BMI",
+        "label": "Body Mass Index (kg/m\u00b2)",
+        "mean_abs_shap": 0.0691
       },
       {
         "rank": 15,
-        "feature": "LDL",
-        "label": "LDL Cholesterol (mg/dL)",
-        "mean_abs_shap": 0.0704
+        "feature": "Tinversion",
+        "label": "T-Wave Inversion (ECG)",
+        "mean_abs_shap": 0.0684
       },
       {
         "rank": 16,
-        "feature": "Na",
-        "label": "Serum Sodium (mEq/L)",
-        "mean_abs_shap": 0.0677
+        "feature": "PLT",
+        "label": "Platelet Count (\u00d710\u00b3/\u00b5L)",
+        "mean_abs_shap": 0.0671
       },
       {
         "rank": 17,
-        "feature": "Length",
-        "label": "Height / Stature (cm)",
-        "mean_abs_shap": 0.0641
+        "feature": "Weight",
+        "label": "Body Weight (kg)",
+        "mean_abs_shap": 0.0628
       },
       {
         "rank": 18,
-        "feature": "PLT",
-        "label": "Platelet Count (\u00d710\u00b3/\u00b5L)",
-        "mean_abs_shap": 0.0636
+        "feature": "St Depression",
+        "label": "ST-Segment Depression (ECG)",
+        "mean_abs_shap": 0.0596
       },
       {
         "rank": 19,
-        "feature": "Weight",
-        "label": "Body Weight (kg)",
-        "mean_abs_shap": 0.0493
+        "feature": "Sex",
+        "label": "Biological Sex (Male = 1, Female = 0)",
+        "mean_abs_shap": 0.0536
       },
       {
         "rank": 20,
-        "feature": "HDL",
-        "label": "HDL Cholesterol (mg/dL)",
-        "mean_abs_shap": 0.0441
+        "feature": "BP",
+        "label": "Systolic Blood Pressure (mmHg)",
+        "mean_abs_shap": 0.0526
       },
       {
         "rank": 21,
         "feature": "CR",
         "label": "Serum Creatinine (mg/dL)",
-        "mean_abs_shap": 0.0408
+        "mean_abs_shap": 0.0525
       },
       {
         "rank": 22,
-        "feature": "HB",
-        "label": "Hemoglobin Concentration (g/dL)",
-        "mean_abs_shap": 0.0397
+        "feature": "K",
+        "label": "Serum Potassium (mEq/L)",
+        "mean_abs_shap": 0.0516
       },
       {
         "rank": 23,
-        "feature": "St Depression",
-        "label": "ST-Segment Depression (ECG)",
-        "mean_abs_shap": 0.039
+        "feature": "Na",
+        "label": "Serum Sodium (mEq/L)",
+        "mean_abs_shap": 0.0511
       },
       {
         "rank": 24,
-        "feature": "BP",
-        "label": "Systolic Blood Pressure (mmHg)",
-        "mean_abs_shap": 0.0361
+        "feature": "Length",
+        "label": "Height / Stature (cm)",
+        "mean_abs_shap": 0.05
       },
       {
         "rank": 25,
-        "feature": "K",
-        "label": "Serum Potassium (mEq/L)",
-        "mean_abs_shap": 0.0337
+        "feature": "HTN",
+        "label": "Hypertension History",
+        "mean_abs_shap": 0.0411
       },
       {
         "rank": 26,
-        "feature": "Sex",
-        "label": "Biological Sex (Male = 1, Female = 0)",
-        "mean_abs_shap": 0.0314
+        "feature": "Atypical",
+        "label": "Atypical Angina Symptoms",
+        "mean_abs_shap": 0.0341
       },
       {
         "rank": 27,
-        "feature": "Atypical",
-        "label": "Atypical Angina Symptoms",
-        "mean_abs_shap": 0.0314
+        "feature": "HB",
+        "label": "Hemoglobin Concentration (g/dL)",
+        "mean_abs_shap": 0.0338
       },
       {
         "rank": 28,
-        "feature": "BUN",
-        "label": "Blood Urea Nitrogen (mg/dL)",
-        "mean_abs_shap": 0.0303
+        "feature": "Dyspnea",
+        "label": "Exertional Dyspnea (Shortness of Breath)",
+        "mean_abs_shap": 0.0289
       },
       {
         "rank": 29,
-        "feature": "VHD_Normal",
-        "label": "Normal Cardiac Valves (Echo)",
-        "mean_abs_shap": 0.029
+        "feature": "BUN",
+        "label": "Blood Urea Nitrogen (mg/dL)",
+        "mean_abs_shap": 0.0214
       },
       {
         "rank": 30,
-        "feature": "Current Smoker",
-        "label": "Current Tobacco Smoker",
-        "mean_abs_shap": 0.0274
+        "feature": "Function Class",
+        "label": "NYHA Functional Class (0\u20133)",
+        "mean_abs_shap": 0.021
       },
       {
         "rank": 31,
-        "feature": "DM",
-        "label": "Diabetes Mellitus History",
-        "mean_abs_shap": 0.0266
+        "feature": "DLP",
+        "label": "Dyslipidemia History",
+        "mean_abs_shap": 0.0208
       },
       {
         "rank": 32,
-        "feature": "Function Class",
-        "label": "NYHA Functional Class (0\u20133)",
-        "mean_abs_shap": 0.0207
+        "feature": "Current Smoker",
+        "label": "Current Tobacco Smoker",
+        "mean_abs_shap": 0.0178
       },
       {
         "rank": 33,
-        "feature": "DLP",
-        "label": "Dyslipidemia History",
-        "mean_abs_shap": 0.0157
+        "feature": "FH",
+        "label": "Family History of Premature CAD",
+        "mean_abs_shap": 0.0142
       },
       {
         "rank": 34,
-        "feature": "Dyspnea",
-        "label": "Exertional Dyspnea (Shortness of Breath)",
-        "mean_abs_shap": 0.0154
+        "feature": "VHD_Normal",
+        "label": "Normal Cardiac Valves (Echo)",
+        "mean_abs_shap": 0.0055
       },
       {
         "rank": 35,
-        "feature": "FH",
-        "label": "Family History of Premature CAD",
-        "mean_abs_shap": 0.0146
+        "feature": "DM",
+        "label": "Diabetes Mellitus History",
+        "mean_abs_shap": 0.003
       },
       {
         "rank": 36,
-        "feature": "VHD_Severe",
-        "label": "Severe Valvular Heart Disease (Echo)",
-        "mean_abs_shap": 0.0025
+        "feature": "Nonanginal",
+        "label": "Non-Anginal Chest Pain",
+        "mean_abs_shap": 0.0027
       },
       {
         "rank": 37,
         "feature": "St Elevation",
         "label": "ST-Segment Elevation (ECG)",
-        "mean_abs_shap": 0.0014
+        "mean_abs_shap": 0.0015
       },
       {
         "rank": 38,
-        "feature": "CRF",
-        "label": "Chronic Renal Failure History",
-        "mean_abs_shap": 0.0
+        "feature": "Edema",
+        "label": "Peripheral Edema",
+        "mean_abs_shap": 0.0014
       },
       {
         "rank": 39,
-        "feature": "Poor R Progression",
-        "label": "Poor Precordial R-Wave Progression (ECG)",
-        "mean_abs_shap": 0.0
+        "feature": "Systolic Murmur",
+        "label": "Auscultated Systolic Murmur",
+        "mean_abs_shap": 0.001
       },
       {
         "rank": 40,
-        "feature": "LVH",
-        "label": "Left Ventricular Hypertrophy Criteria (ECG)",
+        "feature": "EX-Smoker",
+        "label": "Former Tobacco Smoker",
         "mean_abs_shap": 0.0
       },
       {
         "rank": 41,
-        "feature": "LowTH Ang",
-        "label": "Low-Threshold Angina",
+        "feature": "VHD_Moderate",
+        "label": "Moderate Valvular Heart Disease (Echo)",
         "mean_abs_shap": 0.0
       },
       {
@@ -985,32 +987,32 @@
       },
       {
         "rank": 43,
-        "feature": "Obesity",
-        "label": "Clinical Obesity (BMI > 25)",
+        "feature": "BBB_N",
+        "label": "Normal Intraventricular Conduction (No BBB)",
         "mean_abs_shap": 0.0
       },
       {
         "rank": 44,
-        "feature": "Airway disease",
-        "label": "Chronic Airway Disease (COPD/Asthma)",
+        "feature": "Poor R Progression",
+        "label": "Poor Precordial R-Wave Progression (ECG)",
         "mean_abs_shap": 0.0
       },
       {
         "rank": 45,
-        "feature": "CVA",
-        "label": "Cerebrovascular Accident (Stroke/TIA)",
+        "feature": "LVH",
+        "label": "Left Ventricular Hypertrophy Criteria (ECG)",
         "mean_abs_shap": 0.0
       },
       {
         "rank": 46,
-        "feature": "Thyroid Disease",
-        "label": "Thyroid Disease History",
+        "feature": "LowTH Ang",
+        "label": "Low-Threshold Angina",
         "mean_abs_shap": 0.0
       },
       {
         "rank": 47,
-        "feature": "CHF",
-        "label": "Congestive Heart Failure History",
+        "feature": "Diastolic Murmur",
+        "label": "Auscultated Diastolic Murmur",
         "mean_abs_shap": 0.0
       },
       {
@@ -1021,56 +1023,56 @@
       },
       {
         "rank": 49,
+        "feature": "Q Wave",
+        "label": "Pathological Q Waves (ECG)",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "rank": 50,
         "feature": "Weak Peripheral Pulse",
         "label": "Diminished Peripheral Pulses",
         "mean_abs_shap": 0.0
       },
       {
-        "rank": 50,
-        "feature": "Nonanginal",
-        "label": "Non-Anginal Chest Pain",
-        "mean_abs_shap": 0.0
-      },
-      {
         "rank": 51,
-        "feature": "Diastolic Murmur",
-        "label": "Auscultated Diastolic Murmur",
+        "feature": "CHF",
+        "label": "Congestive Heart Failure History",
         "mean_abs_shap": 0.0
       },
       {
         "rank": 52,
-        "feature": "Systolic Murmur",
-        "label": "Auscultated Systolic Murmur",
+        "feature": "Thyroid Disease",
+        "label": "Thyroid Disease History",
         "mean_abs_shap": 0.0
       },
       {
         "rank": 53,
-        "feature": "VHD_Moderate",
-        "label": "Moderate Valvular Heart Disease (Echo)",
+        "feature": "Airway disease",
+        "label": "Chronic Airway Disease (COPD/Asthma)",
         "mean_abs_shap": 0.0
       },
       {
         "rank": 54,
-        "feature": "BBB_N",
-        "label": "Normal Intraventricular Conduction (No BBB)",
+        "feature": "CVA",
+        "label": "Cerebrovascular Accident (Stroke/TIA)",
         "mean_abs_shap": 0.0
       },
       {
         "rank": 55,
-        "feature": "Edema",
-        "label": "Peripheral Edema",
+        "feature": "CRF",
+        "label": "Chronic Renal Failure History",
         "mean_abs_shap": 0.0
       },
       {
         "rank": 56,
-        "feature": "EX-Smoker",
-        "label": "Former Tobacco Smoker",
+        "feature": "Obesity",
+        "label": "Clinical Obesity (BMI > 25)",
         "mean_abs_shap": 0.0
       },
       {
         "rank": 57,
-        "feature": "Q Wave",
-        "label": "Pathological Q Waves (ECG)",
+        "feature": "VHD_Severe",
+        "label": "Severe Valvular Heart Disease (Echo)",
         "mean_abs_shap": 0.0
       }
     ]
@@ -1082,533 +1084,534 @@
     "calibration_method": "uncalibrated",
     "explanation_space": "log-odds (model score)",
     "calibration_note": "SHAP values explain the underlying predictive model score (log-odds/margin); probability calibration is applied separately to determine the final visual risk probability.",
-    "base_value": 0.0604,
+    "calibration_disclosure": "SHAP values explain the underlying predictive model score (log-odds/margin); probability calibration is applied separately to determine the final visual risk probability.",
+    "base_value": 0.0613,
     "total_features": 57,
     "top_10": [
       {
         "rank": 1,
-        "feature": "Typical Chest Pain",
-        "label": "Typical Anginal Chest Pain",
-        "mean_abs_shap": 0.4263
+        "feature": "Age",
+        "label": "Patient Age (years)",
+        "mean_abs_shap": 0.4409
       },
       {
         "rank": 2,
-        "feature": "Age",
-        "label": "Patient Age (years)",
-        "mean_abs_shap": 0.4201
+        "feature": "Typical Chest Pain",
+        "label": "Typical Anginal Chest Pain",
+        "mean_abs_shap": 0.4071
       },
       {
         "rank": 3,
-        "feature": "CR",
-        "label": "Serum Creatinine (mg/dL)",
-        "mean_abs_shap": 0.2701
+        "feature": "TG",
+        "label": "Serum Triglycerides (mg/dL)",
+        "mean_abs_shap": 0.2711
       },
       {
         "rank": 4,
-        "feature": "TG",
-        "label": "Serum Triglycerides (mg/dL)",
-        "mean_abs_shap": 0.2446
+        "feature": "CR",
+        "label": "Serum Creatinine (mg/dL)",
+        "mean_abs_shap": 0.2473
       },
       {
         "rank": 5,
         "feature": "PLT",
         "label": "Platelet Count (\u00d710\u00b3/\u00b5L)",
-        "mean_abs_shap": 0.2256
+        "mean_abs_shap": 0.2155
       },
       {
         "rank": 6,
         "feature": "FBS",
         "label": "Fasting Blood Sugar (mg/dL)",
-        "mean_abs_shap": 0.1666
+        "mean_abs_shap": 0.1661
       },
       {
         "rank": 7,
         "feature": "Na",
         "label": "Serum Sodium (mEq/L)",
-        "mean_abs_shap": 0.1551
+        "mean_abs_shap": 0.1455
       },
       {
         "rank": 8,
-        "feature": "HDL",
-        "label": "HDL Cholesterol (mg/dL)",
-        "mean_abs_shap": 0.1433
+        "feature": "Length",
+        "label": "Height / Stature (cm)",
+        "mean_abs_shap": 0.1325
       },
       {
         "rank": 9,
-        "feature": "Length",
-        "label": "Height / Stature (cm)",
-        "mean_abs_shap": 0.1381
+        "feature": "HDL",
+        "label": "HDL Cholesterol (mg/dL)",
+        "mean_abs_shap": 0.129
       },
       {
         "rank": 10,
-        "feature": "BMI",
-        "label": "Body Mass Index (kg/m\u00b2)",
-        "mean_abs_shap": 0.1227
+        "feature": "ESR",
+        "label": "Erythrocyte Sedimentation Rate (mm/hr)",
+        "mean_abs_shap": 0.1189
       }
     ],
     "top_20": [
       {
         "rank": 1,
-        "feature": "Typical Chest Pain",
-        "label": "Typical Anginal Chest Pain",
-        "mean_abs_shap": 0.4263
+        "feature": "Age",
+        "label": "Patient Age (years)",
+        "mean_abs_shap": 0.4409
       },
       {
         "rank": 2,
-        "feature": "Age",
-        "label": "Patient Age (years)",
-        "mean_abs_shap": 0.4201
+        "feature": "Typical Chest Pain",
+        "label": "Typical Anginal Chest Pain",
+        "mean_abs_shap": 0.4071
       },
       {
         "rank": 3,
-        "feature": "CR",
-        "label": "Serum Creatinine (mg/dL)",
-        "mean_abs_shap": 0.2701
+        "feature": "TG",
+        "label": "Serum Triglycerides (mg/dL)",
+        "mean_abs_shap": 0.2711
       },
       {
         "rank": 4,
-        "feature": "TG",
-        "label": "Serum Triglycerides (mg/dL)",
-        "mean_abs_shap": 0.2446
+        "feature": "CR",
+        "label": "Serum Creatinine (mg/dL)",
+        "mean_abs_shap": 0.2473
       },
       {
         "rank": 5,
         "feature": "PLT",
         "label": "Platelet Count (\u00d710\u00b3/\u00b5L)",
-        "mean_abs_shap": 0.2256
+        "mean_abs_shap": 0.2155
       },
       {
         "rank": 6,
         "feature": "FBS",
         "label": "Fasting Blood Sugar (mg/dL)",
-        "mean_abs_shap": 0.1666
+        "mean_abs_shap": 0.1661
       },
       {
         "rank": 7,
         "feature": "Na",
         "label": "Serum Sodium (mEq/L)",
-        "mean_abs_shap": 0.1551
+        "mean_abs_shap": 0.1455
       },
       {
         "rank": 8,
-        "feature": "HDL",
-        "label": "HDL Cholesterol (mg/dL)",
-        "mean_abs_shap": 0.1433
+        "feature": "Length",
+        "label": "Height / Stature (cm)",
+        "mean_abs_shap": 0.1325
       },
       {
         "rank": 9,
-        "feature": "Length",
-        "label": "Height / Stature (cm)",
-        "mean_abs_shap": 0.1381
+        "feature": "HDL",
+        "label": "HDL Cholesterol (mg/dL)",
+        "mean_abs_shap": 0.129
       },
       {
         "rank": 10,
-        "feature": "BMI",
-        "label": "Body Mass Index (kg/m\u00b2)",
-        "mean_abs_shap": 0.1227
+        "feature": "ESR",
+        "label": "Erythrocyte Sedimentation Rate (mm/hr)",
+        "mean_abs_shap": 0.1189
       },
       {
         "rank": 11,
         "feature": "BP",
         "label": "Systolic Blood Pressure (mmHg)",
-        "mean_abs_shap": 0.1089
+        "mean_abs_shap": 0.1086
       },
       {
         "rank": 12,
-        "feature": "LDL",
-        "label": "LDL Cholesterol (mg/dL)",
-        "mean_abs_shap": 0.1061
+        "feature": "Weight",
+        "label": "Body Weight (kg)",
+        "mean_abs_shap": 0.1022
       },
       {
         "rank": 13,
-        "feature": "ESR",
-        "label": "Erythrocyte Sedimentation Rate (mm/hr)",
-        "mean_abs_shap": 0.0887
+        "feature": "LDL",
+        "label": "LDL Cholesterol (mg/dL)",
+        "mean_abs_shap": 0.0932
       },
       {
         "rank": 14,
-        "feature": "Weight",
-        "label": "Body Weight (kg)",
-        "mean_abs_shap": 0.0884
+        "feature": "BMI",
+        "label": "Body Mass Index (kg/m\u00b2)",
+        "mean_abs_shap": 0.0869
       },
       {
         "rank": 15,
-        "feature": "WBC",
-        "label": "White Blood Cell Count (/\u00b5L)",
-        "mean_abs_shap": 0.075
+        "feature": "BUN",
+        "label": "Blood Urea Nitrogen (mg/dL)",
+        "mean_abs_shap": 0.0771
       },
       {
         "rank": 16,
-        "feature": "BUN",
-        "label": "Blood Urea Nitrogen (mg/dL)",
-        "mean_abs_shap": 0.0712
+        "feature": "K",
+        "label": "Serum Potassium (mEq/L)",
+        "mean_abs_shap": 0.0745
       },
       {
         "rank": 17,
-        "feature": "EF-TTE",
-        "label": "Left Ventricular Ejection Fraction (% Echo)",
-        "mean_abs_shap": 0.0691
+        "feature": "Lymph",
+        "label": "Lymphocyte Percentage (%)",
+        "mean_abs_shap": 0.0723
       },
       {
         "rank": 18,
-        "feature": "K",
-        "label": "Serum Potassium (mEq/L)",
-        "mean_abs_shap": 0.0595
+        "feature": "HB",
+        "label": "Hemoglobin Concentration (g/dL)",
+        "mean_abs_shap": 0.063
       },
       {
         "rank": 19,
-        "feature": "HB",
-        "label": "Hemoglobin Concentration (g/dL)",
-        "mean_abs_shap": 0.0533
+        "feature": "EF-TTE",
+        "label": "Left Ventricular Ejection Fraction (% Echo)",
+        "mean_abs_shap": 0.0609
       },
       {
         "rank": 20,
-        "feature": "Lymph",
-        "label": "Lymphocyte Percentage (%)",
-        "mean_abs_shap": 0.048
+        "feature": "WBC",
+        "label": "White Blood Cell Count (/\u00b5L)",
+        "mean_abs_shap": 0.0434
       }
     ],
     "full_ranking": [
       {
         "rank": 1,
-        "feature": "Typical Chest Pain",
-        "label": "Typical Anginal Chest Pain",
-        "mean_abs_shap": 0.4263
+        "feature": "Age",
+        "label": "Patient Age (years)",
+        "mean_abs_shap": 0.4409
       },
       {
         "rank": 2,
-        "feature": "Age",
-        "label": "Patient Age (years)",
-        "mean_abs_shap": 0.4201
+        "feature": "Typical Chest Pain",
+        "label": "Typical Anginal Chest Pain",
+        "mean_abs_shap": 0.4071
       },
       {
         "rank": 3,
-        "feature": "CR",
-        "label": "Serum Creatinine (mg/dL)",
-        "mean_abs_shap": 0.2701
+        "feature": "TG",
+        "label": "Serum Triglycerides (mg/dL)",
+        "mean_abs_shap": 0.2711
       },
       {
         "rank": 4,
-        "feature": "TG",
-        "label": "Serum Triglycerides (mg/dL)",
-        "mean_abs_shap": 0.2446
+        "feature": "CR",
+        "label": "Serum Creatinine (mg/dL)",
+        "mean_abs_shap": 0.2473
       },
       {
         "rank": 5,
         "feature": "PLT",
         "label": "Platelet Count (\u00d710\u00b3/\u00b5L)",
-        "mean_abs_shap": 0.2256
+        "mean_abs_shap": 0.2155
       },
       {
         "rank": 6,
         "feature": "FBS",
         "label": "Fasting Blood Sugar (mg/dL)",
-        "mean_abs_shap": 0.1666
+        "mean_abs_shap": 0.1661
       },
       {
         "rank": 7,
         "feature": "Na",
         "label": "Serum Sodium (mEq/L)",
-        "mean_abs_shap": 0.1551
+        "mean_abs_shap": 0.1455
       },
       {
         "rank": 8,
-        "feature": "HDL",
-        "label": "HDL Cholesterol (mg/dL)",
-        "mean_abs_shap": 0.1433
+        "feature": "Length",
+        "label": "Height / Stature (cm)",
+        "mean_abs_shap": 0.1325
       },
       {
         "rank": 9,
-        "feature": "Length",
-        "label": "Height / Stature (cm)",
-        "mean_abs_shap": 0.1381
+        "feature": "HDL",
+        "label": "HDL Cholesterol (mg/dL)",
+        "mean_abs_shap": 0.129
       },
       {
         "rank": 10,
-        "feature": "BMI",
-        "label": "Body Mass Index (kg/m\u00b2)",
-        "mean_abs_shap": 0.1227
+        "feature": "ESR",
+        "label": "Erythrocyte Sedimentation Rate (mm/hr)",
+        "mean_abs_shap": 0.1189
       },
       {
         "rank": 11,
         "feature": "BP",
         "label": "Systolic Blood Pressure (mmHg)",
-        "mean_abs_shap": 0.1089
+        "mean_abs_shap": 0.1086
       },
       {
         "rank": 12,
-        "feature": "LDL",
-        "label": "LDL Cholesterol (mg/dL)",
-        "mean_abs_shap": 0.1061
+        "feature": "Weight",
+        "label": "Body Weight (kg)",
+        "mean_abs_shap": 0.1022
       },
       {
         "rank": 13,
-        "feature": "ESR",
-        "label": "Erythrocyte Sedimentation Rate (mm/hr)",
-        "mean_abs_shap": 0.0887
+        "feature": "LDL",
+        "label": "LDL Cholesterol (mg/dL)",
+        "mean_abs_shap": 0.0932
       },
       {
         "rank": 14,
-        "feature": "Weight",
-        "label": "Body Weight (kg)",
-        "mean_abs_shap": 0.0884
+        "feature": "BMI",
+        "label": "Body Mass Index (kg/m\u00b2)",
+        "mean_abs_shap": 0.0869
       },
       {
         "rank": 15,
-        "feature": "WBC",
-        "label": "White Blood Cell Count (/\u00b5L)",
-        "mean_abs_shap": 0.075
+        "feature": "BUN",
+        "label": "Blood Urea Nitrogen (mg/dL)",
+        "mean_abs_shap": 0.0771
       },
       {
         "rank": 16,
-        "feature": "BUN",
-        "label": "Blood Urea Nitrogen (mg/dL)",
-        "mean_abs_shap": 0.0712
+        "feature": "K",
+        "label": "Serum Potassium (mEq/L)",
+        "mean_abs_shap": 0.0745
       },
       {
         "rank": 17,
-        "feature": "EF-TTE",
-        "label": "Left Ventricular Ejection Fraction (% Echo)",
-        "mean_abs_shap": 0.0691
+        "feature": "Lymph",
+        "label": "Lymphocyte Percentage (%)",
+        "mean_abs_shap": 0.0723
       },
       {
         "rank": 18,
-        "feature": "K",
-        "label": "Serum Potassium (mEq/L)",
-        "mean_abs_shap": 0.0595
+        "feature": "HB",
+        "label": "Hemoglobin Concentration (g/dL)",
+        "mean_abs_shap": 0.063
       },
       {
         "rank": 19,
-        "feature": "HB",
-        "label": "Hemoglobin Concentration (g/dL)",
-        "mean_abs_shap": 0.0533
+        "feature": "EF-TTE",
+        "label": "Left Ventricular Ejection Fraction (% Echo)",
+        "mean_abs_shap": 0.0609
       },
       {
         "rank": 20,
-        "feature": "Lymph",
-        "label": "Lymphocyte Percentage (%)",
-        "mean_abs_shap": 0.048
+        "feature": "WBC",
+        "label": "White Blood Cell Count (/\u00b5L)",
+        "mean_abs_shap": 0.0434
       },
       {
         "rank": 21,
-        "feature": "Sex",
-        "label": "Biological Sex (Male = 1, Female = 0)",
-        "mean_abs_shap": 0.0421
+        "feature": "Neut",
+        "label": "Neutrophil Percentage (%)",
+        "mean_abs_shap": 0.0383
       },
       {
         "rank": 22,
-        "feature": "Current Smoker",
-        "label": "Current Tobacco Smoker",
-        "mean_abs_shap": 0.0347
+        "feature": "Sex",
+        "label": "Biological Sex (Male = 1, Female = 0)",
+        "mean_abs_shap": 0.0344
       },
       {
         "rank": 23,
-        "feature": "VHD_Normal",
-        "label": "Normal Cardiac Valves (Echo)",
-        "mean_abs_shap": 0.0304
+        "feature": "Current Smoker",
+        "label": "Current Tobacco Smoker",
+        "mean_abs_shap": 0.0291
       },
       {
         "rank": 24,
-        "feature": "Neut",
-        "label": "Neutrophil Percentage (%)",
-        "mean_abs_shap": 0.017
+        "feature": "HTN",
+        "label": "Hypertension History",
+        "mean_abs_shap": 0.025
       },
       {
         "rank": 25,
-        "feature": "Region RWMA",
-        "label": "Regional Wall Motion Abnormality Count (Echo)",
-        "mean_abs_shap": 0.0157
+        "feature": "VHD_Normal",
+        "label": "Normal Cardiac Valves (Echo)",
+        "mean_abs_shap": 0.0213
       },
       {
         "rank": 26,
-        "feature": "HTN",
-        "label": "Hypertension History",
-        "mean_abs_shap": 0.0124
+        "feature": "Region RWMA",
+        "label": "Regional Wall Motion Abnormality Count (Echo)",
+        "mean_abs_shap": 0.0158
       },
       {
         "rank": 27,
         "feature": "DLP",
         "label": "Dyslipidemia History",
-        "mean_abs_shap": 0.0111
+        "mean_abs_shap": 0.0149
       },
       {
         "rank": 28,
-        "feature": "FH",
-        "label": "Family History of Premature CAD",
-        "mean_abs_shap": 0.0109
+        "feature": "DM",
+        "label": "Diabetes Mellitus History",
+        "mean_abs_shap": 0.0111
       },
       {
         "rank": 29,
-        "feature": "Function Class",
-        "label": "NYHA Functional Class (0\u20133)",
-        "mean_abs_shap": 0.0105
+        "feature": "PR",
+        "label": "Resting Heart Rate (bpm)",
+        "mean_abs_shap": 0.0098
       },
       {
         "rank": 30,
-        "feature": "Dyspnea",
-        "label": "Exertional Dyspnea (Shortness of Breath)",
-        "mean_abs_shap": 0.0099
+        "feature": "FH",
+        "label": "Family History of Premature CAD",
+        "mean_abs_shap": 0.009
       },
       {
         "rank": 31,
-        "feature": "PR",
-        "label": "Resting Heart Rate (bpm)",
-        "mean_abs_shap": 0.0068
+        "feature": "Tinversion",
+        "label": "T-Wave Inversion (ECG)",
+        "mean_abs_shap": 0.0084
       },
       {
         "rank": 32,
-        "feature": "Systolic Murmur",
-        "label": "Auscultated Systolic Murmur",
-        "mean_abs_shap": 0.0056
+        "feature": "Function Class",
+        "label": "NYHA Functional Class (0\u20133)",
+        "mean_abs_shap": 0.007
       },
       {
         "rank": 33,
-        "feature": "Q Wave",
-        "label": "Pathological Q Waves (ECG)",
-        "mean_abs_shap": 0.004
+        "feature": "Obesity",
+        "label": "Clinical Obesity (BMI > 25)",
+        "mean_abs_shap": 0.0064
       },
       {
         "rank": 34,
-        "feature": "Tinversion",
-        "label": "T-Wave Inversion (ECG)",
-        "mean_abs_shap": 0.0038
+        "feature": "Systolic Murmur",
+        "label": "Auscultated Systolic Murmur",
+        "mean_abs_shap": 0.0054
       },
       {
         "rank": 35,
-        "feature": "St Depression",
-        "label": "ST-Segment Depression (ECG)",
-        "mean_abs_shap": 0.0018
+        "feature": "Atypical",
+        "label": "Atypical Angina Symptoms",
+        "mean_abs_shap": 0.0036
       },
       {
         "rank": 36,
-        "feature": "CRF",
-        "label": "Chronic Renal Failure History",
-        "mean_abs_shap": 0.0
+        "feature": "Dyspnea",
+        "label": "Exertional Dyspnea (Shortness of Breath)",
+        "mean_abs_shap": 0.0033
       },
       {
         "rank": 37,
-        "feature": "Obesity",
-        "label": "Clinical Obesity (BMI > 25)",
-        "mean_abs_shap": 0.0
+        "feature": "BBB_N",
+        "label": "Normal Intraventricular Conduction (No BBB)",
+        "mean_abs_shap": 0.0019
       },
       {
         "rank": 38,
-        "feature": "BBB_N",
-        "label": "Normal Intraventricular Conduction (No BBB)",
-        "mean_abs_shap": 0.0
-      },
-      {
-        "rank": 39,
-        "feature": "Poor R Progression",
-        "label": "Poor Precordial R-Wave Progression (ECG)",
-        "mean_abs_shap": 0.0
-      },
-      {
-        "rank": 40,
-        "feature": "LVH",
-        "label": "Left Ventricular Hypertrophy Criteria (ECG)",
-        "mean_abs_shap": 0.0
-      },
-      {
-        "rank": 41,
-        "feature": "LowTH Ang",
-        "label": "Low-Threshold Angina",
-        "mean_abs_shap": 0.0
-      },
-      {
-        "rank": 42,
         "feature": "VHD_Severe",
         "label": "Severe Valvular Heart Disease (Echo)",
         "mean_abs_shap": 0.0
       },
       {
-        "rank": 43,
-        "feature": "BBB_RBBB",
-        "label": "Right Bundle Branch Block (ECG)",
+        "rank": 39,
+        "feature": "EX-Smoker",
+        "label": "Former Tobacco Smoker",
         "mean_abs_shap": 0.0
       },
       {
-        "rank": 44,
-        "feature": "Airway disease",
-        "label": "Chronic Airway Disease (COPD/Asthma)",
-        "mean_abs_shap": 0.0
-      },
-      {
-        "rank": 45,
-        "feature": "CVA",
-        "label": "Cerebrovascular Accident (Stroke/TIA)",
-        "mean_abs_shap": 0.0
-      },
-      {
-        "rank": 46,
-        "feature": "Thyroid Disease",
-        "label": "Thyroid Disease History",
-        "mean_abs_shap": 0.0
-      },
-      {
-        "rank": 47,
-        "feature": "CHF",
-        "label": "Congestive Heart Failure History",
-        "mean_abs_shap": 0.0
-      },
-      {
-        "rank": 48,
+        "rank": 40,
         "feature": "Lung rales",
         "label": "Pulmonary Rales / Crackles",
         "mean_abs_shap": 0.0
       },
       {
-        "rank": 49,
-        "feature": "Weak Peripheral Pulse",
-        "label": "Diminished Peripheral Pulses",
-        "mean_abs_shap": 0.0
-      },
-      {
-        "rank": 50,
-        "feature": "Nonanginal",
-        "label": "Non-Anginal Chest Pain",
-        "mean_abs_shap": 0.0
-      },
-      {
-        "rank": 51,
-        "feature": "Diastolic Murmur",
-        "label": "Auscultated Diastolic Murmur",
-        "mean_abs_shap": 0.0
-      },
-      {
-        "rank": 52,
-        "feature": "Atypical",
-        "label": "Atypical Angina Symptoms",
-        "mean_abs_shap": 0.0
-      },
-      {
-        "rank": 53,
+        "rank": 41,
         "feature": "VHD_Moderate",
         "label": "Moderate Valvular Heart Disease (Echo)",
         "mean_abs_shap": 0.0
       },
       {
+        "rank": 42,
+        "feature": "BBB_RBBB",
+        "label": "Right Bundle Branch Block (ECG)",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "rank": 43,
+        "feature": "Poor R Progression",
+        "label": "Poor Precordial R-Wave Progression (ECG)",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "rank": 44,
+        "feature": "LVH",
+        "label": "Left Ventricular Hypertrophy Criteria (ECG)",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "rank": 45,
+        "feature": "LowTH Ang",
+        "label": "Low-Threshold Angina",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "rank": 46,
+        "feature": "Nonanginal",
+        "label": "Non-Anginal Chest Pain",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "rank": 47,
+        "feature": "Diastolic Murmur",
+        "label": "Auscultated Diastolic Murmur",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "rank": 48,
+        "feature": "Weak Peripheral Pulse",
+        "label": "Diminished Peripheral Pulses",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "rank": 49,
+        "feature": "Q Wave",
+        "label": "Pathological Q Waves (ECG)",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "rank": 50,
+        "feature": "CHF",
+        "label": "Congestive Heart Failure History",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "rank": 51,
+        "feature": "Thyroid Disease",
+        "label": "Thyroid Disease History",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "rank": 52,
+        "feature": "Airway disease",
+        "label": "Chronic Airway Disease (COPD/Asthma)",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "rank": 53,
+        "feature": "CVA",
+        "label": "Cerebrovascular Accident (Stroke/TIA)",
+        "mean_abs_shap": 0.0
+      },
+      {
         "rank": 54,
-        "feature": "DM",
-        "label": "Diabetes Mellitus History",
+        "feature": "CRF",
+        "label": "Chronic Renal Failure History",
         "mean_abs_shap": 0.0
       },
       {
         "rank": 55,
+        "feature": "St Depression",
+        "label": "ST-Segment Depression (ECG)",
+        "mean_abs_shap": 0.0
+      },
+      {
+        "rank": 56,
         "feature": "St Elevation",
         "label": "ST-Segment Elevation (ECG)",
         "mean_abs_shap": 0.0
       },
       {
-        "rank": 56,
+        "rank": 57,
         "feature": "Edema",
         "label": "Peripheral Edema",
-        "mean_abs_shap": 0.0
-      },
-      {
-        "rank": 57,
-        "feature": "EX-Smoker",
-        "label": "Former Tobacco Smoker",
         "mean_abs_shap": 0.0
       }
     ]
@@ -1620,68 +1623,69 @@
     "calibration_method": "sigmoid",
     "explanation_space": "log-odds (model score)",
     "calibration_note": "SHAP values explain the underlying predictive model score (log-odds/margin); probability calibration is applied separately to determine the final visual risk probability.",
-    "base_value": -0.9191,
+    "calibration_disclosure": "SHAP values explain the underlying predictive model score (log-odds/margin); probability calibration is applied separately to determine the final visual risk probability.",
+    "base_value": -0.8999,
     "total_features": 57,
     "top_10": [
       {
         "rank": 1,
         "feature": "Age",
         "label": "Patient Age (years)",
-        "mean_abs_shap": 0.5796
+        "mean_abs_shap": 0.5407
       },
       {
         "rank": 2,
-        "feature": "TG",
-        "label": "Serum Triglycerides (mg/dL)",
-        "mean_abs_shap": 0.5588
+        "feature": "Sex",
+        "label": "Biological Sex (Male = 1, Female = 0)",
+        "mean_abs_shap": 0.5077
       },
       {
         "rank": 3,
-        "feature": "BUN",
-        "label": "Blood Urea Nitrogen (mg/dL)",
-        "mean_abs_shap": 0.5427
+        "feature": "DM",
+        "label": "Diabetes Mellitus History",
+        "mean_abs_shap": 0.3892
       },
       {
         "rank": 4,
-        "feature": "Sex",
-        "label": "Biological Sex (Male = 1, Female = 0)",
-        "mean_abs_shap": 0.5009
+        "feature": "Dyspnea",
+        "label": "Exertional Dyspnea (Shortness of Breath)",
+        "mean_abs_shap": 0.389
       },
       {
         "rank": 5,
-        "feature": "Weight",
-        "label": "Body Weight (kg)",
-        "mean_abs_shap": 0.4978
+        "feature": "Function Class",
+        "label": "NYHA Functional Class (0\u20133)",
+        "mean_abs_shap": 0.3811
       },
       {
         "rank": 6,
         "feature": "ESR",
         "label": "Erythrocyte Sedimentation Rate (mm/hr)",
-        "mean_abs_shap": 0.4292
+        "mean_abs_shap": 0.361
       },
       {
         "rank": 7,
-        "feature": "Dyspnea",
-        "label": "Exertional Dyspnea (Shortness of Breath)",
-        "mean_abs_shap": 0.3884
+        "feature": "Typical Chest Pain",
+        "label": "Typical Anginal Chest Pain",
+        "mean_abs_shap": 0.3139
       },
       {
         "rank": 8,
-        "feature": "DM",
-        "label": "Diabetes Mellitus History",
-        "mean_abs_shap": 0.3784
+        "feature": "BBB_N",
+        "label": "Normal Intraventricular Conduction (No BBB)",
+        "mean_abs_shap": 0.3115
       },
       {
         "rank": 9,
-        "feature": "CR",
-        "label": "Serum Creatinine (mg/dL)",
-        "mean_abs_shap": 0.3492
+        "feature": "Neut",
+        "label": "Neutrophil Percentage (%)",
+        "mean_abs_shap": 0.3091
       },
       {
         "rank": 10,
-        "feature": "Neut",
-        "label": "Neutrophil Percentage (%)",
-        "mean_abs_shap": 0.3251
+        "feature": "Weight",
+        "label": "Body Weight (kg)",
+        "mean_abs_shap": 0.3015
       }
     ],
     "top_20": [
@@ -1689,121 +1693,121 @@
         "rank": 1,
         "feature": "Age",
         "label": "Patient Age (years)",
-        "mean_abs_shap": 0.5796
+        "mean_abs_shap": 0.5407
       },
       {
         "rank": 2,
-        "feature": "TG",
-        "label": "Serum Triglycerides (mg/dL)",
-        "mean_abs_shap": 0.5588
+        "feature": "Sex",
+        "label": "Biological Sex (Male = 1, Female = 0)",
+        "mean_abs_shap": 0.5077
       },
       {
         "rank": 3,
-        "feature": "BUN",
-        "label": "Blood Urea Nitrogen (mg/dL)",
-        "mean_abs_shap": 0.5427
+        "feature": "DM",
+        "label": "Diabetes Mellitus History",
+        "mean_abs_shap": 0.3892
       },
       {
         "rank": 4,
-        "feature": "Sex",
-        "label": "Biological Sex (Male = 1, Female = 0)",
-        "mean_abs_shap": 0.5009
+        "feature": "Dyspnea",
+        "label": "Exertional Dyspnea (Shortness of Breath)",
+        "mean_abs_shap": 0.389
       },
       {
         "rank": 5,
-        "feature": "Weight",
-        "label": "Body Weight (kg)",
-        "mean_abs_shap": 0.4978
+        "feature": "Function Class",
+        "label": "NYHA Functional Class (0\u20133)",
+        "mean_abs_shap": 0.3811
       },
       {
         "rank": 6,
         "feature": "ESR",
         "label": "Erythrocyte Sedimentation Rate (mm/hr)",
-        "mean_abs_shap": 0.4292
+        "mean_abs_shap": 0.361
       },
       {
         "rank": 7,
-        "feature": "Dyspnea",
-        "label": "Exertional Dyspnea (Shortness of Breath)",
-        "mean_abs_shap": 0.3884
+        "feature": "Typical Chest Pain",
+        "label": "Typical Anginal Chest Pain",
+        "mean_abs_shap": 0.3139
       },
       {
         "rank": 8,
-        "feature": "DM",
-        "label": "Diabetes Mellitus History",
-        "mean_abs_shap": 0.3784
+        "feature": "BBB_N",
+        "label": "Normal Intraventricular Conduction (No BBB)",
+        "mean_abs_shap": 0.3115
       },
       {
         "rank": 9,
-        "feature": "CR",
-        "label": "Serum Creatinine (mg/dL)",
-        "mean_abs_shap": 0.3492
+        "feature": "Neut",
+        "label": "Neutrophil Percentage (%)",
+        "mean_abs_shap": 0.3091
       },
       {
         "rank": 10,
-        "feature": "Neut",
-        "label": "Neutrophil Percentage (%)",
-        "mean_abs_shap": 0.3251
+        "feature": "Weight",
+        "label": "Body Weight (kg)",
+        "mean_abs_shap": 0.3015
       },
       {
         "rank": 11,
-        "feature": "Current Smoker",
-        "label": "Current Tobacco Smoker",
-        "mean_abs_shap": 0.3203
+        "feature": "BUN",
+        "label": "Blood Urea Nitrogen (mg/dL)",
+        "mean_abs_shap": 0.29
       },
       {
         "rank": 12,
-        "feature": "K",
-        "label": "Serum Potassium (mEq/L)",
-        "mean_abs_shap": 0.3199
+        "feature": "TG",
+        "label": "Serum Triglycerides (mg/dL)",
+        "mean_abs_shap": 0.282
       },
       {
         "rank": 13,
-        "feature": "Function Class",
-        "label": "NYHA Functional Class (0\u20133)",
-        "mean_abs_shap": 0.2699
+        "feature": "BMI",
+        "label": "Body Mass Index (kg/m\u00b2)",
+        "mean_abs_shap": 0.2154
       },
       {
         "rank": 14,
-        "feature": "Typical Chest Pain",
-        "label": "Typical Anginal Chest Pain",
-        "mean_abs_shap": 0.2507
+        "feature": "CR",
+        "label": "Serum Creatinine (mg/dL)",
+        "mean_abs_shap": 0.1834
       },
       {
         "rank": 15,
-        "feature": "HB",
-        "label": "Hemoglobin Concentration (g/dL)",
-        "mean_abs_shap": 0.232
+        "feature": "HTN",
+        "label": "Hypertension History",
+        "mean_abs_shap": 0.1751
       },
       {
         "rank": 16,
-        "feature": "HDL",
-        "label": "HDL Cholesterol (mg/dL)",
-        "mean_abs_shap": 0.2111
+        "feature": "Region RWMA",
+        "label": "Regional Wall Motion Abnormality Count (Echo)",
+        "mean_abs_shap": 0.1711
       },
       {
         "rank": 17,
-        "feature": "Length",
-        "label": "Height / Stature (cm)",
-        "mean_abs_shap": 0.2056
+        "feature": "HDL",
+        "label": "HDL Cholesterol (mg/dL)",
+        "mean_abs_shap": 0.1653
       },
       {
         "rank": 18,
-        "feature": "BMI",
-        "label": "Body Mass Index (kg/m\u00b2)",
-        "mean_abs_shap": 0.171
+        "feature": "K",
+        "label": "Serum Potassium (mEq/L)",
+        "mean_abs_shap": 0.1606
       },
       {
         "rank": 19,
         "feature": "Atypical",
         "label": "Atypical Angina Symptoms",
-        "mean_abs_shap": 0.1452
+        "mean_abs_shap": 0.1345
       },
       {
         "rank": 20,
-        "feature": "Region RWMA",
-        "label": "Regional Wall Motion Abnormality Count (Echo)",
-        "mean_abs_shap": 0.144
+        "feature": "HB",
+        "label": "Hemoglobin Concentration (g/dL)",
+        "mean_abs_shap": 0.1307
       }
     ],
     "full_ranking": [
@@ -1811,343 +1815,343 @@
         "rank": 1,
         "feature": "Age",
         "label": "Patient Age (years)",
-        "mean_abs_shap": 0.5796
+        "mean_abs_shap": 0.5407
       },
       {
         "rank": 2,
-        "feature": "TG",
-        "label": "Serum Triglycerides (mg/dL)",
-        "mean_abs_shap": 0.5588
+        "feature": "Sex",
+        "label": "Biological Sex (Male = 1, Female = 0)",
+        "mean_abs_shap": 0.5077
       },
       {
         "rank": 3,
-        "feature": "BUN",
-        "label": "Blood Urea Nitrogen (mg/dL)",
-        "mean_abs_shap": 0.5427
+        "feature": "DM",
+        "label": "Diabetes Mellitus History",
+        "mean_abs_shap": 0.3892
       },
       {
         "rank": 4,
-        "feature": "Sex",
-        "label": "Biological Sex (Male = 1, Female = 0)",
-        "mean_abs_shap": 0.5009
+        "feature": "Dyspnea",
+        "label": "Exertional Dyspnea (Shortness of Breath)",
+        "mean_abs_shap": 0.389
       },
       {
         "rank": 5,
-        "feature": "Weight",
-        "label": "Body Weight (kg)",
-        "mean_abs_shap": 0.4978
+        "feature": "Function Class",
+        "label": "NYHA Functional Class (0\u20133)",
+        "mean_abs_shap": 0.3811
       },
       {
         "rank": 6,
         "feature": "ESR",
         "label": "Erythrocyte Sedimentation Rate (mm/hr)",
-        "mean_abs_shap": 0.4292
+        "mean_abs_shap": 0.361
       },
       {
         "rank": 7,
-        "feature": "Dyspnea",
-        "label": "Exertional Dyspnea (Shortness of Breath)",
-        "mean_abs_shap": 0.3884
+        "feature": "Typical Chest Pain",
+        "label": "Typical Anginal Chest Pain",
+        "mean_abs_shap": 0.3139
       },
       {
         "rank": 8,
-        "feature": "DM",
-        "label": "Diabetes Mellitus History",
-        "mean_abs_shap": 0.3784
+        "feature": "BBB_N",
+        "label": "Normal Intraventricular Conduction (No BBB)",
+        "mean_abs_shap": 0.3115
       },
       {
         "rank": 9,
-        "feature": "CR",
-        "label": "Serum Creatinine (mg/dL)",
-        "mean_abs_shap": 0.3492
+        "feature": "Neut",
+        "label": "Neutrophil Percentage (%)",
+        "mean_abs_shap": 0.3091
       },
       {
         "rank": 10,
-        "feature": "Neut",
-        "label": "Neutrophil Percentage (%)",
-        "mean_abs_shap": 0.3251
+        "feature": "Weight",
+        "label": "Body Weight (kg)",
+        "mean_abs_shap": 0.3015
       },
       {
         "rank": 11,
-        "feature": "Current Smoker",
-        "label": "Current Tobacco Smoker",
-        "mean_abs_shap": 0.3203
+        "feature": "BUN",
+        "label": "Blood Urea Nitrogen (mg/dL)",
+        "mean_abs_shap": 0.29
       },
       {
         "rank": 12,
-        "feature": "K",
-        "label": "Serum Potassium (mEq/L)",
-        "mean_abs_shap": 0.3199
+        "feature": "TG",
+        "label": "Serum Triglycerides (mg/dL)",
+        "mean_abs_shap": 0.282
       },
       {
         "rank": 13,
-        "feature": "Function Class",
-        "label": "NYHA Functional Class (0\u20133)",
-        "mean_abs_shap": 0.2699
+        "feature": "BMI",
+        "label": "Body Mass Index (kg/m\u00b2)",
+        "mean_abs_shap": 0.2154
       },
       {
         "rank": 14,
-        "feature": "Typical Chest Pain",
-        "label": "Typical Anginal Chest Pain",
-        "mean_abs_shap": 0.2507
+        "feature": "CR",
+        "label": "Serum Creatinine (mg/dL)",
+        "mean_abs_shap": 0.1834
       },
       {
         "rank": 15,
-        "feature": "HB",
-        "label": "Hemoglobin Concentration (g/dL)",
-        "mean_abs_shap": 0.232
+        "feature": "HTN",
+        "label": "Hypertension History",
+        "mean_abs_shap": 0.1751
       },
       {
         "rank": 16,
-        "feature": "HDL",
-        "label": "HDL Cholesterol (mg/dL)",
-        "mean_abs_shap": 0.2111
+        "feature": "Region RWMA",
+        "label": "Regional Wall Motion Abnormality Count (Echo)",
+        "mean_abs_shap": 0.1711
       },
       {
         "rank": 17,
-        "feature": "Length",
-        "label": "Height / Stature (cm)",
-        "mean_abs_shap": 0.2056
+        "feature": "HDL",
+        "label": "HDL Cholesterol (mg/dL)",
+        "mean_abs_shap": 0.1653
       },
       {
         "rank": 18,
-        "feature": "BMI",
-        "label": "Body Mass Index (kg/m\u00b2)",
-        "mean_abs_shap": 0.171
+        "feature": "K",
+        "label": "Serum Potassium (mEq/L)",
+        "mean_abs_shap": 0.1606
       },
       {
         "rank": 19,
         "feature": "Atypical",
         "label": "Atypical Angina Symptoms",
-        "mean_abs_shap": 0.1452
+        "mean_abs_shap": 0.1345
       },
       {
         "rank": 20,
-        "feature": "Region RWMA",
-        "label": "Regional Wall Motion Abnormality Count (Echo)",
-        "mean_abs_shap": 0.144
+        "feature": "HB",
+        "label": "Hemoglobin Concentration (g/dL)",
+        "mean_abs_shap": 0.1307
       },
       {
         "rank": 21,
-        "feature": "PLT",
-        "label": "Platelet Count (\u00d710\u00b3/\u00b5L)",
-        "mean_abs_shap": 0.1224
+        "feature": "Length",
+        "label": "Height / Stature (cm)",
+        "mean_abs_shap": 0.1213
       },
       {
         "rank": 22,
-        "feature": "HTN",
-        "label": "Hypertension History",
-        "mean_abs_shap": 0.0961
+        "feature": "DLP",
+        "label": "Dyslipidemia History",
+        "mean_abs_shap": 0.0888
       },
       {
         "rank": 23,
-        "feature": "Na",
-        "label": "Serum Sodium (mEq/L)",
-        "mean_abs_shap": 0.0883
+        "feature": "FH",
+        "label": "Family History of Premature CAD",
+        "mean_abs_shap": 0.0839
       },
       {
         "rank": 24,
-        "feature": "PR",
-        "label": "Resting Heart Rate (bpm)",
-        "mean_abs_shap": 0.0877
+        "feature": "PLT",
+        "label": "Platelet Count (\u00d710\u00b3/\u00b5L)",
+        "mean_abs_shap": 0.0684
       },
       {
         "rank": 25,
-        "feature": "FH",
-        "label": "Family History of Premature CAD",
-        "mean_abs_shap": 0.0744
+        "feature": "Na",
+        "label": "Serum Sodium (mEq/L)",
+        "mean_abs_shap": 0.0664
       },
       {
         "rank": 26,
-        "feature": "DLP",
-        "label": "Dyslipidemia History",
-        "mean_abs_shap": 0.0676
+        "feature": "EF-TTE",
+        "label": "Left Ventricular Ejection Fraction (% Echo)",
+        "mean_abs_shap": 0.0603
       },
       {
         "rank": 27,
-        "feature": "Tinversion",
-        "label": "T-Wave Inversion (ECG)",
-        "mean_abs_shap": 0.0582
+        "feature": "Current Smoker",
+        "label": "Current Tobacco Smoker",
+        "mean_abs_shap": 0.0543
       },
       {
         "rank": 28,
         "feature": "Obesity",
         "label": "Clinical Obesity (BMI > 25)",
-        "mean_abs_shap": 0.0504
+        "mean_abs_shap": 0.0434
       },
       {
         "rank": 29,
-        "feature": "EF-TTE",
-        "label": "Left Ventricular Ejection Fraction (% Echo)",
-        "mean_abs_shap": 0.0498
+        "feature": "PR",
+        "label": "Resting Heart Rate (bpm)",
+        "mean_abs_shap": 0.0433
       },
       {
         "rank": 30,
-        "feature": "LDL",
-        "label": "LDL Cholesterol (mg/dL)",
-        "mean_abs_shap": 0.0385
+        "feature": "Systolic Murmur",
+        "label": "Auscultated Systolic Murmur",
+        "mean_abs_shap": 0.0408
       },
       {
         "rank": 31,
-        "feature": "VHD_Moderate",
-        "label": "Moderate Valvular Heart Disease (Echo)",
-        "mean_abs_shap": 0.038
+        "feature": "Nonanginal",
+        "label": "Non-Anginal Chest Pain",
+        "mean_abs_shap": 0.0376
       },
       {
         "rank": 32,
-        "feature": "Lymph",
-        "label": "Lymphocyte Percentage (%)",
-        "mean_abs_shap": 0.0364
+        "feature": "VHD_Moderate",
+        "label": "Moderate Valvular Heart Disease (Echo)",
+        "mean_abs_shap": 0.0372
       },
       {
         "rank": 33,
-        "feature": "Systolic Murmur",
-        "label": "Auscultated Systolic Murmur",
-        "mean_abs_shap": 0.0361
-      },
-      {
-        "rank": 34,
-        "feature": "Nonanginal",
-        "label": "Non-Anginal Chest Pain",
+        "feature": "WBC",
+        "label": "White Blood Cell Count (/\u00b5L)",
         "mean_abs_shap": 0.0339
       },
       {
+        "rank": 34,
+        "feature": "Lymph",
+        "label": "Lymphocyte Percentage (%)",
+        "mean_abs_shap": 0.0267
+      },
+      {
         "rank": 35,
-        "feature": "WBC",
-        "label": "White Blood Cell Count (/\u00b5L)",
-        "mean_abs_shap": 0.0265
-      },
-      {
-        "rank": 36,
-        "feature": "St Depression",
-        "label": "ST-Segment Depression (ECG)",
-        "mean_abs_shap": 0.0258
-      },
-      {
-        "rank": 37,
         "feature": "Poor R Progression",
         "label": "Poor Precordial R-Wave Progression (ECG)",
         "mean_abs_shap": 0.0233
       },
       {
+        "rank": 36,
+        "feature": "FBS",
+        "label": "Fasting Blood Sugar (mg/dL)",
+        "mean_abs_shap": 0.02
+      },
+      {
+        "rank": 37,
+        "feature": "LDL",
+        "label": "LDL Cholesterol (mg/dL)",
+        "mean_abs_shap": 0.0193
+      },
+      {
         "rank": 38,
-        "feature": "Q Wave",
-        "label": "Pathological Q Waves (ECG)",
-        "mean_abs_shap": 0.0207
+        "feature": "VHD_Normal",
+        "label": "Normal Cardiac Valves (Echo)",
+        "mean_abs_shap": 0.0179
       },
       {
         "rank": 39,
-        "feature": "BBB_RBBB",
-        "label": "Right Bundle Branch Block (ECG)",
-        "mean_abs_shap": 0.0165
+        "feature": "Tinversion",
+        "label": "T-Wave Inversion (ECG)",
+        "mean_abs_shap": 0.0159
       },
       {
         "rank": 40,
-        "feature": "BBB_N",
-        "label": "Normal Intraventricular Conduction (No BBB)",
-        "mean_abs_shap": 0.0161
+        "feature": "BBB_RBBB",
+        "label": "Right Bundle Branch Block (ECG)",
+        "mean_abs_shap": 0.0158
       },
       {
         "rank": 41,
         "feature": "VHD_Severe",
         "label": "Severe Valvular Heart Disease (Echo)",
-        "mean_abs_shap": 0.0157
+        "mean_abs_shap": 0.0156
       },
       {
         "rank": 42,
-        "feature": "Diastolic Murmur",
-        "label": "Auscultated Diastolic Murmur",
-        "mean_abs_shap": 0.0151
+        "feature": "CRF",
+        "label": "Chronic Renal Failure History",
+        "mean_abs_shap": 0.0147
       },
       {
         "rank": 43,
-        "feature": "CRF",
-        "label": "Chronic Renal Failure History",
-        "mean_abs_shap": 0.0141
+        "feature": "Diastolic Murmur",
+        "label": "Auscultated Diastolic Murmur",
+        "mean_abs_shap": 0.0135
       },
       {
         "rank": 44,
-        "feature": "VHD_Normal",
-        "label": "Normal Cardiac Valves (Echo)",
-        "mean_abs_shap": 0.0108
+        "feature": "Q Wave",
+        "label": "Pathological Q Waves (ECG)",
+        "mean_abs_shap": 0.0134
       },
       {
         "rank": 45,
-        "feature": "CVA",
-        "label": "Cerebrovascular Accident (Stroke/TIA)",
-        "mean_abs_shap": 0.0083
+        "feature": "BP",
+        "label": "Systolic Blood Pressure (mmHg)",
+        "mean_abs_shap": 0.0128
       },
       {
         "rank": 46,
-        "feature": "FBS",
-        "label": "Fasting Blood Sugar (mg/dL)",
-        "mean_abs_shap": 0.0082
+        "feature": "St Depression",
+        "label": "ST-Segment Depression (ECG)",
+        "mean_abs_shap": 0.0093
       },
       {
         "rank": 47,
-        "feature": "Edema",
-        "label": "Peripheral Edema",
-        "mean_abs_shap": 0.0073
+        "feature": "LVH",
+        "label": "Left Ventricular Hypertrophy Criteria (ECG)",
+        "mean_abs_shap": 0.0088
       },
       {
         "rank": 48,
-        "feature": "EX-Smoker",
-        "label": "Former Tobacco Smoker",
-        "mean_abs_shap": 0.007
+        "feature": "Thyroid Disease",
+        "label": "Thyroid Disease History",
+        "mean_abs_shap": 0.0063
       },
       {
         "rank": 49,
-        "feature": "BP",
-        "label": "Systolic Blood Pressure (mmHg)",
-        "mean_abs_shap": 0.0059
+        "feature": "CVA",
+        "label": "Cerebrovascular Accident (Stroke/TIA)",
+        "mean_abs_shap": 0.0063
       },
       {
         "rank": 50,
-        "feature": "Airway disease",
-        "label": "Chronic Airway Disease (COPD/Asthma)",
-        "mean_abs_shap": 0.0052
+        "feature": "Edema",
+        "label": "Peripheral Edema",
+        "mean_abs_shap": 0.0056
       },
       {
         "rank": 51,
-        "feature": "Thyroid Disease",
-        "label": "Thyroid Disease History",
-        "mean_abs_shap": 0.0047
+        "feature": "Airway disease",
+        "label": "Chronic Airway Disease (COPD/Asthma)",
+        "mean_abs_shap": 0.0055
       },
       {
         "rank": 52,
-        "feature": "LVH",
-        "label": "Left Ventricular Hypertrophy Criteria (ECG)",
-        "mean_abs_shap": 0.0046
+        "feature": "EX-Smoker",
+        "label": "Former Tobacco Smoker",
+        "mean_abs_shap": 0.0054
       },
       {
         "rank": 53,
-        "feature": "St Elevation",
-        "label": "ST-Segment Elevation (ECG)",
-        "mean_abs_shap": 0.0023
+        "feature": "Lung rales",
+        "label": "Pulmonary Rales / Crackles",
+        "mean_abs_shap": 0.0024
       },
       {
         "rank": 54,
-        "feature": "Lung rales",
-        "label": "Pulmonary Rales / Crackles",
-        "mean_abs_shap": 0.0021
+        "feature": "LowTH Ang",
+        "label": "Low-Threshold Angina",
+        "mean_abs_shap": 0.0013
       },
       {
         "rank": 55,
-        "feature": "LowTH Ang",
-        "label": "Low-Threshold Angina",
-        "mean_abs_shap": 0.0011
+        "feature": "St Elevation",
+        "label": "ST-Segment Elevation (ECG)",
+        "mean_abs_shap": 0.001
       },
       {
         "rank": 56,
         "feature": "Weak Peripheral Pulse",
         "label": "Diminished Peripheral Pulses",
-        "mean_abs_shap": 0.0011
+        "mean_abs_shap": 0.001
       },
       {
         "rank": 57,
         "feature": "CHF",
         "label": "Congestive Heart Failure History",
-        "mean_abs_shap": 0.0008
+        "mean_abs_shap": 0.0005
       }
     ]
   }

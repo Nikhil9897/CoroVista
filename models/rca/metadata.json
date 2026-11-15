@@ -6,8 +6,17 @@
   "drop_rwma": false,
   "drop_bmi": false,
   "calibration_method": "sigmoid",
-  "decision_threshold": 0.38,
+  "decision_threshold": 0.35,
   "random_state": 42,
+  "dataset_identifier": "Z-Alizadeh Sani extension cohort (303 patients, 54 predictive features)",
+  "training_timestamp": "2026-11-15T06:45:23.905453+00:00",
+  "software_versions": {
+    "python": "3.11.18",
+    "scikit_learn": "1.7.2",
+    "xgboost": "3.2.0",
+    "joblib": "1.6.0"
+  },
+  "benchmark_protocol": "RepeatedStratifiedKFold (5 splits x 5 repeats = 25 folds), nested inner-OOF threshold selection, internal repeated CV (correlated folds; no external validation)",
   "training_samples": 303,
   "training_positives": 114,
   "input_features": [
@@ -67,42 +76,257 @@
     "Region RWMA",
     "VHD"
   ],
+  "feature_schema": {
+    "Age": "int64",
+    "Weight": "int64",
+    "Length": "int64",
+    "Sex": "str",
+    "BMI": "float64",
+    "DM": "int64",
+    "HTN": "int64",
+    "Current Smoker": "int64",
+    "EX-Smoker": "int64",
+    "FH": "int64",
+    "Obesity": "str",
+    "CRF": "str",
+    "CVA": "str",
+    "Airway disease": "str",
+    "Thyroid Disease": "str",
+    "CHF": "str",
+    "DLP": "str",
+    "BP": "int64",
+    "PR": "int64",
+    "Edema": "int64",
+    "Weak Peripheral Pulse": "str",
+    "Lung rales": "str",
+    "Systolic Murmur": "str",
+    "Diastolic Murmur": "str",
+    "Typical Chest Pain": "int64",
+    "Dyspnea": "str",
+    "Function Class": "int64",
+    "Atypical": "str",
+    "Nonanginal": "str",
+    "Exertional CP": "str",
+    "LowTH Ang": "str",
+    "Q Wave": "int64",
+    "St Elevation": "int64",
+    "St Depression": "int64",
+    "Tinversion": "int64",
+    "LVH": "str",
+    "Poor R Progression": "str",
+    "BBB": "str",
+    "FBS": "int64",
+    "CR": "float64",
+    "TG": "int64",
+    "LDL": "int64",
+    "HDL": "float64",
+    "BUN": "int64",
+    "ESR": "int64",
+    "HB": "float64",
+    "K": "float64",
+    "Na": "int64",
+    "WBC": "int64",
+    "Lymph": "int64",
+    "Neut": "int64",
+    "PLT": "int64",
+    "EF-TTE": "int64",
+    "Region RWMA": "int64",
+    "VHD": "str"
+  },
   "cross_validation_metrics": {
     "roc_auc": {
-      "mean": 0.7158,
-      "std": 0.0569
+      "mean": 0.7163,
+      "std": 0.0593,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
     },
     "pr_auc": {
-      "mean": 0.6091,
-      "std": 0.0729
+      "mean": 0.6098,
+      "std": 0.0759,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
     },
     "accuracy": {
-      "mean": 0.6608,
-      "std": 0.0377
+      "mean": 0.6072,
+      "std": 0.0702,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
     },
     "precision": {
-      "mean": 0.5934,
-      "std": 0.0953
+      "mean": 0.4928,
+      "std": 0.0521,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
     },
     "recall": {
-      "mean": 0.3406,
-      "std": 0.1017
+      "mean": 0.7946,
+      "std": 0.107,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
     },
     "f1": {
-      "mean": 0.4231,
-      "std": 0.0904
+      "mean": 0.6037,
+      "std": 0.0506,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
     },
     "balanced_accuracy": {
-      "mean": 0.5974,
-      "std": 0.0434
+      "mean": 0.6443,
+      "std": 0.0563,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
     },
     "brier_score": {
-      "mean": 0.2053,
-      "std": 0.0139
+      "mean": 0.206,
+      "std": 0.0147,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
     },
     "ece": {
-      "mean": 0.1121,
-      "std": 0.0298
+      "mean": 0.1,
+      "std": 0.0315,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
     }
-  }
+  },
+  "cross_validation_standard_metrics": {
+    "roc_auc": {
+      "mean": 0.7163,
+      "std": 0.0593,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "pr_auc": {
+      "mean": 0.6098,
+      "std": 0.0759,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "accuracy": {
+      "mean": 0.6562,
+      "std": 0.0494,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "precision": {
+      "mean": 0.5998,
+      "std": 0.1319,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "recall": {
+      "mean": 0.3124,
+      "std": 0.0839,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "f1": {
+      "mean": 0.4027,
+      "std": 0.0854,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "balanced_accuracy": {
+      "mean": 0.5881,
+      "std": 0.049,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "brier_score": {
+      "mean": 0.206,
+      "std": 0.0147,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "ece": {
+      "mean": 0.1,
+      "std": 0.0315,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    }
+  },
+  "cross_validation_tuned_metrics": {
+    "roc_auc": {
+      "mean": 0.7163,
+      "std": 0.0593,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "pr_auc": {
+      "mean": 0.6098,
+      "std": 0.0759,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "accuracy": {
+      "mean": 0.6072,
+      "std": 0.0702,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "precision": {
+      "mean": 0.4928,
+      "std": 0.0521,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "recall": {
+      "mean": 0.7946,
+      "std": 0.107,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "f1": {
+      "mean": 0.6037,
+      "std": 0.0506,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "balanced_accuracy": {
+      "mean": 0.6443,
+      "std": 0.0563,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "brier_score": {
+      "mean": 0.206,
+      "std": 0.0147,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    },
+    "ece": {
+      "mean": 0.1,
+      "std": 0.0315,
+      "n_valid_folds": 25,
+      "n_undefined_folds": 0,
+      "summary_scope": "repeated_cv_fold_summary"
+    }
+  },
+  "model_selection_rationale": "Logistic Regression with Sigmoid Platt calibration achieves the lowest fold-mean Brier score (0.2060) and lowest fold-mean ECE (0.1000) with robust discrimination (ROC-AUC 0.716, PR-AUC 0.610). At standard threshold 0.50, probability compression on this minority class causes sensitivity collapse (Recall 31.2%, F1 0.403). Operating threshold 0.35 (derived from the sigmoid-calibrated model's inner-OOF distribution: mean 0.319, range 0.20\u20130.37; distinct from uncalibrated LR mean 0.303) resolves probability compression, lifting sensitivity to 79.5% \u00b1 10.7% and F1 to 0.604 \u00b1 0.051."
 }
