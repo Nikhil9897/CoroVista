@@ -13,19 +13,26 @@ Responsible for:
 4. Providing deterministic model loading and inference verification.
 """
 
+import datetime
 import json
 import logging
+import platform
 from pathlib import Path
+import platform
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 import joblib
 import numpy as np
 import pandas as pd
+import sklearn
+import xgboost
+import sklearn
 from sklearn.calibration import CalibratedClassifierCV
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import StratifiedKFold
 from sklearn.pipeline import Pipeline
+import xgboost
 
 from ml.preprocessing.feature_metadata import assert_no_target_leakage
 from ml.preprocessing.pipeline import build_preprocessing_pipeline, extract_features_and_targets
@@ -198,13 +205,33 @@ def train_and_save_final_model(
         "drop_rwma": model_config.get("drop_rwma", False),
         "drop_bmi": model_config.get("drop_bmi", False),
         "calibration_method": actual_calibration,
-        "decision_threshold": model_config.get("decision_threshold", 0.5),
+        "decision_threshold": float(model_config.get("decision_threshold", 0.5)),
         "random_state": random_state,
+        "dataset_identifier": "Z-Alizadeh Sani extension cohort (303 patients, 54 predictive features)",
+        "training_timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+        "software_versions": {
+            "python": platform.python_version(),
+            "scikit_learn": sklearn.__version__,
+            "xgboost": xgboost.__version__,
+            "joblib": joblib.__version__,
+        },
+        "benchmark_protocol": (
+            "RepeatedStratifiedKFold (5 splits x 5 repeats = 25 folds), "
+            "nested inner-OOF threshold selection, internal repeated CV (correlated folds; no external validation)"
+        ),
         "training_samples": len(X),
         "training_positives": n_pos,
         "input_features": X.columns.tolist(),
+        "feature_schema": {col: str(X[col].dtype) for col in X.columns},
         "cross_validation_metrics": cv_summary_metrics,
     }
+
+    if "standard_metrics" in model_config:
+        metadata["cross_validation_standard_metrics"] = model_config["standard_metrics"]
+    if "tuned_metrics" in model_config:
+        metadata["cross_validation_tuned_metrics"] = model_config["tuned_metrics"]
+    if "rationale" in model_config:
+        metadata["model_selection_rationale"] = model_config["rationale"]
 
     metadata_path = save_dir / "metadata.json"
     with open(metadata_path, "w", encoding="utf-8") as f:
