@@ -27,7 +27,7 @@ from pathlib import Path
 # Ensure project root is in sys.path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from typing import Any, Dict
+from typing import Any, Dict, List, Optional
 
 import matplotlib
 
@@ -434,7 +434,7 @@ def select_best_models(benchmarks: Dict[str, Any]) -> Dict[str, Any]:
     return targets
 
 
-def main():
+def main(cli_args: Optional[List[str]] = None) -> None:
     parser = argparse.ArgumentParser(description="CoroVista Stage 2 Benchmarking")
     parser.add_argument(
         "--input",
@@ -460,7 +460,13 @@ def main():
         default=5,
         help="Number of CV repeats",
     )
-    args = parser.parse_args()
+    parser.add_argument(
+        "--no-save-models",
+        action="store_true",
+        default=False,
+        help="Skip final model training and serialization in models/. Only generate reports and plots.",
+    )
+    args = parser.parse_args(cli_args)
 
     input_path = Path(args.input)
     output_dir = Path(args.output_dir)
@@ -485,16 +491,24 @@ def main():
     logger.info("Selecting best models independently for each target...")
     final_selections = select_best_models(benchmarks)
 
-    logger.info("Training and serializing final pipeline artifacts in models/...")
-    for target_name, sel_config in final_selections.items():
-        saved_dir = train_and_save_final_model(
-            target_name=target_name,
-            df_raw=df,
-            model_config=sel_config,
-            cv_summary_metrics=sel_config["cv_metrics"]["standard_threshold_metrics"],
-            random_state=42,
+    if args.no_save_models:
+        skip_msg = (
+            "Final model serialization skipped (--no-save-models enabled). "
+            "No models will be written to models/."
         )
-        logger.info("Saved final model for %s to %s", target_name, saved_dir)
+        print(skip_msg)
+        logger.info(skip_msg)
+    else:
+        logger.info("Training and serializing final pipeline artifacts in models/...")
+        for target_name, sel_config in final_selections.items():
+            saved_dir = train_and_save_final_model(
+                target_name=target_name,
+                df_raw=df,
+                model_config=sel_config,
+                cv_summary_metrics=sel_config["cv_metrics"]["standard_threshold_metrics"],
+                random_state=42,
+            )
+            logger.info("Saved final model for %s to %s", target_name, saved_dir)
 
     logger.info("Generating evaluation diagnostic plots...")
     generate_evaluation_plots(benchmarks, plots_dir)
