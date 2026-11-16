@@ -11,7 +11,7 @@ Computes population-level global feature importance for each target:
 
 import json
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, Optional
 
 try:
     import matplotlib
@@ -27,9 +27,9 @@ import numpy as np
 import pandas as pd
 import shap
 
+from ml.preprocessing.pipeline import extract_features_and_targets
 from src.corovista.explainability.explainers import get_target_explainer
 from src.corovista.explainability.feature_mapping import get_human_label
-from ml.preprocessing.pipeline import extract_features_and_targets
 
 
 def compute_global_explanations(
@@ -93,6 +93,10 @@ def compute_global_explanations(
                 "SHAP values explain the underlying predictive model score (log-odds/margin); "
                 "probability calibration is applied separately to determine the final visual risk probability."
             ),
+            "calibration_disclosure": (
+                "SHAP values explain the underlying predictive model score (log-odds/margin); "
+                "probability calibration is applied separately to determine the final visual risk probability."
+            ),
             "base_value": round(float(base_val), 4),
             "total_features": len(feat_names),
             "top_10": ranking[:10],
@@ -102,7 +106,7 @@ def compute_global_explanations(
 
         # Generate summary plot if plots_dir is specified and matplotlib is available
         if plots_dir and HAS_MATPLOTLIB and plt is not None:
-            fig = plt.figure(figsize=(10, 6))
+            plt.figure(figsize=(10, 6))
             # Human labels for plot
             human_cols = [get_human_label(fn) for fn in feat_names]
             shap.summary_plot(

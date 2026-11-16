@@ -1,0 +1,304 @@
+{
+  "target": "Cath",
+  "clinical_name": "Overall CAD Status",
+  "operating_threshold": 0.5,
+  "scientific_disclaimers": [
+    "This analysis is exploratory and does NOT constitute a clinical fairness or demographic equity certification.",
+    "Sample size guards enforced: Subgroups with N < 30 or min(N+, N-) < 5 are flagged as statistically underpowered, and metrics are masked as None.",
+    "Observed metric differences between subgroups reflect clinical heterogeneity, sample size limitations, and unadjusted confounders rather than isolated model bias."
+  ],
+  "subgroup_feasibility_and_performance": {
+    "target": "Cath",
+    "clinical_name": "Overall CAD Status",
+    "operating_threshold": 0.5,
+    "cohort_sample_size": 303,
+    "overall_baseline_metrics": {
+      "roc_auc": 0.9097488292890591,
+      "pr_auc": 0.9556693825770899,
+      "sensitivity": 0.9305555555555556,
+      "specificity": 0.735632183908046,
+      "balanced_accuracy": 0.8330938697318008,
+      "brier_score": 0.1013822237907548,
+      "ece": 0.046933851985362804
+    },
+    "categories": [
+      {
+        "category": "Sex",
+        "subgroups": [
+          {
+            "category": "Sex",
+            "subgroup": "Male",
+            "sample_size": 176,
+            "positives": 130,
+            "negatives": 46,
+            "prevalence": 0.7386363636363636,
+            "feasibility_status": "Feasible",
+            "infeasibility_reason": null,
+            "metrics": {
+              "roc_auc": 0.8779264214046822,
+              "pr_auc": 0.9429803945554419,
+              "sensitivity": 0.9076923076923077,
+              "specificity": 0.7391304347826086,
+              "balanced_accuracy": 0.8234113712374582,
+              "brier_score": 0.11084541356362697,
+              "ece": 0.05098927681952167
+            }
+          },
+          {
+            "category": "Sex",
+            "subgroup": "Female",
+            "sample_size": 127,
+            "positives": 86,
+            "negatives": 41,
+            "prevalence": 0.6771653543307087,
+            "feasibility_status": "Feasible",
+            "infeasibility_reason": null,
+            "metrics": {
+              "roc_auc": 0.949517867271696,
+              "pr_auc": 0.9763342527819464,
+              "sensitivity": 0.9651162790697675,
+              "specificity": 0.7317073170731707,
+              "balanced_accuracy": 0.8484117980714692,
+              "brier_score": 0.08826788205827052,
+              "ece": 0.0706937183632057
+            }
+          }
+        ]
+      },
+      {
+        "category": "Age Group",
+        "subgroups": [
+          {
+            "category": "Age Group",
+            "subgroup": "Age < 55",
+            "sample_size": 108,
+            "positives": 57,
+            "negatives": 51,
+            "prevalence": 0.5277777777777778,
+            "feasibility_status": "Feasible",
+            "infeasibility_reason": null,
+            "metrics": {
+              "roc_auc": 0.8954248366013072,
+              "pr_auc": 0.921844475855969,
+              "sensitivity": 0.8421052631578947,
+              "specificity": 0.8431372549019608,
+              "balanced_accuracy": 0.8426212590299278,
+              "brier_score": 0.13160444360068688,
+              "ece": 0.09863708243423103
+            }
+          },
+          {
+            "category": "Age Group",
+            "subgroup": "Age 55 - 65",
+            "sample_size": 100,
+            "positives": 76,
+            "negatives": 24,
+            "prevalence": 0.76,
+            "feasibility_status": "Feasible",
+            "infeasibility_reason": null,
+            "metrics": {
+              "roc_auc": 0.9533991228070176,
+              "pr_auc": 0.9868189217227039,
+              "sensitivity": 0.9342105263157895,
+              "specificity": 0.7083333333333334,
+              "balanced_accuracy": 0.8212719298245614,
+              "brier_score": 0.08162982568083761,
+              "ece": 0.08090286455915428
+            }
+          },
+          {
+            "category": "Age Group",
+            "subgroup": "Age >= 65",
+            "sample_size": 95,
+            "positives": 83,
+            "negatives": 12,
+            "prevalence": 0.8736842105263158,
+            "feasibility_status": "Feasible",
+            "infeasibility_reason": null,
+            "metrics": {
+              "roc_auc": 0.7479919678714859,
+              "pr_auc": 0.9438933720490444,
+              "sensitivity": 0.9879518072289156,
+              "specificity": 0.3333333333333333,
+              "balanced_accuracy": 0.6606425702811245,
+              "brier_score": 0.08781632980674484,
+              "ece": 0.06838225682071017
+            }
+          }
+        ]
+      },
+      {
+        "category": "Diabetes (DM)",
+        "subgroups": [
+          {
+            "category": "Diabetes (DM)",
+            "subgroup": "Diabetic",
+            "sample_size": 90,
+            "positives": 80,
+            "negatives": 10,
+            "prevalence": 0.8888888888888888,
+            "feasibility_status": "Feasible",
+            "infeasibility_reason": null,
+            "metrics": {
+              "roc_auc": 0.98375,
+              "pr_auc": 0.9980272021712046,
+              "sensitivity": 0.975,
+              "specificity": 0.7,
+              "balanced_accuracy": 0.8374999999999999,
+              "brier_score": 0.04482841381556187,
+              "ece": 0.08239384957227416
+            }
+          },
+          {
+            "category": "Diabetes (DM)",
+            "subgroup": "Non-Diabetic",
+            "sample_size": 213,
+            "positives": 136,
+            "negatives": 77,
+            "prevalence": 0.6384976525821596,
+            "feasibility_status": "Feasible",
+            "infeasibility_reason": null,
+            "metrics": {
+              "roc_auc": 0.8842627960275019,
+              "pr_auc": 0.9226718599280679,
+              "sensitivity": 0.9044117647058824,
+              "specificity": 0.7402597402597403,
+              "balanced_accuracy": 0.8223357524828113,
+              "brier_score": 0.12527819983661093,
+              "ece": 0.04590272493134645
+            }
+          }
+        ]
+      },
+      {
+        "category": "Hypertension (HTN)",
+        "subgroups": [
+          {
+            "category": "Hypertension (HTN)",
+            "subgroup": "Hypertensive",
+            "sample_size": 179,
+            "positives": 147,
+            "negatives": 32,
+            "prevalence": 0.8212290502793296,
+            "feasibility_status": "Feasible",
+            "infeasibility_reason": null,
+            "metrics": {
+              "roc_auc": 0.8886054421768708,
+              "pr_auc": 0.9668425517188145,
+              "sensitivity": 0.9591836734693877,
+              "specificity": 0.65625,
+              "balanced_accuracy": 0.8077168367346939,
+              "brier_score": 0.08430673522416396,
+              "ece": 0.07292216944316746
+            }
+          },
+          {
+            "category": "Hypertension (HTN)",
+            "subgroup": "Normotensive",
+            "sample_size": 124,
+            "positives": 69,
+            "negatives": 55,
+            "prevalence": 0.5564516129032258,
+            "feasibility_status": "Feasible",
+            "infeasibility_reason": null,
+            "metrics": {
+              "roc_auc": 0.8980237154150197,
+              "pr_auc": 0.9237059495369645,
+              "sensitivity": 0.8695652173913043,
+              "specificity": 0.7818181818181819,
+              "balanced_accuracy": 0.8256916996047431,
+              "brier_score": 0.12603151776994642,
+              "ece": 0.082078157989632
+            }
+          }
+        ]
+      },
+      {
+        "category": "Obesity",
+        "subgroups": [
+          {
+            "category": "Obesity",
+            "subgroup": "Obese",
+            "sample_size": 211,
+            "positives": 149,
+            "negatives": 62,
+            "prevalence": 0.7061611374407583,
+            "feasibility_status": "Feasible",
+            "infeasibility_reason": null,
+            "metrics": {
+              "roc_auc": 0.9127516778523489,
+              "pr_auc": 0.9566150716605846,
+              "sensitivity": 0.9328859060402684,
+              "specificity": 0.7258064516129032,
+              "balanced_accuracy": 0.8293461788265859,
+              "brier_score": 0.10197229398035591,
+              "ece": 0.04150102917002055
+            }
+          },
+          {
+            "category": "Obesity",
+            "subgroup": "Non-Obese",
+            "sample_size": 92,
+            "positives": 67,
+            "negatives": 25,
+            "prevalence": 0.7282608695652174,
+            "feasibility_status": "Feasible",
+            "infeasibility_reason": null,
+            "metrics": {
+              "roc_auc": 0.9032835820895522,
+              "pr_auc": 0.9565794246053945,
+              "sensitivity": 0.9253731343283582,
+              "specificity": 0.76,
+              "balanced_accuracy": 0.8426865671641791,
+              "brier_score": 0.10002891063851743,
+              "ece": 0.0600497756496532
+            }
+          }
+        ]
+      },
+      {
+        "category": "Dyslipidemia (DLP)",
+        "subgroups": [
+          {
+            "category": "Dyslipidemia (DLP)",
+            "subgroup": "Dyslipidemic",
+            "sample_size": 112,
+            "positives": 79,
+            "negatives": 33,
+            "prevalence": 0.7053571428571429,
+            "feasibility_status": "Feasible",
+            "infeasibility_reason": null,
+            "metrics": {
+              "roc_auc": 0.9275028768699655,
+              "pr_auc": 0.9620664789157584,
+              "sensitivity": 0.9493670886075949,
+              "specificity": 0.696969696969697,
+              "balanced_accuracy": 0.823168392788646,
+              "brier_score": 0.09479838488103284,
+              "ece": 0.07269571469317676
+            }
+          },
+          {
+            "category": "Dyslipidemia (DLP)",
+            "subgroup": "Non-Dyslipidemic",
+            "sample_size": 191,
+            "positives": 137,
+            "negatives": 54,
+            "prevalence": 0.7172774869109948,
+            "feasibility_status": "Feasible",
+            "infeasibility_reason": null,
+            "metrics": {
+              "roc_auc": 0.900919167342525,
+              "pr_auc": 0.9522651456431948,
+              "sensitivity": 0.9197080291970803,
+              "specificity": 0.7592592592592593,
+              "balanced_accuracy": 0.8394836442281698,
+              "brier_score": 0.10524290419854986,
+              "ece": 0.05188821652307847
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

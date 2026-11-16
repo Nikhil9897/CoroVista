@@ -5,6 +5,7 @@ Model Interpretability & SHAP Feature Attribution
 
 from src.corovista.explainability.explainers import (
     TargetExplainer,
+    clear_explainer_cache,
     get_target_explainer,
 )
 from src.corovista.explainability.feature_mapping import (
@@ -23,6 +24,7 @@ __all__ = [
     "explain_patient",
     "compute_global_explanations",
     "get_target_explainer",
+    "clear_explainer_cache",
     "TargetExplainer",
     "get_human_label",
     "get_feature_description",

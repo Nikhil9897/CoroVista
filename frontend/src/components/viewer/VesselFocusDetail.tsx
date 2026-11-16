@@ -124,8 +124,11 @@ export const VesselFocusDetail: React.FC<VesselFocusDetailProps> = ({
           <span className="font-semibold text-[#E8F1EE] uppercase tracking-wider text-[10px]">
             {isPerVesselShap ? "Top Influencing Factors" : "Overall Influencing Factors"}
           </span>
-          <span className="text-[10px] text-[#7C9692] font-mono">
-            TreeSHAP
+          <span
+            className="text-[10px] text-[#7C9692] font-mono"
+            title="SHAP feature contributions in latent log-odds space; probability calibration is applied separately"
+          >
+            SHAP Log-Odds
           </span>
         </div>
 
