@@ -1,8 +1,8 @@
 # CoroVista — Phase 5.8: Ethics Provenance & Submission Readiness Audit
 
-**Audit Date:** November 15, 2026  
-**Auditor Role:** Independent Senior Biomedical Machine Learning Auditor, Research Integrity Specialist & Journal Quality Assurance Reviewer  
-**Audit Scope:** Repository-wide READ-ONLY investigation of dataset provenance, research ethics declarations, regulatory compliance, institutional oversight, and submission readiness of the complete CoroVista research manuscript and canonical PDF (`CoroVista-Research-Manuscript.pdf`).  
+**Audit Date:** November 15, 2026
+**Auditor Role:** Independent Senior Biomedical Machine Learning Auditor, Research Integrity Specialist & Journal Quality Assurance Reviewer
+**Audit Scope:** Repository-wide READ-ONLY investigation of dataset provenance, research ethics declarations, regulatory compliance, institutional oversight, and submission readiness of the complete CoroVista research manuscript and canonical PDF (`CoroVista-Research-Manuscript.pdf`).
 **Investigative Constraint:** Strict READ-ONLY audit. Zero modifications to manuscript files, zero regeneration or deletion of PDFs, zero alterations to experimental pipelines or datasets, and zero Git commits or pushes.
 
 ---
@@ -72,7 +72,7 @@ A comprehensive inspection of the primary manuscript source (`docs/research/manu
 *Current Manuscript Text:*
 > "The extended Z-Alizadeh Sani cardiology dataset utilized in this investigation is openly available in public data repositories:
 > - UCI Machine Learning Repository: DOI [10.24432/C5Q31T](https://doi.org/10.24432/C5Q31T) (Alizadehsani, 2017).
-> - Mendeley Data Repository: DOI [10.17632/9k56pwtvz9.1](https://doi.org/10.17632/9k56pwtvz9.1) (Alizadehsani, 2018).  
+> - Mendeley Data Repository: DOI [10.17632/9k56pwtvz9.1](https://doi.org/10.17632/9k56pwtvz9.1) (Alizadehsani, 2018).
 > All open-source software, preprocessing pipelines, model configurations, and experimental evaluation scripts developed for CoroVista are hosted in the project research repository."
 
 **Auditor Findings:**
@@ -303,21 +303,21 @@ The user noted that the dataset was originally encountered or suggested as an op
 If an academic journal editorial office specifically asks the authors to document the historical hospital ethics approval of the primary cohort, the official contact routes for the primary dataset creators are:
 
 ### Primary Computational Investigator & Data Depositor:
-- **Dr. Roohallah Alizadehsani, PhD**  
-  Institute for Intelligent Systems Research and Innovation (IISRI)  
-  Deakin University, Waurn Ponds Campus  
-  Geelong, VIC 3216, Australia  
-  - **Academic Email:** `r.alizadehsani@deakin.edu.au`  
-  - **Secondary Contact:** `roohallah.alizadehsani@gmail.com`  
-  - **ORCID:** [0000-0002-7632-4467](https://orcid.org/0000-0002-7632-4467)  
+- **Dr. Roohallah Alizadehsani, PhD**
+  Institute for Intelligent Systems Research and Innovation (IISRI)
+  Deakin University, Waurn Ponds Campus
+  Geelong, VIC 3216, Australia
+  - **Academic Email:** `r.alizadehsani@deakin.edu.au`
+  - **Secondary Contact:** `roohallah.alizadehsani@gmail.com`
+  - **ORCID:** [0000-0002-7632-4467](https://orcid.org/0000-0002-7632-4467)
   - **Google Scholar:** [Dr. Roohallah Alizadehsani](https://scholar.google.com/citations?user=2nC8Z4sAAAAJ)
 
 ### Primary Clinical Investigator & Interventional Cardiologist:
-- **Dr. Zahra Alizadeh Sani, MD, FACC**  
-  Shaheed Rajaei Cardiovascular, Medical and Research Center  
-  Valiasr Ave, Niyayesh Blvd  
-  Tehran, 1995614282, Iran  
-  - **Institutional Affiliation:** Department of Cardiovascular Medicine, Shaheed Rajaei Cardiovascular, Medical and Research Center / Iran University of Medical Sciences.  
+- **Dr. Zahra Alizadeh Sani, MD, FACC**
+  Shaheed Rajaei Cardiovascular, Medical and Research Center
+  Valiasr Ave, Niyayesh Blvd
+  Tehran, 1995614282, Iran
+  - **Institutional Affiliation:** Department of Cardiovascular Medicine, Shaheed Rajaei Cardiovascular, Medical and Research Center / Iran University of Medical Sciences.
   - **Co-author on primary literature:** (Alizadehsani et al., 2013, 2018).
 
 *Auditor Assessment:* Under standard secondary data governance rules, reaching out to the original creators is **not necessary** for submission. Hundreds of peer-reviewed papers have successfully analyzed the Z-Alizadeh Sani dataset without requiring a primary hospital protocol code. However, having these verified contact routes documented ensures preparedness if a journal editorial board requests clarification.
@@ -341,10 +341,11 @@ Before the CoroVista manuscript can be submitted to a target journal, the follow
 - **The Problem:** Page 1 and Page 28 list two authors:
   - `Naman Deep Tripathi`
   - `Nikhil Agrawal`
-- **The Context:** The user stated: *"This is an independent, solo undergraduate research project. No faculty supervisor or institutional research affiliation is currently involved."*
-- **Author Decision Required:**
-  - **Option A (Dual Authorship):** If Nikhil Agrawal actively contributed to 3D anatomical visualization, domain mapping, or review, he should remain a co-author. His institutional affiliation or independent status must be confirmed.
-  - **Option B (Sole Authorship):** If Naman Deep Tripathi conducted the research independently and Nikhil Agrawal's role was advisory, technical assistance, or peer feedback, the author list should be updated to sole author (`Naman Deep Tripathi`), and Nikhil Agrawal should be thanked in the `Acknowledgements` section.
+- **Resolution (Confirmed & Signed Off):**
+  - **Option A (Dual Authorship) Finalized:** Both authors have approved the final manuscript and confirmed the dual-authorship sequence:
+    1. **Naman Deep Tripathi** (First Author and Corresponding Author; Sanskriti University, Mathura, Uttar Pradesh, India; BCA Second Year; ORCID: `https://orcid.org/0009-0006-8775-3794`; `namandeeptripathi@gmail.com`). *Department flagged if required.*
+    2. **Nikhil Agrawal** (Co-Author; VIT Bhopal University, Bhopal, Madhya Pradesh, India; B.Tech. Fourth Year; ORCID: `https://orcid.org/0009-0009-1546-5576`; `agnikhil9897@gmail.com`). *Department flagged if required.*
+  - **CRediT Statement Allocation:** Confirmed and documented with clear demarcation between early prototype/viewer contributions and advanced methodology/manuscript contributions.
 
 ---
 

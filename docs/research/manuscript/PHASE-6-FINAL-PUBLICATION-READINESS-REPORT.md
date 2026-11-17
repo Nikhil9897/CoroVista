@@ -1,12 +1,12 @@
 # CoroVista — Phase 6: Consolidated Final Publication Readiness & Submission Preparation Report
 
-**Date & Time of Audit:** November 16, 2026, 00:00 Local Time (18:30 UTC)  
-**Lead Investigator & QA Role:** Senior Scientific Manuscript Editor, Research-Methodology Auditor, Publication-Readiness Reviewer & Repository QA Specialist  
-**Execution Directive:** One-Pass Comprehensive Execution Mandate — Final Scientific Verification, Editorial Reconciliation, Artifact Compilation, and Journal Submission Preparation  
-**Primary Manuscript Source:** `docs/research/manuscript/CoroVista-Research-Manuscript.md`  
-**Active Canonical PDF Artifacts:**  
-- Root: `CoroVista-Research-Manuscript.pdf` (SHA-256: `38cb02c18ceb38f26df78d068d1054d7e591ca96282bbcfe4b51752641d1c014`, 2,119,794 bytes, 29 pages)  
-- Docs: `docs/research/manuscript/CoroVista-Research-Manuscript.pdf` (100% byte-identical)  
+**Date & Time of Audit:** November 16, 2026, 00:00 Local Time (18:30 UTC)
+**Lead Investigator & QA Role:** Senior Scientific Manuscript Editor, Research-Methodology Auditor, Publication-Readiness Reviewer & Repository QA Specialist
+**Execution Directive:** One-Pass Comprehensive Execution Mandate — Final Scientific Verification, Editorial Reconciliation, Artifact Compilation, and Journal Submission Preparation
+**Primary Manuscript Source:** `docs/research/manuscript/CoroVista-Research-Manuscript.md`
+**Active Canonical PDF Artifacts:**
+- Root: `CoroVista-Research-Manuscript.pdf` (SHA-256: `38cb02c18ceb38f26df78d068d1054d7e591ca96282bbcfe4b51752641d1c014`, 2,119,794 bytes, 29 pages)
+- Docs: `docs/research/manuscript/CoroVista-Research-Manuscript.pdf` (100% byte-identical)
 
 ---
 
@@ -78,32 +78,32 @@ All quantitative claims and performance metrics presented in the manuscript were
 ### 2.1 Reconciled RCA Operating Threshold Protocols
 The apparent discrepancies between earlier evaluation reports regarding RCA threshold metrics were mathematically resolved into four distinct, segregated protocols:
 
-1. **Protocol 1 (Default Midpoint $\tau = 0.50$ across 25 outer folds):**  
-   - Sensitivity: **$31.24\% \pm 8.56\%$**, Specificity: **$86.38\% \pm 7.41\%$**, $F_1 = 0.4027 \pm 0.0872$.  
+1. **Protocol 1 (Default Midpoint $\tau = 0.50$ across 25 outer folds):**
+   - Sensitivity: **$31.24\% \pm 8.56\%$**, Specificity: **$86.38\% \pm 7.41\%$**, $F_1 = 0.4027 \pm 0.0872$.
    - *Finding:* Proves severe sensitivity collapse when applying default cutoffs to calibrated minority-class probabilities.
-2. **Protocol 2 (Nested Inner-OOF Tuned Cutoff across 25 outer folds):**  
-   - Tuned Cutoff: **$0.3188 \pm 0.0380$**, Sensitivity: **$79.46\% \pm 10.92\%$**, Specificity: **$49.41\% \pm 14.29\%$**, Balanced Accuracy: **$64.43\% \pm 5.75\%$**, $F_1 = 0.6037 \pm 0.0516$.  
+2. **Protocol 2 (Nested Inner-OOF Tuned Cutoff across 25 outer folds):**
+   - Tuned Cutoff: **$0.3188 \pm 0.0380$**, Sensitivity: **$79.46\% \pm 10.92\%$**, Specificity: **$49.41\% \pm 14.29\%$**, Balanced Accuracy: **$64.43\% \pm 5.75\%$**, $F_1 = 0.6037 \pm 0.0516$.
    - *Finding:* Restores diagnostic sensitivity without out-of-fold data leakage.
-3. **Protocol 3 (Fixed Production Operating Threshold $\tau = 0.35$ across 25 outer folds):**  
-   - Sensitivity: **$74.21\% \pm 10.64\%$**, Specificity: **$57.48\% \pm 7.10\%$**, Balanced Accuracy: **$65.85\% \pm 0.0638\%$**, $F_1 = 0.6053 \pm 0.0684$.  
+3. **Protocol 3 (Fixed Production Operating Threshold $\tau = 0.35$ across 25 outer folds):**
+   - Sensitivity: **$74.21\% \pm 10.64\%$**, Specificity: **$57.48\% \pm 7.10\%$**, Balanced Accuracy: **$65.85\% \pm 0.0638\%$**, $F_1 = 0.6053 \pm 0.0684$.
    - *Finding:* Reflects the fold-to-fold sample variation across the 25 individual test partitions.
-4. **Protocol 4 (Fixed Production Operating Threshold $\tau = 0.35$ across 5 Complete CV Repeats):**  
-   - Sensitivity: **$74.21\% \pm 2.53\%$**, Specificity: **$57.46\% \pm 1.10\%$**, Balanced Accuracy: **$65.84\% \pm 0.0102\%$**, $F_1 = 0.6063 \pm 0.0120$.  
+4. **Protocol 4 (Fixed Production Operating Threshold $\tau = 0.35$ across 5 Complete CV Repeats):**
+   - Sensitivity: **$74.21\% \pm 2.53\%$**, Specificity: **$57.46\% \pm 1.10\%$**, Balanced Accuracy: **$65.84\% \pm 0.0102\%$**, $F_1 = 0.6063 \pm 0.0120$.
    - *Finding:* Reflects the repeat-to-repeat macro stability across complete 303-patient cohort evaluations.
 
 *Verification Outcome:* Everywhere these numbers appear (Abstract, Table 4, Table 5, Table 6, and Section 5.3), they are explicitly tagged with their corresponding evaluation protocol and aggregation units.
 
 ### 2.2 SHAP Attribution Stability & Reconstruction Additivity
 - **Additivity Pass Rate:** 100.0% ($25/25$ folds) across all four targets. Max floating-point error $< 1.2 \times 10^{-6}$ for tree models, $< 1.8 \times 10^{-15}$ for linear models.
-- **Spearman Rank Stability ($\rho \pm \text{SD}$ across 300 fold pairs):**  
+- **Spearman Rank Stability ($\rho \pm \text{SD}$ across 300 fold pairs):**
   - `Cath`: **$0.9319 \pm 0.0192$** (Top-5 Jaccard: $0.7833 \pm 0.1264$).
   - `LAD`: **$0.9217 \pm 0.0197$** (Top-5 Jaccard: $0.7456 \pm 0.1417$; features `Age`, `EF-TTE`, `Region RWMA`, `Typical CP` appeared in Top-5 in $25/25$ folds).
   - `LCX`: **$0.9081 \pm 0.0263$** (Top-5 Jaccard: $0.7483 \pm 0.1345$).
   - `RCA`: **$0.7737 \pm 0.0583$** (Top-5 Jaccard: $0.4890 \pm 0.1724$; exposed linear ranking instability under collinearity).
 
 ### 2.3 Boundary-Localized Prediction Churn & Uncertainty Discrimination
-- **Prediction Invariance across 5 Repeats ($N=303$):**  
-  - Boundary margin ($|p - \tau| < 0.05$): **0.0% invariance** (100% of borderline patients flipped classification across training iterations).  
+- **Prediction Invariance across 5 Repeats ($N=303$):**
+  - Boundary margin ($|p - \tau| < 0.05$): **0.0% invariance** (100% of borderline patients flipped classification across training iterations).
   - Confident margin ($|p - \tau| \ge 0.20$): **$>99\%$ label invariance** ($99.6\%$ for Cath, $99.5\%$ for LAD).
 - **Predictive Uncertainty via Binary Entropy:** Normalized entropy $H(p)$ effectively discriminated classification errors without access to ground truth, achieving error-detection AUROC of **$0.7593$ for Cath** and **$0.6974$ for LAD**.
 
@@ -152,12 +152,12 @@ The audit disentangles four distinct regulatory and governance tiers:
 
 1. **Tier 1 (Data Reuse License — CC BY 4.0):** Confers legal copyright and distribution rights for secondary computational reuse. It does not constitute research ethics clearance.
 2. **Tier 2 (Primary Clinical Collection & Consent):** Conducted in 2011–2012 by clinical cardiologists at Shaheed Rajaei Cardiovascular, Medical and Research Center (Tehran, Iran). Patient records were de-identified by hospital staff before open archiving.
-3. **Tier 3 (Primary Institutional Ethics Protocol):** In the foundational 2013 and 2018 CMPB literature, no specific alphanumeric IRB/IEC protocol code was published. Primary clinical data collection operated under routine hospital clinical audit and diagnostic standards.
-4. **Tier 4 (Secondary Computational Analysis Exemption):** Under international research ethics frameworks (US 45 CFR § 46.104(d)(4) Exemption 4, UK Health Research Authority, and ICMR National Ethical Guidelines 2017 Section 5), retrospective machine learning research conducted exclusively on open, de-identified public data without patient contact, biological specimens, or re-identification keys **does not involve direct human subjects intervention and does not require prospective institutional review board approval**.
+3. **Tier 3 (Primary Institutional Ethics Protocol):** In the foundational 2013 and 2018 CMPB literature, no specific alphanumeric IRB/IEC protocol code was published. Primary clinical data collection operated under routine hospital clinical audit and diagnostic data governance.
+4. **Tier 4 (Secondary Computational Analysis Governance):** The present investigation represents an independent secondary computational modeling study performed exclusively on previously published, fully de-identified, publicly accessible research data. Where an independent institutional ethics review determination or formal waiver has not been independently documented for this secondary study, the formal determination remains to be confirmed with relevant institutional review bodies or journal editorial leadership. No formal IRB protocol number or exemption certificate is claimed or fabricated.
 
 ### Transparent Manuscript Language Locked:
 All internal placeholders (`[UNRESOLVED...]`) were replaced with the following defensible text in Section 3.1 and Declarations:
-> *"The empirical data utilized in this study originate from the open-access Z-Alizadeh Sani repository, collected and anonymized at Shaheed Rajaei Cardiovascular, Medical and Research Center in Tehran, Iran (Alizadehsani et al., 2013; Alizadehsani, 2017, 2018). The foundational publications do not disclose a specific institutional review board (IRB) or ethics committee protocol identifier, operating under standard hospital clinical diagnostic data governance. Because the present investigation represents an independent secondary computational study performed exclusively on previously published, fully de-identified, publicly accessible research data involving no prospective clinical intervention, no biological specimen collection, and no patient re-identification potential, formal institutional human subjects ethical review and individual patient informed consent are not applicable for this secondary analysis under international research ethics standards."*
+> *"The empirical data utilized in this study originate from the open-access Z-Alizadeh Sani coronary artery disease dataset, collected and de-identified at Shaheed Rajaei Cardiovascular, Medical and Research Center in Tehran, Iran (Alizadehsani et al., 2013, 2018; Alizadehsani, 2017, 2018). The foundational publications do not disclose a specific institutional review board (IRB) or institutional ethics committee protocol identifier, operating under standard hospital clinical diagnostic data governance. The present investigation represents an independent secondary computational modeling study performed exclusively on previously published, fully de-identified, publicly accessible tabular research data, involving no direct patient interaction, prospective clinical intervention, biological specimen collection, or re-identification risk. Because an independent institutional ethics review determination or formal waiver has not been independently documented for this secondary study, the formal determination remains to be confirmed with the relevant institutional review bodies or journal editorial board. No formal IRB protocol number or exemption certificate is claimed or fabricated."*
 
 ---
 
@@ -168,11 +168,30 @@ An exhaustive scan of the repository git history revealed:
 - **Early Prototype Stage (Oct 8–15, 2026):** **Nikhil Agrawal** authored the initial repository commits, including dataset ingestion, initial baseline scripts, frontend UI layout, and 3D anatomical heart viewer integration.
 - **Advanced Research Methodology, Benchmarking & Manuscript (Oct 12 – Nov 15, 2026):** **Naman Deep Tripathi** designed and executed the complete research overhaul: preventing data leakage, architecting the 25-fold nested cross-validation harness, developing the calibration hierarchy, implementing SHAP attribution stability algorithms, conducting boundary-localized prediction churn experiments, executing inside-CV feature ablations, drafting the scientific manuscript, and leading the audit and PDF compilation.
 
-### 5.2 Authorship Recommendation
-Under **ICMJE authorship guidelines**, both contributors qualify for authorship if they endorse the CRediT contribution statement and approve the final submission.
-- **Recommendation:** **Dual Authorship** (`Naman Deep Tripathi`, First & Corresponding Author; `Nikhil Agrawal`, Co-Author).
-- **Alternative:** If this is confirmed by the author as a strictly solo project, sole authorship (`Naman Deep Tripathi`) is adopted, and Nikhil Agrawal is credited in the `Acknowledgements` section for 3D viewer integration.
-- Both choices are clearly laid out for author sign-off in [FINAL-AUTHOR-DECISIONS.md](file:///Users/apple/Desktop/Namandeep Tripathi/My Projects/CoroVista/FINAL-AUTHOR-DECISIONS.md).
+### 5.2 Authorship Decision Finalized: Option A (Dual Authorship)
+In accordance with author confirmations, **Option A — Dual Authorship** has been finalized and approved:
+- **Author Sequence (Must remain in this exact order):**
+  1. **Naman Deep Tripathi** — First Author and Corresponding Author
+     - Academic programme: Bachelor of Computer Applications (BCA), Second Year
+     - Institution: Sanskriti University, Mathura, Uttar Pradesh, India
+     - Email: `namandeeptripathi@gmail.com`
+     - ORCID: `https://orcid.org/0009-0006-8775-3794`
+     - *Department Flag:* Department within Sanskriti University not specified; flagged for author confirmation if required by journal portal.
+  2. **Nikhil Agrawal** — Co-Author
+     - Academic programme: Bachelor of Technology (B.Tech.), Fourth Year
+     - Institution: VIT Bhopal University, Bhopal, Madhya Pradesh, India
+     - Email: `agnikhil9897@gmail.com`
+     - ORCID: `https://orcid.org/0009-0009-1546-5576`
+     - *Department Flag:* Department/School within VIT Bhopal University not specified; flagged for author confirmation if required by journal portal.
+
+- **Author Approvals:**
+  - Naman Deep Tripathi: Final manuscript approved. Dual-authorship arrangement confirmed. Designated as Corresponding Author.
+  - Nikhil Agrawal: Final manuscript approved. Dual-authorship arrangement confirmed.
+  - Both authors approve the dual-authorship arrangement.
+
+- **CRediT Contribution Statement (Formally Documented on Page 28):**
+  - **Naman Deep Tripathi:** Conceptualization, Methodology, Software, Formal analysis, Investigation, Data curation, Validation, Visualization, Writing – original draft, Writing – review and editing.
+  - **Nikhil Agrawal:** Cardiovascular domain mapping, Anatomical multi-target localization, 3D anatomical asset integration, Clinical workflow visualization, Early data exploration and data audit, Critical manuscript review.
 
 ---
 
@@ -208,7 +227,7 @@ Four prominent peer-reviewed biomedical machine learning journals were evaluated
 - **Keywords:** Up to 6–8 keywords.
 - **Display Items:** Tables and figures embedded within the text or uploaded separately as high-resolution PNG/TIFF (embedded PDF is accepted for initial review).
 - **Mandatory Declarations:** CRediT statement, Competing Interests, Funding, Ethics, and Data Availability statements.
-- **Cost:** **$0 USD** under the standard Subscription Publishing option.
+- **Cost:** Standard **Subscription Publishing** route preferred (subject to final journal policy confirmation; APC and fee schedule marked for final verification against official CMPB author guidelines at time of submission).
 
 ---
 
@@ -265,20 +284,20 @@ nothing added to commit but untracked files present (use "git add" to track)
 
 ---
 
-## 10. Exact List of Remaining Author Decisions
+## 10. Summary of Confirmed Author Decisions
 
-Before uploading to the journal portal, the author must complete the 5 items in [FINAL-AUTHOR-DECISIONS.md](file:///Users/apple/Desktop/Namandeep%20Tripathi/My%20Projects/CoroVista/FINAL-AUTHOR-DECISIONS.md):
+All 5 items in [FINAL-AUTHOR-DECISIONS.md](file:///Users/apple/Desktop/Namandeep%20Tripathi/My%20Projects/CoroVista/FINAL-AUTHOR-DECISIONS.md) have been confirmed and reconciled:
 
-1. **Authorship Choice:** Confirm Dual Authorship (`Naman Deep Tripathi` & `Nikhil Agrawal`) or Sole Authorship (`Naman Deep Tripathi`).
-2. **Affiliation & Metadata:** Insert academic department/university (or Independent Researcher), email, and ORCID.
-3. **Ethics Sign-Off:** Endorse the transparent secondary data governance disclosure.
-4. **Acknowledgements Sign-Off:** Endorse the formal acknowledgement text.
-5. **Publishing Option:** Select Subscription Route (\$0 APC) or Gold Open Access.
+1. **Authorship Choice:** Confirmed Dual Authorship (Option A: `Naman Deep Tripathi` First & Corresponding Author; `Nikhil Agrawal` Co-Author). Both authors approved the final manuscript and dual-authorship arrangement.
+2. **Affiliation & Metadata:** Inserted verified academic programmes, universities, locations, emails, and ORCIDs. Departmental designations flagged for confirmation if required by journal portal.
+3. **Ethics Sign-Off:** Endorsed transparent secondary data governance disclosure explicitly stating that formal institutional determination remains to be confirmed.
+4. **Acknowledgements Sign-Off:** Endorsed formal acknowledgement text crediting original dataset contributors, Shaheed Rajaei Center, DBCLS BodyParts3D, and the IIT Mandi hackathon.
+5. **Publishing Option:** Selected Subscription Publishing as preferred route (subject to final journal policy confirmation; APC marked for final verification).
 
 ---
 
 ## 11. Final Formal Publication Verdict
 
-$$\mathbf{READY\;AFTER\;AUTHOR\;CONFIRMATION}$$
+$$\mathbf{READY\;FOR\;PORTAL\;SUBMISSION}$$
 
 The CoroVista research project has achieved maximum scientific, editorial, and visual rigor. The canonical 29-page PDF and submission package are completely prepared for immediate journal submission upon author sign-off.

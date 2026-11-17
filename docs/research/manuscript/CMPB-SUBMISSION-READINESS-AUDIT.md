@@ -1,9 +1,9 @@
 # CoroVista — Final Submission Package Audit: CMPB Journal Readiness
 
-**Audit Date:** November 16, 2026, 00:15 Local Time (18:45 UTC)  
-**Target Journal:** *Computer Methods and Programs in Biomedicine* (CMPB), Elsevier  
-**Auditor Role:** Independent Senior Scientific Manuscript Auditor, Research Integrity Specialist & Submission QA Reviewer  
-**Audit Scope:** End-to-end forensic submission-readiness audit of the complete CoroVista research manuscript, canonical PDF artifacts, dataset provenance, experimental metrics, author contributions, and CMPB author guide compliance.  
+**Audit Date:** November 16, 2026, 00:15 Local Time (18:45 UTC)
+**Target Journal:** *Computer Methods and Programs in Biomedicine* (CMPB), Elsevier
+**Auditor Role:** Independent Senior Scientific Manuscript Auditor, Research Integrity Specialist & Submission QA Reviewer
+**Audit Scope:** End-to-end forensic submission-readiness audit of the complete CoroVista research manuscript, canonical PDF artifacts, dataset provenance, experimental metrics, author contributions, and CMPB author guide compliance.
 **Constraint Adherence:** Strict audit protocol. Zero assumptions, zero fabricated metadata, zero modifications to research results, zero regeneration of the canonical PDF, and zero external communications.
 
 ---
@@ -12,7 +12,7 @@
 
 $$\mathbf{CONSOLIDATED\;AUDIT\;VERDICT:\;NEEDS\;AUTHOR\;CONFIRMATION}$$
 
-The CoroVista research manuscript, experimental methodology, numerical results, and visual presentation are **substantively complete, scientifically validated, and formatted to the highest peer-reviewed standards**. 
+The CoroVista research manuscript, experimental methodology, numerical results, and visual presentation are **substantively complete, scientifically validated, and formatted to the highest peer-reviewed standards**.
 
 The canonical 29-page PDF is fully compiled and contains zero internal placeholders, zero confidentiality banners, and zero orphaned sections.
 
@@ -112,10 +112,10 @@ Every quantitative value in the Abstract was traced to its underlying machine le
 
 ### 3.1 Mathematical Proof of RCA Standard Deviation Reconciliation
 The audit resolved the previously reported divergence in RCA operating threshold metrics ($\tau = 0.35$):
-- **Protocol 3 (Fold-Level Aggregation across 25 outer folds):**  
+- **Protocol 3 (Fold-Level Aggregation across 25 outer folds):**
   $$\text{Recall} = 74.21\% \pm 10.64\%, \quad \text{Specificity} = 57.48\% \pm 7.10\% \quad (ddof=1, N=25)$$
   This measures the partition-to-partition variation across the 25 individual test folds.
-- **Protocol 4 (Repeat-Level Aggregation across 5 complete CV repeats):**  
+- **Protocol 4 (Repeat-Level Aggregation across 5 complete CV repeats):**
   $$\text{Recall} = 74.21\% \pm 2.53\%, \quad \text{Specificity} = 57.46\% \pm 1.10\% \quad (ddof=1, R=5)$$
   This measures the macro stability across complete 303-patient cohort evaluations.
 - **Resolution Verdict:** The Abstract explicitly reports:
@@ -144,21 +144,30 @@ A line-by-line review of Section 3.1 (Page 7) and the Declarations (Page 28) con
 
 ## 5. Task 5: Finalization of Dual Authorship & CRediT Taxonomy
 
-In accordance with the project git history and documented intellectual contributions, **dual authorship is finalized**:
+In accordance with confirmed author decisions and repository git history, **Option A: Dual Authorship is confirmed and approved**:
 
-### Author List & Order:
-1. **Naman Deep Tripathi** (First & Corresponding Author)
+### Author List & Sequence (Confirmed):
+1. **Naman Deep Tripathi** (First Author and Corresponding Author)
+   - Academic programme: Bachelor of Computer Applications (BCA), Second Year
+   - Institution: Sanskriti University, Mathura, Uttar Pradesh, India
+   - Email: `namandeeptripathi@gmail.com`
+   - ORCID: `https://orcid.org/0009-0006-8775-3794`
+   - *Department Flag:* Department within Sanskriti University not specified; flagged for author confirmation if required by journal portal.
 2. **Nikhil Agrawal** (Co-Author)
+   - Academic programme: Bachelor of Technology (B.Tech.), Fourth Year
+   - Institution: VIT Bhopal University, Bhopal, Madhya Pradesh, India
+   - Email: `agnikhil9897@gmail.com`
+   - ORCID: `https://orcid.org/0009-0009-1546-5576`
+   - *Department Flag:* Department/School within VIT Bhopal University not specified; flagged for author confirmation if required by journal portal.
+
+### Final Manuscript Approval:
+- **Naman Deep Tripathi:** Final manuscript approved. Dual-authorship arrangement confirmed. Designated as Corresponding Author.
+- **Nikhil Agrawal:** Final manuscript approved. Dual-authorship arrangement confirmed.
+- Both authors approve the dual-authorship arrangement.
 
 ### CRediT Contribution Statement (Formally Documented on Page 28):
-- **Naman Deep Tripathi:** Conceptualization, methodology formulation, machine learning architecture, cross-validation protocols, calibration modeling, explainability stability algorithms, uncertainty quantification framework, software implementation, manuscript drafting, and editorial review.
-- **Nikhil Agrawal:** Cardiovascular domain mapping, anatomical multi-target localization, 3D anatomical asset integration (Mitsuhashi et al., 2009), clinical workflow visualization, data audit, and critical manuscript review.
-
-### Items Requiring Author Action / Confirmation:
-- [ ] **Author Endorsement:** Both Naman Deep Tripathi and Nikhil Agrawal must formally endorse this CRediT taxonomy statement.
-- [ ] **Affiliation Details:** Both authors must provide verified department, institution, city, and country details.
-- [ ] **Author Emails:** Confirm corresponding email (`namandeeptripathi@gmail.com`) and co-author email (`agnikhil9897@gmail.com`).
-- [ ] **ORCID Identifiers:** Provide active ORCID IDs (e.g., `https://orcid.org/XXXX-XXXX-XXXX-XXXX`).
+- **Naman Deep Tripathi:** Conceptualization, Methodology, Software, Formal analysis, Investigation, Data curation, Validation, Visualization, Writing – original draft, Writing – review and editing.
+- **Nikhil Agrawal:** Cardiovascular domain mapping, Anatomical multi-target localization, 3D anatomical asset integration, Clinical workflow visualization, Early data exploration and data audit, Critical manuscript review.
 
 ---
 
@@ -168,11 +177,11 @@ An automated script evaluated the complete 29-page PDF and source Markdown:
 
 - **Internal Placeholders:** Zero instances of `[UNRESOLVED...]`, `[TODO...]`, `[AUTHOR...]`, or `placeholder`. (The only bracketed term is medical acronym `[CABG]`).
 - **Review / Draft Banners:** Zero instances of `"Working Review Draft"` or `"Confidential"`.
-- **Running Headers:** Pages 2–29 feature a clean academic header:  
+- **Running Headers:** Pages 2–29 feature a clean academic header:
   `CoroVista: Reliable & Explainable CAD Prediction`
-- **Running Footers:** Pages 2–29 feature the required diagnostic disclaimer:  
+- **Running Footers:** Pages 2–29 feature the required diagnostic disclaimer:
   `CoroVista Research Manuscript — Not for Clinical Diagnostic Use Page X of 29`
-- **Citation Integrity:**  
+- **Citation Integrity:**
   - Total in-text citations: 73 instances.
   - Total bibliography entries: 23 references.
   - **Match Rate: 100.0%.** Every citation in the text resolves to an exact bibliography entry, and every bibliography entry is cited in the text.
@@ -200,11 +209,11 @@ A comparison between CMPB's official submission specifications and the CoroVista
 Because Elsevier Editorial Manager enforces a hard validation rule of $\le 350$ words on the abstract input field, the author should copy and paste this exact 340-word condensed version into the submission portal:
 
 > **Background and Objective:** Machine learning models for coronary artery disease (CAD) predominantly optimize global discrimination on composite outcomes while neglecting probability calibration, explanation consistency under resampling, prediction stability near decision boundaries, and vessel-specific anatomical localization. We developed CoroVista to evaluate multi-target CAD prediction and audit algorithmic reliability.
-> 
+>
 > **Methods:** Using the extended Z-Alizadeh Sani cohort ($N = 303$ adult patients undergoing invasive angiography at Shaheed Rajaei Center), we modeled composite CAD (Cath) and vessel-specific stenosis (LAD, LCX, RCA) under 25-fold Repeated Stratified Cross-Validation (5 splits $\times$ 5 repeats) with target-specific calibration (Sigmoid Platt for Cath, LAD, RCA; uncalibrated for LCX). We audited calibration (Brier score, ECE), TreeSHAP stability across 300 fold pairs, prediction churn, entropy-based uncertainty, and inside-CV feature ablation.
-> 
+>
 > **Results:** Production models achieved strong discrimination and calibration: Cath ROC-AUC $0.9123 \pm 0.0404$ (ECE $0.1004 \pm 0.0227$); LAD ROC-AUC $0.8443 \pm 0.0528$ (ECE $0.1326 \pm 0.0394$); LCX ROC-AUC $0.7358 \pm 0.0629$ (ECE $0.1366 \pm 0.0315$); and RCA ROC-AUC $0.7163 \pm 0.0605$ (ECE $0.1000 \pm 0.0321$). Default thresholding ($\tau = 0.50$) caused severe sensitivity collapse on calibrated RCA models (Recall $31.24\% \pm 8.56\%$), resolved by nested inner-fold threshold tuning (cutoff $0.3188 \pm 0.0380$, Recall $79.46\% \pm 10.92\%$) and fixed operating thresholding at $\tau = 0.35$ (Recall $74.21\% \pm 10.64\%$ across 25 folds [$74.21\% \pm 2.53\%$ across 5 repeats], Specificity $57.48\% \pm 7.10\%$ [$57.46\% \pm 1.10\%$ across 5 repeats]). Exact SHAP additivity verified in 100% of folds. Feature ranking was highly stable for tree ensembles (Spearman $\rho > 0.90$ for Cath, LAD, LCX). Prediction churn concentrated in the boundary margin ($|p - \tau| < 0.05$, 100% label flips), while confident predictions achieved $>99\%$ invariance. Entropy discriminated errors without labels (error-detection ROC-AUC $0.7593$ for Cath). LAD depended on echocardiography, while LCX relied on laboratory panels.
-> 
+>
 > **Conclusions:** Target-specific probability calibration, nested threshold tuning, and stability auditing represent essential prerequisites for reliable clinical decision support.
 
 ---
@@ -217,28 +226,34 @@ Because Elsevier Editorial Manager enforces a hard validation rule of $\le 350$ 
 | **Source Manuscript File** | `docs/research/manuscript/CoroVista-Research-Manuscript.md` | **READY** | Complete markdown source. Cites dataset, CRediT, and declarations. |
 | **CMPB Highlights** | `CMPB-HIGHLIGHTS.md` | **READY** | 5 bullet points, each strictly $\le 85$ characters. Fully compliant with CMPB. |
 | **Journal Cover Letter** | `FINAL-COVER-LETTER-DRAFT.md` | **NEEDS AUTHOR CONFIRMATION** | Full draft ready, but contains bracketed templates for author affiliation/contact details. |
-| **Author Decisions Document**| `FINAL-AUTHOR-DECISIONS.md` | **NEEDS AUTHOR CONFIRMATION** | Awaiting author sign-off on affiliations, emails, ORCID, and CRediT statement. |
+| **Author Decisions Document**| `FINAL-AUTHOR-DECISIONS.md` | **CONFIRMED & READY** | Dual authorship (Option A), author metadata, CRediT statement, ethics, and publishing model signed off. |
 | **Submission Checklist** | `FINAL-SUBMISSION-CHECKLIST.md` | **READY** | Practical step-by-step guide for Editorial Manager submission. |
 | **High-Resolution Figures** | `data/reports/` (Figures 1 to 6) | **READY** | High-resolution PNG plots (225 KB to 727 KB) available for upload. |
 
 ---
 
-## 9. Priority Action Plan for the Author
+## 9. Final Action Plan for Submission Upload
 
-To complete submission to *Computer Methods and Programs in Biomedicine*, execute the following actions in priority order:
+With author decisions and verified metadata fully reconciled in `FINAL-AUTHOR-DECISIONS.md`, execute the following actions in order:
 
-### Priority 1: Fill Author Affiliations and Contact Info in Cover Letter
+### Step 1: Verify Final Cover Letter
 - Open [FINAL-COVER-LETTER-DRAFT.md](file:///Users/apple/Desktop/Namandeep%20Tripathi/My%20Projects/CoroVista/FINAL-COVER-LETTER-DRAFT.md).
-- Replace `[Department / Institution / Independent Researcher designation, City, Country]`, `[namandeeptripathi@gmail.com]`, and `[Author ORCID identifier]` with your confirmed information.
-- Save as a PDF or text file for portal upload.
+- Confirmed verified author metadata (Naman Deep Tripathi, Sanskriti University; Nikhil Agrawal, VIT Bhopal University), CRediT contributions, and ethical disclosures are present.
+- Save or copy as PDF/text for portal upload.
 
-### Priority 2: Update Dataset DOI in Manuscript Source Prior to Final Transmission
-- When ready to insert final author affiliations on Page 1, update line 827 and line 849 of `docs/research/manuscript/CoroVista-Research-Manuscript.md` from `10.24432/C5Q31T` to **`10.24432/C5461K`** to accurately reflect the multi-artery extension record on UCI.
+### Step 2: Confirm Author Sign-Off
+- Review [FINAL-AUTHOR-DECISIONS.md](file:///Users/apple/Desktop/Namandeep%20Tripathi/My%20Projects/CoroVista/FINAL-AUTHOR-DECISIONS.md).
+- Dual Authorship (Option A), author order (Naman Deep Tripathi First/Corresponding Author, Nikhil Agrawal Co-Author), ethical disclosures, and Subscription publishing track are fully signed off.
 
-### Priority 3: Sign Off on Author Decisions
-- Open [FINAL-AUTHOR-DECISIONS.md](file:///Users/apple/Desktop/Namandeep%20Tripathi/My%20Projects/CoroVista/FINAL-AUTHOR-DECISIONS.md).
-- Confirm Dual Authorship for Naman Deep Tripathi and Nikhil Agrawal.
-- Confirm the Subscription publishing model (\$0 APC).
+### Step 3: Log into Elsevier Editorial Manager and Upload
+- Navigate to [CMPB Editorial Manager](https://www.editorialmanager.com/cmpb/).
+- Select **Full Length Article**.
+- Upload `CoroVista-Research-Manuscript.pdf` as **Manuscript**.
+- Upload `FINAL-COVER-LETTER-DRAFT.md` as **Cover Letter**.
+- Copy and paste the 5 bullet points from `CMPB-HIGHLIGHTS.md` into the **Highlights** field.
+- Copy and paste the structured abstract into the **Abstract** field.
+- Enter keywords and CRediT statements.
+- Approve the system-generated PDF proof and transmit.
 
 ### Priority 4: Log into Elsevier Editorial Manager and Upload
 - Navigate to [CMPB Editorial Manager](https://www.editorialmanager.com/cmpb/).

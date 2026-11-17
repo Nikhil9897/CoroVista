@@ -1,7 +1,12 @@
 # Reliable and Explainable Machine Learning for Coronary Artery Disease Prediction: Calibration, Prediction Stability, Explainability Stability and Robustness
 
-**Authors:** Naman Deep Tripathi$^1$, Nikhil Agrawal$^1$  
-$^1$ Department of Computer Science & Biomedical Informatics / Cardiovascular Systems Engineering  
+**Authors:**\
+Naman Deep Tripathi$^{1,*}$, Nikhil Agrawal$^2$
+
+$^1$ Sanskriti University, Mathura, Uttar Pradesh, India (Academic programme: Bachelor of Computer Applications [BCA], Second Year; ORCID: [0009-0006-8775-3794](https://orcid.org/0009-0006-8775-3794))\
+$^2$ VIT Bhopal University, Bhopal, Madhya Pradesh, India (Academic programme: Bachelor of Technology [B.Tech.], Fourth Year; ORCID: [0009-0009-1546-5576](https://orcid.org/0009-0009-1546-5576))\
+$^*$ *Corresponding Author:* Naman Deep Tripathi (namandeeptripathi@gmail.com)\
+*(Note: Specific academic departments within Sanskriti University and VIT Bhopal University have not been specified and are flagged for author confirmation if required by the target journal)*
 
 ---
 
@@ -14,7 +19,7 @@ The empirical foundation of this study is the extended Z-Alizadeh Sani cardiolog
 - **Study Design:** Retrospective cross-sectional diagnostic modeling study.
 - **Inclusion Criteria:** Adult patients presenting with suspected ischemic heart disease or stable angina who underwent formal elective invasive coronary angiography (ICA) based on clinical indications, resting 12-lead electrocardiography (ECG), exercise stress testing, or echocardiographic abnormalities.
 - **Reference Standard:** Selective invasive coronary angiography performed via standard femoral or radial arterial access. Quantitative or visual angiographic interpretation was conducted by expert interventional cardiologists. In accordance with established international cardiology consensus guidelines (Lawton et al., 2022), **significant obstructive coronary artery disease was defined as $\ge 50\%$ luminal diameter stenosis in one or more major epicardial coronary vessels**.
-- **Ethical Standards & Approvals:** The dataset was collected and anonymized at Shaheed Rajaei Cardiovascular, Medical and Research Center in compliance with the ethical principles of the Declaration of Helsinki [CITATION NEEDED for formal Institutional Review Board / Ethics Committee approval protocol identifier]. Patient records were fully de-identified prior to public dissemination, obviating the requirement for individual written informed consent for retrospective secondary algorithmic analysis.
+- **Ethical Standards & Data Governance:** The clinical cohort was originally gathered and de-identified during routine diagnostic catheterization evaluations at Shaheed Rajaei Cardiovascular, Medical and Research Center (Tehran, Iran). As documented in foundational publications (Alizadehsani et al., 2013, 2018), patient records were fully anonymized prior to open public deposition in research repositories (Alizadehsani, 2017, 2018). The primary publications do not record an individual Institutional Review Board (IRB) or institutional ethics committee protocol approval number, operating under hospital clinical diagnostic data governance. The present study represents an independent secondary computational modeling and reproducibility investigation conducted exclusively on this previously published, publicly accessible, fully de-identified tabular dataset, involving no prospective clinical intervention, no biological specimen collection, and no patient re-identification potential. Public availability of open data does not automatically obviate institutional research ethics governance; because an independent institutional ethics review determination or formal waiver has not been independently documented for this secondary study, the target journal or relevant institutional ethics body must determine whether an exemption, waiver, or other formal ethics determination is required. Formal ethics clearance is not marked as completed, and no IRB protocol number or exemption certificate is claimed or fabricated.
 
 #### Prediction Target Definitions and Class Distributions
 The anatomical partitioning of epicardial coronary artery territories (LAD, LCX, RCA) follows established clinical revascularization guidelines (Lawton et al., 2022) and standardized biomedical anatomical ontologies (Mitsuhashi et al., 2009). Four independent clinical prediction targets were established to reflect both aggregate disease burden and vessel-specific anatomical localization:
@@ -50,7 +55,7 @@ The 54 active features span seven distinct clinical diagnostic domains:
 7. **Transthoracic Echocardiography (3):** Left Ventricular Ejection Fraction (`EF-TTE`), Regional Wall Motion Abnormality (`Region RWMA`), Valvular Heart Disease (`VHD`) (None, Mild, Moderate, Severe).
 
 #### Preprocessing & Leakage-Guard Pipeline
-In accordance with TRIPOD+AI recommendations (Collins et al., 2024), all preprocessing operations were wrapped within scikit-learn compatible `Pipeline` objects to enforce absolute cross-validation partitioning:
+In alignment with recommendations emphasized by TRIPOD+AI (Collins et al., 2024), all preprocessing operations were wrapped within scikit-learn compatible `Pipeline` objects to enforce absolute cross-validation partitioning:
 - **Deterministic Cleaning:** Text normalization, whitespace trimming, and uniform boolean encoding (`'Y'`/`'N'`, `'Male'`/`'Female'`, `'F'`/`'M'`) via `ClinicalFeatureCleaner`.
 - **Data Completeness & Imputation:** An exhaustive audit (`data/reports/dataset_audit.json`) confirmed that the primary dataset contains 0 missing entries across all 59 columns (100% natural data completeness). However, to guarantee robust defensive inference against incomplete clinical records in deployment, partition-isolated imputation was embedded: continuous features were imputed using outer-training median values, and categorical/binary features were imputed using outer-training mode values via `SimpleImputer`.
 - **Nominal Feature Encoding:** `ColumnTransformer` applied `OneHotEncoder(drop=None, sparse_output=False)` to `VHD` and `BBB`. Binary features were encoded as $\{0, 1\}$.
@@ -162,7 +167,7 @@ To evaluate prediction churn under data resampling, out-of-fold predicted probab
 Predictive uncertainty was quantified using normalized binary entropy (Kompa et al., 2021):
 $$H(p) = -p \log_2(p) - (1-p) \log_2(1-p)$$
 Entropy scales continuously from $H(p) = 0$ (absolute certainty at $p=0$ or $p=1$) to $H(p) = 1.0$ (maximal ambiguity at $p = 0.50$).
-- **Error Discrimination Power:** The capacity of binary entropy to discriminate empirical classification errors in the absence of ground-truth labels was quantified using the Receiver Operating Characteristic curve, computing the **error-detection ROC-AUC**.
+- **Retrospective Error Discrimination Power:** While normalized binary predictive entropy $H(p)$ can be computed directly from model output probabilities without access to ground-truth labels at inference time, evaluating whether entropy discriminates correct from incorrect classifications requires reference ground-truth labels. In this retrospective offline evaluation, the capacity of binary entropy to discriminate empirical classification errors was quantified using Receiver Operating Characteristic analysis, computing the **retrospective error-detection ROC-AUC**.
 
 ---
 
@@ -233,7 +238,7 @@ The baseline demographic, clinical, laboratory, and echocardiographic characteri
 Multi-target discrimination and calibration metrics across 25 outer test folds are summarized in Table 2 for the selected production models. A comprehensive comparison across candidate calibration methods is detailed in Table 3.
 
 #### Table 2: Benchmark Multi-Target Discrimination & Calibration Performance
-*Authoritative Source: `data/reports/reproduction_audit/calibration_results.json` and `data/reports/reproduction_audit/model_benchmark.json`.*  
+*Authoritative Source: `data/reports/reproduction_audit/calibration_results.json` and `data/reports/reproduction_audit/model_benchmark.json`.*
 *Protocol: Repeated Stratified $K$-Fold Cross-Validation (5 splits $\times$ 5 repeats = 25 outer folds). Primary metrics report Cross-Fold Mean $\pm$ Sample SD (`ddof=1`, $N=24$), with population SD (`ddof=0`, $N=25$) noted in brackets.*
 
 | Target | Clinical Endpoint | Selected Model | Preprocessing | Calibration Method | Operating Cutoff ($\tau$) | ROC-AUC (Mean $\pm$ SD) | PR-AUC (Mean $\pm$ SD) | Brier Score (Mean $\pm$ SD) | ECE (Mean $\pm$ SD) |
@@ -244,7 +249,7 @@ Multi-target discrimination and calibration metrics across 25 outer test folds a
 | **RCA** | Right Coronary Artery | **Logistic Regression** | StandardScaler, One-Hot | **Sigmoid** (Platt) | 0.35 | **$0.7163 \pm 0.0605$**<br>[$0.0593$ `ddof=0`] | **$0.6098 \pm 0.0775$**<br>[$0.0759$ `ddof=0`] | **$0.2060 \pm 0.0150$**<br>[$0.0147$ `ddof=0`] | **$0.1000 \pm 0.0321$**<br>[$0.0315$ `ddof=0`] |
 
 #### Table 3: Calibration Method Comparison Across Model Architectures
-*Authoritative Source: `data/reports/reproduction_audit/model_benchmark.json`.*  
+*Authoritative Source: `data/reports/reproduction_audit/model_benchmark.json`.*
 *Protocol: 25-fold outer repeated-CV fold distributions (Mean $\pm$ Sample SD, `ddof=1`).*
 
 | Target | Model Candidate | Calibration Method | Brier Score (Lower is Better) | ECE (Lower is Better) | ROC-AUC (Mean $\pm$ SD) | Selected Status |
@@ -280,7 +285,7 @@ Multi-target discrimination and calibration metrics across 25 outer test folds a
 Binary classification metrics under standard fixed cutoffs ($\tau = 0.50$) and nested inner-OOF tuned cutoffs are compared in Table 4 and Table 5. Table 6 provides the four-protocol separation matrix for RCA.
 
 #### Table 4: Standard Threshold (0.50) Binary Classification Performance
-*Authoritative Source: `data/reports/reproduction_audit/calibration_results.json`.*  
+*Authoritative Source: `data/reports/reproduction_audit/calibration_results.json`.*
 *Protocol: 25 outer fold evaluations at fixed decision cutoff $\tau = 0.50$ (Mean $\pm$ Sample SD, `ddof=1`).*
 
 | Target | Selected Model & Calibration | Accuracy (Mean $\pm$ SD) | Balanced Accuracy (Mean $\pm$ SD) | Sensitivity / Recall (Mean $\pm$ SD) | Specificity (Mean $\pm$ SD) | Precision (Mean $\pm$ SD) | $F_1$-Score (Mean $\pm$ SD) |
@@ -291,7 +296,7 @@ Binary classification metrics under standard fixed cutoffs ($\tau = 0.50$) and n
 | **RCA** | Logistic Regression + Sigmoid | $0.6562 \pm 0.0504$ | $0.5881 \pm 0.0500$ | **$0.3124 \pm 0.0856$** | $0.8638 \pm 0.0741$ | $0.5998 \pm 0.1346$ | **$0.4027 \pm 0.0872$** |
 
 #### Table 5: Nested Inner-Fold Threshold Tuning Performance
-*Authoritative Source: `data/reports/reproduction_audit/calibration_results.json`.*  
+*Authoritative Source: `data/reports/reproduction_audit/calibration_results.json`.*
 *Protocol: 25 outer fold evaluations where threshold is tuned on inner 3-fold CV to maximize macro $F_1$ (Mean $\pm$ Sample SD, `ddof=1`).*
 
 | Target | Selected Model & Calibration | Selected Threshold Distribution (Mean $\pm$ SD [Min, Max]) | Accuracy (Mean $\pm$ SD) | Balanced Accuracy (Mean $\pm$ SD) | Sensitivity / Recall (Mean $\pm$ SD) | Specificity (Mean $\pm$ SD) | Precision (Mean $\pm$ SD) | $F_1$-Score (Mean $\pm$ SD) |
@@ -299,9 +304,9 @@ Binary classification metrics under standard fixed cutoffs ($\tau = 0.50$) and n
 | **Cath** | XGBoost + Sigmoid | $0.4912 \pm 0.0745$ [$0.34, 0.63$] | $0.8686 \pm 0.0392$ | $0.8269 \pm 0.0521$ | $0.9249 \pm 0.0387$ | $0.7289 \pm 0.0971$ | $0.8954 \pm 0.0347$ | $0.9093 \pm 0.0270$ |
 | **LAD** | XGBoost + Sigmoid | $0.4496 \pm 0.0568$ [$0.32, 0.54$] | $0.7815 \pm 0.0564$ | $0.7629 \pm 0.0673$ | $0.8760 \pm 0.0652$ | $0.6497 \pm 0.1528$ | $0.7855 \pm 0.0686$ | $0.8248 \pm 0.0407$ |
 | **LCX** | XGBoost Uncalibrated | $0.3452 \pm 0.0758$ [$0.16, 0.43$] | $0.6205 \pm 0.0714$ | $0.6508 \pm 0.0648$ | $0.7944 \pm 0.1201$ | $0.5072 \pm 0.1348$ | $0.5161 \pm 0.0638$ | $0.6215 \pm 0.0646$ |
-| **RCA** | Logistic Regression + Sigmoid | $0.3188 \pm 0.0380$ [$0.20, 0.37$]\* [PENDING VERIFICATION] | $0.6072 \pm 0.0716$ | **$0.6443 \pm 0.0575$** | **$0.7946 \pm 0.1092$** | **$0.4941 \pm 0.1429$** | $0.4928 \pm 0.0532$ | **$0.6037 \pm 0.0516$** |
+| **RCA** | Logistic Regression + Sigmoid | $0.3188 \pm 0.0380$ [$0.20, 0.37$]\* | $0.6072 \pm 0.0716$ | **$0.6443 \pm 0.0575$** | **$0.7946 \pm 0.1092$** | **$0.4941 \pm 0.1429$** | $0.4928 \pm 0.0532$ | **$0.6037 \pm 0.0516$** |
 
-*\*Audit Note on RCA Selected Threshold SD [PENDING VERIFICATION]: An exact re-calculation over the 25 outer fold threshold values (`[0.34, 0.27, 0.30, 0.32, 0.31, 0.29, 0.28, 0.30, 0.32, 0.37, 0.36, 0.32, 0.37, 0.31, 0.34, 0.34, 0.35, 0.35, 0.20, 0.37, 0.34, 0.30, 0.29, 0.33, 0.30]`) yields Mean = **0.3188**, Population SD (`ddof=0`) = **0.0372**, and Sample SD (`ddof=1`) = **0.0380**. The value $0.0388$ previously cited in preliminary notes was an unverified draft artifact resulting from an accidental double-Bessel correction ($0.0380 \times \sqrt{25/24} \approx 0.0388$). Until confirmed across all legacy documents, this value is tagged as pending final manuscript sign-off.*
+*\*Audit Note on RCA Selected Threshold SD: An exact re-calculation over the 25 outer fold threshold values (`[0.34, 0.27, 0.30, 0.32, 0.31, 0.29, 0.28, 0.30, 0.32, 0.37, 0.36, 0.32, 0.37, 0.31, 0.34, 0.34, 0.35, 0.35, 0.20, 0.37, 0.34, 0.30, 0.29, 0.33, 0.30]`) yields Mean = **0.3188**, Population SD (`ddof=0`) = **0.0372**, and Sample SD (`ddof=1`) = **0.0380**. The value $0.0388$ previously cited in preliminary notes was an unverified draft artifact resulting from an accidental double-Bessel correction ($0.0380 \times \sqrt{25/24} \approx 0.0388$). The verified sample standard deviation is locked as **$0.0380$**.*
 
 #### Table 6: Production Operating Threshold Performance & Protocol Separation (RCA Deep Dive)
 *Authoritative Source: `models/rca/metadata.json`, `data/reports/reproduction_audit/calibration_results.json`, and stored `oof_y_prob`.*
@@ -331,7 +336,7 @@ Binary classification metrics under standard fixed cutoffs ($\tau = 0.50$) and n
 Global and patient-level explanation stability metrics across the 25 outer cross-validation folds are presented in Table 7. Exact mathematical additivity ($\sum \phi_i + \phi_0 = f(x)$) passed in 100% of folds ($25/25$) across all targets, with maximum observed floating-point reconstruction errors $< 1.2 \times 10^{-6}$ for tree models and $< 1.8 \times 10^{-15}$ for linear models.
 
 #### Table 7: SHAP Explanation Stability Across Resampled Cross-Validation Folds
-*Authoritative Source: `data/reports/phase4/summary/phase4_master_metrics.json` (Exp A).*  
+*Authoritative Source: `data/reports/phase4/summary/phase4_master_metrics.json` (Exp A).*
 *Protocol: 25 outer folds (5 splits $\times$ 5 repeats). Pairwise global correlations across 300 fold pairs. Patient-level stability evaluated across 5 independent out-of-fold explanations per patient ($N=303$).*
 
 | Metric Dimension | Cath (XGBoost) | LAD (XGBoost) | LCX (XGBoost) | RCA (Logistic Regression) |
@@ -356,7 +361,7 @@ Tree-based models exhibited exceptional global rank stability ($\rho > 0.90$ acr
 Prediction dispersion and classification invariance across 5 independent cross-validation repeats ($N=303$) are detailed in Table 8. The analysis demonstrates that classification label flips are not distributed uniformly across the patient population, but concentrate almost exclusively within the narrow margin immediately adjacent to the operating cutoff ($|p - \tau| < 0.05$).
 
 #### Table 8: Prediction Stability and Boundary Proximity Stratification
-*Authoritative Source: `data/reports/phase4/summary/phase4_master_metrics.json` (Exp B).*  
+*Authoritative Source: `data/reports/phase4/summary/phase4_master_metrics.json` (Exp B).*
 *Protocol: 5 repeats of 5-fold CV yielding 5 independent out-of-fold probability estimates per patient ($N=303$).*
 
 | Prediction Metric Dimension | Cath | LAD | LCX | RCA |
@@ -371,16 +376,16 @@ Prediction dispersion and classification invariance across 5 independent cross-v
 | **Complete Classification Invariance (5/5 Identical Labels)** | **91.09% (276/303)** | **81.85% (248/303)** | **67.00% (203/303)** | **75.58% (229/303)** |
 | **Classification Flips (1 to 4 Flips Across 5 Repeats)** | 8.91% (27/303) | 18.15% (55/303) | 33.00% (100/303) | 24.42% (74/303) |
 | **Invariance by Boundary Distance: $|p - \tau| < 0.05$** | **0.0% (0/6)** | **0.0% (0/17)** | **2.2% (1/45)** | **22.7% (17/75)** |
-| **Invariance by Boundary Distance: $0.05 \le |p - \tau| < 0.10$** | 46.2% (6/13) | 42.9% (12/28) | 27.8% (15/54) | 78.4% (58/74) |
-| **Invariance by Boundary Distance: $0.10 \le |p - \tau| < 0.20$** | 81.6% (31/38) | 88.2% (60/68) | 75.0% (51/68) | 100.0% (106/106) |
+| **Invariance by Boundary Distance: $0.05 \le |p - \tau| < 0.10$** | **28.6% (4/14)** | **29.4% (10/34)** | **31.6% (12/38)** | **82.4% (56/68)** |
+| **Invariance by Boundary Distance: $0.10 \le |p - \tau| < 0.20$** | **75.7% (28/37)** | **77.4% (48/62)** | **65.5% (55/84)** | **96.4% (108/112)** |
 | **Invariance by Boundary Distance: $|p - \tau| \ge 0.20$** | **99.19% (244/246)** | **100.0% (190/190)** | **99.26% (135/136)** | **100.0% (48/48)** |
 
-For all targets, patients with confident predictions ($|p - \tau| \ge 0.20$) achieved $>99\%$ label invariance. Conversely, patients located within $|p - \tau| < 0.05$ exhibited nearly complete classification volatility across model retraining (0.0% invariance for Cath and LAD), establishing boundary proximity as the primary driver of prediction instability.
+As detailed in Table 8, classification label flips were concentrated among borderline cases: in the immediate threshold margin ($|p - \tau| < 0.05$), all Cath ($6/6$, $0.0\%$ invariance) and LAD ($17/17$, $0.0\%$ invariance) patients experienced at least one label change across repeated fits. For LCX and RCA, immediate boundary flip rates were also elevated ($44/45$ flipped, $2.2\%$ invariance for LCX; $58/75$ flipped, $22.7\%$ invariance for RCA), though neither exhibited a 100% flip rate. In contrast, confident predictions ($|p - \tau| \ge 0.20$) achieved $>99\%$ label invariance across independent model fits (only 2 of 246 patients flipped for Cath, 0 of 190 for LAD, 1 of 136 for LCX, and 0 of 48 for RCA), demonstrating that predictions closer to the operating threshold were generally less stable without implying that every near-boundary patient across all vessels necessarily flips.
 
 ---
 
 ### 4.6 Predictive Uncertainty and Error Detection Discrimination
-The ability of normalized binary predictive entropy $H(p)$ and threshold margin $M(p) = |p - \tau|$ to discriminate empirical classification errors without access to ground-truth labels is documented in Table 9.
+Predictive entropy $H(p)$ can be computed directly from model output probabilities without access to outcome labels at inference time. To investigate how this uncertainty metric aligns with empirical model error, retrospective evaluation against ground-truth catheterization labels was performed. Table 9 documents the capacity of normalized binary predictive entropy $H(p)$ and threshold margin $M(p) = |p - \tau|$ to retrospectively discriminate empirical classification errors.
 
 #### Table 9: Predictive Uncertainty and Error Detection Performance
 *Authoritative Source: `data/reports/phase4/summary/phase4_master_metrics.json` (Exp C).*
@@ -392,7 +397,7 @@ The ability of normalized binary predictive entropy $H(p)$ and threshold margin 
 | **LCX** | **0.6392** | 0.8123 | **0.9080** | **44.4%** | 31.5% | 22.1% | **14.7%** |
 | **RCA** | **0.6796** | 0.7780 | **0.8879** | **40.0%** | 25.7% | 14.2% | **16.7%** |
 
-Normalized binary entropy exhibited strong discriminative capability for identifying erroneous predictions on the primary composite outcome (error-detection ROC-AUC $0.7593$ for Cath). Furthermore, empirical error rates declined monotonically as distance from the operating threshold expanded (from 33.3% down to 1.6% for Cath).
+In retrospective evaluation against reference labels, normalized binary entropy discriminated misclassified from correctly classified cases on the primary composite outcome (retrospective error-detection ROC-AUC $0.7593$ for Cath; $0.6595$ for LAD; $0.6392$ for LCX; $0.6796$ for RCA). Furthermore, empirical error rates declined monotonically as distance from the operating threshold expanded (from 33.3% down to 1.6% for Cath). These ROC-AUC values represent retrospective evaluation metrics rather than autonomous label-free error detection in deployment.
 
 ---
 
@@ -410,7 +415,7 @@ Pipeline robustness under continuous Gaussian feature perturbation and synthetic
 | **RCA** | 0.0051 | 1.35% | 0.0254 | 6.73% | 0.0508 | 13.47% | -0.0229 | -0.0456 |
 
 #### Table 11: Inside-Cross-Validation Feature Group Ablation Impact ($\Delta \text{ROC-AUC}$)
-*Authoritative Source: `data/reports/phase4/summary/phase4_master_metrics.json` (Exp D).*  
+*Authoritative Source: `data/reports/phase4/summary/phase4_master_metrics.json` (Exp D).*
 *Protocol: Models retrained from scratch inside 5-fold CV (Repeat 1) without indicated feature block. Delta evaluated relative to Repeat-1 pooled baseline: Cath (0.9018), LAD (0.8477), LCX (0.7426), RCA (0.7040).*
 
 | Feature Group Ablated | Active Features Included | Cath ($\Delta \text{AUC}$) | LAD ($\Delta \text{AUC}$) | LCX ($\Delta \text{AUC}$) | RCA ($\Delta \text{AUC}$) | Primary Physiological Mechanism |
@@ -428,7 +433,7 @@ Pipeline robustness under continuous Gaussian feature perturbation and synthetic
 Disaggregated discrimination metrics across 13 feasible patient strata evaluated on consensus multi-repeat predictions ($N=303$) are detailed in Table 12.
 
 #### Table 12: Exploratory Subgroup Analysis Across Clinical Strata
-*Authoritative Source: `data/reports/phase4/summary/phase4_master_metrics.json` (Exp E).*  
+*Authoritative Source: `data/reports/phase4/summary/phase4_master_metrics.json` (Exp E).*
 *Protocol: Consensus patient OOF predictions ($N=303$). Sample size feasibility guard enforced ($N \ge 30, \min(N_+, N_-) \ge 5$).*
 
 | Category | Stratum / Subgroup | Total $N$ | Positive ($N_+$) | Negative ($N_-$) | Cath ROC-AUC | LAD ROC-AUC | LCX ROC-AUC | RCA ROC-AUC | Clinical Observations |
@@ -462,10 +467,10 @@ Disaggregated discrimination metrics across 13 feasible patient strata evaluated
 **Caption:** Feature explanation stability across 25 outer cross-validation folds. Left panels display global mean absolute SHAP attributions ($\frac{1}{N} \sum |\phi_i|$) in raw model score space ($f(x)$) for the Top-15 clinical features. Right heatmaps illustrate pairwise Spearman rank correlation matrices across all $\binom{25}{2} = 300$ fold comparisons. Tree-based models display exceptional attribution stability (Mean $\rho = 0.9319$ for Cath, $0.9217$ for LAD, $0.9081$ for LCX). Exact mathematical additivity ($\sum \phi_i + \phi_0 = f(x)$) verified in 100% of folds ($25/25$).
 
 ### Figure 4: Prediction Probability Dispersion ($\sigma_p$) and Decision Boundary Proximity Agreement Curves
-**Caption:** Empirical out-of-fold prediction dispersion and classification invariance across 5 cross-validation repeats ($N=303$). (A) Cohort distributions of patient probability standard deviation ($\sigma_p$). (B) Classification label consistency plotted as a function of absolute distance from the operating threshold ($|p - \tau|$). Invariance curves confirm that classification flips concentrate exclusively within $|p - \tau| < 0.05$ (0.0% agreement for Cath and LAD), whereas confident predictions ($|p - \tau| \ge 0.20$) achieve $>99\%$ label invariance across independent model fits.
+**Caption:** Empirical out-of-fold prediction dispersion and classification invariance across 5 cross-validation repeats ($N=303$). (A) Cohort distributions of patient probability standard deviation ($\sigma_p$). (B) Classification label consistency plotted as a function of absolute distance from the operating threshold ($|p - \tau|$). Invariance curves confirm that classification flips concentrate heavily in the immediate boundary margin $|p - \tau| < 0.05$, where all Cath ($0.0\%$ invariance, $6/6$ flipped) and LAD ($0.0\%$ invariance, $17/17$ flipped) patients experienced label flips, alongside elevated flip rates in LCX ($2.2\%$ invariance, $44/45$ flipped) and RCA ($22.7\%$ invariance, $58/75$ flipped). In contrast, confident predictions ($|p - \tau| \ge 0.20$) achieved $>99\%$ label invariance across independent model fits.
 
 ### Figure 5: Normalized Binary Predictive Entropy Distributions and Error-Detection ROC Curves
-**Caption:** Predictive uncertainty quantification via binary entropy $H(p)$. (A) Violin plots comparing entropy distributions between correctly classified and misclassified patients across all four targets. (B) Receiver Operating Characteristic curves evaluating the capacity of entropy to discriminate empirical classification errors without access to ground truth (error-detection ROC-AUC $0.7593$ for Cath, $0.6595$ for LAD, $0.6392$ for LCX, $0.6796$ for RCA).
+**Caption:** Predictive uncertainty quantification via binary entropy $H(p)$. (A) Violin plots comparing entropy distributions between correctly classified and misclassified patients across all four targets. (B) Receiver Operating Characteristic curves retrospectively evaluating the capacity of model entropy to discriminate empirical classification errors against ground-truth reference labels (retrospective error-detection ROC-AUC $0.7593$ for Cath, $0.6595$ for LAD, $0.6392$ for LCX, $0.6796$ for RCA). While entropy is calculated from probabilities alone, validating its error-discriminative performance is an offline retrospective evaluation.
 
 ### Figure 6: Inside-Cross-Validation Feature Group Ablation Impact Across Coronary Territories
 **Caption:** Physiological divergence across coronary branches revealed by inside-cross-validation feature group ablation. Bars represent the absolute decline in out-of-fold ROC-AUC ($\Delta \text{AUC}$) relative to the unablated Repeat-1 baseline when retraining pipelines without indicated clinical feature domains. LAD displays acute sensitivity to echocardiographic ablation ($\Delta = -0.0528$), whereas LCX is predominantly driven by laboratory blood panels ($\Delta = -0.0524$).

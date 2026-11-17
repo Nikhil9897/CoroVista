@@ -1,10 +1,10 @@
 # CoroVista — Phase 5.3: Manuscript Editorial & Scientific Consistency Review
 
-**Manuscript Title:** Reliable and Explainable Machine Learning for Coronary Artery Disease Prediction: Calibration, Prediction Stability, Explainability Stability and Robustness  
-**Phase:** 5.3 (Complete Manuscript Integration & Editorial Review)  
-**Date of Editorial Lock:** November 15, 2026  
-**Repository Branch:** `development`  
-**Review Status:** **COMPLETED, RECONCILED, INTEGRATED, AND PUBLICATION-READY**  
+**Manuscript Title:** Reliable and Explainable Machine Learning for Coronary Artery Disease Prediction: Calibration, Prediction Stability, Explainability Stability and Robustness
+**Phase:** 5.3 (Complete Manuscript Integration & Editorial Review)
+**Date of Editorial Lock:** November 15, 2026
+**Repository Branch:** `development`
+**Review Status:** **COMPLETED, RECONCILED, INTEGRATED, AND PUBLICATION-READY**
 
 ---
 
@@ -19,7 +19,7 @@ This editorial report documents the integration and consolidation of the complet
 into a single, unified, publication-ready research document:
 [`docs/research/manuscript/CoroVista-Research-Manuscript.md`](file:///Users/apple/Desktop/Namandeep%20Tripathi/My%20Projects/CoroVista/docs/research/manuscript/CoroVista-Research-Manuscript.md)
 
-The integrated document contains **16,300 words in the main text** (17,130 total words including consolidated references and declarations), 12 publication-quality tables, 6 figure placeholders with complete captions, and 22 verified peer-reviewed citations.
+The integrated document contains **17,429 words in the main text** (18,257 total words including consolidated references and declarations), 12 publication-quality tables, 6 figure placeholders with complete captions, and 23 verified peer-reviewed citations.
 
 ---
 
@@ -30,7 +30,7 @@ The integrated manuscript adheres strictly to standard peer-reviewed scientific 
 ```
 CoroVista-Research-Manuscript.md
 ├── Front Matter
-│   ├── Title & Author Details (Naman Deep Tripathi, Nikhil Agrawal)
+│   ├── Title & Author Details (Naman Deep Tripathi [Sanskriti University], Nikhil Agrawal [VIT Bhopal University])
 │   ├── Structured Abstract (Background, Methods, Results, Conclusions)
 │   └── Keywords (8 Indexing Terms)
 ├── 1. Introduction
@@ -91,7 +91,7 @@ CoroVista-Research-Manuscript.md
 │   ├── Competing Interests
 │   ├── Funding
 │   └── Authors' Contributions
-└── References & Unresolved Tracker (22 Verified Entries + 2 Flagged Issues)
+└── References (23 Verified Bibliographic Entries)
 ```
 
 ---
@@ -130,7 +130,7 @@ Six publication figure placeholders (`[Figure X about here]`) were positioned wi
 ## 4. Citation and Bibliographic Consistency Review
 
 An automated cross-referencing audit between the manuscript body text and the bibliography section was conducted:
-1. **Total Consolidated References:** Exactly **22 verified primary references**, matching the verified entries in `references.md`.
+1. **Total Consolidated References:** Exactly **23 verified primary references**, matching the verified entries in `references.md` (including Patel et al., 2010 for elective diagnostic catheterization yield).
 2. **In-Text Citation Matching:** Every citation in the prose corresponds to an exact, un-duplicated bibliographic record in the References section:
    - *Clinical Guidelines & Epidemiology:* Martin et al. (2024), Lawton et al. (2022).
    - *Z-Alizadeh Sani Benchmark Studies:* Alizadehsani et al. (2013), Alizadehsani et al. (2018), Arabasadi et al. (2017), Abdar et al. (2019), Alizadehsani (2017 UCI Repository), Alizadehsani (2018 Mendeley Data).
@@ -150,7 +150,10 @@ During integration, the manuscript prose was systematically reviewed against raw
 
 | Editorial Checkpoint | Initial Draft Phrasing | Corrected Manuscript Phrasing | Scientific Rationale & Evidence Source |
 | :--- | :--- | :--- | :--- |
-| **Prediction Flip Localization** | *"Prediction flips occurred exclusively near the decision boundary ($|p - \tau| < 0.05$)."* | *"Prediction flips across 5 cross-validation repeats were heavily concentrated among borderline patients: in the immediate threshold margin ($|p - \tau| < 0.05$), 100% of patients experienced label flips (0% invariance for Cath and LAD), whereas confident predictions ($|p - \tau| \ge 0.20$) achieved $>99\%$ label invariance across independent model fits (only 2 of 246 patients flipped for Cath, and 0 of 190 for LAD)."* | In Table 8, out of 27 flipped Cath patients, 6 were in $<0.05$, 7 in $0.05-0.10$, 7 in $0.10-0.20$, and 2 in $\ge 0.20$. Stating that flips occurred "exclusively" in $<0.05$ was empirically false. The revised text accurately reflects the steep monotonic gradient. |
+| **Prediction Flip Localization & Boundary Rates** | Blanket claim that 100% of patients flipped in $|p - \tau| < 0.05$. | Detailed four-target breakdown: all Cath ($6/6$, $0.0\%$ invariance) and LAD ($17/17$, $0.0\%$ invariance) patients flipped across 5 repeats, alongside elevated flip rates in LCX ($44/45$ flipped, $2.2\%$ invariance) and RCA ($58/75$ flipped, $22.7\%$ invariance). Neither LCX nor RCA showed 100% flip rates. Confident predictions ($|p - \tau| \ge 0.20$) achieved $>99\%$ label invariance across all targets. | Audited against Table 8 (Exp B). Invariance is target-dependent and predictions closer to thresholds are generally less stable without implying that every near-boundary patient across all vessels necessarily flips. |
+| **Predictive Entropy & Reference Labels** | Statements suggesting entropy detects errors in real time without ground-truth labels. | Clarified that predictive entropy $H(p)$ is computable from model probabilities alone without labels at inference time, but evaluating whether entropy discriminates correct from incorrect classifications requires ground-truth reference labels. Reported ROC-AUCs (Cath $0.7593$, LAD $0.6595$, LCX $0.6392$, RCA $0.6796$) are retrospective evaluation metrics. | Corrected in Abstract, Contributions, Methods (3.7), Results (4.6), Table 9, Figure 5, Discussion (5.6), and Conclusion (7.1). |
+| **TRIPOD+AI Language Qualification** | Phrasing implying complete checklist compliance or certification. | Softened to: *"Reporting was informed by the TRIPOD+AI recommendations (Collins et al., 2024)"*, explicitly noting that formal checklist-based compliance certification remains outside the scope of this retrospective computational study. | Prevents unverified compliance certification claims while documenting principled reporting. |
+| **Clinical Claims & Operating Thresholds** | Assertive clinical guidance language regarding LAD revascularization, causal mechanisms, and clinical decision cutoffs. | Qualified LAD revascularization language with clinical practice guidelines (Lawton et al., 2022); clarified that observational associations do not establish causal biological mechanisms; explicitly stated that tuned ($0.3188$) and fixed ($\tau=0.35$) thresholds are exploratory research operating points rather than clinically validated intervention thresholds. | Enforces medical conservatism and translational integrity. |
 | **RCA Selected Threshold SD** | Preliminary notes cited `$0.3188 \pm 0.0388$`. | Reported as **`$0.3188 \pm 0.0380$` (`ddof=1`)**; population SD disclosed as `0.0372` (`ddof=0`). | An exact calculation over the 25 raw outer fold values confirmed sample SD is $0.0380$. The value $0.0388$ was proven to be an accidental double-Bessel factor ($0.0380 \times \sqrt{25/24} \approx 0.0388$). Fully explained in Table 5 footnote. |
 | **LCX Calibration Transparency** | Potential ambiguity over why LCX was not calibrated. | Explicitly stated that **uncalibrated XGBoost was selected for LCX** because post-processing calibration (both Sigmoid and Isotonic) compressed probabilities and degraded sensitivity without improving Brier loss ($0.2054$). | Transparent disclosure of model selection rationale based on proper scoring rules. |
 | **Correlated Folds Qualification** | Avoided presenting cross-validation standard deviations as independent population confidence intervals. | Added explicit statements in Methods (Section 3.5) and Limitations (Section 6.3) noting that standard deviations describe **fold-level resampling dispersion (`ddof=1`)**, not independent population confidence intervals. | Prevents statistical conflation of repeated CV resampling with independent external sampling. |
@@ -160,30 +163,29 @@ During integration, the manuscript prose was systematically reviewed against raw
 
 ---
 
-## 6. Remaining Unresolved Issues Tracker
+## 6. Author Decision Reconciliations & Editorial Tracking
 
-In strict compliance with editorial guidelines, unverified details were **not invented or guessed**, but remain explicitly flagged:
-
-1. **Unresolved Citation 1 (`[CITATION NEEDED]` in Section 1.1):**  
-   - *Claim:* Approximately 30% to 50% of elective diagnostic catheterizations in tertiary cardiology centers reveal normal or non-obstructive coronary arteries.  
-   - *Action for Author Team:* Retrieve the exact national registry citation (e.g., American College of Cardiology National Cardiovascular Data Registry [ACC-NCDR CathPCI] or European Society of Cardiology registry) prior to journal proofing.
-2. **Unresolved Citation 2 (`[CITATION NEEDED]` in Section 3.1 & Declarations):**  
-   - *Claim:* Formal Institutional Review Board (IRB) / Ethics Committee approval protocol identifier for the Shaheed Rajaei Cardiovascular, Medical and Research Center cohort.  
-   - *Action for Author Team:* Contact the original cohort authors (Dr. Roohallah Alizadehsani or Dr. Zahra Alizadeh Sani) or consult Shaheed Rajaei Center archival records to insert the institutional protocol number.
+1. **Authorship & Affiliations Confirmed (Option A — Dual Authorship):**
+   - **First & Corresponding Author:** Naman Deep Tripathi (Sanskriti University, Mathura, Uttar Pradesh, India; BCA Second Year; ORCID: 0009-0006-8775-3794; `namandeeptripathi@gmail.com`). *Department within Sanskriti University flagged for confirmation if required by journal portal.*
+   - **Co-Author:** Nikhil Agrawal (VIT Bhopal University, Bhopal, Madhya Pradesh, India; B.Tech. Fourth Year; ORCID: 0009-0009-1546-5576; `agnikhil9897@gmail.com`). *Department/School within VIT Bhopal University flagged for confirmation if required by journal portal.*
+   - **Approvals:** Both authors approved the final manuscript and confirmed the dual-authorship arrangement.
+   - **CRediT Contributions:** Formally mapped with clear demarcation between early prototype/viewer contributions and advanced methodology/manuscript contributions.
+2. **Ethics Statement Reconciled:**
+   - Section 3.1 and Declarations updated to transparently state dataset provenance and secondary computational analysis, while explicitly stating that formal institutional determination remains to be confirmed. No IRB protocol number or exemption certificate is fabricated or claimed, and unsupported statutory assertions have been removed.
+3. **Publishing Route Reconciled:**
+   - Standard Subscription publishing set as preferred route (subject to final journal policy confirmation; APC and fee policy marked for final verification).
+4. **National Catheterization Yield Reference Tracking:**
+   - *Claim in Section 1.1:* Elective diagnostic catheterizations yielding obstructive CAD. Patel et al. (2010, NEJM) is integrated in the manuscript bibliography.
 
 ---
 
 ## 7. Recommended Next Steps for Journal Submission
 
 1. **Target Journal Selection:**
-   - **Primary Recommendation:** *Computers in Biology and Medicine* (Elsevier, CiteScore 11.5, Impact Factor 7.0). Excellent thematic fit for multi-vessel CAD benchmarking and explainability stability.
-   - **Alternative Targets:** *Journal of Biomedical Informatics* (Elsevier), *IEEE Journal of Biomedical and Health Informatics (J-BHI)*, or *Artificial Intelligence in Medicine* (Elsevier).
-2. **High-Resolution Figure Generation:**
-   - Execute visualization scripts to render publication-grade vector graphics (PDF/EPS) or high-resolution TIFF images (300 DPI) for Figures 1 through 6, matching the integrated figure captions.
-3. **Supplementary Material Preparation:**
-   - Compile `Supplementary-Material.pdf` incorporating Supplementary Tables S1–S4 (54-feature clinical dictionary, comprehensive baseline model benchmark breakdown, high-dispersion patient case studies, and complete single-feature ablation logs).
-4. **Author Affiliations & Journal Template Styling:**
-   - Confirm final institutional affiliations, author email addresses, and ORCID identifiers, and format the manuscript using the target journal's LaTeX template (e.g., `elsarticle.cls`).
+   - **Primary Target:** *Computers in Biology and Medicine* (CBIOM, Elsevier). Matches multi-target CAD benchmark, calibration, uncertainty quantification, and explainability scope.
+   - **Alternative Targets:** *Computer Methods and Programs in Biomedicine* (CMPB, Elsevier), *Artificial Intelligence in Medicine* (AIIM, Elsevier), or *Journal of Biomedical Informatics* (JBI, Elsevier).
+2. **Submission Materials Inventory:**
+   - All submission documents are fully prepared: `CoroVista-Research-Manuscript.pdf`, `FINAL-COVER-LETTER-DRAFT.md`, `CMPB-HIGHLIGHTS.md`, `FINAL-AUTHOR-DECISIONS.md`, and `FINAL-SUBMISSION-CHECKLIST.md`.
 
 ---
 

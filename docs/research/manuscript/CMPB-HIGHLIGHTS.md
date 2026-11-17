@@ -1,6 +1,6 @@
 # Highlights: CoroVista Research Manuscript
 
-**Target Journal:** *Computer Methods and Programs in Biomedicine* (Elsevier)  
+**Target Journal:** *Computer Methods and Programs in Biomedicine* (Elsevier)
 **Submission Requirement:** 3 to 5 bullet points; maximum 85 characters (including spaces) per bullet point.
 
 ---

@@ -371,49 +371,67 @@ def build_pdf():
     title_style = ParagraphStyle(
         "AcademicTitle",
         fontName=FONT_BOLD,
-        fontSize=19.5,
-        leading=24,
+        fontSize=18.5,
+        leading=22.5,
         textColor=colors.HexColor("#0f2942"),
         alignment=TA_LEFT,
-        spaceAfter=12,
+        spaceAfter=6,
     )
     author_style = ParagraphStyle(
         "AcademicAuthors",
         fontName=FONT_BOLD,
-        fontSize=11,
-        leading=15,
+        fontSize=10.5,
+        leading=13.5,
         textColor=colors.HexColor("#1e293b"),
         alignment=TA_LEFT,
-        spaceAfter=14,
+        spaceAfter=2.5,
+    )
+    affiliation_style = ParagraphStyle(
+        "AcademicAffiliations",
+        fontName=FONT_FAMILY,
+        fontSize=7.8,
+        leading=10.5,
+        textColor=colors.HexColor("#475569"),
+        alignment=TA_LEFT,
+        spaceAfter=1.2,
+    )
+    contact_style = ParagraphStyle(
+        "AcademicContact",
+        fontName=FONT_FAMILY,
+        fontSize=7.4,
+        leading=10.0,
+        textColor=colors.HexColor("#475569"),
+        alignment=TA_LEFT,
+        spaceAfter=1.2,
     )
     abstract_heading_style = ParagraphStyle(
         "AbstractHeading",
         fontName=FONT_BOLD,
-        fontSize=11,
-        leading=14,
+        fontSize=10.5,
+        leading=13,
         textColor=colors.HexColor("#1e3a8a"),
         alignment=TA_LEFT,
-        spaceBefore=8,
-        spaceAfter=8,
+        spaceBefore=4,
+        spaceAfter=4,
     )
     abstract_body_style = ParagraphStyle(
         "AbstractBody",
         fontName=FONT_FAMILY,
-        fontSize=8.8,
-        leading=12.8,
+        fontSize=8.4,
+        leading=11.6,
         textColor=colors.HexColor("#0f172a"),
         alignment=TA_JUSTIFY,
-        spaceAfter=6,
+        spaceAfter=3.5,
     )
     abstract_kw_style = ParagraphStyle(
         "AbstractKeywords",
         fontName=FONT_FAMILY,
-        fontSize=8.4,
-        leading=12.0,
+        fontSize=8.0,
+        leading=11.0,
         textColor=colors.HexColor("#334155"),
         alignment=TA_LEFT,
-        spaceBefore=4,
-        spaceAfter=12,
+        spaceBefore=3,
+        spaceAfter=0,
     )
 
     h1_style = ParagraphStyle(
@@ -571,8 +589,15 @@ def build_pdf():
     # No administrative banners, no draft boxes, no metadata grids.
     # =========================================================================
     story.append(Paragraph("Reliable and Explainable Machine Learning for Coronary Artery Disease Prediction: Calibration, Prediction Stability, Explainability Stability and Robustness", title_style))
-    story.append(Paragraph("Naman Deep Tripathi, Nikhil Agrawal", author_style))
-    story.append(HRFlowable(width="100%", thickness=0.5, color=colors.HexColor("#cbd5e1"), spaceBefore=2, spaceAfter=10))
+    story.append(Paragraph("<b>Naman Deep Tripathi</b><sup>1,*</sup>, <b>Nikhil Agrawal</b><sup>2</sup>", author_style))
+    story.append(Spacer(1, 1.5))
+    story.append(Paragraph("<sup>1</sup> Sanskriti University, Mathura, Uttar Pradesh, India", affiliation_style))
+    story.append(Paragraph("<sup>2</sup> VIT Bhopal University, Bhopal, Madhya Pradesh, India", affiliation_style))
+    story.append(HRFlowable(width="100%", thickness=0.5, color=colors.HexColor("#e2e8f0"), spaceBefore=2.5, spaceAfter=3.0))
+    story.append(Paragraph("<sup>*</sup> Corresponding Author: namandeeptripathi@gmail.com", contact_style))
+    story.append(Paragraph("ORCID (N.D.T.): 0009-0006-8775-3794", contact_style))
+    story.append(Paragraph("ORCID (N.A.): 0009-0009-1546-5576", contact_style))
+    story.append(HRFlowable(width="100%", thickness=0.5, color=colors.HexColor("#cbd5e1"), spaceBefore=3.0, spaceAfter=6.0))
 
     # Extract Abstract Content
     abstract_match = re.search(r"## Abstract\s+### Background\s+([\s\S]+?)\s+### Methods\s+([\s\S]+?)\s+### Results\s+([\s\S]+?)\s+### Conclusions\s+([\s\S]+?)\s+\*\*Keywords:\*\*\s+([^\n]+)", md_text)
