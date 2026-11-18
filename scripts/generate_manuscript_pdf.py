@@ -148,7 +148,7 @@ class DynamicNumberedCanvas(canvas.Canvas):
         self.setFont(FONT_BOLD, 7.5)
         self.setFillColor(colors.HexColor("#1e3a8a"))
         self.drawString(LEFT_MARGIN, h - 28, "CoroVista: Reliable & Explainable CAD Prediction")
-        
+
         # Header rule
         self.setStrokeColor(colors.HexColor("#cbd5e1"))
         self.setLineWidth(0.5)
@@ -158,12 +158,12 @@ class DynamicNumberedCanvas(canvas.Canvas):
         self.setFont(FONT_FAMILY, 7.5)
         self.setFillColor(colors.HexColor("#64748b"))
         self.drawString(LEFT_MARGIN, 24, "CoroVista Research Manuscript — Not for Clinical Diagnostic Use")
-        
+
         self.setFont(FONT_BOLD, 7.5)
         self.setFillColor(colors.HexColor("#1e293b"))
         page_str = f"Page {self._pageNumber} of {page_count}"
         self.drawRightString(w - RIGHT_MARGIN, 24, page_str)
-        
+
         # Footer rule
         self.setStrokeColor(colors.HexColor("#cbd5e1"))
         self.setLineWidth(0.5)
@@ -204,22 +204,22 @@ def convert_inline_math(m_str):
     s = s.replace(r"\sum", "∑")
     s = s.replace(r"\sqrt", "√")
     s = s.replace(r"\binom{25}{2}", "C(25,2)")
-    
+
     # Handle fractions
     s = re.sub(r"\\frac\{([^}]+)\}\{([^}]+)\}", r"(\1 / \2)", s)
-    
+
     # Handle braces _{...} and ^{...}
     s = re.sub(r"\^\{([^}]+)\}", r"<sup>\1</sup>", s)
     s = re.sub(r"_\{([^}]+)\}", r"<sub>\1</sub>", s)
-    
+
     # Handle simple unbraced ^ and _
     s = re.sub(r"\^([a-zA-Z0-9\+\-]+)", r"<sup>\1</sup>", s)
     s = re.sub(r"_([a-zA-Z0-9\+\-]+)", r"<sub>\1</sub>", s)
-    
+
     # Prevent nested tags
     s = re.sub(r"<sup>(.*?)<sub>(.*?)</sub>(.*?)</sup>", r"<sup>\1\2\3</sup>", s)
     s = re.sub(r"<sub>(.*?)<sup>(.*?)</sup>(.*?)</sub>", r"<sub>\1\2\3</sub>", s)
-    
+
     # Remove any stray backslashes
     s = s.replace("\\", "")
     return s
@@ -300,11 +300,11 @@ def split_markdown_table_row(line):
         idx = len(placeholders)
         placeholders.append(m.group(0))
         return f"__MATH_P_{idx}__"
-    
+
     s = re.sub(r"\$([^\$\n]+)\$", math_repl, line)
     s = re.sub(r"`([^`]+)`", math_repl, s)
     raw_cells = [c.strip() for c in s.split("|")[1:-1]]
-    
+
     final_cells = []
     for c in raw_cells:
         for idx, orig in enumerate(placeholders):
@@ -321,13 +321,13 @@ def render_equation_to_flowable(latex_str, eq_num=None, content_w=PORTRAIT_CONTE
     fig.savefig(buf, format="png", dpi=250, bbox_inches="tight", transparent=True)
     plt.close(fig)
     buf.seek(0)
-    
+
     pil_im = PILImage.open(buf)
     w_px, h_px = pil_im.size
     dpi = 250.0
     w_pt = w_px * 72.0 / dpi
     h_pt = h_px * 72.0 / dpi
-    
+
     max_w = content_w - 40
     if w_pt > max_w:
         ratio = max_w / w_pt
@@ -337,7 +337,7 @@ def render_equation_to_flowable(latex_str, eq_num=None, content_w=PORTRAIT_CONTE
     buf.seek(0)
     img_flowable = Image(buf, width=w_pt, height=h_pt)
     img_flowable.hAlign = "CENTER"
-    
+
     if eq_num is not None:
         num_para = Paragraph(f'<font size="8" color="#64748b">({eq_num})</font>', ParagraphStyle("EqNum", fontName=FONT_FAMILY, alignment=TA_RIGHT))
         eq_table = Table([[img_flowable, num_para]], colWidths=[content_w - 40, 40])
@@ -692,7 +692,7 @@ def build_pdf():
                 max_w = PORTRAIT_CONTENT_WIDTH - 20
                 target_w = max_w
                 target_h = target_w / aspect
-                
+
                 if target_h > 420:
                     target_h = 420
                     target_w = target_h * aspect
@@ -702,7 +702,7 @@ def build_pdf():
 
                 fig_title, fig_cap = fig_captions.get(fig_num, (f"Figure {fig_num}", ""))
                 formatted_cap = format_markdown_text(fig_cap)
-                
+
                 caption_flowables = [
                     Paragraph(f"<b>Figure {fig_num}: {fig_title}</b>", fig_title_style),
                     Paragraph(formatted_cap, fig_cap_style),
@@ -734,7 +734,7 @@ def build_pdf():
         if table_h_match:
             tab_num = int(table_h_match.group(1))
             tab_title = f"Table {tab_num}:{table_h_match.group(2)}"
-            
+
             # =================================================================
             # TASK 2: TABLE 2 LANDSCAPE DEDICATED PRESENTATION
             # =================================================================
@@ -817,13 +817,13 @@ def build_pdf():
             # Standard Portrait Tables
             story.append(Paragraph(format_markdown_text(tab_title), table_title_style))
             i += 1
-            
+
             # Collect notes / protocol lines before the actual table
             while i < num_lines and (lines[i].strip().startswith("*") and not lines[i].strip().startswith("|") and not lines[i].strip().startswith("```")):
                 note_str = lines[i].strip()
                 story.append(Paragraph(format_markdown_text(note_str), table_note_style))
                 i += 1
-            
+
             # Table 6 (ASCII matrix) or regular pipe tables
             if tab_num == 6:
                 while i < num_lines and not lines[i].strip().startswith("```"):
@@ -876,12 +876,12 @@ def build_pdf():
                     if lines[i].strip():
                         story.append(Paragraph(format_markdown_text(lines[i].strip()), table_note_style))
                     i += 1
-                
+
                 table_lines = []
                 while i < num_lines and lines[i].strip().startswith("|") and lines[i].strip().endswith("|"):
                     table_lines.append(lines[i].strip())
                     i += 1
-                
+
                 if len(table_lines) >= 3:
                     raw_headers = split_markdown_table_row(table_lines[0])
                     num_cols = len(raw_headers)
@@ -925,7 +925,7 @@ def build_pdf():
                         f_size, f_lead = 6.8, 8.5
 
                     t_flowable_rows = []
-                    
+
                     h_cells = []
                     for h_idx, h_text in enumerate(raw_headers):
                         align = TA_LEFT if h_idx == 0 else TA_CENTER
@@ -997,7 +997,7 @@ def build_pdf():
             is_warning = "[!WARNING]" in full_bq or "[!CAUTION]" in full_bq or "AUTHOR CONFIRMATION" in full_bq
             accent_color = colors.HexColor("#d97706") if is_warning else colors.HexColor("#2563eb")
             bg_color = colors.HexColor("#fffbeb") if is_warning else colors.HexColor("#eff6ff")
-            
+
             bq_para = Paragraph(format_markdown_text(full_bq), callout_style)
             bq_table = Table([[bq_para]], colWidths=[PORTRAIT_CONTENT_WIDTH])
             bq_table.setStyle(TableStyle([
@@ -1034,7 +1034,7 @@ def build_pdf():
             while i + 1 < num_lines and lines[i+1].startswith("   ") and not re.match(r"^\d+\.\s+", lines[i+1].strip()):
                 i += 1
                 n_text += " " + lines[i].strip()
-            
+
             # Check if within References section
             if "## References" in body_markdown[:intro_start + md_text[intro_start:].find(line_str)]:
                 ref_html = f"<b>[{n_num}]</b>&nbsp;&nbsp;{format_markdown_text(n_text)}"
@@ -1060,7 +1060,7 @@ def build_pdf():
 
     print(f"Total flowables constructed: {len(story)}")
     print(f"Building PDF to: {PDF_OUT_MANUSCRIPT}")
-    
+
     # Setup document templates with Portrait and Landscape PageTemplates
     frame_port = Frame(LEFT_MARGIN, BOTTOM_MARGIN, PORTRAIT_CONTENT_WIDTH, PORTRAIT_CONTENT_HEIGHT, id="FramePort")
     frame_land = Frame(LEFT_MARGIN, BOTTOM_MARGIN, LANDSCAPE_CONTENT_WIDTH, LANDSCAPE_CONTENT_HEIGHT, id="FrameLand")
