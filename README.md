@@ -1,13 +1,13 @@
 # CoroVista
 
 > **Cardiovascular Risk Visualization & Multi-Target Stenosis Prediction System**  
-> **Clinical Decision Support & Interactive Anatomical Digital Twin**
+> **Research Decision-Support Prototype & Interactive Anatomical Digital Twin**
 
-[![Python Version](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://python.org)
-[![FastAPI](https://img.shields.io/badge/FastAPI-1.0.0-009688.svg)](https://fastapi.tiangolo.com)
-[![React](https://img.shields.io/badge/React-19.2-61DAFB.svg)](https://react.dev)
+[![Python Version](https://img.shields.io/badge/Python-3.10%20--%203.12-blue.svg)](https://python.org)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.115%20--%200.144-009688.svg)](https://fastapi.tiangolo.com)
+[![React](https://img.shields.io/badge/React-19.3-61DAFB.svg)](https://react.dev)
 [![Three.js](https://img.shields.io/badge/Three.js-R186-black.svg)](https://threejs.org)
-[![Pytest Suite](https://img.shields.io/badge/Pytest-114%20Collected%20%7C%20113%20Passed-blue.svg)](tests)
+[![Pytest Suite](https://img.shields.io/badge/Pytest-113%20Passed%20%7C%201%20Known%20Failure-orange.svg)](tests)
 [![Vitest Suite](https://img.shields.io/badge/Vitest-51%20Passed-success.svg)](frontend/src/test)
 [![License: MIT](https://img.shields.io/badge/Code%20License-MIT-yellow.svg)](LICENSE)
 [![Anatomy License](https://img.shields.io/badge/Anatomy%20License-CC%20BY--SA%202.1%20JP-lightgrey.svg)](docs/anatomy-assets.md)
@@ -19,7 +19,7 @@
 
 ## 1. Executive Summary & Capabilities
 
-**CoroVista** is an intelligent cardiovascular decision-support platform and anatomical digital twin. It integrates multi-target machine learning risk prediction with interactive 3D coronary anatomy rendering to assist clinicians, medical educators, and cardiovascular researchers in evaluating coronary artery disease:
+**CoroVista** is an academic cardiovascular research prototype and anatomical digital twin. It integrates multi-target machine learning risk prediction with interactive 3D coronary anatomy rendering to assist cardiovascular researchers and medical educators in evaluating coronary artery disease:
 
 1. **Multi-Target Risk Prediction**: Concurrently predicts overall **Coronary Artery Disease (CAD)** status (`Cath`) and vessel-specific obstructive stenosis ($\ge 50\%$) across the three primary coronary arteries:
    - **LAD**: Left Anterior Descending Artery
@@ -27,26 +27,26 @@
    - **RCA**: Right Coronary Artery
 2. **Interactive 3D Anatomical Digital Twin**: Renders an interactive 3D model of the human heart and coronary arterial tree derived from the open-source **BodyParts3D** anatomical repository (Foundational Model of Anatomy / FMA ontology), mapping predicted vessel stenosis probabilities directly onto anatomical branches via a dynamic continuous risk colormap.
 3. **Local Explainability (SHAP)**: Provides patient-level feature attributions powered by Lundberg TreeSHAP and LinearSHAP, decomposing predictions into clinical risk-elevating and protective factors in exact pre-calibration model score (log-odds margin) space.
-4. **Interactive Patient Simulator**: Enables researchers and clinicians to explore representative patient archetypes or adjust 54 clinical parameters in real time (e.g., blood pressure, ECG findings, lipid panel, echocardiographic ejection fraction) with instant sensitivity recalculations and visual before/after delta comparisons.
+4. **Interactive Patient Simulator**: Enables researchers and medical educators to explore representative patient archetypes or adjust 54 clinical parameters in real time (e.g., blood pressure, ECG findings, lipid panel, echocardiographic ejection fraction) with instant sensitivity recalculations and visual before/after delta comparisons.
 5. **Research Stability & Robustness Suite**: Incorporates comprehensive evaluation protocols for SHAP explanation stability across folds, out-of-fold prediction stability, predictive entropy uncertainty quantification, physiological perturbation robustness, and exploratory subgroup analysis.
-6. **Production REST API**: Delivers a low-latency, stateless FastAPI backend with strict target leakage prevention, Pydantic data normalization, and uniform error envelopes.
+6. **Experimental REST API**: Delivers a low-latency, stateless FastAPI backend with strict target leakage prevention, Pydantic data normalization, and uniform error envelopes.
 
 ---
 
 ## 2. Visual Previews & System Interface
 
 ### Scientific Landing Page
-Scientific overview presenting multi-target machine learning models, 3D anatomical coronary shaders, and clinical diagnostic workflows:
+Scientific overview presenting multi-target machine learning models, 3D anatomical coronary shaders, and exploratory research workflows:
 
 ![Scientific Landing Page](docs/screenshots/landing_page.png)
 
-### Clinical Risk Dashboard
-Unified clinical workstation displaying overall CAD risk score, vessel-specific stenosis probabilities (LAD, LCX, RCA), top TreeSHAP feature drivers, and real-time interactive 3D coronary anatomy:
+### Research Risk Interface
+Unified research interface displaying overall CAD risk score, vessel-specific stenosis probabilities (LAD, LCX, RCA), top TreeSHAP feature drivers, and real-time interactive 3D coronary anatomy:
 
-![Clinical Risk Dashboard](docs/screenshots/clinical_dashboard.png)
+![Research Risk Interface](docs/screenshots/clinical_dashboard.png)
 
 ### Interactive Patient Simulator
-Interactive clinical simulation workspace enabling real-time exploration across 54 patient parameters, instantaneous sensitivity recalculation, and anatomical risk projection:
+Interactive simulation workspace enabling real-time exploration across 54 patient parameters, instantaneous sensitivity recalculation, and anatomical risk projection:
 
 ![Interactive Patient Simulator](docs/screenshots/patient_simulator.png)
 
@@ -65,7 +65,7 @@ High-resolution anatomical meshes with risk-driven colormaps, transparent myocar
 
 ## 3. Core Features
 
-- **Clinical Risk Dashboard**: Pre-loaded clinical archetypes (Typical CAD, Low-Risk Normal, Isolated LAD Stenosis, Multivessel CAD) with 1-click loading, multi-vessel progress gauges, and threshold badges.
+- **Research Risk Interface**: Pre-loaded patient archetypes (Typical CAD, Low-Risk Normal, Isolated LAD Stenosis, Multivessel CAD) with 1-click loading, multi-vessel progress gauges, and threshold badges.
 - **Dynamic Patient Simulator**: 4-category clinical drawer covering Demographics, Symptoms & Exam, ECG Findings, and Echo & Laboratory values, complete with automatic BMI calculation and input validation.
 - **Interactive 3D Heart Viewer**: Built with Three.js and React Three Fiber, featuring orbit controls, anatomical structure visibility toggles (Myocardium, Aorta, Pulmonary Trunk, Septum), emissive risk pulsing, and WebGL error recovery.
 - **SHAP Feature Attribution Cards**: Expandable positive (risk-elevating) and negative (protective) waterfall breakdowns with translation to standard medical terminology and units.
@@ -81,7 +81,7 @@ CoroVista is built as a fully decoupled full-stack application:
 +----------------------------------------------------------------------------------------------------+
 |                                    React 19 Frontend Web Application                                |
 |  - Interactive 3D Heart Viewer (Three.js / React Three Fiber / @react-three/drei)                  |
-|  - Patient Clinical Simulator Controls (54 Real-Time Parameters & Archetype Profiles)               |
+|  - Patient Simulation Controls (54 Real-Time Parameters & Archetype Profiles)                     |
 |  - Vessel Risk Gauges with Calibrated Cutoffs & High/Critical Risk Badges                          |
 |  - SHAP Waterfall & Feature Impact Cards with Medical Terminology Mappings                          |
 +----------------------------------------------------------------------------------------------------+
@@ -136,19 +136,19 @@ For complete technical contracts, see [`docs/architecture.md`](docs/architecture
 
 | Component | Technology | Version | Purpose |
 |---|---|---|---|
-| **Frontend Framework** | React | 19.2 | Component architecture & state management |
-| **Language** | TypeScript | 5.x / 6.x | End-to-end type safety |
-| **3D Graphics Engine** | Three.js | R186 | WebGL scene rendering & shaders |
-| **React 3D Bridge** | React Three Fiber / Drei | 9.8 / 10.7 | Declarative 3D component hierarchy |
-| **Styling & Design** | Tailwind CSS | 3.4 | Modern clinical dark-mode aesthetic |
-| **Charts & Metrics** | Recharts | 3.10 | Sensitivity delta and probability charts |
-| **Icons** | Lucide React | 1.53 | Accessible clinical and system icons |
-| **Backend Framework** | FastAPI | 1.0.0 | High-performance asynchronous REST API |
-| **Data Validation** | Pydantic | v2 | Request/response schemas and leakage gates |
-| **Machine Learning** | Scikit-learn / XGBoost | 1.7+ / 3.2+ | Pipeline training, calibration, inference |
-| **Explainability** | SHAP | 0.46+ | TreeSHAP and LinearSHAP attributions |
+| **Frontend Framework** | React | 19.3.0 | Component architecture & state management |
+| **Language** | TypeScript | 6.0.3 (lockfile resolved) | End-to-end type safety |
+| **3D Graphics Engine** | Three.js | 0.186.1 (R186) | WebGL scene rendering & shaders |
+| **React 3D Bridge** | React Three Fiber / Drei | 9.8.1 / 10.7.9 (lockfile resolved) | Declarative 3D component hierarchy |
+| **Styling & Design** | Tailwind CSS | 3.4.19 (lockfile resolved) | Modern dark-mode research interface aesthetic |
+| **Charts & Metrics** | Recharts | 3.10.1 (lockfile resolved) | Sensitivity delta and probability charts |
+| **Icons** | Lucide React | 1.53.0 (lockfile resolved) | Accessible interface and parameter icons |
+| **Backend Framework** | FastAPI | >=0.115.0, <0.145.0 | Experimental asynchronous REST API service |
+| **Data Validation** | Pydantic | >=2.10.0, <3.0.0 (v2) | Request/response schemas and leakage gates |
+| **Machine Learning** | Scikit-learn / XGBoost | >=1.7.0, <1.8.0 / >=3.0.0, <3.3.0 (1.7.2 / 3.2.0 in documented research environment) | Pipeline training, calibration, inference |
+| **Explainability** | SHAP | >=0.50.0, <0.52.0 (0.51.0 in documented research environment) | TreeSHAP and LinearSHAP attributions |
 | **Anatomical Meshes** | Trimesh / BodyParts3D | — | 3D mesh alignment, optimization & GLB packaging |
-| **Automated Testing** | Pytest / Vitest | 9.x / 5.x | 114 collected Python Pytest tests (113 pass, 1 legacy assertion fail) + 51 executed React Vitest tests (51 pass) |
+| **Automated Testing** | Pytest / Vitest | >=8.0.0, <9.2.0 / 5.0.3 | Full suite: 114 collected Python tests (113 passing, 1 known legacy failure in documented test runs); 51 passing React Vitest tests |
 
 ---
 
@@ -191,9 +191,9 @@ Evaluates binary decision performance across all 25 outer folds at the unadjuste
 
 ---
 
-### Table 3: Fixed Production Operating Thresholds & Classification Metrics
+### Table 3: Fixed Research Operating Thresholds & Classification Metrics
 
-Evaluates binary decision performance when models are evaluated at their designated production research operating thresholds ($\tau = 0.50$ for Cath, LAD, LCX; fixed $\tau = 0.35$ for RCA across all 25 outer folds):
+Evaluates binary decision performance when models are evaluated at their designated fixed research operating thresholds ($\tau = 0.50$ for Cath, LAD, LCX; fixed $\tau = 0.35$ for RCA across all 25 outer folds):
 
 > **Operating Threshold Note:** The 0.35 cutoff for RCA is a fixed research operating threshold used in retrospective evaluation to counteract post-calibration probability compression. It is not an externally validated threshold for clinical deployment or autonomous decision-making. Specificity is calculated per outer fold directly from the confusion matrix ($TN_k / (TN_k + FP_k)$). All classification metrics report cross-fold mean ± sample standard deviation (`ddof=1`, $N=25$) computed across all 25 outer folds.
 
@@ -225,10 +225,10 @@ To evaluate adaptive threshold optimization without test data leakage, Phase 3 a
 
 > [!IMPORTANT]
 > **Protocol Distinction (Fixed Threshold 0.35 vs. Nested Inner-Tuned Threshold):**
-> - **Fixed Production Operating Threshold ($\tau = 0.35$):** Evaluates a single predetermined threshold across all 25 outer folds, yielding **$74.21\% \pm 10.64\%$** sensitivity, **$57.48\% \pm 7.10\%$** specificity, and **$65.85\% \pm 6.38\%$** balanced accuracy.
+> - **Fixed Research Operating Threshold ($\tau = 0.35$):** Evaluates a single predetermined retrospective threshold across all 25 outer folds, yielding **$74.21\% \pm 10.64\%$** sensitivity, **$57.48\% \pm 7.10\%$** specificity, and **$65.85\% \pm 6.38\%$** balanced accuracy.
 > - **Nested Inner-Tuned Threshold ($\bar{\tau} = 0.3188 \pm 0.0380$):** Evaluates fold-specific adaptive thresholds tuned on inner validation data, yielding **$79.46\% \pm 10.92\%$** sensitivity, **$49.41\% \pm 14.29\%$** specificity, and **$64.43\% \pm 5.74\%$** balanced accuracy.
 >
-> These two evaluation protocols reflect distinct research questions (fixed operational cutoff vs. adaptive cross-validation tuning) and must not be conflated. Neither threshold has been tested or approved for clinical deployment.
+> These two evaluation protocols reflect distinct research questions (fixed operational cutoff vs. adaptive cross-validation tuning) and must not be conflated. Both represent retrospective research operating points, and neither threshold has been tested, cleared, or approved for clinical decision-making or patient deployment.
 
 ---
 
@@ -254,7 +254,7 @@ For complete Phase 3 benchmark documentation, see [`docs/research/PHASE-3-FINALI
 
 ## 7. Dataset Description, Schema Resolution & Provenance
 
-CoroVista is trained and evaluated on the **Extended Z-Alizadeh Sani cardiology dataset** ($N = 303$ consecutive patients referred for coronary catheterization at the Tehran Heart Center, Tehran, Iran).
+CoroVista is trained and evaluated on the **Extended Z-Alizadeh Sani cardiology dataset** ($N = 303$ consecutive patients referred for coronary catheterization at Shaheed Rajaei Cardiovascular, Medical and Research Center, Tehran, Iran).
 
 ### Feature-Schema Discrepancy Resolution
 - **Raw Workbook Total Columns:** 59 columns.
@@ -323,7 +323,7 @@ For full mathematical documentation, see [`docs/explainability.md`](docs/explain
 
 ## 9. Phase 4 Research Findings: Stability, Uncertainty & Robustness
 
-Phase 4 evaluated the prediction stability, explainability stability, uncertainty quantification, and perturbation robustness of the production models across 25 outer cross-validation folds:
+Phase 4 evaluated the prediction stability, explainability stability, uncertainty quantification, and perturbation robustness of the research model artifacts across 25 outer cross-validation folds:
 
 ### Multi-Target Research Stability & Uncertainty Summary
 
@@ -386,8 +386,8 @@ For complete Phase 4 experimental details, see [`docs/research/PHASE-4-EXPERIMEN
 ## 10. Local Setup & Execution Instructions
 
 ### Prerequisites
-- **Python**: Version 3.10 or 3.11
-- **Node.js**: Version 18.x or 20.x+ (with `npm`)
+- **Python**: Version 3.10–3.12 (supported: `>=3.10,<3.13`; documented research environment uses Python 3.11.18)
+- **Node.js**: Version `^22.12.0 || ^24.0.0 || >=26.0.0` (with `npm`; intersection of locked Vite 8.3.0 and Vitest 5.0.3 engine requirements; Node 18 and Node 20 are unsupported)
 
 ---
 
@@ -424,18 +424,18 @@ npm run dev
 
 The test suite encompasses **114 collected Python Pytest tests** and **51 executed React Vitest tests**:
 
-- **Pytest (Backend & ML)**: 114 tests collected; 113 passing under full suite execution (1 known legacy test failure in `backend/tests/test_metadata_api.py:23` expects `threshold == 0.38` instead of the reconciled `0.35` production threshold).
-- **Targeted Research & Explainability Regression Suite**: **37 / 37 passed (100%)** covering Phase 4 stability protocols, schema validation, and inference additivity.
+- **Pytest (Backend & ML)**: 114 tests collected across the full suite; **113 passing**, with **1 known failing legacy assertion** in `backend/tests/test_metadata_api.py:23` (which expects legacy `threshold == 0.38` instead of the reconciled `0.35` fixed research operating threshold).
+- **Targeted Research & Explainability Regression Suite**: **37 / 37 passed (100% in previously documented test runs)** covering Phase 4 stability protocols, schema validation, and inference additivity (`tests/test_phase4_research.py`, `tests/test_inference.py`, `tests/test_explainability.py`).
 - **Vitest (React Frontend)**: **51 / 51 passed (100%)** across all 7 frontend component test suites.
 
 ```bash
-# 1. Run Complete Python Pytest Suite (114 Collected Tests)
+# 1. Run Complete Python Pytest Suite (114 collected tests: 113 passing, 1 known legacy failure)
 pytest
 
-# 2. Run Targeted Phase 4 Research & Explainability Regression Tests (37 Tests - 100% Passing)
+# 2. Run Targeted Phase 4 Research & Explainability Regression Tests (37 tests - 100% passing in documented runs)
 pytest tests/test_phase4_research.py tests/test_inference.py tests/test_explainability.py -v
 
-# 3. Run Frontend Vitest Suite (51 Tests across 7 test files - 100% Passing)
+# 3. Run Frontend Vitest Suite (51 tests across 7 test files - 100% passing)
 cd frontend
 npm run test
 
@@ -492,7 +492,7 @@ python scripts/run_phase4_experiments.py
 # 4. Convert & Optimize Anatomical Meshes into GLB Models
 python scripts/convert_anatomy_meshes.py
 
-# 5. Verify End-to-End Inference & SHAP Additivity on Production Models
+# 5. Verify End-to-End Inference & SHAP Additivity on Research Model Artifacts
 python scripts/verify_inference.py
 
 # 6. Verify Backend REST API Endpoints & Contracts
@@ -504,7 +504,7 @@ python scripts/verify_backend.py
 ## 13. Clinical Boundaries, Disclaimers & Research Limitations
 
 1. **Research Prototype Only**: CoroVista is an academic research decision-support prototype. It has not received FDA 510(k), De Novo, or CE-mark regulatory clearance and must not be used as an autonomous medical diagnostic device.
-2. **Single-Center Retrospective Cohort**: All models were trained and evaluated on $N = 303$ consecutive patients referred to the Tehran Heart Center, Tehran, Iran. Performance must be independently validated before evaluating generalizability in community or lower-prevalence settings.
+2. **Single-Center Retrospective Cohort**: All models were trained and evaluated on $N = 303$ consecutive patients referred to Shaheed Rajaei Cardiovascular, Medical and Research Center, Tehran, Iran. Performance must be independently validated before evaluating generalizability in community or lower-prevalence settings.
 3. **Internal Cross-Validation**: All reported metrics reflect internal repeated cross-validation where folds share patient samples across repeats. No external geographic, temporal, or prospective clinical trial validation has been performed.
 4. **Observational Attributions**: SHAP feature attributions reflect statistical associations within this specific dataset and do not establish biological or clinical causality.
 5. **Exploratory Uncertainty Cutoffs**: Evaluated predictive entropy cutoffs ($H(p) > 0.80$) and threshold proximity margins ($|p - \tau| < 0.05$) are exploratory computational simulation thresholds. They do not constitute clinically validated triage, referral, or decision rules.
@@ -524,9 +524,9 @@ python scripts/verify_backend.py
 
 - [x] **Phase 1: Dataset Quality Audit & Schema Harmonization** (Zero missing values, leakage guards, 54 eligible features).
 - [x] **Phase 2: Scientific Grounding & Clinical Methodology** (Clinical protocols, calibration frameworks).
-- [x] **Phase 3: Multi-Target Benchmarking, Calibration & Model Promotion** (Calibrated production pipelines, threshold optimization).
+- [x] **Phase 3: Multi-Target Benchmarking, Calibration & Model Promotion** (Calibrated research pipelines, threshold optimization).
 - [x] **Phase 4: Stability, Uncertainty, Robustness & Subgroup Analysis** (25 outer fold SHAP stability, entropy quantification, perturbation stress testing).
-- [ ] **Phase 5: Manuscript Preparation** (Authoring peer-reviewed research paper, TRIPOD+AI reporting item alignment, figure finalization).
+- [x] **Phase 5: Manuscript Preparation** (Research manuscript finalized and compiled; publication documentation prepared; 29-page canonical manuscript compiled with TRIPOD+AI reporting item alignment; awaiting author institutional confirmation prior to journal portal submission).
 
 ---
 
